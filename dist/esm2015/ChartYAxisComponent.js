@@ -1,6 +1,5 @@
-import { __decorate } from "tslib";
 import { Directive, Output, EventEmitter } from '@angular/core';
-let ChartYAxisComponent = class ChartYAxisComponent {
+export class ChartYAxisComponent {
     constructor() {
         this.afterBreaks = new EventEmitter();
         this.afterSetExtremes = new EventEmitter();
@@ -8,26 +7,17 @@ let ChartYAxisComponent = class ChartYAxisComponent {
         this.pointInBreak = new EventEmitter();
         this.setExtremes = new EventEmitter();
     }
+}
+ChartYAxisComponent.decorators = [
+    { type: Directive, args: [{
+                selector: 'yAxis'
+            },] }
+];
+ChartYAxisComponent.propDecorators = {
+    afterBreaks: [{ type: Output }],
+    afterSetExtremes: [{ type: Output }],
+    pointBreak: [{ type: Output }],
+    pointInBreak: [{ type: Output }],
+    setExtremes: [{ type: Output }]
 };
-__decorate([
-    Output()
-], ChartYAxisComponent.prototype, "afterBreaks", void 0);
-__decorate([
-    Output()
-], ChartYAxisComponent.prototype, "afterSetExtremes", void 0);
-__decorate([
-    Output()
-], ChartYAxisComponent.prototype, "pointBreak", void 0);
-__decorate([
-    Output()
-], ChartYAxisComponent.prototype, "pointInBreak", void 0);
-__decorate([
-    Output()
-], ChartYAxisComponent.prototype, "setExtremes", void 0);
-ChartYAxisComponent = __decorate([
-    Directive({
-        selector: 'yAxis'
-    })
-], ChartYAxisComponent);
-export { ChartYAxisComponent };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcnRZQXhpc0NvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0ByZXZpdmVqcy9hbmd1bGFyMi1oaWdoY2hhcnRzLyIsInNvdXJjZXMiOlsiQ2hhcnRZQXhpc0NvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsT0FBTyxFQUFFLFNBQVMsRUFBRSxNQUFNLEVBQUUsWUFBWSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBTWhFLElBQWEsbUJBQW1CLEdBQWhDLE1BQWEsbUJBQW1CO0lBQWhDO1FBQ2MsZ0JBQVcsR0FBRyxJQUFJLFlBQVksRUFBYyxDQUFDO1FBQzdDLHFCQUFnQixHQUFHLElBQUksWUFBWSxFQUFjLENBQUM7UUFDbEQsZUFBVSxHQUFHLElBQUksWUFBWSxFQUFjLENBQUM7UUFDNUMsaUJBQVksR0FBRyxJQUFJLFlBQVksRUFBYyxDQUFDO1FBQzlDLGdCQUFXLEdBQUcsSUFBSSxZQUFZLEVBQWMsQ0FBQztJQUMzRCxDQUFDO0NBQUEsQ0FBQTtBQUxhO0lBQVQsTUFBTSxFQUFFO3dEQUE4QztBQUM3QztJQUFULE1BQU0sRUFBRTs2REFBbUQ7QUFDbEQ7SUFBVCxNQUFNLEVBQUU7dURBQTZDO0FBQzVDO0lBQVQsTUFBTSxFQUFFO3lEQUErQztBQUM5QztJQUFULE1BQU0sRUFBRTt3REFBOEM7QUFMOUMsbUJBQW1CO0lBSC9CLFNBQVMsQ0FBQztRQUNQLFFBQVEsRUFBRSxPQUFPO0tBQ3BCLENBQUM7R0FDVyxtQkFBbUIsQ0FNL0I7U0FOWSxtQkFBbUIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBEaXJlY3RpdmUsIE91dHB1dCwgRXZlbnRFbWl0dGVyIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBDaGFydEV2ZW50IH0gZnJvbSAnLi9DaGFydEV2ZW50JztcblxuQERpcmVjdGl2ZSh7XG4gICAgc2VsZWN0b3I6ICd5QXhpcydcbn0pXG5leHBvcnQgY2xhc3MgQ2hhcnRZQXhpc0NvbXBvbmVudCB7XG4gICAgQE91dHB1dCgpIGFmdGVyQnJlYWtzID0gbmV3IEV2ZW50RW1pdHRlcjxDaGFydEV2ZW50PigpO1xuICAgIEBPdXRwdXQoKSBhZnRlclNldEV4dHJlbWVzID0gbmV3IEV2ZW50RW1pdHRlcjxDaGFydEV2ZW50PigpO1xuICAgIEBPdXRwdXQoKSBwb2ludEJyZWFrID0gbmV3IEV2ZW50RW1pdHRlcjxDaGFydEV2ZW50PigpO1xuICAgIEBPdXRwdXQoKSBwb2ludEluQnJlYWsgPSBuZXcgRXZlbnRFbWl0dGVyPENoYXJ0RXZlbnQ+KCk7XG4gICAgQE91dHB1dCgpIHNldEV4dHJlbWVzID0gbmV3IEV2ZW50RW1pdHRlcjxDaGFydEV2ZW50PigpO1xufSJdfQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcnRZQXhpc0NvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIvc3RvcmFnZS9kYXRhL2dpdGh1Yi9yZXZpdmVqcy9hbmd1bGFyMi1oaWdoY2hhcnRzL2FuZ3VsYXIyLWhpZ2hjaGFydHMvc3JjLyIsInNvdXJjZXMiOlsiQ2hhcnRZQXhpc0NvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsU0FBUyxFQUFFLE1BQU0sRUFBRSxZQUFZLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFNaEUsTUFBTSxPQUFPLG1CQUFtQjtJQUhoQztRQUljLGdCQUFXLEdBQUcsSUFBSSxZQUFZLEVBQWMsQ0FBQztRQUM3QyxxQkFBZ0IsR0FBRyxJQUFJLFlBQVksRUFBYyxDQUFDO1FBQ2xELGVBQVUsR0FBRyxJQUFJLFlBQVksRUFBYyxDQUFDO1FBQzVDLGlCQUFZLEdBQUcsSUFBSSxZQUFZLEVBQWMsQ0FBQztRQUM5QyxnQkFBVyxHQUFHLElBQUksWUFBWSxFQUFjLENBQUM7SUFDM0QsQ0FBQzs7O1lBVEEsU0FBUyxTQUFDO2dCQUNQLFFBQVEsRUFBRSxPQUFPO2FBQ3BCOzs7MEJBRUksTUFBTTsrQkFDTixNQUFNO3lCQUNOLE1BQU07MkJBQ04sTUFBTTswQkFDTixNQUFNIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRGlyZWN0aXZlLCBPdXRwdXQsIEV2ZW50RW1pdHRlciB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgQ2hhcnRFdmVudCB9IGZyb20gJy4vQ2hhcnRFdmVudCc7XG5cbkBEaXJlY3RpdmUoe1xuICAgIHNlbGVjdG9yOiAneUF4aXMnXG59KVxuZXhwb3J0IGNsYXNzIENoYXJ0WUF4aXNDb21wb25lbnQge1xuICAgIEBPdXRwdXQoKSBhZnRlckJyZWFrcyA9IG5ldyBFdmVudEVtaXR0ZXI8Q2hhcnRFdmVudD4oKTtcbiAgICBAT3V0cHV0KCkgYWZ0ZXJTZXRFeHRyZW1lcyA9IG5ldyBFdmVudEVtaXR0ZXI8Q2hhcnRFdmVudD4oKTtcbiAgICBAT3V0cHV0KCkgcG9pbnRCcmVhayA9IG5ldyBFdmVudEVtaXR0ZXI8Q2hhcnRFdmVudD4oKTtcbiAgICBAT3V0cHV0KCkgcG9pbnRJbkJyZWFrID0gbmV3IEV2ZW50RW1pdHRlcjxDaGFydEV2ZW50PigpO1xuICAgIEBPdXRwdXQoKSBzZXRFeHRyZW1lcyA9IG5ldyBFdmVudEVtaXR0ZXI8Q2hhcnRFdmVudD4oKTtcbn0iXX0=
