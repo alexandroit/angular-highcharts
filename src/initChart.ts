@@ -18,6 +18,12 @@ export function initChart(highchartsService : HighchartsService, userOpts, baseO
     if (Array.isArray(userOpts.yAxis) ) {
         baseOpts.yAxis = [baseOpts.yAxis];
     }
+    if (Array.isArray(userOpts.zAxis) ) {
+        baseOpts.zAxis = [baseOpts.zAxis];
+    }
+    if (Array.isArray(userOpts.colorAxis) ) {
+        baseOpts.colorAxis = [baseOpts.colorAxis];
+    }
 
     const opts = deepAssign({}, baseOpts, userOpts);
 

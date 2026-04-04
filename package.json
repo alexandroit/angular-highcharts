@@ -1,7 +1,7 @@
 {
-  "name": "angular2-highcharts",
+  "name": "@revivejs/angular2-highcharts",
   "version": "4.0.0",
-  "description": "Highcharts components for Angular 4 applications",
+  "description": "Angular 4 wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "scripts": {
     "watch": "tsc -w",
     "build": "rm -rf dist && ngc",
@@ -13,25 +13,38 @@
     "type": "git",
     "url": "https://github.com/alexandroit/angular2-highcharts.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "angular",
     "angular4",
+    "angular-library",
+    "typescript",
     "charts",
     "highcharts",
+    "highcharts-angular",
+    "chart-wrapper",
+    "ui-component",
     "wrapper",
     "library",
     "highstock",
-    "highmaps"
+    "highmaps",
+    "coloraxis",
+    "zaxis",
+    "revived",
+    "maintained",
+    "modernized"
   ],
-  "author": "Eugene Gluhotorenko",
+  "author": "Alexandro Paixao Marques",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/alexandroit/angular2-highcharts/issues"
   },
-  "homepage": "https://github.com/alexandroit/angular2-highcharts#readme",
+  "homepage": "https://alexandroit.github.io/angular2-highcharts/",
   "peerDependencies": {
     "@angular/core": "^4.4.7",
-    "highcharts": "^5.0.7"
+    "highcharts": "^5.0.15"
   },
   "devDependencies": {
     "@angular/common": "^4.4.7",
@@ -55,9 +68,9 @@
     "ts-loader": "^3.5.0",
     "webpack": "^3.12.0",
     "zone.js": "^0.8.29",
-    "@types/highcharts": "4.2.47",
+    "@types/highcharts": "5.0.44",
     "@types/jasmine": "2.5.42",
-    "highcharts": "^5.0.7"
+    "highcharts": "^5.0.15"
   },
   "dependencies": {}
 }

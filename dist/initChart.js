@@ -15,6 +15,12 @@ function initChart(highchartsService, userOpts, baseOpts, type) {
     if (Array.isArray(userOpts.yAxis)) {
         baseOpts.yAxis = [baseOpts.yAxis];
     }
+    if (Array.isArray(userOpts.zAxis)) {
+        baseOpts.zAxis = [baseOpts.zAxis];
+    }
+    if (Array.isArray(userOpts.colorAxis)) {
+        baseOpts.colorAxis = [baseOpts.colorAxis];
+    }
     var opts = deepAssign_1.deepAssign({}, baseOpts, userOpts);
     return new Highcharts[type](opts);
 }

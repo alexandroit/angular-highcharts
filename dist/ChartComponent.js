@@ -4,6 +4,8 @@ var core_1 = require("@angular/core");
 var ChartSeriesComponent_1 = require("./ChartSeriesComponent");
 var ChartXAxisComponent_1 = require("./ChartXAxisComponent");
 var ChartYAxisComponent_1 = require("./ChartYAxisComponent");
+var ChartZAxisComponent_1 = require("./ChartZAxisComponent");
+var ChartColorAxisComponent_1 = require("./ChartColorAxisComponent");
 var HighchartsService_1 = require("./HighchartsService");
 var initChart_1 = require("./initChart");
 var createBaseOpts_1 = require("./createBaseOpts");
@@ -39,7 +41,7 @@ var ChartComponent = (function () {
         }
     };
     ChartComponent.prototype.ngAfterViewInit = function () {
-        this.baseOpts = createBaseOpts_1.createBaseOpts(this, this.series, this.series ? this.series.point : null, this.xAxis, this.yAxis, this.element.nativeElement);
+        this.baseOpts = createBaseOpts_1.createBaseOpts(this, this.series, this.series ? this.series.point : null, this.xAxis, this.yAxis, this.zAxis, this.colorAxis, this.element.nativeElement);
         this.init();
     };
     ChartComponent.decorators = [
@@ -57,6 +59,8 @@ var ChartComponent = (function () {
         'series': [{ type: core_1.ContentChild, args: [ChartSeriesComponent_1.ChartSeriesComponent,] },],
         'xAxis': [{ type: core_1.ContentChild, args: [ChartXAxisComponent_1.ChartXAxisComponent,] },],
         'yAxis': [{ type: core_1.ContentChild, args: [ChartYAxisComponent_1.ChartYAxisComponent,] },],
+        'zAxis': [{ type: core_1.ContentChild, args: [ChartZAxisComponent_1.ChartZAxisComponent,] },],
+        'colorAxis': [{ type: core_1.ContentChild, args: [ChartColorAxisComponent_1.ChartColorAxisComponent,] },],
         'create': [{ type: core_1.Output },],
         'click': [{ type: core_1.Output },],
         'addSeries': [{ type: core_1.Output },],

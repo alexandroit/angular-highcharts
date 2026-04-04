@@ -20,6 +20,12 @@ var ChartEventEmitter = (function () {
     ChartEventEmitter.emitYAxisEvent = function (eventName) {
         opts.yAxis.events[eventName]();
     };
+    ChartEventEmitter.emitZAxisEvent = function (eventName) {
+        opts.zAxis.events[eventName]();
+    };
+    ChartEventEmitter.emitColorAxisEvent = function (eventName) {
+        opts.colorAxis.events[eventName]();
+    };
     return ChartEventEmitter;
 }());
 exports.ChartEventEmitter = ChartEventEmitter;

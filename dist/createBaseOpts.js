@@ -44,7 +44,21 @@ var yAxisEvents = [
     'pointInBreak',
     'setExtremes'
 ];
-function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, element) {
+var zAxisEvents = [
+    'afterBreaks',
+    'afterSetExtremes',
+    'pointBreak',
+    'pointInBreak',
+    'setExtremes'
+];
+var colorAxisEvents = [
+    'afterBreaks',
+    'afterSetExtremes',
+    'pointBreak',
+    'pointInBreak',
+    'setExtremes'
+];
+function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, zAxisCmp, colorAxisCmp, element) {
     var opts = {
         chart: {
             renderTo: element,
@@ -62,6 +76,12 @@ function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, eleme
             events: {}
         },
         yAxis: {
+            events: {}
+        },
+        zAxis: {
+            events: {}
+        },
+        colorAxis: {
             events: {}
         }
     };
@@ -95,6 +115,20 @@ function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, eleme
         yAxisEvents.forEach(function (eventName) {
             opts.yAxis.events[eventName] = opts.yAxis.events[eventName] || function (event) {
                 yAxisCmp[eventName].emit(new ChartEvent_1.ChartEvent(event, this));
+            };
+        });
+    }
+    if (zAxisCmp) {
+        zAxisEvents.forEach(function (eventName) {
+            opts.zAxis.events[eventName] = opts.zAxis.events[eventName] || function (event) {
+                zAxisCmp[eventName].emit(new ChartEvent_1.ChartEvent(event, this));
+            };
+        });
+    }
+    if (colorAxisCmp) {
+        colorAxisEvents.forEach(function (eventName) {
+            opts.colorAxis.events[eventName] = opts.colorAxis.events[eventName] || function (event) {
+                colorAxisCmp[eventName].emit(new ChartEvent_1.ChartEvent(event, this));
             };
         });
     }

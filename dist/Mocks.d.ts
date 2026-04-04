@@ -4,6 +4,8 @@ export declare class ChartEventEmitter {
     static emitPointEvent(eventName: any): void;
     static emitXAxisEvent(eventName: any): void;
     static emitYAxisEvent(eventName: any): void;
+    static emitZAxisEvent(eventName: any): void;
+    static emitColorAxisEvent(eventName: any): void;
 }
 export declare class HighchartsChartObjectMock {
     constructor(_opts: any);

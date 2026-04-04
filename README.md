@@ -1,41 +1,44 @@
-# angular2-highcharts
+# @revivejs/angular2-highcharts
 
-> Highcharts chart components for **Angular 4** applications, with wrapper outputs for chart events, native chart instance access, and support for Highcharts modules through `ChartModule.forRoot(...)`.
+> A maintained **Angular 4 Highcharts wrapper** with support for standard charts, `StockChart`, `Highmaps`, wrapper event outputs, native chart instance access, and Angular directives for `xAxis`, `yAxis`, `zAxis`, and `colorAxis`.
 
-[![npm version](https://img.shields.io/npm/v/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/angular2-highcharts)
-[![npm downloads](https://img.shields.io/npm/dt/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/angular2-highcharts)
-[![npm monthly](https://img.shields.io/npm/dm/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/angular2-highcharts)
-[![license](https://img.shields.io/npm/l/angular2-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular2-highcharts/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@revivejs/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/angular2-highcharts)
+[![npm downloads](https://img.shields.io/npm/dt/@revivejs/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/angular2-highcharts)
+[![npm monthly](https://img.shields.io/npm/dm/@revivejs/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/angular2-highcharts)
+[![license](https://img.shields.io/npm/l/@revivejs/angular2-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular2-highcharts/blob/master/LICENSE)
 [![Angular 4](https://img.shields.io/badge/Angular-4-red?style=flat-square&logo=angular)](https://angular.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-2.4-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![GitHub stars](https://img.shields.io/github/stars/alexandroit/angular2-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular2-highcharts/stargazers)
 
-**[npm](https://www.npmjs.com/package/angular2-highcharts)** | **[Changelog / Repository History](https://github.com/alexandroit/angular2-highcharts/commits/master/)** | **[Issues](https://github.com/alexandroit/angular2-highcharts/issues)**
+**[Documentation & Live Demos](https://alexandroit.github.io/angular2-highcharts/)** | **[npm](https://www.npmjs.com/package/@revivejs/angular2-highcharts)** | **[Issues](https://github.com/alexandroit/angular2-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular2-highcharts)**
 
 ---
 
-> **Credits:** Original library by [Eugene Gluhotorenko](https://github.com/gevgeny/angular2-highcharts). Current maintenance, Angular 4 compatibility update, and package metadata refresh by [Alexandro Paixao Marques](https://github.com/alexandroit/angular2-highcharts).
+> **Credits:** Original library by [Eugene Gluhotorenko](https://github.com/gevgeny/angular2-highcharts). Current maintenance, Angular 4 compatibility work, package publishing, and repository stewardship by [Alexandro Paixao Marques](https://github.com/alexandroit/angular2-highcharts).
 
 ---
 
 ## Why this library?
 
-The original `angular2-highcharts` package targeted early Angular releases and had fallen behind. This fork keeps the wrapper usable for the Angular 4 support line while preserving the familiar API: `<chart>`, `<series>`, `<point>`, `<xAxis>`, and `<yAxis>`.
+The original `angular2-highcharts` package targeted early Angular releases and stopped evolving. This fork keeps the wrapper usable for the Angular 4 release line, updates the maintained publication metadata, and expands the wrapper surface for more Highcharts features such as `zAxis` and `colorAxis`.
 
 ## Features
 
 | Feature | Supported |
 | :--- | :---: |
 | Angular 4 release line | ✅ |
+| Highcharts 5 maintained patch line | ✅ |
 | Standard Highcharts charts | ✅ |
 | `StockChart` wrapper support | ✅ |
+| `Highmaps` module support | ✅ |
 | Highcharts module registration via `forRoot` | ✅ |
 | Chart event outputs | ✅ |
 | Series event outputs | ✅ |
 | Point event outputs | ✅ |
-| X/Y axis event outputs | ✅ |
+| `xAxis` / `yAxis` wrapper directives | ✅ |
+| `zAxis` / `colorAxis` wrapper directives | ✅ |
 | Native chart instance access | ✅ |
-| Interactive local docs app in repository | ✅ |
+| GitHub Pages docs app | ✅ |
 
 ## Table of Contents
 
@@ -44,26 +47,27 @@ The original `angular2-highcharts` package targeted early Angular releases and h
 3. [Setup](#setup)
 4. [Basic Usage](#basic-usage)
 5. [Events](#events)
-6. [Dynamic Chart Access](#dynamic-chart-access)
-7. [Highstock](#highstock)
-8. [Highmaps](#highmaps)
-9. [Highcharts Modules](#highcharts-modules)
-10. [Static Highcharts API](#static-highcharts-api)
-11. [Run Locally](#run-locally)
-12. [FAQ](#faq)
-13. [License](#license)
+6. [Extended Axis Wrappers](#extended-axis-wrappers)
+7. [Dynamic Chart Access](#dynamic-chart-access)
+8. [Highstock](#highstock)
+9. [Highmaps](#highmaps)
+10. [Highcharts Modules](#highcharts-modules)
+11. [Static Highcharts API](#static-highcharts-api)
+12. [Run Locally](#run-locally)
+13. [FAQ](#faq)
+14. [License](#license)
 
 ## Angular Version Compatibility
 
-| angular2-highcharts | Angular | TypeScript | Node.js |
-| :---: | :---: | :---: | :---: |
-| **4.0.x** | **4.4.x** | **2.4.x** | build verified on modern Node, legacy tooling origin |
-| 0.5.x | 2.4.x | 2.1.x | historical release line |
+| @revivejs/angular2-highcharts | Angular | TypeScript | Highcharts | Node.js |
+| :---: | :---: | :---: | :---: | :---: |
+| **4.0.x** | **4.4.x** | **2.4.x** | **5.0.15** | build verified on modern Node |
+| 0.5.x | 2.4.x | 2.1.x | 5.0.7 | historical release line |
 
 ## Installation
 
 ```bash
-npm install angular2-highcharts highcharts
+npm install @revivejs/angular2-highcharts highcharts
 ```
 
 ## Setup
@@ -73,7 +77,7 @@ npm install angular2-highcharts highcharts
 ```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ChartModule } from 'angular2-highcharts';
+import { ChartModule } from '@revivejs/angular2-highcharts';
 
 declare var require: any;
 
@@ -92,11 +96,11 @@ No extra wrapper configuration is required for Angular CLI or other webpack-base
 
 ### 3. SystemJS usage
 
-If your application still uses SystemJS, add both `angular2-highcharts` and `highcharts` to the map and packages configuration:
+If your application still uses SystemJS, add both packages to the map and packages configuration:
 
 ```js
 map: {
-  'angular2-highcharts': 'node_modules/angular2-highcharts',
+  '@revivejs/angular2-highcharts': 'node_modules/@revivejs/angular2-highcharts',
   'highcharts': 'node_modules/highcharts'
 },
 packages: {
@@ -104,7 +108,7 @@ packages: {
     main: './highcharts.js',
     defaultExtension: 'js'
   },
-  'angular2-highcharts': {
+  '@revivejs/angular2-highcharts': {
     main: './index.js',
     defaultExtension: 'js'
   }
@@ -146,25 +150,12 @@ The wrapper exposes Angular `EventEmitter<ChartEvent>` outputs for several Highc
 <chart [options]="options" (selection)="onChartSelection($event)"></chart>
 ```
 
-```ts
-onChartSelection(e: any): void {
-  this.from = e.originalEvent.xAxis[0].min.toFixed(2);
-  this.to = e.originalEvent.xAxis[0].max.toFixed(2);
-}
-```
-
 ### Series events
 
 ```html
 <chart [options]="options">
   <series (mouseOver)="onSeriesMouseOver($event)"></series>
 </chart>
-```
-
-```ts
-onSeriesMouseOver(e: any): void {
-  this.seriesName = e.context.name;
-}
 ```
 
 ### Point events
@@ -177,7 +168,11 @@ onSeriesMouseOver(e: any): void {
 </chart>
 ```
 
-### Axis events
+## Extended Axis Wrappers
+
+This maintained line adds Angular wrapper directives for `zAxis` and `colorAxis` alongside the existing `xAxis` and `yAxis`.
+
+### X and Y axis events
 
 ```html
 <chart [options]="options">
@@ -186,16 +181,24 @@ onSeriesMouseOver(e: any): void {
 </chart>
 ```
 
-```ts
-onAfterSetExtremesX(e: any): void {
-  this.minX = e.context.min;
-  this.maxX = e.context.max;
-}
+### Z axis events
 
-onAfterSetExtremesY(e: any): void {
-  this.minY = e.context.min;
-  this.maxY = e.context.max;
-}
+Useful for 3D charts and other configurations that expose a `zAxis`.
+
+```html
+<chart [options]="options">
+  <zAxis (afterSetExtremes)="onAfterSetExtremesZ($event)"></zAxis>
+</chart>
+```
+
+### Color axis events
+
+Useful for heatmaps, maps, and gradient-based color scale interactions.
+
+```html
+<chart [options]="options">
+  <colorAxis (afterSetExtremes)="onColorAxisChange($event)"></colorAxis>
+</chart>
 ```
 
 ## Dynamic Chart Access
@@ -268,7 +271,7 @@ ChartModule.forRoot(
 )
 ```
 
-This is the same mechanism used by the repository’s local docs application for the 3D chart example.
+This is the same mechanism used by the repository docs app for the 3D examples.
 
 ## Static Highcharts API
 
@@ -306,7 +309,7 @@ Run the unit tests:
 npm test
 ```
 
-Build the repository-local static docs app:
+Build the GitHub Pages docs app:
 
 ```bash
 npm run build:docs
@@ -323,6 +326,10 @@ npm run serve:docs
 ### Why do my series, title, or axes not redraw when I mutate the original options object?
 
 This wrapper is intentionally thin. It uses the initial `options` object to create the chart, but it does not continuously diff every nested Highcharts option after the chart exists. For dynamic updates, capture the native chart instance from the `load` event and use the Highcharts API directly.
+
+### Why was Highcharts updated only inside the 5.x line?
+
+For this Angular 4 support line, the safest maintained move is the latest Highcharts 5 patch release (`5.0.15`) together with compatible `@types/highcharts` definitions. Newer Highcharts majors can require a broader compatibility review across the legacy toolchain.
 
 ## License
 

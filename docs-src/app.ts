@@ -11,6 +11,7 @@ declare var require: any;
 
 const Highcharts = require('highcharts/highstock');
 const Highcharts3d = require('highcharts/highcharts-3d');
+const HighchartsHeatmap = require('highcharts/modules/heatmap');
 
 enableProdMode();
 
@@ -332,7 +333,7 @@ enableProdMode();
             <section class="hero">
                 <div class="hero-card hero-copy">
                     <span class="eyebrow">Interactive Documentation</span>
-                    <h1>angular2-highcharts</h1>
+                    <h1>@revivejs/angular2-highcharts</h1>
                     <p>
                         A live documentation page for the Angular 4 wrapper, built from this repository and compiled into <span class="inline-code">docs/</span>.
                         Every section below is executable and demonstrates the real wrapper API instead of screenshots.
@@ -340,7 +341,7 @@ enableProdMode();
                     <div class="quick-grid">
                         <div class="quick-item">
                             <strong>Wrapper API</strong>
-                            Regular charts, StockChart, event emitters, and dynamic chart access.
+                            Regular charts, StockChart, event emitters, dynamic chart access, plus zAxis and colorAxis support.
                         </div>
                         <div class="quick-item">
                             <strong>Highcharts Modules</strong>
@@ -357,7 +358,7 @@ enableProdMode();
                     </div>
                     <div class="cta-row">
                         <a class="button" href="#demos">Jump to demos</a>
-                        <a class="button secondary" href="../README.md">Read the package README</a>
+                        <a class="button secondary" href="https://github.com/alexandroit/angular2-highcharts#readme">Read the package README</a>
                     </div>
                 </div>
 
@@ -366,7 +367,7 @@ enableProdMode();
                     <div class="spec-list">
                         <div class="spec">
                             <strong>Install</strong>
-                            <span class="inline-code">npm install angular2-highcharts highcharts</span>
+                            <span class="inline-code">npm install @revivejs/angular2-highcharts highcharts</span>
                         </div>
                         <div class="spec">
                             <strong>Import</strong>
@@ -381,12 +382,13 @@ enableProdMode();
                             <span class="inline-code">npm run serve:docs</span>
                         </div>
                     </div>
-                    <pre>import { ChartModule } from 'angular2-highcharts';
+                    <pre>import { ChartModule } from '@revivejs/angular2-highcharts';
 const Highcharts = require('highcharts/highstock');
 const Highcharts3d = require('highcharts/highcharts-3d');
+const HighchartsHeatmap = require('highcharts/modules/heatmap');
 
 @NgModule({
-  imports: [ChartModule.forRoot(Highcharts, Highcharts3d)]
+  imports: [ChartModule.forRoot(Highcharts, Highcharts3d, HighchartsHeatmap)]
 })</pre>
                 </div>
             </section>
@@ -398,7 +400,7 @@ const Highcharts3d = require('highcharts/highcharts-3d');
                             <h2>Core Demos</h2>
                             <p>
                                 These examples cover the library capabilities that matter most in practice: regular chart rendering, event bridges,
-                                dynamic access to the native chart instance, StockChart support, 3D module registration, and the Highcharts static API.
+                                dynamic access to the native chart instance, StockChart support, 3D module registration, and the extended axis wrappers.
                             </p>
                         </div>
 
@@ -454,6 +456,34 @@ const Highcharts3d = require('highcharts/highcharts-3d');
                                 <p>Uses the wrapper <span class="inline-code">type</span> input with local time-series data, no remote request required.</p>
                                 <div class="chart-frame">
                                     <chart type="StockChart" [options]="stockOptions"></chart>
+                                </div>
+                            </section>
+
+                            <section class="demo-card">
+                                <h3>Z Axis Wrapper</h3>
+                                <p>Demonstrates the Angular <span class="inline-code">&lt;zAxis&gt;</span> wrapper on a 3D scatter chart.</p>
+                                <div class="controls">
+                                    <button type="button" class="secondary" (click)="zoomZAxis()">Set zAxis extremes</button>
+                                    <button type="button" class="ghost" (click)="resetZAxis()">Reset zAxis</button>
+                                </div>
+                                <div class="chart-frame">
+                                    <chart [options]="zAxisOptions" (load)="saveZAxisChart($event.context)">
+                                        <zAxis (afterSetExtremes)="onZAxisExtremes($event)"></zAxis>
+                                    </chart>
+                                </div>
+                            </section>
+
+                            <section class="demo-card">
+                                <h3>Color Axis Wrapper</h3>
+                                <p>Demonstrates the Angular <span class="inline-code">&lt;colorAxis&gt;</span> wrapper on a heatmap.</p>
+                                <div class="controls">
+                                    <button type="button" class="secondary" (click)="zoomColorAxis()">Narrow color range</button>
+                                    <button type="button" class="ghost" (click)="resetColorAxis()">Reset color axis</button>
+                                </div>
+                                <div class="chart-frame">
+                                    <chart [options]="colorAxisOptions" (load)="saveColorAxisChart($event.context)">
+                                        <colorAxis (afterSetExtremes)="onColorAxisExtremes($event)"></colorAxis>
+                                    </chart>
                                 </div>
                             </section>
                         </div>
@@ -544,12 +574,16 @@ class DocsAppComponent {
     eventChartOptions: Object;
     dynamicOptions: Object;
     stockOptions: Object;
+    zAxisOptions: Object;
+    colorAxisOptions: Object;
     moduleOptions: Object;
     staticApiOptions: Object;
     logs: string[] = [];
 
     private eventChart: any;
     private dynamicChart: any;
+    private zAxisChart: any;
+    private colorAxisChart: any;
     private module3dEnabled: boolean = true;
     private paletteName: string = 'Classic revive';
 
@@ -566,6 +600,8 @@ class DocsAppComponent {
         this.eventChartOptions = this.createEventChartOptions();
         this.dynamicOptions = this.createDynamicOptions();
         this.stockOptions = this.createStockOptions();
+        this.zAxisOptions = this.createZAxisOptions();
+        this.colorAxisOptions = this.createColorAxisOptions();
         this.moduleOptions = this.createModuleOptions(this.module3dEnabled);
         this.staticApiOptions = this.createStaticApiOptions();
         this.log('Documentation demo loaded.');
@@ -584,6 +620,16 @@ class DocsAppComponent {
     saveDynamicChart(chart: any) {
         this.dynamicChart = chart;
         this.log('Dynamic chart instance is ready.');
+    }
+
+    saveZAxisChart(chart: any) {
+        this.zAxisChart = chart;
+        this.log('zAxis demo chart instance is ready.');
+    }
+
+    saveColorAxisChart(chart: any) {
+        this.colorAxisChart = chart;
+        this.log('colorAxis demo chart instance is ready.');
     }
 
     onChartSelection(e: any) {
@@ -614,6 +660,18 @@ class DocsAppComponent {
         }
     }
 
+    onZAxisExtremes(e: any) {
+        if (typeof e.context.min === 'number' && typeof e.context.max === 'number') {
+            this.log('Z axis extremes: ' + e.context.min.toFixed(2) + ' to ' + e.context.max.toFixed(2));
+        }
+    }
+
+    onColorAxisExtremes(e: any) {
+        if (typeof e.context.min === 'number' && typeof e.context.max === 'number') {
+            this.log('Color axis extremes: ' + e.context.min.toFixed(2) + ' to ' + e.context.max.toFixed(2));
+        }
+    }
+
     zoomEventXAxis() {
         if (!this.eventChart) {
             return;
@@ -635,6 +693,36 @@ class DocsAppComponent {
         this.eventChart.xAxis[0].setExtremes(null, null);
         this.eventChart.yAxis[0].setExtremes(null, null);
         this.log('Axes reset to automatic extremes.');
+    }
+
+    zoomZAxis() {
+        if (!this.zAxisChart) {
+            return;
+        }
+        this.zAxisChart.zAxis[0].setExtremes(2, 9);
+    }
+
+    resetZAxis() {
+        if (!this.zAxisChart) {
+            return;
+        }
+        this.zAxisChart.zAxis[0].setExtremes(null, null);
+        this.log('zAxis reset to automatic extremes.');
+    }
+
+    zoomColorAxis() {
+        if (!this.colorAxisChart) {
+            return;
+        }
+        this.colorAxisChart.colorAxis[0].setExtremes(3, 8);
+    }
+
+    resetColorAxis() {
+        if (!this.colorAxisChart) {
+            return;
+        }
+        this.colorAxisChart.colorAxis[0].setExtremes(null, null);
+        this.log('colorAxis reset to automatic extremes.');
     }
 
     addDynamicPoint() {
@@ -713,6 +801,8 @@ class DocsAppComponent {
         if (rebuildDemos) {
             this.basicOptions = this.createBasicOptions();
             this.stockOptions = this.createStockOptions();
+            this.zAxisOptions = this.createZAxisOptions();
+            this.colorAxisOptions = this.createColorAxisOptions();
             this.moduleOptions = this.createModuleOptions(this.module3dEnabled);
             this.staticApiOptions = this.createStaticApiOptions();
             this.log('Highcharts global palette switched to "' + paletteName + '".');
@@ -792,6 +882,101 @@ class DocsAppComponent {
                 tooltip: {
                     valueDecimals: 2
                 }
+            }]
+        };
+    }
+
+    private createZAxisOptions() {
+        return {
+            chart: {
+                type: 'scatter',
+                margin: 70,
+                options3d: {
+                    enabled: true,
+                    alpha: 10,
+                    beta: 28,
+                    depth: 280,
+                    viewDistance: 5
+                }
+            },
+            title: {
+                text: '3D scatter with zAxis events'
+            },
+            xAxis: {
+                min: 0,
+                max: 10
+            },
+            yAxis: {
+                min: 0,
+                max: 10
+            },
+            zAxis: {
+                min: 0,
+                max: 10,
+                title: {
+                    text: 'Depth'
+                }
+            },
+            plotOptions: {
+                scatter: {
+                    width: 10,
+                    height: 10,
+                    depth: 10
+                }
+            },
+            series: [{
+                name: '3D points',
+                type: 'scatter',
+                data: [
+                    [1, 6, 2],
+                    [2, 4, 5],
+                    [3, 8, 3],
+                    [5, 3, 7],
+                    [7, 2, 9],
+                    [8, 7, 6],
+                    [9, 5, 1]
+                ]
+            }]
+        };
+    }
+
+    private createColorAxisOptions() {
+        return {
+            chart: {
+                type: 'heatmap'
+            },
+            title: {
+                text: 'Heatmap with colorAxis events'
+            },
+            xAxis: {
+                categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+            },
+            yAxis: {
+                categories: ['AM', 'Midday', 'PM', 'Late'],
+                title: null
+            },
+            colorAxis: {
+                min: 0,
+                minColor: '#f3f7fb',
+                maxColor: '#1f5ba7'
+            },
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 220
+            },
+            series: [{
+                borderWidth: 1,
+                type: 'heatmap',
+                data: [
+                    [0, 0, 2], [1, 0, 4], [2, 0, 5], [3, 0, 7], [4, 0, 8],
+                    [0, 1, 1], [1, 1, 3], [2, 1, 6], [3, 1, 8], [4, 1, 9],
+                    [0, 2, 0], [1, 2, 2], [2, 2, 5], [3, 2, 7], [4, 2, 6],
+                    [0, 3, 1], [1, 3, 2], [2, 3, 4], [3, 3, 5], [4, 3, 7]
+                ]
             }]
         };
     }
@@ -888,7 +1073,7 @@ class DocsAppComponent {
 @NgModule({
     imports: [
         BrowserModule,
-        ChartModule.forRoot(Highcharts, Highcharts3d)
+        ChartModule.forRoot(Highcharts, Highcharts3d, HighchartsHeatmap)
     ],
     declarations: [DocsAppComponent],
     bootstrap: [DocsAppComponent]

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 26);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -266,9 +266,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_merge__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_merge__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_share__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_share__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_share___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_share__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
@@ -15105,9 +15105,9 @@ function transition$$1(stateChangeExpr, steps) {
 "use strict";
 
 var root_1 = __webpack_require__(4);
-var toSubscriber_1 = __webpack_require__(28);
+var toSubscriber_1 = __webpack_require__(30);
 var observable_1 = __webpack_require__(13);
-var pipe_1 = __webpack_require__(32);
+var pipe_1 = __webpack_require__(34);
 /**
  * A representation of any set of values over any amount of time. This is the most basic building block
  * of RxJS.
@@ -15966,12 +15966,12 @@ exports.root = _root;
 
 "use strict";
 
-var isArray_1 = __webpack_require__(29);
+var isArray_1 = __webpack_require__(31);
 var isObject_1 = __webpack_require__(10);
 var isFunction_1 = __webpack_require__(9);
-var tryCatch_1 = __webpack_require__(30);
+var tryCatch_1 = __webpack_require__(32);
 var errorObject_1 = __webpack_require__(11);
-var UnsubscriptionError_1 = __webpack_require__(31);
+var UnsubscriptionError_1 = __webpack_require__(33);
 /**
  * Represents a disposable resource, such as the execution of an Observable. A
  * Subscription has one important method, `unsubscribe`, that takes no argument
@@ -16216,8 +16216,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Observable_1 = __webpack_require__(1);
 var Subscriber_1 = __webpack_require__(2);
 var Subscription_1 = __webpack_require__(5);
-var ObjectUnsubscribedError_1 = __webpack_require__(51);
-var SubjectSubscription_1 = __webpack_require__(52);
+var ObjectUnsubscribedError_1 = __webpack_require__(53);
+var SubjectSubscription_1 = __webpack_require__(54);
 var rxSubscriber_1 = __webpack_require__(7);
 /**
  * @class SubjectSubscriber<T>
@@ -25391,6 +25391,74 @@ exports.ChartYAxisComponent = ChartYAxisComponent;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
+var ChartZAxisComponent = (function () {
+    function ChartZAxisComponent() {
+        this.afterBreaks = new core_1.EventEmitter();
+        this.afterSetExtremes = new core_1.EventEmitter();
+        this.pointBreak = new core_1.EventEmitter();
+        this.pointInBreak = new core_1.EventEmitter();
+        this.setExtremes = new core_1.EventEmitter();
+    }
+    ChartZAxisComponent.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: 'zAxis'
+                },] },
+    ];
+    ChartZAxisComponent.ctorParameters = function () { return []; };
+    ChartZAxisComponent.propDecorators = {
+        'afterBreaks': [{ type: core_1.Output },],
+        'afterSetExtremes': [{ type: core_1.Output },],
+        'pointBreak': [{ type: core_1.Output },],
+        'pointInBreak': [{ type: core_1.Output },],
+        'setExtremes': [{ type: core_1.Output },],
+    };
+    return ChartZAxisComponent;
+}());
+exports.ChartZAxisComponent = ChartZAxisComponent;
+//# sourceMappingURL=ChartZAxisComponent.js.map
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var ChartColorAxisComponent = (function () {
+    function ChartColorAxisComponent() {
+        this.afterBreaks = new core_1.EventEmitter();
+        this.afterSetExtremes = new core_1.EventEmitter();
+        this.pointBreak = new core_1.EventEmitter();
+        this.pointInBreak = new core_1.EventEmitter();
+        this.setExtremes = new core_1.EventEmitter();
+    }
+    ChartColorAxisComponent.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: 'colorAxis'
+                },] },
+    ];
+    ChartColorAxisComponent.ctorParameters = function () { return []; };
+    ChartColorAxisComponent.propDecorators = {
+        'afterBreaks': [{ type: core_1.Output },],
+        'afterSetExtremes': [{ type: core_1.Output },],
+        'pointBreak': [{ type: core_1.Output },],
+        'pointInBreak': [{ type: core_1.Output },],
+        'setExtremes': [{ type: core_1.Output },],
+    };
+    return ChartColorAxisComponent;
+}());
+exports.ChartColorAxisComponent = ChartColorAxisComponent;
+//# sourceMappingURL=ChartColorAxisComponent.js.map
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
 var HighchartsStatic = (function () {
     function HighchartsStatic() {
     }
@@ -25420,7 +25488,7 @@ exports.HighchartsService = HighchartsService;
 //# sourceMappingURL=HighchartsService.js.map
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25435,14 +25503,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(25);
-__webpack_require__(26);
+__webpack_require__(27);
+__webpack_require__(28);
 var core_1 = __webpack_require__(0);
 var platform_browser_1 = __webpack_require__(17);
-var platform_browser_dynamic_1 = __webpack_require__(53);
-var index_1 = __webpack_require__(55);
-var Highcharts = __webpack_require__(62);
-var Highcharts3d = __webpack_require__(63);
+var platform_browser_dynamic_1 = __webpack_require__(55);
+var index_1 = __webpack_require__(57);
+var Highcharts = __webpack_require__(64);
+var Highcharts3d = __webpack_require__(65);
+var HighchartsHeatmap = __webpack_require__(66);
 core_1.enableProdMode();
 var DocsAppComponent = (function () {
     function DocsAppComponent() {
@@ -25460,6 +25529,8 @@ var DocsAppComponent = (function () {
         this.eventChartOptions = this.createEventChartOptions();
         this.dynamicOptions = this.createDynamicOptions();
         this.stockOptions = this.createStockOptions();
+        this.zAxisOptions = this.createZAxisOptions();
+        this.colorAxisOptions = this.createColorAxisOptions();
         this.moduleOptions = this.createModuleOptions(this.module3dEnabled);
         this.staticApiOptions = this.createStaticApiOptions();
         this.log('Documentation demo loaded.');
@@ -25475,6 +25546,14 @@ var DocsAppComponent = (function () {
     DocsAppComponent.prototype.saveDynamicChart = function (chart) {
         this.dynamicChart = chart;
         this.log('Dynamic chart instance is ready.');
+    };
+    DocsAppComponent.prototype.saveZAxisChart = function (chart) {
+        this.zAxisChart = chart;
+        this.log('zAxis demo chart instance is ready.');
+    };
+    DocsAppComponent.prototype.saveColorAxisChart = function (chart) {
+        this.colorAxisChart = chart;
+        this.log('colorAxis demo chart instance is ready.');
     };
     DocsAppComponent.prototype.onChartSelection = function (e) {
         if (e.originalEvent && e.originalEvent.xAxis && e.originalEvent.xAxis.length) {
@@ -25499,6 +25578,16 @@ var DocsAppComponent = (function () {
             this.log('Y axis extremes: ' + e.context.min.toFixed(2) + ' to ' + e.context.max.toFixed(2));
         }
     };
+    DocsAppComponent.prototype.onZAxisExtremes = function (e) {
+        if (typeof e.context.min === 'number' && typeof e.context.max === 'number') {
+            this.log('Z axis extremes: ' + e.context.min.toFixed(2) + ' to ' + e.context.max.toFixed(2));
+        }
+    };
+    DocsAppComponent.prototype.onColorAxisExtremes = function (e) {
+        if (typeof e.context.min === 'number' && typeof e.context.max === 'number') {
+            this.log('Color axis extremes: ' + e.context.min.toFixed(2) + ' to ' + e.context.max.toFixed(2));
+        }
+    };
     DocsAppComponent.prototype.zoomEventXAxis = function () {
         if (!this.eventChart) {
             return;
@@ -25518,6 +25607,32 @@ var DocsAppComponent = (function () {
         this.eventChart.xAxis[0].setExtremes(null, null);
         this.eventChart.yAxis[0].setExtremes(null, null);
         this.log('Axes reset to automatic extremes.');
+    };
+    DocsAppComponent.prototype.zoomZAxis = function () {
+        if (!this.zAxisChart) {
+            return;
+        }
+        this.zAxisChart.zAxis[0].setExtremes(2, 9);
+    };
+    DocsAppComponent.prototype.resetZAxis = function () {
+        if (!this.zAxisChart) {
+            return;
+        }
+        this.zAxisChart.zAxis[0].setExtremes(null, null);
+        this.log('zAxis reset to automatic extremes.');
+    };
+    DocsAppComponent.prototype.zoomColorAxis = function () {
+        if (!this.colorAxisChart) {
+            return;
+        }
+        this.colorAxisChart.colorAxis[0].setExtremes(3, 8);
+    };
+    DocsAppComponent.prototype.resetColorAxis = function () {
+        if (!this.colorAxisChart) {
+            return;
+        }
+        this.colorAxisChart.colorAxis[0].setExtremes(null, null);
+        this.log('colorAxis reset to automatic extremes.');
     };
     DocsAppComponent.prototype.addDynamicPoint = function () {
         if (!this.dynamicChart) {
@@ -25587,6 +25702,8 @@ var DocsAppComponent = (function () {
         if (rebuildDemos) {
             this.basicOptions = this.createBasicOptions();
             this.stockOptions = this.createStockOptions();
+            this.zAxisOptions = this.createZAxisOptions();
+            this.colorAxisOptions = this.createColorAxisOptions();
             this.moduleOptions = this.createModuleOptions(this.module3dEnabled);
             this.staticApiOptions = this.createStaticApiOptions();
             this.log('Highcharts global palette switched to "' + paletteName + '".');
@@ -25662,6 +25779,99 @@ var DocsAppComponent = (function () {
                     tooltip: {
                         valueDecimals: 2
                     }
+                }]
+        };
+    };
+    DocsAppComponent.prototype.createZAxisOptions = function () {
+        return {
+            chart: {
+                type: 'scatter',
+                margin: 70,
+                options3d: {
+                    enabled: true,
+                    alpha: 10,
+                    beta: 28,
+                    depth: 280,
+                    viewDistance: 5
+                }
+            },
+            title: {
+                text: '3D scatter with zAxis events'
+            },
+            xAxis: {
+                min: 0,
+                max: 10
+            },
+            yAxis: {
+                min: 0,
+                max: 10
+            },
+            zAxis: {
+                min: 0,
+                max: 10,
+                title: {
+                    text: 'Depth'
+                }
+            },
+            plotOptions: {
+                scatter: {
+                    width: 10,
+                    height: 10,
+                    depth: 10
+                }
+            },
+            series: [{
+                    name: '3D points',
+                    type: 'scatter',
+                    data: [
+                        [1, 6, 2],
+                        [2, 4, 5],
+                        [3, 8, 3],
+                        [5, 3, 7],
+                        [7, 2, 9],
+                        [8, 7, 6],
+                        [9, 5, 1]
+                    ]
+                }]
+        };
+    };
+    DocsAppComponent.prototype.createColorAxisOptions = function () {
+        return {
+            chart: {
+                type: 'heatmap'
+            },
+            title: {
+                text: 'Heatmap with colorAxis events'
+            },
+            xAxis: {
+                categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+            },
+            yAxis: {
+                categories: ['AM', 'Midday', 'PM', 'Late'],
+                title: null
+            },
+            colorAxis: {
+                min: 0,
+                minColor: '#f3f7fb',
+                maxColor: '#1f5ba7'
+            },
+            legend: {
+                align: 'right',
+                layout: 'vertical',
+                margin: 0,
+                verticalAlign: 'top',
+                y: 25,
+                symbolHeight: 220
+            },
+            series: [{
+                    borderWidth: 1,
+                    type: 'heatmap',
+                    data: [
+                        [0, 0, 2], [1, 0, 4], [2, 0, 5], [3, 0, 7], [4, 0, 8],
+                        [0, 1, 1], [1, 1, 3], [2, 1, 6], [3, 1, 8], [4, 1, 9],
+                        [0, 2, 0], [1, 2, 2], [2, 2, 5], [3, 2, 7], [4, 2, 6],
+                        [0, 3, 1], [1, 3, 2], [2, 3, 4], [3, 3, 5], [4, 3, 7]
+                    ]
                 }]
         };
     };
@@ -25749,7 +25959,7 @@ var DocsAppComponent = (function () {
         core_1.Component({
             selector: 'docs-app',
             styles: ["\n        :host {\n            display: block;\n            min-height: 100vh;\n            color: #102033;\n            font-family: \"Avenir Next\", \"Trebuchet MS\", \"Segoe UI\", sans-serif;\n            background:\n                radial-gradient(circle at top right, rgba(254, 228, 179, 0.6), transparent 34%),\n                radial-gradient(circle at left 20%, rgba(170, 219, 255, 0.45), transparent 28%),\n                linear-gradient(180deg, #fff8ef 0%, #f6fbff 52%, #eef5fb 100%);\n        }\n\n        .shell {\n            max-width: 1240px;\n            margin: 0 auto;\n            padding: 32px 20px 56px;\n        }\n\n        .hero {\n            display: grid;\n            grid-template-columns: minmax(0, 1.9fr) minmax(280px, 0.9fr);\n            gap: 24px;\n            align-items: stretch;\n            margin-bottom: 28px;\n        }\n\n        .hero-card,\n        .panel,\n        .log-card {\n            border: 1px solid rgba(16, 32, 51, 0.1);\n            border-radius: 22px;\n            background: rgba(255, 255, 255, 0.82);\n            box-shadow: 0 18px 50px rgba(27, 66, 110, 0.12);\n            backdrop-filter: blur(10px);\n        }\n\n        .hero-card {\n            padding: 28px;\n        }\n\n        .eyebrow {\n            display: inline-block;\n            padding: 6px 12px;\n            border-radius: 999px;\n            background: #102033;\n            color: #fff;\n            font-size: 12px;\n            letter-spacing: 0.08em;\n            text-transform: uppercase;\n        }\n\n        h1, h2, h3 {\n            margin: 0;\n            font-family: Georgia, \"Times New Roman\", serif;\n            font-weight: 700;\n            line-height: 1.1;\n        }\n\n        h1 {\n            margin-top: 16px;\n            font-size: 48px;\n        }\n\n        h2 {\n            font-size: 30px;\n            margin-bottom: 10px;\n        }\n\n        h3 {\n            font-size: 20px;\n            margin-bottom: 8px;\n        }\n\n        p {\n            margin: 0;\n            line-height: 1.65;\n            color: #364b63;\n        }\n\n        .hero-copy {\n            display: grid;\n            gap: 16px;\n        }\n\n        .quick-grid {\n            display: grid;\n            grid-template-columns: repeat(2, minmax(0, 1fr));\n            gap: 12px;\n            margin-top: 8px;\n        }\n\n        .quick-item {\n            padding: 14px 16px;\n            border-radius: 16px;\n            background: linear-gradient(180deg, #fefefe 0%, #f2f7fb 100%);\n            border: 1px solid rgba(16, 32, 51, 0.08);\n        }\n\n        .quick-item strong,\n        .spec strong {\n            display: block;\n            margin-bottom: 4px;\n            color: #102033;\n            font-size: 13px;\n            text-transform: uppercase;\n            letter-spacing: 0.05em;\n        }\n\n        .hero-side {\n            padding: 24px;\n            display: grid;\n            gap: 16px;\n        }\n\n        .spec-list {\n            display: grid;\n            gap: 12px;\n        }\n\n        .spec {\n            padding: 14px 16px;\n            border-radius: 16px;\n            background: #f8fbfd;\n            border: 1px solid rgba(16, 32, 51, 0.08);\n        }\n\n        .cta-row {\n            display: flex;\n            flex-wrap: wrap;\n            gap: 10px;\n            margin-top: 8px;\n        }\n\n        .button,\n        button {\n            appearance: none;\n            border: 0;\n            border-radius: 999px;\n            padding: 11px 16px;\n            font: inherit;\n            font-weight: 600;\n            color: #fff;\n            background: linear-gradient(135deg, #d24b2a 0%, #224f90 100%);\n            cursor: pointer;\n            box-shadow: 0 10px 24px rgba(34, 79, 144, 0.18);\n        }\n\n        .button.secondary,\n        button.secondary {\n            color: #14324f;\n            background: #edf4fa;\n            box-shadow: none;\n            border: 1px solid rgba(20, 50, 79, 0.12);\n        }\n\n        .button.ghost,\n        button.ghost {\n            color: #14324f;\n            background: transparent;\n            box-shadow: none;\n            border: 1px dashed rgba(20, 50, 79, 0.22);\n        }\n\n        .layout {\n            display: grid;\n            grid-template-columns: minmax(0, 1fr) 320px;\n            gap: 24px;\n        }\n\n        .stack {\n            display: grid;\n            gap: 22px;\n        }\n\n        .panel {\n            padding: 24px;\n        }\n\n        .panel-head {\n            display: grid;\n            gap: 10px;\n            margin-bottom: 18px;\n        }\n\n        .demo-grid {\n            display: grid;\n            grid-template-columns: repeat(2, minmax(0, 1fr));\n            gap: 18px;\n        }\n\n        .demo-card {\n            padding: 18px;\n            border-radius: 18px;\n            background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);\n            border: 1px solid rgba(16, 32, 51, 0.08);\n        }\n\n        .chart-frame {\n            margin-top: 14px;\n            padding: 10px;\n            border-radius: 16px;\n            background: #fff;\n            border: 1px solid rgba(16, 32, 51, 0.08);\n            min-height: 320px;\n        }\n\n        .controls {\n            display: flex;\n            flex-wrap: wrap;\n            gap: 10px;\n            margin-top: 14px;\n        }\n\n        .inline-code,\n        pre {\n            font-family: \"IBM Plex Mono\", \"Fira Code\", Consolas, monospace;\n        }\n\n        pre {\n            margin: 14px 0 0;\n            padding: 14px 16px;\n            border-radius: 14px;\n            overflow: auto;\n            background: #0f2137;\n            color: #dfeaf6;\n            font-size: 13px;\n            line-height: 1.55;\n        }\n\n        .note {\n            margin-top: 12px;\n            padding: 12px 14px;\n            border-radius: 14px;\n            background: #fff6e8;\n            color: #6f4a16;\n            border: 1px solid rgba(210, 128, 31, 0.16);\n        }\n\n        .log-card {\n            position: sticky;\n            top: 20px;\n            padding: 20px;\n            height: fit-content;\n        }\n\n        .log-list {\n            display: grid;\n            gap: 10px;\n            margin-top: 16px;\n        }\n\n        .log-item {\n            padding: 12px 14px;\n            border-radius: 14px;\n            background: #f6f9fc;\n            border: 1px solid rgba(16, 32, 51, 0.07);\n            color: #27425f;\n            font-size: 14px;\n            line-height: 1.45;\n        }\n\n        .footer {\n            margin-top: 26px;\n            padding: 22px 24px;\n            border-radius: 20px;\n            background: rgba(16, 32, 51, 0.92);\n            color: #e8f0f8;\n        }\n\n        .footer p {\n            color: #c8d8ea;\n        }\n\n        a {\n            color: #1f5ba7;\n        }\n\n        @media (max-width: 1024px) {\n            .hero,\n            .layout,\n            .demo-grid {\n                grid-template-columns: 1fr;\n            }\n\n            .log-card {\n                position: static;\n            }\n        }\n\n        @media (max-width: 680px) {\n            .shell {\n                padding: 20px 14px 40px;\n            }\n\n            h1 {\n                font-size: 36px;\n            }\n\n            .hero-card,\n            .panel,\n            .log-card,\n            .footer {\n                padding: 18px;\n                border-radius: 18px;\n            }\n\n            .quick-grid {\n                grid-template-columns: 1fr;\n            }\n        }\n    "],
-            template: "\n        <div class=\"shell\">\n            <section class=\"hero\">\n                <div class=\"hero-card hero-copy\">\n                    <span class=\"eyebrow\">Interactive Documentation</span>\n                    <h1>angular2-highcharts</h1>\n                    <p>\n                        A live documentation page for the Angular 4 wrapper, built from this repository and compiled into <span class=\"inline-code\">docs/</span>.\n                        Every section below is executable and demonstrates the real wrapper API instead of screenshots.\n                    </p>\n                    <div class=\"quick-grid\">\n                        <div class=\"quick-item\">\n                            <strong>Wrapper API</strong>\n                            Regular charts, StockChart, event emitters, and dynamic chart access.\n                        </div>\n                        <div class=\"quick-item\">\n                            <strong>Highcharts Modules</strong>\n                            Demonstrates <span class=\"inline-code\">ChartModule.forRoot(Highcharts, Highcharts3d)</span>.\n                        </div>\n                        <div class=\"quick-item\">\n                            <strong>Static API</strong>\n                            Rebuild demos after changing the global Highcharts palette.\n                        </div>\n                        <div class=\"quick-item\">\n                            <strong>Repository Pattern</strong>\n                            Mirrors the checked-in <span class=\"inline-code\">docs/</span> workflow used in the reference project.\n                        </div>\n                    </div>\n                    <div class=\"cta-row\">\n                        <a class=\"button\" href=\"#demos\">Jump to demos</a>\n                        <a class=\"button secondary\" href=\"../README.md\">Read the package README</a>\n                    </div>\n                </div>\n\n                <div class=\"hero-card hero-side\">\n                    <h2>Quick Start</h2>\n                    <div class=\"spec-list\">\n                        <div class=\"spec\">\n                            <strong>Install</strong>\n                            <span class=\"inline-code\">npm install angular2-highcharts highcharts</span>\n                        </div>\n                        <div class=\"spec\">\n                            <strong>Import</strong>\n                            <span class=\"inline-code\">ChartModule.forRoot(Highcharts, Highcharts3d)</span>\n                        </div>\n                        <div class=\"spec\">\n                            <strong>Docs Build</strong>\n                            <span class=\"inline-code\">npm run build:docs</span>\n                        </div>\n                        <div class=\"spec\">\n                            <strong>Docs Preview</strong>\n                            <span class=\"inline-code\">npm run serve:docs</span>\n                        </div>\n                    </div>\n                    <pre>import { ChartModule } from 'angular2-highcharts';\nconst Highcharts = require('highcharts/highstock');\nconst Highcharts3d = require('highcharts/highcharts-3d');\n\n@NgModule({\n  imports: [ChartModule.forRoot(Highcharts, Highcharts3d)]\n})</pre>\n                </div>\n            </section>\n\n            <section class=\"layout\" id=\"demos\">\n                <div class=\"stack\">\n                    <article class=\"panel\">\n                        <div class=\"panel-head\">\n                            <h2>Core Demos</h2>\n                            <p>\n                                These examples cover the library capabilities that matter most in practice: regular chart rendering, event bridges,\n                                dynamic access to the native chart instance, StockChart support, 3D module registration, and the Highcharts static API.\n                            </p>\n                        </div>\n\n                        <div class=\"demo-grid\">\n                            <section class=\"demo-card\">\n                                <h3>Basic Chart</h3>\n                                <p>A clean baseline chart using the wrapper with standard Highcharts options.</p>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"basicOptions\"></chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Event Bridge Explorer</h3>\n                                <p>Selection, series hover, point select, and axis extremes all flow through Angular outputs.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" class=\"secondary\" (click)=\"zoomEventXAxis()\">Zoom X axis</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"zoomEventYAxis()\">Zoom Y axis</button>\n                                    <button type=\"button\" class=\"ghost\" (click)=\"resetEventAxes()\">Reset axes</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"eventChartOptions\"\n                                           (load)=\"saveEventChart($event.context)\"\n                                           (selection)=\"onChartSelection($event)\">\n                                        <series (mouseOver)=\"onSeriesMouseOver($event)\">\n                                            <point (select)=\"onPointSelect($event)\"></point>\n                                        </series>\n                                        <xAxis (afterSetExtremes)=\"onXAxisExtremes($event)\"></xAxis>\n                                        <yAxis (afterSetExtremes)=\"onYAxisExtremes($event)\"></yAxis>\n                                    </chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Dynamic Chart Access</h3>\n                                <p>The wrapper exposes the native Highcharts instance so consumers can mutate series, titles, and axes.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" (click)=\"addDynamicPoint()\">Add point</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"shuffleDynamicSeries()\">Randomize series</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"renameDynamicChart()\">Rename chart</button>\n                                    <button type=\"button\" class=\"ghost\" (click)=\"removeDynamicPoint()\">Remove first point</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"dynamicOptions\" (load)=\"saveDynamicChart($event.context)\"></chart>\n                                </div>\n                                <div class=\"note\">\n                                    This section intentionally uses the native chart object because the wrapper does not diff your initial options after creation.\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>StockChart</h3>\n                                <p>Uses the wrapper <span class=\"inline-code\">type</span> input with local time-series data, no remote request required.</p>\n                                <div class=\"chart-frame\">\n                                    <chart type=\"StockChart\" [options]=\"stockOptions\"></chart>\n                                </div>\n                            </section>\n                        </div>\n                    </article>\n\n                    <article class=\"panel\">\n                        <div class=\"panel-head\">\n                            <h2>Modules and Static API</h2>\n                            <p>\n                                These demos focus on the two advanced integration points this library exposes: Highcharts modules registered through\n                                <span class=\"inline-code\">forRoot</span> and direct access to the global Highcharts object.\n                            </p>\n                        </div>\n\n                        <div class=\"demo-grid\">\n                            <section class=\"demo-card\">\n                                <h3>3D Module Demo</h3>\n                                <p>\n                                    The 3D column chart only works because the docs app passes <span class=\"inline-code\">highcharts-3d</span> into\n                                    <span class=\"inline-code\">ChartModule.forRoot</span>.\n                                </p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" (click)=\"toggle3d()\">Toggle 3D</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"moduleOptions\"></chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Static Highcharts API</h3>\n                                <p>Rebuild the examples after changing the global color palette with <span class=\"inline-code\">Highcharts.setOptions</span>.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" (click)=\"useClassicPalette()\">Classic palette</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"useSunsetPalette()\">Sunset palette</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"staticApiOptions\"></chart>\n                                </div>\n                            </section>\n                        </div>\n                    </article>\n\n                    <article class=\"panel\">\n                        <div class=\"panel-head\">\n                            <h2>Usage Notes</h2>\n                            <p>The HTML above is meant to replace broken or scattered demo links with a repository-local documentation surface.</p>\n                        </div>\n                        <pre>&lt;chart [options]=\"options\"\n       (selection)=\"onChartSelection($event)\"&gt;\n  &lt;series (mouseOver)=\"onSeriesMouseOver($event)\"&gt;\n    &lt;point (select)=\"onPointSelect($event)\"&gt;&lt;/point&gt;\n  &lt;/series&gt;\n  &lt;xAxis (afterSetExtremes)=\"onXAxisExtremes($event)\"&gt;&lt;/xAxis&gt;\n  &lt;yAxis (afterSetExtremes)=\"onYAxisExtremes($event)\"&gt;&lt;/yAxis&gt;\n&lt;/chart&gt;</pre>\n                        <div class=\"note\">\n                            If you update chart data after initialization, use the native Highcharts instance from the <span class=\"inline-code\">load</span> event.\n                            That behavior is deliberate and matches the original wrapper contract.\n                        </div>\n                    </article>\n                </div>\n\n                <aside class=\"log-card\">\n                    <h2>Live Event Log</h2>\n                    <p>Use the demos and watch the wrapper emitters and chart instance interactions show up here.</p>\n                    <div class=\"controls\">\n                        <button type=\"button\" class=\"ghost\" (click)=\"clearLogs()\">Clear log</button>\n                    </div>\n                    <div class=\"log-list\">\n                        <div class=\"log-item\" *ngFor=\"let entry of logs\">{{ entry }}</div>\n                    </div>\n                </aside>\n            </section>\n\n            <footer class=\"footer\">\n                <h3>Credits</h3>\n                <p>\n                    Original library by Eugene Gluhotorenko. This documentation build keeps the forked repository usable by shipping a checked-in\n                    static demo in <span class=\"inline-code\">docs/</span>, following the same maintenance pattern used by the reference project.\n                </p>\n            </footer>\n        </div>\n    "
+            template: "\n        <div class=\"shell\">\n            <section class=\"hero\">\n                <div class=\"hero-card hero-copy\">\n                    <span class=\"eyebrow\">Interactive Documentation</span>\n                    <h1>@revivejs/angular2-highcharts</h1>\n                    <p>\n                        A live documentation page for the Angular 4 wrapper, built from this repository and compiled into <span class=\"inline-code\">docs/</span>.\n                        Every section below is executable and demonstrates the real wrapper API instead of screenshots.\n                    </p>\n                    <div class=\"quick-grid\">\n                        <div class=\"quick-item\">\n                            <strong>Wrapper API</strong>\n                            Regular charts, StockChart, event emitters, dynamic chart access, plus zAxis and colorAxis support.\n                        </div>\n                        <div class=\"quick-item\">\n                            <strong>Highcharts Modules</strong>\n                            Demonstrates <span class=\"inline-code\">ChartModule.forRoot(Highcharts, Highcharts3d)</span>.\n                        </div>\n                        <div class=\"quick-item\">\n                            <strong>Static API</strong>\n                            Rebuild demos after changing the global Highcharts palette.\n                        </div>\n                        <div class=\"quick-item\">\n                            <strong>Repository Pattern</strong>\n                            Mirrors the checked-in <span class=\"inline-code\">docs/</span> workflow used in the reference project.\n                        </div>\n                    </div>\n                    <div class=\"cta-row\">\n                        <a class=\"button\" href=\"#demos\">Jump to demos</a>\n                        <a class=\"button secondary\" href=\"https://github.com/alexandroit/angular2-highcharts#readme\">Read the package README</a>\n                    </div>\n                </div>\n\n                <div class=\"hero-card hero-side\">\n                    <h2>Quick Start</h2>\n                    <div class=\"spec-list\">\n                        <div class=\"spec\">\n                            <strong>Install</strong>\n                            <span class=\"inline-code\">npm install @revivejs/angular2-highcharts highcharts</span>\n                        </div>\n                        <div class=\"spec\">\n                            <strong>Import</strong>\n                            <span class=\"inline-code\">ChartModule.forRoot(Highcharts, Highcharts3d)</span>\n                        </div>\n                        <div class=\"spec\">\n                            <strong>Docs Build</strong>\n                            <span class=\"inline-code\">npm run build:docs</span>\n                        </div>\n                        <div class=\"spec\">\n                            <strong>Docs Preview</strong>\n                            <span class=\"inline-code\">npm run serve:docs</span>\n                        </div>\n                    </div>\n                    <pre>import { ChartModule } from '@revivejs/angular2-highcharts';\nconst Highcharts = require('highcharts/highstock');\nconst Highcharts3d = require('highcharts/highcharts-3d');\nconst HighchartsHeatmap = require('highcharts/modules/heatmap');\n\n@NgModule({\n  imports: [ChartModule.forRoot(Highcharts, Highcharts3d, HighchartsHeatmap)]\n})</pre>\n                </div>\n            </section>\n\n            <section class=\"layout\" id=\"demos\">\n                <div class=\"stack\">\n                    <article class=\"panel\">\n                        <div class=\"panel-head\">\n                            <h2>Core Demos</h2>\n                            <p>\n                                These examples cover the library capabilities that matter most in practice: regular chart rendering, event bridges,\n                                dynamic access to the native chart instance, StockChart support, 3D module registration, and the extended axis wrappers.\n                            </p>\n                        </div>\n\n                        <div class=\"demo-grid\">\n                            <section class=\"demo-card\">\n                                <h3>Basic Chart</h3>\n                                <p>A clean baseline chart using the wrapper with standard Highcharts options.</p>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"basicOptions\"></chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Event Bridge Explorer</h3>\n                                <p>Selection, series hover, point select, and axis extremes all flow through Angular outputs.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" class=\"secondary\" (click)=\"zoomEventXAxis()\">Zoom X axis</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"zoomEventYAxis()\">Zoom Y axis</button>\n                                    <button type=\"button\" class=\"ghost\" (click)=\"resetEventAxes()\">Reset axes</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"eventChartOptions\"\n                                           (load)=\"saveEventChart($event.context)\"\n                                           (selection)=\"onChartSelection($event)\">\n                                        <series (mouseOver)=\"onSeriesMouseOver($event)\">\n                                            <point (select)=\"onPointSelect($event)\"></point>\n                                        </series>\n                                        <xAxis (afterSetExtremes)=\"onXAxisExtremes($event)\"></xAxis>\n                                        <yAxis (afterSetExtremes)=\"onYAxisExtremes($event)\"></yAxis>\n                                    </chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Dynamic Chart Access</h3>\n                                <p>The wrapper exposes the native Highcharts instance so consumers can mutate series, titles, and axes.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" (click)=\"addDynamicPoint()\">Add point</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"shuffleDynamicSeries()\">Randomize series</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"renameDynamicChart()\">Rename chart</button>\n                                    <button type=\"button\" class=\"ghost\" (click)=\"removeDynamicPoint()\">Remove first point</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"dynamicOptions\" (load)=\"saveDynamicChart($event.context)\"></chart>\n                                </div>\n                                <div class=\"note\">\n                                    This section intentionally uses the native chart object because the wrapper does not diff your initial options after creation.\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>StockChart</h3>\n                                <p>Uses the wrapper <span class=\"inline-code\">type</span> input with local time-series data, no remote request required.</p>\n                                <div class=\"chart-frame\">\n                                    <chart type=\"StockChart\" [options]=\"stockOptions\"></chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Z Axis Wrapper</h3>\n                                <p>Demonstrates the Angular <span class=\"inline-code\">&lt;zAxis&gt;</span> wrapper on a 3D scatter chart.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" class=\"secondary\" (click)=\"zoomZAxis()\">Set zAxis extremes</button>\n                                    <button type=\"button\" class=\"ghost\" (click)=\"resetZAxis()\">Reset zAxis</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"zAxisOptions\" (load)=\"saveZAxisChart($event.context)\">\n                                        <zAxis (afterSetExtremes)=\"onZAxisExtremes($event)\"></zAxis>\n                                    </chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Color Axis Wrapper</h3>\n                                <p>Demonstrates the Angular <span class=\"inline-code\">&lt;colorAxis&gt;</span> wrapper on a heatmap.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" class=\"secondary\" (click)=\"zoomColorAxis()\">Narrow color range</button>\n                                    <button type=\"button\" class=\"ghost\" (click)=\"resetColorAxis()\">Reset color axis</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"colorAxisOptions\" (load)=\"saveColorAxisChart($event.context)\">\n                                        <colorAxis (afterSetExtremes)=\"onColorAxisExtremes($event)\"></colorAxis>\n                                    </chart>\n                                </div>\n                            </section>\n                        </div>\n                    </article>\n\n                    <article class=\"panel\">\n                        <div class=\"panel-head\">\n                            <h2>Modules and Static API</h2>\n                            <p>\n                                These demos focus on the two advanced integration points this library exposes: Highcharts modules registered through\n                                <span class=\"inline-code\">forRoot</span> and direct access to the global Highcharts object.\n                            </p>\n                        </div>\n\n                        <div class=\"demo-grid\">\n                            <section class=\"demo-card\">\n                                <h3>3D Module Demo</h3>\n                                <p>\n                                    The 3D column chart only works because the docs app passes <span class=\"inline-code\">highcharts-3d</span> into\n                                    <span class=\"inline-code\">ChartModule.forRoot</span>.\n                                </p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" (click)=\"toggle3d()\">Toggle 3D</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"moduleOptions\"></chart>\n                                </div>\n                            </section>\n\n                            <section class=\"demo-card\">\n                                <h3>Static Highcharts API</h3>\n                                <p>Rebuild the examples after changing the global color palette with <span class=\"inline-code\">Highcharts.setOptions</span>.</p>\n                                <div class=\"controls\">\n                                    <button type=\"button\" (click)=\"useClassicPalette()\">Classic palette</button>\n                                    <button type=\"button\" class=\"secondary\" (click)=\"useSunsetPalette()\">Sunset palette</button>\n                                </div>\n                                <div class=\"chart-frame\">\n                                    <chart [options]=\"staticApiOptions\"></chart>\n                                </div>\n                            </section>\n                        </div>\n                    </article>\n\n                    <article class=\"panel\">\n                        <div class=\"panel-head\">\n                            <h2>Usage Notes</h2>\n                            <p>The HTML above is meant to replace broken or scattered demo links with a repository-local documentation surface.</p>\n                        </div>\n                        <pre>&lt;chart [options]=\"options\"\n       (selection)=\"onChartSelection($event)\"&gt;\n  &lt;series (mouseOver)=\"onSeriesMouseOver($event)\"&gt;\n    &lt;point (select)=\"onPointSelect($event)\"&gt;&lt;/point&gt;\n  &lt;/series&gt;\n  &lt;xAxis (afterSetExtremes)=\"onXAxisExtremes($event)\"&gt;&lt;/xAxis&gt;\n  &lt;yAxis (afterSetExtremes)=\"onYAxisExtremes($event)\"&gt;&lt;/yAxis&gt;\n&lt;/chart&gt;</pre>\n                        <div class=\"note\">\n                            If you update chart data after initialization, use the native Highcharts instance from the <span class=\"inline-code\">load</span> event.\n                            That behavior is deliberate and matches the original wrapper contract.\n                        </div>\n                    </article>\n                </div>\n\n                <aside class=\"log-card\">\n                    <h2>Live Event Log</h2>\n                    <p>Use the demos and watch the wrapper emitters and chart instance interactions show up here.</p>\n                    <div class=\"controls\">\n                        <button type=\"button\" class=\"ghost\" (click)=\"clearLogs()\">Clear log</button>\n                    </div>\n                    <div class=\"log-list\">\n                        <div class=\"log-item\" *ngFor=\"let entry of logs\">{{ entry }}</div>\n                    </div>\n                </aside>\n            </section>\n\n            <footer class=\"footer\">\n                <h3>Credits</h3>\n                <p>\n                    Original library by Eugene Gluhotorenko. This documentation build keeps the forked repository usable by shipping a checked-in\n                    static demo in <span class=\"inline-code\">docs/</span>, following the same maintenance pattern used by the reference project.\n                </p>\n            </footer>\n        </div>\n    "
         }),
         __metadata("design:paramtypes", [])
     ], DocsAppComponent);
@@ -25762,7 +25972,7 @@ var DocsAppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                index_1.ChartModule.forRoot(Highcharts, Highcharts3d)
+                index_1.ChartModule.forRoot(Highcharts, Highcharts3d, HighchartsHeatmap)
             ],
             declarations: [DocsAppComponent],
             bootstrap: [DocsAppComponent]
@@ -25774,7 +25984,7 @@ platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(DocsAppModul
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /**
@@ -29126,7 +29336,7 @@ Zone.__load_patch('PromiseRejectionEvent', function (global, Zone) {
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global) {/*! *****************************************************************************
@@ -30261,10 +30471,10 @@ var Reflect;
     });
 })(Reflect || (Reflect = {}));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29), __webpack_require__(6)))
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -30454,7 +30664,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30480,7 +30690,7 @@ exports.toSubscriber = toSubscriber;
 //# sourceMappingURL=toSubscriber.js.map
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30489,7 +30699,7 @@ exports.isArray = Array.isArray || (function (x) { return x && typeof x.length =
 //# sourceMappingURL=isArray.js.map
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30514,7 +30724,7 @@ exports.tryCatch = tryCatch;
 //# sourceMappingURL=tryCatch.js.map
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30545,12 +30755,12 @@ exports.UnsubscriptionError = UnsubscriptionError;
 //# sourceMappingURL=UnsubscriptionError.js.map
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var noop_1 = __webpack_require__(33);
+var noop_1 = __webpack_require__(35);
 /* tslint:enable:max-line-length */
 function pipe() {
     var fns = [];
@@ -30576,7 +30786,7 @@ exports.pipeFromArray = pipeFromArray;
 //# sourceMappingURL=pipe.js.map
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30587,15 +30797,15 @@ exports.noop = noop;
 //# sourceMappingURL=noop.js.map
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(1);
-var ArrayObservable_1 = __webpack_require__(35);
+var ArrayObservable_1 = __webpack_require__(37);
 var isScheduler_1 = __webpack_require__(14);
-var mergeAll_1 = __webpack_require__(38);
+var mergeAll_1 = __webpack_require__(40);
 /* tslint:enable:max-line-length */
 /**
  * Creates an output Observable which concurrently emits all values from every
@@ -30683,7 +30893,7 @@ exports.merge = merge;
 //# sourceMappingURL=merge.js.map
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30694,8 +30904,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(1);
-var ScalarObservable_1 = __webpack_require__(36);
-var EmptyObservable_1 = __webpack_require__(37);
+var ScalarObservable_1 = __webpack_require__(38);
+var EmptyObservable_1 = __webpack_require__(39);
 var isScheduler_1 = __webpack_require__(14);
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -30811,7 +31021,7 @@ exports.ArrayObservable = ArrayObservable;
 //# sourceMappingURL=ArrayObservable.js.map
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30875,7 +31085,7 @@ exports.ScalarObservable = ScalarObservable;
 //# sourceMappingURL=ScalarObservable.js.map
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30962,13 +31172,13 @@ exports.EmptyObservable = EmptyObservable;
 //# sourceMappingURL=EmptyObservable.js.map
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var mergeMap_1 = __webpack_require__(39);
-var identity_1 = __webpack_require__(46);
+var mergeMap_1 = __webpack_require__(41);
+var identity_1 = __webpack_require__(48);
 /**
  * Converts a higher-order Observable into a first-order Observable which
  * concurrently delivers all values that are emitted on the inner Observables.
@@ -31021,7 +31231,7 @@ exports.mergeAll = mergeAll;
 //# sourceMappingURL=mergeAll.js.map
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31031,8 +31241,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var subscribeToResult_1 = __webpack_require__(40);
-var OuterSubscriber_1 = __webpack_require__(45);
+var subscribeToResult_1 = __webpack_require__(42);
+var OuterSubscriber_1 = __webpack_require__(47);
 /* tslint:enable:max-line-length */
 /**
  * Projects each source value to an Observable which is merged in the output
@@ -31200,18 +31410,18 @@ exports.MergeMapSubscriber = MergeMapSubscriber;
 //# sourceMappingURL=mergeMap.js.map
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var root_1 = __webpack_require__(4);
-var isArrayLike_1 = __webpack_require__(41);
-var isPromise_1 = __webpack_require__(42);
+var isArrayLike_1 = __webpack_require__(43);
+var isPromise_1 = __webpack_require__(44);
 var isObject_1 = __webpack_require__(10);
 var Observable_1 = __webpack_require__(1);
-var iterator_1 = __webpack_require__(43);
-var InnerSubscriber_1 = __webpack_require__(44);
+var iterator_1 = __webpack_require__(45);
+var InnerSubscriber_1 = __webpack_require__(46);
 var observable_1 = __webpack_require__(13);
 function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
     var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
@@ -31285,7 +31495,7 @@ exports.subscribeToResult = subscribeToResult;
 //# sourceMappingURL=subscribeToResult.js.map
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31294,7 +31504,7 @@ exports.isArrayLike = (function (x) { return x && typeof x.length === 'number'; 
 //# sourceMappingURL=isArrayLike.js.map
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31306,7 +31516,7 @@ exports.isPromise = isPromise;
 //# sourceMappingURL=isPromise.js.map
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31350,7 +31560,7 @@ exports.$$iterator = exports.iterator;
 //# sourceMappingURL=iterator.js.map
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31392,7 +31602,7 @@ exports.InnerSubscriber = InnerSubscriber;
 //# sourceMappingURL=InnerSubscriber.js.map
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31428,7 +31638,7 @@ exports.OuterSubscriber = OuterSubscriber;
 //# sourceMappingURL=OuterSubscriber.js.map
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31440,12 +31650,12 @@ exports.identity = identity;
 //# sourceMappingURL=identity.js.map
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var share_1 = __webpack_require__(48);
+var share_1 = __webpack_require__(50);
 /**
  * Returns a new Observable that multicasts (shares) the original Observable. As long as there is at least one
  * Subscriber this Observable will be subscribed and emitting data. When all subscribers have unsubscribed it will
@@ -31470,12 +31680,12 @@ exports.share = share;
 //# sourceMappingURL=share.js.map
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var multicast_1 = __webpack_require__(49);
+var multicast_1 = __webpack_require__(51);
 var refCount_1 = __webpack_require__(15);
 var Subject_1 = __webpack_require__(8);
 function shareSubjectFactory() {
@@ -31501,12 +31711,12 @@ exports.share = share;
 //# sourceMappingURL=share.js.map
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ConnectableObservable_1 = __webpack_require__(50);
+var ConnectableObservable_1 = __webpack_require__(52);
 /* tslint:enable:max-line-length */
 /**
  * Returns an Observable that emits the results of invoking a specified selector on items
@@ -31566,7 +31776,7 @@ exports.MulticastOperator = MulticastOperator;
 //# sourceMappingURL=multicast.js.map
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31743,7 +31953,7 @@ var RefCountSubscriber = (function (_super) {
 //# sourceMappingURL=ConnectableObservable.js.map
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31776,7 +31986,7 @@ exports.ObjectUnsubscribedError = ObjectUnsubscribedError;
 //# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31822,7 +32032,7 @@ exports.SubjectSubscription = SubjectSubscription;
 //# sourceMappingURL=SubjectSubscription.js.map
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31833,7 +32043,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵINTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS", function() { return INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵResourceLoaderImpl", function() { return ResourceLoaderImpl; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_compiler__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_compiler__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(17);
@@ -32006,7 +32216,7 @@ var platformBrowserDynamic = Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__[
 
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59903,23 +60113,23 @@ function _mergeArrays(parts) {
 //# sourceMappingURL=compiler.es5.js.map
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(__webpack_require__(56));
+__export(__webpack_require__(58));
 
 /***/ }),
-/* 56 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var ChartComponent_1 = __webpack_require__(57);
+var ChartComponent_1 = __webpack_require__(59);
 exports.ChartComponent = ChartComponent_1.ChartComponent;
 var ChartSeriesComponent_1 = __webpack_require__(19);
 exports.ChartSeriesComponent = ChartSeriesComponent_1.ChartSeriesComponent;
@@ -59929,13 +60139,19 @@ var ChartXAxisComponent_1 = __webpack_require__(21);
 exports.ChartXAxisComponent = ChartXAxisComponent_1.ChartXAxisComponent;
 var ChartYAxisComponent_1 = __webpack_require__(22);
 exports.ChartYAxisComponent = ChartYAxisComponent_1.ChartYAxisComponent;
-var HighchartsService_1 = __webpack_require__(23);
+var ChartZAxisComponent_1 = __webpack_require__(23);
+exports.ChartZAxisComponent = ChartZAxisComponent_1.ChartZAxisComponent;
+var ChartColorAxisComponent_1 = __webpack_require__(24);
+exports.ChartColorAxisComponent = ChartColorAxisComponent_1.ChartColorAxisComponent;
+var HighchartsService_1 = __webpack_require__(25);
 var CHART_DIRECTIVES = [
     ChartComponent_1.ChartComponent,
     ChartSeriesComponent_1.ChartSeriesComponent,
     ChartPointComponent_1.ChartPointComponent,
     ChartXAxisComponent_1.ChartXAxisComponent,
-    ChartYAxisComponent_1.ChartYAxisComponent
+    ChartYAxisComponent_1.ChartYAxisComponent,
+    ChartZAxisComponent_1.ChartZAxisComponent,
+    ChartColorAxisComponent_1.ChartColorAxisComponent
 ];
 var ChartModule = (function () {
     function ChartModule() {
@@ -59968,7 +60184,7 @@ exports.ChartModule = ChartModule;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59978,9 +60194,11 @@ var core_1 = __webpack_require__(0);
 var ChartSeriesComponent_1 = __webpack_require__(19);
 var ChartXAxisComponent_1 = __webpack_require__(21);
 var ChartYAxisComponent_1 = __webpack_require__(22);
-var HighchartsService_1 = __webpack_require__(23);
-var initChart_1 = __webpack_require__(58);
-var createBaseOpts_1 = __webpack_require__(60);
+var ChartZAxisComponent_1 = __webpack_require__(23);
+var ChartColorAxisComponent_1 = __webpack_require__(24);
+var HighchartsService_1 = __webpack_require__(25);
+var initChart_1 = __webpack_require__(60);
+var createBaseOpts_1 = __webpack_require__(62);
 var ChartComponent = (function () {
     function ChartComponent(element, highchartsService) {
         this.create = new core_1.EventEmitter();
@@ -60013,7 +60231,7 @@ var ChartComponent = (function () {
         }
     };
     ChartComponent.prototype.ngAfterViewInit = function () {
-        this.baseOpts = createBaseOpts_1.createBaseOpts(this, this.series, this.series ? this.series.point : null, this.xAxis, this.yAxis, this.element.nativeElement);
+        this.baseOpts = createBaseOpts_1.createBaseOpts(this, this.series, this.series ? this.series.point : null, this.xAxis, this.yAxis, this.zAxis, this.colorAxis, this.element.nativeElement);
         this.init();
     };
     ChartComponent.decorators = [
@@ -60031,6 +60249,8 @@ var ChartComponent = (function () {
         'series': [{ type: core_1.ContentChild, args: [ChartSeriesComponent_1.ChartSeriesComponent,] },],
         'xAxis': [{ type: core_1.ContentChild, args: [ChartXAxisComponent_1.ChartXAxisComponent,] },],
         'yAxis': [{ type: core_1.ContentChild, args: [ChartYAxisComponent_1.ChartYAxisComponent,] },],
+        'zAxis': [{ type: core_1.ContentChild, args: [ChartZAxisComponent_1.ChartZAxisComponent,] },],
+        'colorAxis': [{ type: core_1.ContentChild, args: [ChartColorAxisComponent_1.ChartColorAxisComponent,] },],
         'create': [{ type: core_1.Output },],
         'click': [{ type: core_1.Output },],
         'addSeries': [{ type: core_1.Output },],
@@ -60050,13 +60270,13 @@ exports.ChartComponent = ChartComponent;
 //# sourceMappingURL=ChartComponent.js.map
 
 /***/ }),
-/* 58 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var deepAssign_1 = __webpack_require__(59);
+var deepAssign_1 = __webpack_require__(61);
 function initChart(highchartsService, userOpts, baseOpts, type) {
     var Highcharts = highchartsService.getHighchartsStatic();
     if (!Highcharts) {
@@ -60071,6 +60291,12 @@ function initChart(highchartsService, userOpts, baseOpts, type) {
     if (Array.isArray(userOpts.yAxis)) {
         baseOpts.yAxis = [baseOpts.yAxis];
     }
+    if (Array.isArray(userOpts.zAxis)) {
+        baseOpts.zAxis = [baseOpts.zAxis];
+    }
+    if (Array.isArray(userOpts.colorAxis)) {
+        baseOpts.colorAxis = [baseOpts.colorAxis];
+    }
     var opts = deepAssign_1.deepAssign({}, baseOpts, userOpts);
     return new Highcharts[type](opts);
 }
@@ -60078,7 +60304,7 @@ exports.initChart = initChart;
 //# sourceMappingURL=initChart.js.map
 
 /***/ }),
-/* 59 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60140,13 +60366,13 @@ exports.deepAssign = deepAssign;
 //# sourceMappingURL=deepAssign.js.map
 
 /***/ }),
-/* 60 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ChartEvent_1 = __webpack_require__(61);
+var ChartEvent_1 = __webpack_require__(63);
 var chartEvents = [
     'addSeries',
     'afterPrint',
@@ -60190,7 +60416,21 @@ var yAxisEvents = [
     'pointInBreak',
     'setExtremes'
 ];
-function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, element) {
+var zAxisEvents = [
+    'afterBreaks',
+    'afterSetExtremes',
+    'pointBreak',
+    'pointInBreak',
+    'setExtremes'
+];
+var colorAxisEvents = [
+    'afterBreaks',
+    'afterSetExtremes',
+    'pointBreak',
+    'pointInBreak',
+    'setExtremes'
+];
+function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, zAxisCmp, colorAxisCmp, element) {
     var opts = {
         chart: {
             renderTo: element,
@@ -60208,6 +60448,12 @@ function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, eleme
             events: {}
         },
         yAxis: {
+            events: {}
+        },
+        zAxis: {
+            events: {}
+        },
+        colorAxis: {
             events: {}
         }
     };
@@ -60244,13 +60490,27 @@ function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, eleme
             };
         });
     }
+    if (zAxisCmp) {
+        zAxisEvents.forEach(function (eventName) {
+            opts.zAxis.events[eventName] = opts.zAxis.events[eventName] || function (event) {
+                zAxisCmp[eventName].emit(new ChartEvent_1.ChartEvent(event, this));
+            };
+        });
+    }
+    if (colorAxisCmp) {
+        colorAxisEvents.forEach(function (eventName) {
+            opts.colorAxis.events[eventName] = opts.colorAxis.events[eventName] || function (event) {
+                colorAxisCmp[eventName].emit(new ChartEvent_1.ChartEvent(event, this));
+            };
+        });
+    }
     return opts;
 }
 exports.createBaseOpts = createBaseOpts;
 //# sourceMappingURL=createBaseOpts.js.map
 
 /***/ }),
-/* 61 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60267,7 +60527,7 @@ exports.ChartEvent = ChartEvent;
 //# sourceMappingURL=ChartEvent.js.map
 
 /***/ }),
-/* 62 */
+/* 64 */
 /***/ (function(module, exports) {
 
 /*
@@ -60798,7 +61058,7 @@ this.chart.is3d()||this.chart.polar||!this.xAxis||this.xAxis.isRadial||(!this.cl
 
 
 /***/ }),
-/* 63 */
+/* 65 */
 /***/ (function(module, exports) {
 
 /*
@@ -60876,6 +61136,37 @@ x(w.scatter.prototype,"init",function(b,n,f){n.is3d()&&(this.axisTypes=["xAxis",
 return b});x(w.scatter.prototype,"pointAttribs",function(k,n){var f=k.apply(this,[].slice.call(arguments,1));this.chart.is3d()&&n&&(f.zIndex=b.pointCameraDistance(n,this.chart));return f});x(u.prototype,"applyOptions",function(b){var k=b.apply(this,[].slice.call(arguments,1));this.series.chart.is3d()&&void 0===k.z&&(k.z=0);return k})})(y);(function(b){var v=b.Axis,t=b.SVGRenderer,u=b.VMLRenderer;u&&(b.setOptions({animate:!1}),u.prototype.face3d=t.prototype.face3d,u.prototype.polyhedron=t.prototype.polyhedron,
 u.prototype.cuboid=t.prototype.cuboid,u.prototype.cuboidPath=t.prototype.cuboidPath,u.prototype.toLinePath=t.prototype.toLinePath,u.prototype.toLineSegments=t.prototype.toLineSegments,u.prototype.createElement3D=t.prototype.createElement3D,u.prototype.arc3d=function(b){b=t.prototype.arc3d.call(this,b);b.css({zIndex:b.zIndex});return b},b.VMLRenderer.prototype.arc3dPath=b.SVGRenderer.prototype.arc3dPath,b.wrap(v.prototype,"render",function(b){b.apply(this,[].slice.call(arguments,1));this.sideFrame&&
 (this.sideFrame.css({zIndex:0}),this.sideFrame.front.attr({fill:this.sideFrame.color}));this.bottomFrame&&(this.bottomFrame.css({zIndex:1}),this.bottomFrame.front.attr({fill:this.bottomFrame.color}));this.backFrame&&(this.backFrame.css({zIndex:0}),this.backFrame.front.attr({fill:this.backFrame.color}))}))})(y)});
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports) {
+
+/*
+ Highcharts JS v5.0.14 (2017-07-28)
+
+ (c) 2009-2017 Torstein Honsi
+
+ License: www.highcharts.com/license
+*/
+(function(p){"object"===typeof module&&module.exports?module.exports=p:p(Highcharts)})(function(p){(function(b){var h=b.Axis,r=b.Chart,k=b.color,n,d=b.each,w=b.extend,x=b.isNumber,l=b.Legend,g=b.LegendSymbolMixin,q=b.noop,u=b.merge,v=b.pick,t=b.wrap;n=b.ColorAxis=function(){this.init.apply(this,arguments)};w(n.prototype,h.prototype);w(n.prototype,{defaultColorAxisOptions:{lineWidth:0,minPadding:0,maxPadding:0,gridLineWidth:1,tickPixelInterval:72,startOnTick:!0,endOnTick:!0,offset:0,marker:{animation:{duration:50},
+width:.01,color:"#999999"},labels:{overflow:"justify",rotation:0},minColor:"#e6ebf5",maxColor:"#003399",tickLength:5,showInLegend:!0},keepProps:["legendGroup","legendItemHeight","legendItemWidth","legendItem","legendSymbol"].concat(h.prototype.keepProps),init:function(a,c){var e="vertical"!==a.options.legend.layout,f;this.coll="colorAxis";f=u(this.defaultColorAxisOptions,{side:e?2:1,reversed:!e},c,{opposite:!e,showEmpty:!1,title:null});h.prototype.init.call(this,a,f);c.dataClasses&&this.initDataClasses(c);
+this.initStops();this.horiz=e;this.zoomEnabled=!1;this.defaultLegendLength=200},initDataClasses:function(a){var c=this.chart,e,f=0,m=c.options.chart.colorCount,b=this.options,y=a.dataClasses.length;this.dataClasses=e=[];this.legendItems=[];d(a.dataClasses,function(a,d){a=u(a);e.push(a);a.color||("category"===b.dataClassColor?(d=c.options.colors,m=d.length,a.color=d[f],a.colorIndex=f,f++,f===m&&(f=0)):a.color=k(b.minColor).tweenTo(k(b.maxColor),2>y?.5:d/(y-1)))})},setTickPositions:function(){if(!this.dataClasses)return h.prototype.setTickPositions.call(this)},
+initStops:function(){this.stops=this.options.stops||[[0,this.options.minColor],[1,this.options.maxColor]];d(this.stops,function(a){a.color=k(a[1])})},setOptions:function(a){h.prototype.setOptions.call(this,a);this.options.crosshair=this.options.marker},setAxisSize:function(){var a=this.legendSymbol,c=this.chart,e=c.options.legend||{},f,m;a?(this.left=e=a.attr("x"),this.top=f=a.attr("y"),this.width=m=a.attr("width"),this.height=a=a.attr("height"),this.right=c.chartWidth-e-m,this.bottom=c.chartHeight-
+f-a,this.len=this.horiz?m:a,this.pos=this.horiz?e:f):this.len=(this.horiz?e.symbolWidth:e.symbolHeight)||this.defaultLegendLength},normalizedValue:function(a){this.isLog&&(a=this.val2lin(a));return 1-(this.max-a)/(this.max-this.min||1)},toColor:function(a,c){var e=this.stops,f,m,b=this.dataClasses,d,g;if(b)for(g=b.length;g--;){if(d=b[g],f=d.from,e=d.to,(void 0===f||a>=f)&&(void 0===e||a<=e)){m=d.color;c&&(c.dataClass=g,c.colorIndex=d.colorIndex);break}}else{a=this.normalizedValue(a);for(g=e.length;g--&&
+!(a>e[g][0]););f=e[g]||e[g+1];e=e[g+1]||f;a=1-(e[0]-a)/(e[0]-f[0]||1);m=f.color.tweenTo(e.color,a)}return m},getOffset:function(){var a=this.legendGroup,c=this.chart.axisOffset[this.side];a&&(this.axisParent=a,h.prototype.getOffset.call(this),this.added||(this.added=!0,this.labelLeft=0,this.labelRight=this.width),this.chart.axisOffset[this.side]=c)},setLegendColor:function(){var a,c=this.reversed;a=c?1:0;c=c?0:1;a=this.horiz?[a,0,c,0]:[0,c,0,a];this.legendColor={linearGradient:{x1:a[0],y1:a[1],x2:a[2],
+y2:a[3]},stops:this.stops}},drawLegendSymbol:function(a,c){var e=a.padding,f=a.options,b=this.horiz,d=v(f.symbolWidth,b?this.defaultLegendLength:12),g=v(f.symbolHeight,b?12:this.defaultLegendLength),q=v(f.labelPadding,b?16:30),f=v(f.itemDistance,10);this.setLegendColor();c.legendSymbol=this.chart.renderer.rect(0,a.baseline-11,d,g).attr({zIndex:1}).add(c.legendGroup);this.legendItemWidth=d+e+(b?f:q);this.legendItemHeight=g+e+(b?q:0)},setState:q,visible:!0,setVisible:q,getSeriesExtremes:function(){var a=
+this.series,c=a.length;this.dataMin=Infinity;for(this.dataMax=-Infinity;c--;)void 0!==a[c].valueMin&&(this.dataMin=Math.min(this.dataMin,a[c].valueMin),this.dataMax=Math.max(this.dataMax,a[c].valueMax))},drawCrosshair:function(a,c){var e=c&&c.plotX,b=c&&c.plotY,d,g=this.pos,q=this.len;c&&(d=this.toPixels(c[c.series.colorKey]),d<g?d=g-2:d>g+q&&(d=g+q+2),c.plotX=d,c.plotY=this.len-d,h.prototype.drawCrosshair.call(this,a,c),c.plotX=e,c.plotY=b,this.cross&&(this.cross.addClass("highcharts-coloraxis-marker").add(this.legendGroup),
+this.cross.attr({fill:this.crosshair.color})))},getPlotLinePath:function(a,c,e,b,d){return x(d)?this.horiz?["M",d-4,this.top-6,"L",d+4,this.top-6,d,this.top,"Z"]:["M",this.left,d,"L",this.left-6,d+6,this.left-6,d-6,"Z"]:h.prototype.getPlotLinePath.call(this,a,c,e,b)},update:function(a,c){var e=this.chart,b=e.legend;d(this.series,function(a){a.isDirtyData=!0});a.dataClasses&&b.allItems&&(d(b.allItems,function(a){a.isDataClass&&a.legendGroup&&a.legendGroup.destroy()}),e.isDirtyLegend=!0);e.options[this.coll]=
+u(this.userOptions,a);h.prototype.update.call(this,a,c);this.legendItem&&(this.setLegendColor(),b.colorizeItem(this,!0))},remove:function(){this.legendItem&&this.chart.legend.destroyItem(this);h.prototype.remove.call(this)},getDataClassLegendSymbols:function(){var a=this,c=this.chart,e=this.legendItems,f=c.options.legend,t=f.valueDecimals,h=f.valueSuffix||"",l;e.length||d(this.dataClasses,function(f,u){var m=!0,k=f.from,n=f.to;l="";void 0===k?l="\x3c ":void 0===n&&(l="\x3e ");void 0!==k&&(l+=b.numberFormat(k,
+t)+h);void 0!==k&&void 0!==n&&(l+=" - ");void 0!==n&&(l+=b.numberFormat(n,t)+h);e.push(w({chart:c,name:l,options:{},drawLegendSymbol:g.drawRectangle,visible:!0,setState:q,isDataClass:!0,setVisible:function(){m=this.visible=!m;d(a.series,function(a){d(a.points,function(a){a.dataClass===u&&a.setVisible(m)})});c.legend.colorizeItem(this,m)}},f))});return e},name:""});d(["fill","stroke"],function(a){b.Fx.prototype[a+"Setter"]=function(){this.elem.attr(a,k(this.start).tweenTo(k(this.end),this.pos),null,
+!0)}});t(r.prototype,"getAxes",function(a){var c=this.options.colorAxis;a.call(this);this.colorAxis=[];c&&new n(this,c)});t(l.prototype,"getAllItems",function(a){var c=[],b=this.chart.colorAxis[0];b&&b.options&&(b.options.showInLegend&&(b.options.dataClasses?c=c.concat(b.getDataClassLegendSymbols()):c.push(b)),d(b.series,function(a){a.options.showInLegend=!1}));return c.concat(a.call(this))});t(l.prototype,"colorizeItem",function(a,c,b){a.call(this,c,b);b&&c.legendColor&&c.legendSymbol.attr({fill:c.legendColor})});
+t(l.prototype,"update",function(a){a.apply(this,[].slice.call(arguments,1));this.chart.colorAxis[0]&&this.chart.colorAxis[0].update({},arguments[2])})})(p);(function(b){var h=b.defined,r=b.each,k=b.noop,n=b.seriesTypes;b.colorPointMixin={isValid:function(){return null!==this.value},setVisible:function(b){var d=this,h=b?"show":"hide";r(["graphic","dataLabel"],function(b){if(d[b])d[b][h]()})},setState:function(d){b.Point.prototype.setState.call(this,d);this.graphic&&this.graphic.attr({zIndex:"hover"===
+d?1:0})}};b.colorSeriesMixin={pointArrayMap:["value"],axisTypes:["xAxis","yAxis","colorAxis"],optionalAxis:"colorAxis",trackerGroups:["group","markerGroup","dataLabelsGroup"],getSymbol:k,parallelArrays:["x","y","value"],colorKey:"value",pointAttribs:n.column.prototype.pointAttribs,translateColors:function(){var b=this,h=this.options.nullColor,k=this.colorAxis,l=this.colorKey;r(this.data,function(d){var g=d[l];if(g=d.options.color||(d.isNull?h:k&&void 0!==g?k.toColor(g,d):d.color||b.color))d.color=
+g})},colorAttribs:function(b){var d={};h(b.color)&&(d[this.colorProp||"fill"]=b.color);return d}}})(p);(function(b){var h=b.colorPointMixin,r=b.each,k=b.merge,n=b.noop,d=b.pick,p=b.Series,x=b.seriesType,l=b.seriesTypes;x("heatmap","scatter",{animation:!1,borderWidth:0,nullColor:"#f7f7f7",dataLabels:{formatter:function(){return this.point.value},inside:!0,verticalAlign:"middle",crop:!1,overflow:!1,padding:0},marker:null,pointRange:null,tooltip:{pointFormat:"{point.x}, {point.y}: {point.value}\x3cbr/\x3e"},
+states:{normal:{animation:!0},hover:{halo:!1,brightness:.2}}},k(b.colorSeriesMixin,{pointArrayMap:["y","value"],hasPointSpecificOptions:!0,getExtremesFromAll:!0,directTouch:!0,init:function(){var b;l.scatter.prototype.init.apply(this,arguments);b=this.options;b.pointRange=d(b.pointRange,b.colsize||1);this.yAxis.axisPointRange=b.rowsize||1},translate:function(){var b=this.options,d=this.xAxis,h=this.yAxis,k=function(b,a,c){return Math.min(Math.max(a,b),c)};this.generatePoints();r(this.points,function(g){var a=
+(b.colsize||1)/2,c=(b.rowsize||1)/2,e=k(Math.round(d.len-d.translate(g.x-a,0,1,0,1)),-d.len,2*d.len),a=k(Math.round(d.len-d.translate(g.x+a,0,1,0,1)),-d.len,2*d.len),f=k(Math.round(h.translate(g.y-c,0,1,0,1)),-h.len,2*h.len),c=k(Math.round(h.translate(g.y+c,0,1,0,1)),-h.len,2*h.len);g.plotX=g.clientX=(e+a)/2;g.plotY=(f+c)/2;g.shapeType="rect";g.shapeArgs={x:Math.min(e,a),y:Math.min(f,c),width:Math.abs(a-e),height:Math.abs(c-f)}});this.translateColors()},drawPoints:function(){l.column.prototype.drawPoints.call(this);
+r(this.points,function(b){b.graphic.attr(this.colorAttribs(b))},this)},animate:n,getBox:n,drawLegendSymbol:b.LegendSymbolMixin.drawRectangle,alignDataLabel:l.column.prototype.alignDataLabel,getExtremes:function(){p.prototype.getExtremes.call(this,this.valueData);this.valueMin=this.dataMin;this.valueMax=this.dataMax;p.prototype.getExtremes.call(this)}}),h)})(p)});
 
 
 /***/ })

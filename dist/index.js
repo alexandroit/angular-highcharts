@@ -11,13 +11,19 @@ var ChartXAxisComponent_1 = require("./ChartXAxisComponent");
 exports.ChartXAxisComponent = ChartXAxisComponent_1.ChartXAxisComponent;
 var ChartYAxisComponent_1 = require("./ChartYAxisComponent");
 exports.ChartYAxisComponent = ChartYAxisComponent_1.ChartYAxisComponent;
+var ChartZAxisComponent_1 = require("./ChartZAxisComponent");
+exports.ChartZAxisComponent = ChartZAxisComponent_1.ChartZAxisComponent;
+var ChartColorAxisComponent_1 = require("./ChartColorAxisComponent");
+exports.ChartColorAxisComponent = ChartColorAxisComponent_1.ChartColorAxisComponent;
 var HighchartsService_1 = require("./HighchartsService");
 var CHART_DIRECTIVES = [
     ChartComponent_1.ChartComponent,
     ChartSeriesComponent_1.ChartSeriesComponent,
     ChartPointComponent_1.ChartPointComponent,
     ChartXAxisComponent_1.ChartXAxisComponent,
-    ChartYAxisComponent_1.ChartYAxisComponent
+    ChartYAxisComponent_1.ChartYAxisComponent,
+    ChartZAxisComponent_1.ChartZAxisComponent,
+    ChartColorAxisComponent_1.ChartColorAxisComponent
 ];
 var ChartModule = (function () {
     function ChartModule() {

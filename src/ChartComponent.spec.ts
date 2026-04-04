@@ -5,6 +5,8 @@ import { ChartPointComponent } from './ChartPointComponent';
 import { ChartSeriesComponent } from './ChartSeriesComponent';
 import { ChartXAxisComponent } from './ChartXAxisComponent';
 import { ChartYAxisComponent } from './ChartYAxisComponent';
+import { ChartZAxisComponent } from './ChartZAxisComponent';
+import { ChartColorAxisComponent } from './ChartColorAxisComponent';
 import { HighchartsService } from './HighchartsService';
 import { HighchartsServiceMock, HighchartsChartObjectMock, ChartEventEmitter } from './Mocks';
 
@@ -32,6 +34,8 @@ export function main() {
                     ChartSeriesComponent,
                     ChartXAxisComponent,
                     ChartYAxisComponent,
+                    ChartZAxisComponent,
+                    ChartColorAxisComponent,
                 ],
                 schemas: [
                     CUSTOM_ELEMENTS_SCHEMA,
@@ -533,6 +537,66 @@ export function main() {
                     fixture.componentInstance.options = ['options'];
                     fixture.detectChanges();
                     ChartEventEmitter.emitYAxisEvent('setExtremes');
+                });
+            });
+        });
+
+        describe('should emit Highcharts zAxis event', () => {
+            it('"afterSetExtremes"', (done) => {
+                create(`
+                <chart [options]="options">
+                    <zAxis (afterSetExtremes)="onEvent()">
+                    </zAxis>
+                </chart>
+            `).then(fixture => {
+                    fixture.componentInstance.onEvent = () => done();
+                    fixture.componentInstance.options = ['options'];
+                    fixture.detectChanges();
+                    ChartEventEmitter.emitZAxisEvent('afterSetExtremes');
+                });
+            });
+
+            it('"setExtremes"', (done) => {
+                create(`
+                <chart [options]="options">
+                    <zAxis (setExtremes)="onEvent()">
+                    </zAxis>
+                </chart>
+            `).then(fixture => {
+                    fixture.componentInstance.onEvent = () => done();
+                    fixture.componentInstance.options = ['options'];
+                    fixture.detectChanges();
+                    ChartEventEmitter.emitZAxisEvent('setExtremes');
+                });
+            });
+        });
+
+        describe('should emit Highcharts colorAxis event', () => {
+            it('"afterSetExtremes"', (done) => {
+                create(`
+                <chart [options]="options">
+                    <colorAxis (afterSetExtremes)="onEvent()">
+                    </colorAxis>
+                </chart>
+            `).then(fixture => {
+                    fixture.componentInstance.onEvent = () => done();
+                    fixture.componentInstance.options = ['options'];
+                    fixture.detectChanges();
+                    ChartEventEmitter.emitColorAxisEvent('afterSetExtremes');
+                });
+            });
+
+            it('"setExtremes"', (done) => {
+                create(`
+                <chart [options]="options">
+                    <colorAxis (setExtremes)="onEvent()">
+                    </colorAxis>
+                </chart>
+            `).then(fixture => {
+                    fixture.componentInstance.onEvent = () => done();
+                    fixture.componentInstance.options = ['options'];
+                    fixture.detectChanges();
+                    ChartEventEmitter.emitColorAxisEvent('setExtremes');
                 });
             });
         });

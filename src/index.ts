@@ -5,6 +5,8 @@ import { ChartSeriesComponent } from './ChartSeriesComponent';
 import { ChartPointComponent } from './ChartPointComponent';
 import { ChartXAxisComponent } from './ChartXAxisComponent';
 import { ChartYAxisComponent } from './ChartYAxisComponent';
+import { ChartZAxisComponent } from './ChartZAxisComponent';
+import { ChartColorAxisComponent } from './ChartColorAxisComponent';
 import { HighchartsStatic } from './HighchartsService'
 
 const CHART_DIRECTIVES: any[] = [
@@ -12,7 +14,9 @@ const CHART_DIRECTIVES: any[] = [
     ChartSeriesComponent,
     ChartPointComponent,
     ChartXAxisComponent,
-    ChartYAxisComponent
+    ChartYAxisComponent,
+    ChartZAxisComponent,
+    ChartColorAxisComponent
 ];
 
 @NgModule({
@@ -41,4 +45,6 @@ export {
     ChartPointComponent,
     ChartXAxisComponent,
     ChartYAxisComponent,
+    ChartZAxisComponent,
+    ChartColorAxisComponent,
 };

@@ -22,6 +22,14 @@ export class ChartEventEmitter {
     static emitYAxisEvent(eventName) {
         opts.yAxis.events[eventName]();
     }
+
+    static emitZAxisEvent(eventName) {
+        opts.zAxis.events[eventName]();
+    }
+
+    static emitColorAxisEvent(eventName) {
+        opts.colorAxis.events[eventName]();
+    }
 }
 
 export class HighchartsChartObjectMock {

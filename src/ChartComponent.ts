@@ -3,6 +3,8 @@ import { Input, ElementRef, Component, Output, EventEmitter, ContentChild } from
 import { ChartSeriesComponent } from './ChartSeriesComponent';
 import { ChartXAxisComponent } from './ChartXAxisComponent';
 import { ChartYAxisComponent } from './ChartYAxisComponent';
+import { ChartZAxisComponent } from './ChartZAxisComponent';
+import { ChartColorAxisComponent } from './ChartColorAxisComponent';
 import { HighchartsService } from './HighchartsService';
 import { ChartEvent } from './ChartEvent';
 import { initChart } from './initChart';
@@ -17,6 +19,8 @@ export class ChartComponent {
     @ContentChild(ChartSeriesComponent) series: ChartSeriesComponent;
     @ContentChild(ChartXAxisComponent) xAxis: ChartXAxisComponent;
     @ContentChild(ChartYAxisComponent) yAxis: ChartYAxisComponent;
+    @ContentChild(ChartZAxisComponent) zAxis: ChartZAxisComponent;
+    @ContentChild(ChartColorAxisComponent) colorAxis: ChartColorAxisComponent;
     @Output() create = new EventEmitter<any>();
     @Output() click = new EventEmitter<ChartEvent>();
     @Output() addSeries = new EventEmitter<ChartEvent>();
@@ -46,7 +50,16 @@ export class ChartComponent {
     }
 
     ngAfterViewInit() {
-        this.baseOpts = createBaseOpts(this, this.series, this.series ? this.series.point : null, this.xAxis, this.yAxis, this.element.nativeElement);
+        this.baseOpts = createBaseOpts(
+            this,
+            this.series,
+            this.series ? this.series.point : null,
+            this.xAxis,
+            this.yAxis,
+            this.zAxis,
+            this.colorAxis,
+            this.element.nativeElement
+        );
         this.init();
     }
 
