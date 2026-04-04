@@ -16,8 +16,8 @@ const CHART_DIRECTIVES: any[] = [
 ];
 
 @NgModule({
-    declarations: [CHART_DIRECTIVES],
-    exports: [CHART_DIRECTIVES]
+    declarations: CHART_DIRECTIVES,
+    exports: CHART_DIRECTIVES
 })
 export class ChartModule {
     static forRoot(highchartsStatic: HighchartsStatic, ...highchartsModules: Array<Function>): ModuleWithProviders {

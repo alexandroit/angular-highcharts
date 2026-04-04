@@ -1,13 +1,13 @@
-# ⚠️ Not supported anymore. <br> Consider using [the offical Highcharts wrapper for Angular]( https://github.com/highcharts/highcharts-angular)
+
 # angular2-highcharts
 
-> Highcharts chart components for Angular apps. 👉 [Live Demo](http://plnkr.co/edit/AJwozFWVR7TkQZnt05dN?p=preview)
+> Highcharts chart components for Angular 4 apps. 👉 [Live Demo](http://plnkr.co/edit/AJwozFWVR7TkQZnt05dN?p=preview)
 
 
-[![build](https://travis-ci.org/gevgeny/angular2-highcharts.svg?branch=master)](https://travis-ci.org/gevgeny/angular2-highcharts)
 [![npm version](https://badge.fury.io/js/angular2-highcharts.svg)](https://badge.fury.io/js/angular2-highcharts)
-[![npm dependencies](https://david-dm.org/gevgeny/angular2-highcharts.svg)](https://david-dm.org/gevgeny/angular2-highcharts)
 [![npm downloads](https://img.shields.io/npm/dm/angular2-highcharts.svg)](https://www.npmjs.com/package/angular2-highcharts)
+
+Original project by [Eugene Gluhotorenko](https://github.com/gevgeny). This fork is maintained in [alexandroit/angular2-highcharts](https://github.com/alexandroit/angular2-highcharts) and keeps the original package name.
 
 ## Table of Contents
  - [Setting Up](#setting-up)
@@ -37,6 +37,8 @@
 ```
 npm install angular2-highcharts --save
 ```
+
+This release line targets Angular 4.x applications and expects `highcharts` to be installed in the consuming app.
 
 ### Setup App @NgModule
 ```TypeScript
@@ -319,5 +321,4 @@ Because `angular-highcharts` is just a thin wrapper of the [Highcharts](http:/ /
 
 ## License
 MIT @ Eugene Gluhotorenko
-
 

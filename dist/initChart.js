@@ -1,9 +1,10 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var deepAssign_1 = require("./deepAssign");
 function initChart(highchartsService, userOpts, baseOpts, type) {
     var Highcharts = highchartsService.getHighchartsStatic();
     if (!Highcharts) {
-        throw new Error('Base Highcharts module should be set via ChartModule.init');
+        throw new Error('Base Highcharts module should be set via ChartModule.forRoot');
     }
     if (!Highcharts[type]) {
         throw new Error(type + " is unknown chart type.");

@@ -5,3 +5,14 @@ src
 .travis.yml
 karma.conf.js
 karma-test-shim.js
+dist/*.spec.d.ts
+dist/*.spec.js
+dist/*.spec.js.map
+dist/*.spec.metadata.json
+dist/Mocks.d.ts
+dist/Mocks.js
+dist/Mocks.js.map
+dist/Mocks.metadata.json
+dist/stub.d.ts
+dist/stub.js
+dist/stub.js.map

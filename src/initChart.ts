@@ -5,7 +5,7 @@ export function initChart(highchartsService : HighchartsService, userOpts, baseO
     const Highcharts = highchartsService.getHighchartsStatic();
 
     if (!Highcharts) {
-        throw new Error('Base Highcharts module should be set via ChartModule.init');
+        throw new Error('Base Highcharts module should be set via ChartModule.forRoot');
     }
     if (!Highcharts[type]) {
         throw new Error(`${type} is unknown chart type.`);
