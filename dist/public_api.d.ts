@@ -8,6 +8,6 @@ import { ChartZAxisComponent } from './ChartZAxisComponent';
 import { ChartColorAxisComponent } from './ChartColorAxisComponent';
 import { HighchartsStatic } from './HighchartsService';
 export declare class ChartModule {
-    static forRoot(highchartsStatic: HighchartsStatic, ...highchartsModules: Array<Function>): ModuleWithProviders;
+    static forRoot(highchartsStatic: HighchartsStatic, ...highchartsModules: Array<Function>): ModuleWithProviders<ChartModule>;
 }
 export { ChartComponent, ChartSeriesComponent, ChartPointComponent, ChartXAxisComponent, ChartYAxisComponent, ChartZAxisComponent, ChartColorAxisComponent, };

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { Input, ElementRef, Component, Output, EventEmitter, ContentChild } from '@angular/core';
 import { ChartSeriesComponent } from './ChartSeriesComponent';
 import { ChartXAxisComponent } from './ChartXAxisComponent';
@@ -47,58 +47,58 @@ var ChartComponent = /** @class */ (function () {
         { type: ElementRef },
         { type: HighchartsService }
     ]; };
-    tslib_1.__decorate([
+    __decorate([
         ContentChild(ChartSeriesComponent, { static: false })
     ], ChartComponent.prototype, "series", void 0);
-    tslib_1.__decorate([
+    __decorate([
         ContentChild(ChartXAxisComponent, { static: false })
     ], ChartComponent.prototype, "xAxis", void 0);
-    tslib_1.__decorate([
+    __decorate([
         ContentChild(ChartYAxisComponent, { static: false })
     ], ChartComponent.prototype, "yAxis", void 0);
-    tslib_1.__decorate([
+    __decorate([
         ContentChild(ChartZAxisComponent, { static: false })
     ], ChartComponent.prototype, "zAxis", void 0);
-    tslib_1.__decorate([
+    __decorate([
         ContentChild(ChartColorAxisComponent, { static: false })
     ], ChartComponent.prototype, "colorAxis", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "create", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "click", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "addSeries", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "afterPrint", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "beforePrint", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "drilldown", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "drillup", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "load", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "redraw", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Output()
     ], ChartComponent.prototype, "selection", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], ChartComponent.prototype, "type", void 0);
-    tslib_1.__decorate([
+    __decorate([
         Input()
     ], ChartComponent.prototype, "options", null);
-    ChartComponent = tslib_1.__decorate([
+    ChartComponent = __decorate([
         Component({
             selector: 'chart',
             template: '&nbsp;',

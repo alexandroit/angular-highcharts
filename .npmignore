@@ -18,6 +18,7 @@ dist/*.spec.d.ts
 dist/*.spec.js
 dist/*.spec.js.map
 dist/*.spec.metadata.json
+dist/package.json
 dist/Mocks.d.ts
 dist/Mocks.js
 dist/Mocks.js.map

@@ -28,7 +28,7 @@ export declare class ChartComponent {
     private userOpts;
     private baseOpts;
     type: string;
-    options: any;
+    set options(opts: any);
     private init;
     ngAfterViewInit(): void;
     constructor(element: ElementRef, highchartsService: HighchartsService);

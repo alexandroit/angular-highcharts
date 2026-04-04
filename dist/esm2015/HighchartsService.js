@@ -1,8 +1,8 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { Injectable } from '@angular/core';
 let HighchartsStatic = class HighchartsStatic {
 };
-HighchartsStatic = tslib_1.__decorate([
+HighchartsStatic = __decorate([
     Injectable()
 ], HighchartsStatic);
 export { HighchartsStatic };
@@ -17,7 +17,7 @@ let HighchartsService = class HighchartsService {
 HighchartsService.ctorParameters = () => [
     { type: HighchartsStatic }
 ];
-HighchartsService = tslib_1.__decorate([
+HighchartsService = __decorate([
     Injectable()
 ], HighchartsService);
 export { HighchartsService };
