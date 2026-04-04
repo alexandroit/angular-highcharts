@@ -6,8 +6,8 @@
 [![npm downloads](https://img.shields.io/npm/dt/@revivejs/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/angular2-highcharts)
 [![npm monthly](https://img.shields.io/npm/dm/@revivejs/angular2-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/angular2-highcharts)
 [![license](https://img.shields.io/npm/l/@revivejs/angular2-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular2-highcharts/blob/master/LICENSE)
-[![Angular 4](https://img.shields.io/badge/Angular-4-red?style=flat-square&logo=angular)](https://angular.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-2.4-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Angular 5](https://img.shields.io/badge/Angular-5-red?style=flat-square&logo=angular)](https://angular.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-2.6-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![GitHub stars](https://img.shields.io/github/stars/alexandroit/angular2-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular2-highcharts/stargazers)
 
 **[Documentation & Live Demos](https://alexandroit.github.io/angular2-highcharts/)** | **[npm](https://www.npmjs.com/package/@revivejs/angular2-highcharts)** | **[Issues](https://github.com/alexandroit/angular2-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular2-highcharts)**
@@ -334,8 +334,8 @@ For this Angular 4 support line, the safest maintained move is the latest Highch
 
 ## CHANGELOG
 
-### 5.0.0 (Angular 5)
-- Bumped package version to 5.0.0
+### 5.0.2 (Angular 5)
+- Bumped package version to 5.0.2
 - Updated peerDependencies to `@angular/core >=4.0.0 <6.0.0` and `highcharts >=5.0.0`
 - Updated devDependencies to Angular ^5.2.11, TypeScript ~2.6.2, Highcharts ^6.0.0
 - Added `@angular/cli 1.7.4` for demo app builds
