@@ -2,19 +2,17 @@ import * as i0 from '@angular/core';
 import { EventEmitter, Directive, Output, ContentChild, Injectable, Component, Input, NgModule } from '@angular/core';
 
 class ChartPointComponent {
-    constructor() {
-        this.click = new EventEmitter();
-        this.remove = new EventEmitter();
-        this.select = new EventEmitter();
-        this.unselect = new EventEmitter();
-        this.mouseOver = new EventEmitter();
-        this.mouseOut = new EventEmitter();
-        this.update = new EventEmitter();
-    }
+    click = new EventEmitter();
+    remove = new EventEmitter();
+    select = new EventEmitter();
+    unselect = new EventEmitter();
+    mouseOver = new EventEmitter();
+    mouseOut = new EventEmitter();
+    update = new EventEmitter();
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartPointComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
+    static ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.2.12", type: ChartPointComponent, selector: "point", outputs: { click: "click", remove: "remove", select: "select", unselect: "unselect", mouseOver: "mouseOver", mouseOut: "mouseOut", update: "update" }, ngImport: i0 });
 }
-ChartPointComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartPointComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
-ChartPointComponent.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "15.2.10", type: ChartPointComponent, selector: "point", outputs: { click: "click", remove: "remove", select: "select", unselect: "unselect", mouseOver: "mouseOver", mouseOut: "mouseOut", update: "update" }, ngImport: i0 });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartPointComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartPointComponent, decorators: [{
             type: Directive,
             args: [{
                     selector: 'point'
@@ -36,20 +34,19 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImpo
             }] } });
 
 class ChartSeriesComponent {
-    constructor() {
-        this.click = new EventEmitter();
-        this.afterAnimate = new EventEmitter();
-        this.checkboxClick = new EventEmitter();
-        this.hide = new EventEmitter();
-        this.legendItemClick = new EventEmitter();
-        this.mouseOver = new EventEmitter();
-        this.mouseOut = new EventEmitter();
-        this.show = new EventEmitter();
-    }
+    point;
+    click = new EventEmitter();
+    afterAnimate = new EventEmitter();
+    checkboxClick = new EventEmitter();
+    hide = new EventEmitter();
+    legendItemClick = new EventEmitter();
+    mouseOver = new EventEmitter();
+    mouseOut = new EventEmitter();
+    show = new EventEmitter();
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartSeriesComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
+    static ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.2.12", type: ChartSeriesComponent, selector: "series", outputs: { click: "click", afterAnimate: "afterAnimate", checkboxClick: "checkboxClick", hide: "hide", legendItemClick: "legendItemClick", mouseOver: "mouseOver", mouseOut: "mouseOut", show: "show" }, queries: [{ propertyName: "point", first: true, predicate: ChartPointComponent, descendants: true }], ngImport: i0 });
 }
-ChartSeriesComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartSeriesComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
-ChartSeriesComponent.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "15.2.10", type: ChartSeriesComponent, selector: "series", outputs: { click: "click", afterAnimate: "afterAnimate", checkboxClick: "checkboxClick", hide: "hide", legendItemClick: "legendItemClick", mouseOver: "mouseOver", mouseOut: "mouseOut", show: "show" }, queries: [{ propertyName: "point", first: true, predicate: ChartPointComponent, descendants: true }], ngImport: i0 });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartSeriesComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartSeriesComponent, decorators: [{
             type: Directive,
             args: [{
                     selector: 'series'
@@ -76,17 +73,15 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImpo
             }] } });
 
 class ChartXAxisComponent {
-    constructor() {
-        this.afterBreaks = new EventEmitter();
-        this.afterSetExtremes = new EventEmitter();
-        this.pointBreak = new EventEmitter();
-        this.pointInBreak = new EventEmitter();
-        this.setExtremes = new EventEmitter();
-    }
+    afterBreaks = new EventEmitter();
+    afterSetExtremes = new EventEmitter();
+    pointBreak = new EventEmitter();
+    pointInBreak = new EventEmitter();
+    setExtremes = new EventEmitter();
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartXAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
+    static ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.2.12", type: ChartXAxisComponent, selector: "xAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
 }
-ChartXAxisComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartXAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
-ChartXAxisComponent.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "15.2.10", type: ChartXAxisComponent, selector: "xAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartXAxisComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartXAxisComponent, decorators: [{
             type: Directive,
             args: [{
                     selector: 'xAxis'
@@ -104,17 +99,15 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImpo
             }] } });
 
 class ChartYAxisComponent {
-    constructor() {
-        this.afterBreaks = new EventEmitter();
-        this.afterSetExtremes = new EventEmitter();
-        this.pointBreak = new EventEmitter();
-        this.pointInBreak = new EventEmitter();
-        this.setExtremes = new EventEmitter();
-    }
+    afterBreaks = new EventEmitter();
+    afterSetExtremes = new EventEmitter();
+    pointBreak = new EventEmitter();
+    pointInBreak = new EventEmitter();
+    setExtremes = new EventEmitter();
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartYAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
+    static ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.2.12", type: ChartYAxisComponent, selector: "yAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
 }
-ChartYAxisComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartYAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
-ChartYAxisComponent.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "15.2.10", type: ChartYAxisComponent, selector: "yAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartYAxisComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartYAxisComponent, decorators: [{
             type: Directive,
             args: [{
                     selector: 'yAxis'
@@ -132,17 +125,15 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImpo
             }] } });
 
 class ChartZAxisComponent {
-    constructor() {
-        this.afterBreaks = new EventEmitter();
-        this.afterSetExtremes = new EventEmitter();
-        this.pointBreak = new EventEmitter();
-        this.pointInBreak = new EventEmitter();
-        this.setExtremes = new EventEmitter();
-    }
+    afterBreaks = new EventEmitter();
+    afterSetExtremes = new EventEmitter();
+    pointBreak = new EventEmitter();
+    pointInBreak = new EventEmitter();
+    setExtremes = new EventEmitter();
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartZAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
+    static ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.2.12", type: ChartZAxisComponent, selector: "zAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
 }
-ChartZAxisComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartZAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
-ChartZAxisComponent.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "15.2.10", type: ChartZAxisComponent, selector: "zAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartZAxisComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartZAxisComponent, decorators: [{
             type: Directive,
             args: [{
                     selector: 'zAxis'
@@ -160,17 +151,15 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImpo
             }] } });
 
 class ChartColorAxisComponent {
-    constructor() {
-        this.afterBreaks = new EventEmitter();
-        this.afterSetExtremes = new EventEmitter();
-        this.pointBreak = new EventEmitter();
-        this.pointInBreak = new EventEmitter();
-        this.setExtremes = new EventEmitter();
-    }
+    afterBreaks = new EventEmitter();
+    afterSetExtremes = new EventEmitter();
+    pointBreak = new EventEmitter();
+    pointInBreak = new EventEmitter();
+    setExtremes = new EventEmitter();
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartColorAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
+    static ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.2.12", type: ChartColorAxisComponent, selector: "colorAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
 }
-ChartColorAxisComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartColorAxisComponent, deps: [], target: i0.ɵɵFactoryTarget.Directive });
-ChartColorAxisComponent.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "15.2.10", type: ChartColorAxisComponent, selector: "colorAxis", outputs: { afterBreaks: "afterBreaks", afterSetExtremes: "afterSetExtremes", pointBreak: "pointBreak", pointInBreak: "pointInBreak", setExtremes: "setExtremes" }, ngImport: i0 });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartColorAxisComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartColorAxisComponent, decorators: [{
             type: Directive,
             args: [{
                     selector: 'colorAxis'
@@ -188,23 +177,24 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImpo
             }] } });
 
 class HighchartsStatic {
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: HighchartsStatic, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
+    static ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: HighchartsStatic });
 }
-HighchartsStatic.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: HighchartsStatic, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
-HighchartsStatic.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: HighchartsStatic });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: HighchartsStatic, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: HighchartsStatic, decorators: [{
             type: Injectable
         }] });
 class HighchartsService {
+    _highchartsStatice;
     constructor(highchartsStatic) {
         this._highchartsStatice = highchartsStatic;
     }
     getHighchartsStatic() {
         return this._highchartsStatice;
     }
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: HighchartsService, deps: [{ token: HighchartsStatic }], target: i0.ɵɵFactoryTarget.Injectable });
+    static ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: HighchartsService });
 }
-HighchartsService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: HighchartsService, deps: [{ token: HighchartsStatic }], target: i0.ɵɵFactoryTarget.Injectable });
-HighchartsService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: HighchartsService });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: HighchartsService, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: HighchartsService, decorators: [{
             type: Injectable
         }], ctorParameters: function () { return [{ type: HighchartsStatic }]; } });
 
@@ -292,6 +282,8 @@ function initChart(highchartsService, userOpts, baseOpts, type) {
 }
 
 class ChartEvent {
+    originalEvent;
+    context;
     constructor(event, context) {
         this.originalEvent = event;
         this.context = context;
@@ -434,6 +426,27 @@ function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, zAxis
 }
 
 class ChartComponent {
+    series;
+    xAxis;
+    yAxis;
+    zAxis;
+    colorAxis;
+    create = new EventEmitter();
+    click = new EventEmitter();
+    addSeries = new EventEmitter();
+    afterPrint = new EventEmitter();
+    beforePrint = new EventEmitter();
+    drilldown = new EventEmitter();
+    drillup = new EventEmitter();
+    load = new EventEmitter();
+    redraw = new EventEmitter();
+    selection = new EventEmitter();
+    chart;
+    element;
+    highchartsService;
+    userOpts;
+    baseOpts;
+    type = 'Chart';
     set options(opts) {
         this.userOpts = opts;
         this.init();
@@ -450,24 +463,13 @@ class ChartComponent {
         this.init();
     }
     constructor(element, highchartsService) {
-        this.create = new EventEmitter();
-        this.click = new EventEmitter();
-        this.addSeries = new EventEmitter();
-        this.afterPrint = new EventEmitter();
-        this.beforePrint = new EventEmitter();
-        this.drilldown = new EventEmitter();
-        this.drillup = new EventEmitter();
-        this.load = new EventEmitter();
-        this.redraw = new EventEmitter();
-        this.selection = new EventEmitter();
-        this.type = 'Chart';
         this.element = element;
         this.highchartsService = highchartsService;
     }
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartComponent, deps: [{ token: i0.ElementRef }, { token: HighchartsService }], target: i0.ɵɵFactoryTarget.Component });
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.2.12", type: ChartComponent, selector: "chart", inputs: { type: "type", options: "options" }, outputs: { create: "create", click: "click", addSeries: "addSeries", afterPrint: "afterPrint", beforePrint: "beforePrint", drilldown: "drilldown", drillup: "drillup", load: "load", redraw: "redraw", selection: "selection" }, providers: [HighchartsService], queries: [{ propertyName: "series", first: true, predicate: ChartSeriesComponent, descendants: true }, { propertyName: "xAxis", first: true, predicate: ChartXAxisComponent, descendants: true }, { propertyName: "yAxis", first: true, predicate: ChartYAxisComponent, descendants: true }, { propertyName: "zAxis", first: true, predicate: ChartZAxisComponent, descendants: true }, { propertyName: "colorAxis", first: true, predicate: ChartColorAxisComponent, descendants: true }], ngImport: i0, template: '&nbsp;', isInline: true });
 }
-ChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartComponent, deps: [{ token: i0.ElementRef }, { token: HighchartsService }], target: i0.ɵɵFactoryTarget.Component });
-ChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.10", type: ChartComponent, selector: "chart", inputs: { type: "type", options: "options" }, outputs: { create: "create", click: "click", addSeries: "addSeries", afterPrint: "afterPrint", beforePrint: "beforePrint", drilldown: "drilldown", drillup: "drillup", load: "load", redraw: "redraw", selection: "selection" }, providers: [HighchartsService], queries: [{ propertyName: "series", first: true, predicate: ChartSeriesComponent, descendants: true }, { propertyName: "xAxis", first: true, predicate: ChartXAxisComponent, descendants: true }, { propertyName: "yAxis", first: true, predicate: ChartYAxisComponent, descendants: true }, { propertyName: "zAxis", first: true, predicate: ChartZAxisComponent, descendants: true }, { propertyName: "colorAxis", first: true, predicate: ChartColorAxisComponent, descendants: true }], ngImport: i0, template: '&nbsp;', isInline: true });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'chart',
@@ -540,23 +542,23 @@ class ChartModule {
             ]
         };
     }
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+    static ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.2.12", ngImport: i0, type: ChartModule, declarations: [ChartComponent,
+            ChartSeriesComponent,
+            ChartPointComponent,
+            ChartXAxisComponent,
+            ChartYAxisComponent,
+            ChartZAxisComponent,
+            ChartColorAxisComponent], exports: [ChartComponent,
+            ChartSeriesComponent,
+            ChartPointComponent,
+            ChartXAxisComponent,
+            ChartYAxisComponent,
+            ChartZAxisComponent,
+            ChartColorAxisComponent] });
+    static ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartModule });
 }
-ChartModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-ChartModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.10", ngImport: i0, type: ChartModule, declarations: [ChartComponent,
-        ChartSeriesComponent,
-        ChartPointComponent,
-        ChartXAxisComponent,
-        ChartYAxisComponent,
-        ChartZAxisComponent,
-        ChartColorAxisComponent], exports: [ChartComponent,
-        ChartSeriesComponent,
-        ChartPointComponent,
-        ChartXAxisComponent,
-        ChartYAxisComponent,
-        ChartZAxisComponent,
-        ChartColorAxisComponent] });
-ChartModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartModule });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: ChartModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.12", ngImport: i0, type: ChartModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: CHART_DIRECTIVES,
