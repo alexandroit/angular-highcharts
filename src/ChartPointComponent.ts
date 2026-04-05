@@ -2,7 +2,8 @@ import { Directive, Output, EventEmitter } from '@angular/core';
 import { ChartEvent } from './ChartEvent';
 
 @Directive({
-    selector: 'point'
+    selector: 'point',
+    standalone: false
 })
 export class ChartPointComponent {
     @Output() click = new EventEmitter<ChartEvent>();

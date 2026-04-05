@@ -2,7 +2,8 @@ import { Directive, Output, EventEmitter } from '@angular/core';
 import { ChartEvent } from './ChartEvent';
 
 @Directive({
-    selector: 'yAxis'
+    selector: 'yAxis',
+    standalone: false
 })
 export class ChartYAxisComponent {
     @Output() afterBreaks = new EventEmitter<ChartEvent>();

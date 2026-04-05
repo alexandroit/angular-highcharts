@@ -1,9 +1,0 @@
-export class ChartEvent {
-    originalEvent;
-    context;
-    constructor(event, context) {
-        this.originalEvent = event;
-        this.context = context;
-    }
-}
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hhcnRFdmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9DaGFydEV2ZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE1BQU0sT0FBTyxVQUFVO0lBQ25CLGFBQWEsQ0FBUztJQUN0QixPQUFPLENBQU87SUFDZCxZQUFhLEtBQUssRUFBRSxPQUFPO1FBQ3ZCLElBQUksQ0FBQyxhQUFhLEdBQUcsS0FBSyxDQUFDO1FBQzNCLElBQUksQ0FBQyxPQUFPLEdBQUcsT0FBTyxDQUFDO0lBQzNCLENBQUM7Q0FDSiIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjbGFzcyBDaGFydEV2ZW50IHtcbiAgICBvcmlnaW5hbEV2ZW50IDogRXZlbnQ7XG4gICAgY29udGV4dCA6IGFueTtcbiAgICBjb25zdHJ1Y3RvciAoZXZlbnQsIGNvbnRleHQpIHtcbiAgICAgICAgdGhpcy5vcmlnaW5hbEV2ZW50ID0gZXZlbnQ7XG4gICAgICAgIHRoaXMuY29udGV4dCA9IGNvbnRleHQ7XG4gICAgfVxufSJdfQ==

@@ -3,7 +3,8 @@ import { ChartPointComponent } from './ChartPointComponent';
 import { ChartEvent } from './ChartEvent';
 
 @Directive({
-    selector: 'series'
+    selector: 'series',
+    standalone: false
 })
 export class ChartSeriesComponent {
     @ContentChild(ChartPointComponent, { static: false }) point: ChartPointComponent;
