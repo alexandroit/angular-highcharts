@@ -11,6 +11,7 @@ karma.conf.js
 karma-test-shim.js
 index.js
 index.d.ts
+*.tgz
 ng-package.json
 tsconfig.json
 tslint.json
@@ -26,3 +27,4 @@ dist/Mocks.metadata.json
 dist/stub.d.ts
 dist/stub.js
 dist/stub.js.map
+!dist/index.d.ts
