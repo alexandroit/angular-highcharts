@@ -578,3 +578,4 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "21.2.7", ngImpor
  */
 
 export { ChartColorAxisComponent, ChartComponent, ChartModule, ChartPointComponent, ChartSeriesComponent, ChartXAxisComponent, ChartYAxisComponent, ChartZAxisComponent };
+//# sourceMappingURL=stackline-angular-highcharts.mjs.map
