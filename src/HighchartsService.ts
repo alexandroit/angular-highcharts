@@ -2,18 +2,17 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class HighchartsStatic {
-
 }
 
 @Injectable()
 export class HighchartsService {
-    _highchartsStatice: HighchartsStatic
+    private highchartsStatic: HighchartsStatic;
 
     constructor(highchartsStatic: HighchartsStatic) {
-        this._highchartsStatice = highchartsStatic;
+        this.highchartsStatic = highchartsStatic;
     }
 
-    getHighchartsStatic() {
-        return this._highchartsStatice;
+    getHighchartsStatic(): HighchartsStatic {
+        return this.highchartsStatic;
     }
 }

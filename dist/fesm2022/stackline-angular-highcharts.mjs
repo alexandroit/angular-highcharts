@@ -190,12 +190,12 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "21.2.7", ngImpor
             type: Injectable
         }] });
 class HighchartsService {
-    _highchartsStatice;
+    highchartsStatic;
     constructor(highchartsStatic) {
-        this._highchartsStatice = highchartsStatic;
+        this.highchartsStatic = highchartsStatic;
     }
     getHighchartsStatic() {
-        return this._highchartsStatice;
+        return this.highchartsStatic;
     }
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "21.2.7", ngImport: i0, type: HighchartsService, deps: [{ token: HighchartsStatic }], target: i0.ɵɵFactoryTarget.Injectable });
     static ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "21.2.7", ngImport: i0, type: HighchartsService });
@@ -204,12 +204,11 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "21.2.7", ngImpor
             type: Injectable
         }], ctorParameters: () => [{ type: HighchartsStatic }] });
 
-var isObj = function (x) {
+var isObjectLike = function (x) {
     var type = typeof x;
     return x !== null && (type === 'object' || type === 'function');
 };
 var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 function toObject(val) {
     if (val === null || val === undefined) {
         throw new TypeError('Sources cannot be null or undefined');
@@ -226,7 +225,7 @@ function assignKey(to, from, key) {
             throw new TypeError('Cannot convert undefined or null to object (' + key + ')');
         }
     }
-    if (!hasOwnProperty.call(to, key) || !isObj(val)) {
+    if (!hasOwnProperty.call(to, key) || !isObjectLike(val)) {
         to[key] = val;
     }
     else {
@@ -243,15 +242,6 @@ function assign(to, from) {
             assignKey(to, from, key);
         }
     }
-    //if (Object.getOwnPropertySymbols) {
-    //    var symbols = Object.getOwnPropertySymbols(from);
-    //
-    //    for (var i = 0; i < symbols.length; i++) {
-    //        if (propIsEnumerable.call(from, symbols[i])) {
-    //            assignKey(to, from, symbols[i]);
-    //        }
-    //    }
-    //}
     return to;
 }
 function deepAssign(target, ...args) {
@@ -270,21 +260,18 @@ function initChart(highchartsService, userOpts, baseOpts, type) {
     if (!Highcharts[type]) {
         throw new Error(`${type} is unknown chart type.`);
     }
-    // Adjust axis type to user one (#56)
-    if (Array.isArray(userOpts.xAxis)) {
-        baseOpts.xAxis = [baseOpts.xAxis];
-    }
-    if (Array.isArray(userOpts.yAxis)) {
-        baseOpts.yAxis = [baseOpts.yAxis];
-    }
-    if (Array.isArray(userOpts.zAxis)) {
-        baseOpts.zAxis = [baseOpts.zAxis];
-    }
-    if (Array.isArray(userOpts.colorAxis)) {
-        baseOpts.colorAxis = [baseOpts.colorAxis];
-    }
-    const opts = deepAssign({}, baseOpts, userOpts);
+    const normalizedBaseOpts = deepAssign({}, baseOpts);
+    alignAxisShape(normalizedBaseOpts, userOpts, 'xAxis');
+    alignAxisShape(normalizedBaseOpts, userOpts, 'yAxis');
+    alignAxisShape(normalizedBaseOpts, userOpts, 'zAxis');
+    alignAxisShape(normalizedBaseOpts, userOpts, 'colorAxis');
+    const opts = deepAssign({}, normalizedBaseOpts, userOpts);
     return new Highcharts[type](opts);
+}
+function alignAxisShape(baseOpts, userOpts, axisName) {
+    if (Array.isArray(userOpts[axisName])) {
+        baseOpts[axisName] = [baseOpts[axisName]];
+    }
 }
 
 class ChartEvent {
@@ -297,7 +284,7 @@ class ChartEvent {
 }
 
 const chartEvents = [
-    //'click', works by default as a native DOM click
+    // Native DOM click already covers chart click.
     'addSeries',
     'afterPrint',
     'beforePrint',
@@ -326,36 +313,25 @@ const pointEvents = [
     'mouseOver',
     'update'
 ];
-const xAxisEvents = [
+const axisEvents = [
     'afterBreaks',
     'afterSetExtremes',
     'pointBreak',
     'pointInBreak',
     'setExtremes'
 ];
-const yAxisEvents = [
-    'afterBreaks',
-    'afterSetExtremes',
-    'pointBreak',
-    'pointInBreak',
-    'setExtremes'
-];
-const zAxisEvents = [
-    'afterBreaks',
-    'afterSetExtremes',
-    'pointBreak',
-    'pointInBreak',
-    'setExtremes'
-];
-const colorAxisEvents = [
-    'afterBreaks',
-    'afterSetExtremes',
-    'pointBreak',
-    'pointInBreak',
-    'setExtremes'
-];
+function bindEvents(target, eventNames, component) {
+    if (!component) {
+        return;
+    }
+    eventNames.forEach(function (eventName) {
+        target[eventName] = target[eventName] || function (event) {
+            component[eventName].emit(new ChartEvent(event, this));
+        };
+    });
+}
 function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, zAxisCmp, colorAxisCmp, element) {
-    let opts = {
+    const opts = {
         chart: {
             renderTo: element,
             events: {}
@@ -381,53 +357,13 @@ function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, zAxis
             events: {}
         }
     };
-    chartEvents.forEach(function (eventName) {
-        opts.chart.events[eventName] = opts.chart.events[eventName] || function (event) {
-            chartCmp[eventName].emit(new ChartEvent(event, this));
-        };
-    });
-    if (seriesCmp) {
-        seriesEvents.forEach(function (eventName) {
-            opts.plotOptions.series.events[eventName] = opts.plotOptions.series.events[eventName] || function (event) {
-                seriesCmp[eventName].emit(new ChartEvent(event, this));
-            };
-        });
-    }
-    if (pointCmp) {
-        pointEvents.forEach(function (eventName) {
-            opts.plotOptions.series.point.events[eventName] = opts.plotOptions.series.point.events[eventName] || function (event) {
-                pointCmp[eventName].emit(new ChartEvent(event, this));
-            };
-        });
-    }
-    if (xAxisCmp) {
-        xAxisEvents.forEach(function (eventName) {
-            opts.xAxis.events[eventName] = opts.xAxis.events[eventName] || function (event) {
-                xAxisCmp[eventName].emit(new ChartEvent(event, this));
-            };
-        });
-    }
-    if (yAxisCmp) {
-        yAxisEvents.forEach(function (eventName) {
-            opts.yAxis.events[eventName] = opts.yAxis.events[eventName] || function (event) {
-                yAxisCmp[eventName].emit(new ChartEvent(event, this));
-            };
-        });
-    }
-    if (zAxisCmp) {
-        zAxisEvents.forEach(function (eventName) {
-            opts.zAxis.events[eventName] = opts.zAxis.events[eventName] || function (event) {
-                zAxisCmp[eventName].emit(new ChartEvent(event, this));
-            };
-        });
-    }
-    if (colorAxisCmp) {
-        colorAxisEvents.forEach(function (eventName) {
-            opts.colorAxis.events[eventName] = opts.colorAxis.events[eventName] || function (event) {
-                colorAxisCmp[eventName].emit(new ChartEvent(event, this));
-            };
-        });
-    }
+    bindEvents(opts.chart.events, chartEvents, chartCmp);
+    bindEvents(opts.plotOptions.series.events, seriesEvents, seriesCmp);
+    bindEvents(opts.plotOptions.series.point.events, pointEvents, pointCmp);
+    bindEvents(opts.xAxis.events, axisEvents, xAxisCmp);
+    bindEvents(opts.yAxis.events, axisEvents, yAxisCmp);
+    bindEvents(opts.zAxis.events, axisEvents, zAxisCmp);
+    bindEvents(opts.colorAxis.events, axisEvents, colorAxisCmp);
     return opts;
 }
 
@@ -452,28 +388,44 @@ class ChartComponent {
     highchartsService;
     userOpts;
     baseOpts;
+    viewInitialized = false;
     type = 'Chart';
-    set options(opts) {
-        this.userOpts = opts;
-        this.init();
-    }
-    ;
+    options;
     init() {
-        if (this.userOpts && this.baseOpts) {
-            this.chart = initChart(this.highchartsService, this.userOpts, this.baseOpts, this.type);
-            this.create.emit(this.chart);
+        if (!this.userOpts || !this.baseOpts) {
+            return;
         }
+        this.destroyChart();
+        this.chart = initChart(this.highchartsService, this.userOpts, this.baseOpts, this.type);
+        this.create.emit(this.chart);
+    }
+    destroyChart() {
+        if (this.chart && this.chart.destroy) {
+            this.chart.destroy();
+        }
+        this.chart = null;
     }
     ngAfterViewInit() {
+        this.viewInitialized = true;
         this.baseOpts = createBaseOpts(this, this.series, this.series ? this.series.point : null, this.xAxis, this.yAxis, this.zAxis, this.colorAxis, this.element.nativeElement);
+        this.userOpts = this.options;
         this.init();
+    }
+    ngOnChanges() {
+        this.userOpts = this.options;
+        if (this.viewInitialized) {
+            this.init();
+        }
+    }
+    ngOnDestroy() {
+        this.destroyChart();
     }
     constructor(element, highchartsService) {
         this.element = element;
         this.highchartsService = highchartsService;
     }
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "21.2.7", ngImport: i0, type: ChartComponent, deps: [{ token: i0.ElementRef }, { token: HighchartsService }], target: i0.ɵɵFactoryTarget.Component });
-    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "21.2.7", type: ChartComponent, isStandalone: false, selector: "chart", inputs: { type: "type", options: "options" }, outputs: { create: "create", click: "click", addSeries: "addSeries", afterPrint: "afterPrint", beforePrint: "beforePrint", drilldown: "drilldown", drillup: "drillup", load: "load", redraw: "redraw", selection: "selection" }, providers: [HighchartsService], queries: [{ propertyName: "series", first: true, predicate: ChartSeriesComponent, descendants: true }, { propertyName: "xAxis", first: true, predicate: ChartXAxisComponent, descendants: true }, { propertyName: "yAxis", first: true, predicate: ChartYAxisComponent, descendants: true }, { propertyName: "zAxis", first: true, predicate: ChartZAxisComponent, descendants: true }, { propertyName: "colorAxis", first: true, predicate: ChartColorAxisComponent, descendants: true }], ngImport: i0, template: '&nbsp;', isInline: true });
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "21.2.7", type: ChartComponent, isStandalone: false, selector: "chart", inputs: { type: "type", options: "options" }, outputs: { create: "create", click: "click", addSeries: "addSeries", afterPrint: "afterPrint", beforePrint: "beforePrint", drilldown: "drilldown", drillup: "drillup", load: "load", redraw: "redraw", selection: "selection" }, providers: [HighchartsService], queries: [{ propertyName: "series", first: true, predicate: ChartSeriesComponent, descendants: true }, { propertyName: "xAxis", first: true, predicate: ChartXAxisComponent, descendants: true }, { propertyName: "yAxis", first: true, predicate: ChartYAxisComponent, descendants: true }, { propertyName: "zAxis", first: true, predicate: ChartZAxisComponent, descendants: true }, { propertyName: "colorAxis", first: true, predicate: ChartColorAxisComponent, descendants: true }], usesOnChanges: true, ngImport: i0, template: '&nbsp;', isInline: true });
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "21.2.7", ngImport: i0, type: ChartComponent, decorators: [{
             type: Component,
@@ -533,14 +485,16 @@ const CHART_DIRECTIVES = [
     ChartZAxisComponent,
     ChartColorAxisComponent
 ];
+function registerHighchartsModule(highchartsStatic, loadedModule) {
+    const highchartsModule = loadedModule && loadedModule.default ? loadedModule.default : loadedModule;
+    if (typeof highchartsModule === 'function') {
+        highchartsModule(highchartsStatic);
+    }
+}
 class ChartModule {
     static forRoot(highchartsStatic, ...highchartsModules) {
-        // Plug highcharts modules
         highchartsModules.forEach((loadedModule) => {
-            const highchartsModule = loadedModule && loadedModule.default ? loadedModule.default : loadedModule;
-            if (typeof highchartsModule === 'function') {
-                highchartsModule(highchartsStatic);
-            }
+            registerHighchartsModule(highchartsStatic, loadedModule);
         });
         return {
             ngModule: ChartModule,
@@ -577,5 +531,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "21.2.7", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { ChartColorAxisComponent, ChartComponent, ChartModule, ChartPointComponent, ChartSeriesComponent, ChartXAxisComponent, ChartYAxisComponent, ChartZAxisComponent };
+export { ChartColorAxisComponent, ChartComponent, ChartModule, ChartPointComponent, ChartSeriesComponent, ChartXAxisComponent, ChartYAxisComponent, ChartZAxisComponent, HighchartsService, HighchartsStatic };
 //# sourceMappingURL=stackline-angular-highcharts.mjs.map

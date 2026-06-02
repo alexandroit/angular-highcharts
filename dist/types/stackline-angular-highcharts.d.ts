@@ -1,5 +1,5 @@
 import * as i0 from '@angular/core';
-import { EventEmitter, ElementRef, ModuleWithProviders } from '@angular/core';
+import { EventEmitter, AfterViewInit, OnChanges, OnDestroy, ElementRef, ModuleWithProviders } from '@angular/core';
 
 declare class ChartEvent {
     originalEvent: Event;
@@ -78,14 +78,14 @@ declare class HighchartsStatic {
     static ɵprov: i0.ɵɵInjectableDeclaration<HighchartsStatic>;
 }
 declare class HighchartsService {
-    _highchartsStatice: HighchartsStatic;
+    private highchartsStatic;
     constructor(highchartsStatic: HighchartsStatic);
     getHighchartsStatic(): HighchartsStatic;
     static ɵfac: i0.ɵɵFactoryDeclaration<HighchartsService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<HighchartsService>;
 }
 
-declare class ChartComponent {
+declare class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
     series: ChartSeriesComponent;
     xAxis: ChartXAxisComponent;
     yAxis: ChartYAxisComponent;
@@ -106,10 +106,14 @@ declare class ChartComponent {
     highchartsService: HighchartsService;
     private userOpts;
     private baseOpts;
+    private viewInitialized;
     type: string;
-    set options(opts: any);
+    options: any;
     private init;
+    private destroyChart;
     ngAfterViewInit(): void;
+    ngOnChanges(): void;
+    ngOnDestroy(): void;
     constructor(element: ElementRef, highchartsService: HighchartsService);
     static ɵfac: i0.ɵɵFactoryDeclaration<ChartComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ChartComponent, "chart", never, { "type": { "alias": "type"; "required": false; }; "options": { "alias": "options"; "required": false; }; }, { "create": "create"; "click": "click"; "addSeries": "addSeries"; "afterPrint": "afterPrint"; "beforePrint": "beforePrint"; "drilldown": "drilldown"; "drillup": "drillup"; "load": "load"; "redraw": "redraw"; "selection": "selection"; }, ["series", "xAxis", "yAxis", "zAxis", "colorAxis"], never, false, never>;
@@ -122,4 +126,4 @@ declare class ChartModule {
     static ɵinj: i0.ɵɵInjectorDeclaration<ChartModule>;
 }
 
-export { ChartColorAxisComponent, ChartComponent, ChartModule, ChartPointComponent, ChartSeriesComponent, ChartXAxisComponent, ChartYAxisComponent, ChartZAxisComponent };
+export { ChartColorAxisComponent, ChartComponent, ChartModule, ChartPointComponent, ChartSeriesComponent, ChartXAxisComponent, ChartYAxisComponent, ChartZAxisComponent, HighchartsService, HighchartsStatic };

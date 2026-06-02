@@ -1,7 +1,7 @@
 import { HighchartsService } from './HighchartsService';
 import { deepAssign } from './deepAssign';
 
-export function initChart(highchartsService : HighchartsService, userOpts, baseOpts, type : string) {
+export function initChart(highchartsService: HighchartsService, userOpts, baseOpts, type: string) {
     const Highcharts = highchartsService.getHighchartsStatic();
 
     if (!Highcharts) {
@@ -11,21 +11,20 @@ export function initChart(highchartsService : HighchartsService, userOpts, baseO
         throw new Error(`${type} is unknown chart type.`);
     }
 
-    // Adjust axis type to user one (#56)
-    if (Array.isArray(userOpts.xAxis) ) {
-        baseOpts.xAxis = [baseOpts.xAxis];
-    }
-    if (Array.isArray(userOpts.yAxis) ) {
-        baseOpts.yAxis = [baseOpts.yAxis];
-    }
-    if (Array.isArray(userOpts.zAxis) ) {
-        baseOpts.zAxis = [baseOpts.zAxis];
-    }
-    if (Array.isArray(userOpts.colorAxis) ) {
-        baseOpts.colorAxis = [baseOpts.colorAxis];
-    }
+    const normalizedBaseOpts = deepAssign({}, baseOpts);
 
-    const opts = deepAssign({}, baseOpts, userOpts);
+    alignAxisShape(normalizedBaseOpts, userOpts, 'xAxis');
+    alignAxisShape(normalizedBaseOpts, userOpts, 'yAxis');
+    alignAxisShape(normalizedBaseOpts, userOpts, 'zAxis');
+    alignAxisShape(normalizedBaseOpts, userOpts, 'colorAxis');
+
+    const opts = deepAssign({}, normalizedBaseOpts, userOpts);
 
     return new Highcharts[type](opts);
+}
+
+function alignAxisShape(baseOpts, userOpts, axisName: string) {
+    if (Array.isArray(userOpts[axisName])) {
+        baseOpts[axisName] = [baseOpts[axisName]];
+    }
 }

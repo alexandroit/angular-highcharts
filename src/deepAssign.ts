@@ -1,9 +1,8 @@
-var isObj = function (x) {
+var isObjectLike = function (x) {
     var type = typeof x;
     return x !== null && (type === 'object' || type === 'function');
 };
 var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
 function toObject(val) {
     if (val === null || val === undefined) {
@@ -26,7 +25,7 @@ function assignKey(to, from, key) {
         }
     }
 
-    if (!hasOwnProperty.call(to, key) || !isObj(val)) {
+    if (!hasOwnProperty.call(to, key) || !isObjectLike(val)) {
         to[key] = val;
     } else {
         to[key] = assign(Object(to[key]), from[key]);
@@ -45,16 +44,6 @@ function assign(to, from) {
             assignKey(to, from, key);
         }
     }
-
-    //if (Object.getOwnPropertySymbols) {
-    //    var symbols = Object.getOwnPropertySymbols(from);
-    //
-    //    for (var i = 0; i < symbols.length; i++) {
-    //        if (propIsEnumerable.call(from, symbols[i])) {
-    //            assignKey(to, from, symbols[i]);
-    //        }
-    //    }
-    //}
 
     return to;
 }

@@ -1,25 +1,1160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>@stackline/angular-highcharts — Angular 5 Demo</title>
-  <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%23102033%27/%3E%3Cpath d=%27M32 14l14 18H18z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6353624842390947"
-     crossorigin="anonymous"></script>
+  <title>@stackline/angular-highcharts - Angular 5 docs</title>
+  <meta name="description" content="Angular 5 documentation for @stackline/angular-highcharts with setup, live Highcharts examples, wrapper API, events and module usage.">
+  <style>
+    :root {
+      --page: #f3f6fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --text: #142033;
+      --muted: #5b687c;
+      --line: #dce6f1;
+      --brand: #2f6db3;
+      --brand-strong: #164f88;
+      --accent: #d45d35;
+      --success: #1b8c6a;
+      --code: #102033;
+      --code-line: #20364f;
+      --shadow: 0 18px 48px rgba(21, 42, 70, 0.10);
+    }
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KQ9KECXR9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    * {
+      box-sizing: border-box;
+    }
 
-  gtag('config', 'G-3KQ9KECXR9');
-</script>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(47, 109, 179, 0.14), transparent 34%),
+        linear-gradient(180deg, #fff 0%, var(--page) 54%, #edf3f9 100%);
+      color: var(--text);
+      font-family: Inter, "Avenir Next", "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--brand-strong);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.94em;
+    }
+
+    .docs-shell {
+      width: min(1440px, 100%);
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #d45d35 0%, #2f6db3 82%);
+      color: #fff;
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .version-pills {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #f7fafe;
+      color: #324158;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pill.primary {
+      border-color: rgba(47, 109, 179, 0.25);
+      background: #e9f2fc;
+      color: var(--brand-strong);
+    }
+
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+      align-items: start;
+      min-width: 0;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 22px;
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 34px rgba(21, 42, 70, 0.08);
+    }
+
+    .sidebar strong {
+      margin-bottom: 6px;
+      color: #42506a;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #43536b;
+      font-size: 14px;
+      font-weight: 760;
+      text-decoration: none;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      background: #edf4fb;
+      color: var(--brand-strong);
+      text-decoration: none;
+    }
+
+    .content {
+      display: grid;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    .section {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 14px 40px rgba(21, 42, 70, 0.08);
+    }
+
+    .section.compact {
+      padding: 22px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin-bottom: 6px;
+      font-size: clamp(22px, 2.5vw, 31px);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .lead {
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 15px;
+      border: 1px solid rgba(47, 109, 179, 0.28);
+      border-radius: 8px;
+      background: #eef6fd;
+      color: var(--brand-strong);
+      font-size: 14px;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+
+    .button:hover {
+      text-decoration: none;
+      filter: brightness(0.98);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 22px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .hero-grid > *,
+    .example-row > *,
+    .code-grid > *,
+    .info-grid > *,
+    .api-grid > *,
+    .capability-grid > * {
+      min-width: 0;
+    }
+
+    .hero-copy h2 {
+      margin-bottom: 12px;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .preview-media {
+      overflow: hidden;
+      max-width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f7fbff;
+    }
+
+    .preview-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .info-grid,
+    .capability-grid,
+    .example-grid,
+    .api-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-card,
+    .capability,
+    .api-card {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-soft);
+    }
+
+    .info-card h3,
+    .capability strong,
+    .api-card h3 {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+      color: #182b44;
+    }
+
+    .info-card p,
+    .capability span,
+    .api-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .example-row {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.86fr) minmax(0, 1.14fr);
+      gap: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-soft);
+    }
+
+    .example-row + .example-row {
+      margin-top: 14px;
+    }
+
+    .example-title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .example-title h3 {
+      margin-bottom: 0;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 9px;
+      border: 1px solid #bfd4ea;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--brand-strong);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .example-row p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .mini-chart {
+      position: relative;
+      min-height: 180px;
+      border: 1px solid #d9e5ee;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(247,251,255,0.95)),
+        repeating-linear-gradient(0deg, transparent 0, transparent 35px, rgba(47,109,179,0.08) 36px);
+      overflow: hidden;
+    }
+
+    .mini-chart svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mini-chart .axis {
+      position: absolute;
+      inset: auto 16px 15px 16px;
+      height: 1px;
+      background: #cbd8e8;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .tab {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border: 1px solid #c9d7e7;
+      border-radius: 8px;
+      background: #fff;
+      color: #40506a;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    pre {
+      max-width: 100%;
+      margin: 0;
+      padding: 15px;
+      overflow: auto;
+      border: 1px solid var(--code-line);
+      border-radius: 8px;
+      background: var(--code);
+      color: #edf6ff;
+      line-height: 1.52;
+      white-space: pre;
+    }
+
+    pre code {
+      font-size: 13px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 46px;
+      padding: 12px 14px;
+      color: #1d314b;
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    summary small {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .details-body {
+      padding: 0 14px 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .code-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .code-block h4 {
+      margin: 0 0 8px;
+      color: #35465d;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .install-box {
+      display: grid;
+      gap: 14px;
+    }
+
+    .note {
+      padding: 12px 14px;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      background: #fff7f2;
+      color: #70432d;
+      font-weight: 700;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f7fc;
+      color: #314159;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .footer {
+      margin-top: 22px;
+      padding: 22px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 1020px) {
+      .docs-layout,
+      .hero-grid,
+      .example-row {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .sidebar strong {
+        grid-column: 1 / -1;
+      }
+
+      .code-grid,
+      .info-grid,
+      .capability-grid,
+      .api-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .docs-shell {
+        padding: 14px;
+      }
+
+      .topbar,
+      .section {
+        padding: 18px;
+      }
+
+      .topbar,
+      .section-head,
+      .brand-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .version-pills {
+        justify-content: flex-start;
+      }
+
+      .sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .example-title {
+        flex-direction: column;
+      }
+
+      .button {
+        white-space: normal;
+        text-align: center;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      a,
+      .button,
+      .pill {
+        overflow-wrap: anywhere;
+      }
+
+      pre {
+        max-width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6353624842390947" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KQ9KECXR9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3KQ9KECXR9');
+  </script>
 </head>
 <body>
-  <app-root>Loading demo…</app-root>
-<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+  <div class="docs-shell">
+    <header class="topbar">
+      <div class="brand-row">
+        <span class="mark">HC</span>
+        <div>
+          <span class="eyebrow">Stackline maintained line</span>
+          <h1>@stackline/angular-highcharts</h1>
+        </div>
+      </div>
+      <div class="version-pills">
+        <span class="pill">Angular 5.2.11</span>
+        <span class="pill primary">v5.0.0</span>
+        <a class="pill" href="../">All versions</a>
+      </div>
+    </header>
+
+    <div class="docs-layout">
+      <aside class="sidebar" aria-label="Documentation sections">
+        <strong>Documentation</strong>
+        <a class="nav-link active" href="#/overview" data-section="overview">Overview</a>
+        <a class="nav-link" href="#/install" data-section="install">Install</a>
+        <a class="nav-link" href="#/live-preview" data-section="live-preview">Live preview</a>
+        <a class="nav-link" href="#/dynamic-examples" data-section="dynamic-examples">Dynamic examples</a>
+        <a class="nav-link" href="#/static-examples" data-section="static-examples">Static examples</a>
+        <a class="nav-link" href="#/api" data-section="api">API</a>
+        <a class="nav-link" href="#/events" data-section="events">Events</a>
+        <a class="nav-link" href="#/modules" data-section="modules">Modules</a>
+      </aside>
+
+      <main class="content">
+        <section class="section" id="overview">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Angular 5 docs</span>
+              <h2>Highcharts wrapper for legacy Angular 5 apps, validated with a real Angular CLI 1.7 project.</h2>
+              <p>
+                This package keeps the original <code>&lt;chart&gt;</code> contract alive for Angular 5 while covering
+                modern Highcharts usage patterns: standard charts, StockChart, module-backed chart types, projected
+                event directives, native chart access and live data updates.
+              </p>
+              <div class="action-row">
+                <a class="button primary" href="live/" target="_blank" rel="noopener">Open live app</a>
+                <a class="button" href="live/static/" target="_blank" rel="noopener">Open static examples</a>
+                <a class="button" href="https://www.npmjs.com/package/@stackline/angular-highcharts/v/5.0.0" target="_blank" rel="noopener">npm package</a>
+              </div>
+            </div>
+            <figure class="preview-media">
+              <img src="https://assets.alexandro.net/2026/06/angular2-highcharts.gif" alt="Animated preview of Stackline Angular Highcharts examples">
+            </figure>
+          </div>
+        </section>
+
+        <section class="section compact" id="install">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Install</span>
+              <h2>Angular 5 package line</h2>
+              <p>Use the 5.x package family for Angular 5 applications. The live project runs Angular 5.2.11, @angular/cli 1.7.4 and Highcharts 5 from the published npm package line.</p>
+            </div>
+            <span class="tag">Angular 5</span>
+          </div>
+          <div class="install-box">
+            <pre><code>npm install @stackline/angular-highcharts@5.0.0 highcharts@5 --save-exact</code></pre>
+            <div class="note">For Angular 5, keep the framework-era packages such as <code>core-js</code>, <code>zone.js</code> and <code>rxjs</code> in the application when the Angular CLI 1.7 setup requires them.</div>
+            <div class="code-grid">
+              <div class="code-block">
+                <h4>app.module.ts</h4>
+                <pre><code>import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { ChartModule, HighchartsStatic } from '@stackline/angular-highcharts';
+import * as Highcharts from 'highcharts';
+
+export function highchartsFactory() {
+  return Highcharts;
+}
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    ChartModule
+  ],
+  providers: [
+    { provide: HighchartsStatic, useFactory: highchartsFactory }
+  ]
+})
+export class AppModule { }</code></pre>
+              </div>
+              <div class="code-block">
+                <h4>HTML</h4>
+                <pre><code>&lt;chart
+  [options]="options"
+  (create)="onCreate($event)"
+&gt;&lt;/chart&gt;</code></pre>
+              </div>
+              <div class="code-block">
+                <h4>TS</h4>
+                <pre><code>options: any = {
+  chart: { type: 'line', height: 340 },
+  title: { text: 'Simple chart' },
+  xAxis: { categories: ['Jan', 'Feb', 'Mar'] },
+  series: [{
+    name: 'Orders',
+    data: [12, 19, 28]
+  }]
+};
+
+onCreate(chart: any) {
+  console.log(chart.series.length);
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="live-preview">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Live preview</span>
+              <h2>Same examples as the Angular 5 live project</h2>
+              <p>The docs describe the exact live app currently running on the network. The first route uses dynamic data; the secondary route keeps the static chart gallery.</p>
+            </div>
+            <span class="tag">Full line test</span>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>Dynamic route</h3>
+              <p>Live crypto candles, live crypto treemap, live price movement, volume, gauges, heatmap, funnel and 3D examples.</p>
+              <div class="action-row">
+                <a class="button primary" href="live/" target="_blank" rel="noopener">Open live route</a>
+              </div>
+            </div>
+            <div class="info-card">
+              <h3>Static route</h3>
+              <p>One chart per row with fixed demo data: line, spline, area, column, pie, donut, scatter, bubble, stock, map-like and no-data states.</p>
+              <div class="action-row">
+                <a class="button" href="live/static/" target="_blank" rel="noopener">Open static route</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="dynamic-examples">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Dynamic examples</span>
+              <h2>Live market data without recreating every chart frame</h2>
+              <p>Dynamic examples update series data through the chart instance where possible, keeping motion progressive instead of blinking the chart surface.</p>
+            </div>
+          </div>
+
+          <article class="example-row">
+            <div>
+              <div class="example-title">
+                <h3>Live crypto candles</h3>
+                <span class="tag">StockChart</span>
+              </div>
+              <p>REST candle history plus WebSocket candle updates. The example defaults to <code>BNBUSDT</code>, <code>1s</code> interval and light chart theme.</p>
+              <div class="mini-chart" aria-hidden="true">
+                <svg viewBox="0 0 420 180" preserveAspectRatio="none">
+                  <polyline points="10,128 54,118 98,126 142,92 186,100 230,74 274,86 318,52 362,61 410,38" fill="none" stroke="#2f6db3" stroke-width="4"></polyline>
+                  <polyline points="10,156 54,150 98,154 142,133 186,138 230,121 274,129 318,104 362,109 410,96" fill="none" stroke="#d45d35" stroke-width="3"></polyline>
+                </svg>
+                <span class="axis"></span>
+              </div>
+            </div>
+            <div>
+              <details open>
+                <summary><span>Code layers</span><small>HTML / TS / SCSS</small></summary>
+                <div class="details-body">
+                  <div class="tabs"><span class="tab">HTML</span><span class="tab">TS</span><span class="tab">SCSS</span></div>
+                  <pre><code>&lt;chart
+  [type]="'StockChart'"
+  [options]="binanceOptions"
+  (create)="onBinanceChartCreate($event)"
+&gt;&lt;/chart&gt;</code></pre>
+                  <pre><code>binanceSymbol = 'BNBUSDT';
+binanceInterval = '1s';
+binanceTheme = 'light';
+binanceOptions: any = this.createBinanceOptions();
+
+onBinanceChartCreate(chart: any) {
+  this.binanceChart = chart;
+}
+
+private applyLiveCandle(candle: any) {
+  var ohlc = this.binanceChart.series[0];
+  var volume = this.binanceChart.series[1];
+  ohlc.addPoint([candle.time, candle.open, candle.high, candle.low, candle.close], false, true);
+  volume.addPoint([candle.time, candle.volume], true, true);
+}</code></pre>
+                  <pre><code>.chart-frame {
+  width: 100%;
+  min-height: 420px;
+  border: 1px solid #d9e5ee;
+  border-radius: 8px;
+  background: #fff;
+}</code></pre>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="example-row">
+            <div>
+              <div class="example-title">
+                <h3>Live crypto treemap</h3>
+                <span class="tag">Treemap</span>
+              </div>
+              <p>Top 50 coins sized by market cap and colored by 24h change. The tooltip stays above the chart and hides correctly on blur, scroll and pointer exit.</p>
+              <div class="mini-chart" aria-hidden="true">
+                <svg viewBox="0 0 420 180" preserveAspectRatio="none">
+                  <rect x="12" y="14" width="172" height="152" fill="#2f6db3" opacity="0.86"></rect>
+                  <rect x="190" y="14" width="92" height="72" fill="#1b8c6a" opacity="0.86"></rect>
+                  <rect x="288" y="14" width="106" height="72" fill="#d45d35" opacity="0.88"></rect>
+                  <rect x="190" y="92" width="60" height="74" fill="#5c7ea8" opacity="0.9"></rect>
+                  <rect x="256" y="92" width="138" height="74" fill="#3f987d" opacity="0.86"></rect>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <details>
+                <summary><span>Code layers</span><small>HTML / TS / SCSS</small></summary>
+                <div class="details-body">
+                  <pre><code>&lt;chart [options]="liveTreemapOptions"&gt;&lt;/chart&gt;</code></pre>
+                  <pre><code>private createLiveTreemapOptions() {
+  return {
+    chart: { type: 'treemap', height: 420 },
+    title: { text: 'Live crypto treemap' },
+    colorAxis: {
+      minColor: '#d45d35',
+      maxColor: '#1b8c6a'
+    },
+    tooltip: {
+      outside: false,
+      pointFormat: '&lt;b&gt;{point.name}&lt;/b&gt;&lt;br&gt;Market cap: {point.value}'
+    },
+    series: [{
+      type: 'treemap',
+      layoutAlgorithm: 'squarified',
+      data: this.cryptoTreemapRowsForChart()
+    }]
+  };
+}</code></pre>
+                  <pre><code>.crypto-treemap-chart .highcharts-data-label {
+  pointer-events: none;
+}</code></pre>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="example-row">
+            <div>
+              <div class="example-title">
+                <h3>Live price heartbeat spline</h3>
+                <span class="tag">Spline</span>
+              </div>
+              <p>Heartbeat-style normalized pulse from live price and change data, useful when a normal price line has too little visual motion.</p>
+              <div class="mini-chart" aria-hidden="true">
+                <svg viewBox="0 0 420 180" preserveAspectRatio="none">
+                  <polyline points="8,94 36,94 50,54 66,132 82,94 118,94 134,48 150,140 168,94 220,94 238,58 254,128 272,94 330,94 348,44 365,136 386,94 414,94" fill="none" stroke="#1b8c6a" stroke-width="4"></polyline>
+                </svg>
+                <span class="axis"></span>
+              </div>
+            </div>
+            <div>
+              <details>
+                <summary><span>Code layers</span><small>HTML / TS / SCSS</small></summary>
+                <div class="details-body">
+                  <pre><code>&lt;chart [options]="liveSplineOptions"&gt;&lt;/chart&gt;</code></pre>
+                  <pre><code>private createLiveSplineOptions() {
+  return {
+    chart: { type: 'spline', height: 320 },
+    title: { text: 'Live price heartbeat spline' },
+    xAxis: { type: 'datetime' },
+    yAxis: {
+      title: { text: 'Normalized pulse' },
+      plotLines: [{ value: 100, color: '#94a3b8', width: 1 }]
+    },
+    plotOptions: {
+      spline: { animation: false, marker: { enabled: false } }
+    },
+    series: this.marketHeartbeatSeries()
+  };
+}</code></pre>
+                  <pre><code>chart {
+  display: block;
+  width: 100%;
+  min-height: 320px;
+}</code></pre>
+                </div>
+              </details>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="static-examples">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Static examples</span>
+              <h2>One full-width row per chart type</h2>
+              <p>The secondary live route keeps the deterministic examples for wrapper coverage and visual checks.</p>
+            </div>
+            <a class="button" href="live/static/" target="_blank" rel="noopener">Open static route</a>
+          </div>
+          <div class="info-grid">
+            <div class="info-card"><h3>Common charts</h3><p>Line, spline, area, areaspline, column, bar, stacked column, pie, donut, scatter, bubble, combination and polar/radar.</p></div>
+            <div class="info-card"><h3>Module charts</h3><p>Gauge, solid gauge, heatmap, treemap, funnel, 3D column, stock, map-like and no-data-to-display states.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="api">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">API</span>
+              <h2>Wrapper contract</h2>
+              <p>The Angular 5 line keeps the historical wrapper shape so existing apps can migrate package names without changing component structure.</p>
+            </div>
+          </div>
+          <div class="api-grid">
+            <div class="api-card">
+              <h3>Options input</h3>
+              <p><code>&lt;chart [options]="options"&gt;</code> renders a Highcharts chart using the provided options object.</p>
+            </div>
+            <div class="api-card">
+              <h3>Constructor switch</h3>
+              <p><code>[type]="'StockChart'"</code> selects a Highcharts constructor when stock or map-style constructors are registered.</p>
+            </div>
+            <div class="api-card">
+              <h3>Create output</h3>
+              <p><code>(create)="saveChart($event)"</code> exposes the native Highcharts chart instance for progressive data updates.</p>
+            </div>
+            <div class="api-card">
+              <h3>Projected directives</h3>
+              <p><code>&lt;series&gt;</code>, <code>&lt;point&gt;</code>, <code>&lt;xAxis&gt;</code>, <code>&lt;yAxis&gt;</code>, <code>&lt;zAxis&gt;</code> and <code>&lt;colorAxis&gt;</code> wire event outputs.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="events">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Events</span>
+              <h2>Chart, series, point and axis event outputs</h2>
+              <p>Projected wrapper directives let Angular components listen to Highcharts lifecycle and interaction events without manually walking the chart object.</p>
+            </div>
+          </div>
+          <div class="code-grid">
+            <div class="code-block">
+              <h4>HTML</h4>
+              <pre><code>&lt;chart
+  [options]="directiveOptions"
+  (create)="onCreate($event)"
+  (load)="record('chart load')"
+  (redraw)="record('chart redraw')"
+&gt;
+  &lt;series (click)="record('series click')"&gt;
+    &lt;point (click)="record('point click')"&gt;&lt;/point&gt;
+  &lt;/series&gt;
+  &lt;xAxis (setExtremes)="record('xAxis extremes')"&gt;&lt;/xAxis&gt;
+  &lt;yAxis (setExtremes)="record('yAxis extremes')"&gt;&lt;/yAxis&gt;
+&lt;/chart&gt;</code></pre>
+            </div>
+            <div class="code-block">
+              <h4>TS</h4>
+              <pre><code>events: string[] = [];
+
+record(message: string) {
+  this.events.unshift(
+    new Date().toLocaleTimeString() + ' - ' + message
+  );
+  this.events = this.events.slice(0, 8);
+}</code></pre>
+            </div>
+            <div class="code-block">
+              <h4>SCSS</h4>
+              <pre><code>.event-log {
+  padding: 14px;
+  border: 1px solid #d9e5ee;
+  border-radius: 8px;
+  background: #f8fbff;
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="modules">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Modules</span>
+              <h2>Register Highcharts modules once in Angular 5</h2>
+              <p>The live app registers the modules in the same factory that provides the Highcharts static instance to the wrapper.</p>
+            </div>
+          </div>
+          <div class="code-grid">
+            <div class="code-block">
+              <h4>Module imports</h4>
+              <pre><code>import * as Highcharts from 'highcharts';
+import * as HighchartsMore from 'highcharts/highcharts-more';
+import * as Highcharts3d from 'highcharts/highcharts-3d';
+import * as Heatmap from 'highcharts/modules/heatmap';
+import * as Treemap from 'highcharts/modules/treemap';
+import * as Funnel from 'highcharts/modules/funnel';
+import * as SolidGauge from 'highcharts/modules/solid-gauge';
+import * as Stock from 'highcharts/modules/stock';
+import * as MapModule from 'highcharts/modules/map';
+import * as Drilldown from 'highcharts/modules/drilldown';
+import * as NoData from 'highcharts/modules/no-data-to-display';</code></pre>
+            </div>
+            <div class="code-block">
+              <h4>Factory</h4>
+              <pre><code>export function highchartsFactory() {
+  HighchartsMore(Highcharts);
+  Highcharts3d(Highcharts);
+  Heatmap(Highcharts);
+  Treemap(Highcharts);
+  Funnel(Highcharts);
+  SolidGauge(Highcharts);
+  Stock(Highcharts);
+  MapModule(Highcharts);
+  Drilldown(Highcharts);
+  NoData(Highcharts);
+  return Highcharts;
+}</code></pre>
+            </div>
+            <div class="code-block">
+              <h4>Provider</h4>
+              <pre><code>@NgModule({
+  imports: [BrowserModule, ChartModule],
+  providers: [
+    { provide: HighchartsStatic, useFactory: highchartsFactory }
+  ]
+})
+export class AppModule { }</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="section compact">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Wrapper capabilities</span>
+              <h2>Coverage summary</h2>
+            </div>
+          </div>
+          <div class="capability-grid">
+            <div class="capability">
+              <strong>Options API</strong>
+              <span><code>&lt;chart [options]="options"&gt;</code></span>
+            </div>
+            <div class="capability">
+              <strong>Constructor switch</strong>
+              <span><code>[type]="'StockChart'"</code></span>
+            </div>
+            <div class="capability">
+              <strong>Directive events</strong>
+              <span><code>&lt;series&gt;</code>, <code>&lt;point&gt;</code>, <code>&lt;xAxis&gt;</code>, <code>&lt;yAxis&gt;</code></span>
+            </div>
+            <div class="capability">
+              <strong>Highcharts modules</strong>
+              <span>more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <strong>@stackline/angular-highcharts</strong> - maintained Angular Highcharts wrapper documentation.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+      var ids = links.map(function (link) { return link.getAttribute('data-section'); });
+
+      function normalizeHash() {
+        var hash = window.location.hash || '#/overview';
+        return hash.replace(/^#\/?/, '') || 'overview';
+      }
+
+      function activate(id, shouldScroll) {
+        if (ids.indexOf(id) === -1) {
+          id = 'overview';
+        }
+
+        links.forEach(function (link) {
+          link.classList.toggle('active', link.getAttribute('data-section') === id);
+        });
+
+        if (shouldScroll) {
+          if (id === 'overview') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+          }
+
+          var section = document.getElementById(id);
+          if (section) {
+            section.scrollIntoView({ block: 'start' });
+          }
+        }
+      }
+
+      window.addEventListener('hashchange', function () {
+        activate(normalizeHash(), true);
+      });
+
+      activate(normalizeHash(), !!window.location.hash && normalizeHash() !== 'overview');
+    })();
+  </script>
+</body>
 </html>

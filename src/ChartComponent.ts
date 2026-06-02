@@ -1,4 +1,14 @@
-import { Input, ElementRef, Component, Output, EventEmitter, ContentChild } from '@angular/core';
+import {
+    AfterViewInit,
+    ContentChild,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnDestroy,
+    Output
+} from '@angular/core';
 
 import { ChartSeriesComponent } from './ChartSeriesComponent';
 import { ChartXAxisComponent } from './ChartXAxisComponent';
@@ -16,7 +26,7 @@ import { createBaseOpts } from './createBaseOpts';
     standalone: false,
     providers: [HighchartsService],
 })
-export class ChartComponent {
+export class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
     @ContentChild(ChartSeriesComponent, { static: false }) series: ChartSeriesComponent;
     @ContentChild(ChartXAxisComponent, { static: false }) xAxis: ChartXAxisComponent;
     @ContentChild(ChartYAxisComponent, { static: false }) yAxis: ChartYAxisComponent;
@@ -34,20 +44,34 @@ export class ChartComponent {
     @Output() selection = new EventEmitter<ChartEvent>();
     chart: any;
     element: ElementRef;
-    highchartsService : HighchartsService;
+    highchartsService: HighchartsService;
     private userOpts: any;
     private baseOpts: any;
+    private viewInitialized = false;
+
     @Input() type: string = 'Chart';
     @Input() options: any;
 
     private init() {
-        if (this.userOpts && this.baseOpts) {
-            this.chart = initChart(this.highchartsService, this.userOpts, this.baseOpts, this.type);
-            this.create.emit(this.chart);
+        if (!this.userOpts || !this.baseOpts) {
+            return;
         }
+
+        this.destroyChart();
+        this.chart = initChart(this.highchartsService, this.userOpts, this.baseOpts, this.type);
+        this.create.emit(this.chart);
+    }
+
+    private destroyChart() {
+        if (this.chart && this.chart.destroy) {
+            this.chart.destroy();
+        }
+
+        this.chart = null;
     }
 
     ngAfterViewInit() {
+        this.viewInitialized = true;
         this.baseOpts = createBaseOpts(
             this,
             this.series,
@@ -64,10 +88,17 @@ export class ChartComponent {
 
     ngOnChanges() {
         this.userOpts = this.options;
-        this.init();
+
+        if (this.viewInitialized) {
+            this.init();
+        }
     }
 
-    constructor(element: ElementRef, highchartsService : HighchartsService) {
+    ngOnDestroy() {
+        this.destroyChart();
+    }
+
+    constructor(element: ElementRef, highchartsService: HighchartsService) {
         this.element = element;
         this.highchartsService = highchartsService;
     }

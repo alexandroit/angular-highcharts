@@ -124,7 +124,7 @@ function copySourcesForLine(tempSrcDir, major) {
   ensureCleanDir(tempSrcDir);
 
   for (const fileName of fs.readdirSync(srcDir)) {
-    if (fileName.endsWith('.spec.ts')) {
+    if (fileName.endsWith('.spec.ts') || fileName === 'Mocks.ts' || fileName === 'stub.ts') {
       continue;
     }
 
@@ -713,8 +713,10 @@ function writeLegacyMetadataFiles(packageDir) {
         type: inputMember(),
         options: inputMember(),
         init: methodMember(),
+        destroyChart: methodMember(),
         ngAfterViewInit: methodMember(),
         ngOnChanges: methodMember(),
+        ngOnDestroy: methodMember(),
         __ctor__: [{
           __symbolic: 'constructor',
           parameters: [
