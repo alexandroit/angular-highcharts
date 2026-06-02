@@ -208,8 +208,8 @@ The Angular ${major} package family is \`${version}\` and is intended for Angula
 6. [Highcharts Modules](#highcharts-modules)
 7. [Events and Directives](#events-and-directives)
 8. [Native Chart Instance](#native-chart-instance)
-9. [Dynamic and Realtime Data](#dynamic-and-realtime-data)
-10. [Common Chart Types](#common-chart-types)
+9. [Common Chart Types](#common-chart-types)
+10. [Dynamic Updates](#dynamic-updates)
 11. [API Surface](#api-surface)
 12. [Wrapper Capabilities](#wrapper-capabilities)
 13. [License](#license)
@@ -405,38 +405,6 @@ replaceSeries(data: number[]) {
 }
 \`\`\`
 
-## Dynamic and Realtime Data
-
-The Angular ${major} live test includes a realtime market screen:
-
-- REST candle history.
-- WebSocket candle updates.
-- Light and dark chart modes.
-- \`StockChart\` candlestick rendering.
-- Dynamic ticker charts that update existing Highcharts series.
-- A Mask API route through \`api-b.alexandro.net\` for networks that block direct Binance domains.
-
-The example still uses public Binance market data, but browser traffic can be routed through a mask API so corporate firewalls do not block the demo domain.
-
-\`\`\`ts
-restUrl = 'https://api-b.alexandro.net/api/v3/klines?symbol=BNBUSDT&interval=1s&limit=300';
-wsUrl = 'wss://api-b.alexandro.net/ws/bnbusdt@kline_1s';
-\`\`\`
-
-When data changes often, prefer updating the existing chart instance:
-
-\`\`\`ts
-updateCandles(ohlcData: any[], volumeData: any[]) {
-  if (!this.chart) {
-    return;
-  }
-
-  this.chart.series[0].setData(ohlcData, false, false);
-  this.chart.series[1].setData(volumeData, false, false);
-  this.chart.redraw();
-}
-\`\`\`
-
 ## Common Chart Types
 
 Use normal Highcharts options. The wrapper does not invent a second chart configuration language.
@@ -468,6 +436,24 @@ pieOptions = {
     }
   ]
 };
+\`\`\`
+
+## Dynamic Updates
+
+For dashboards and live screens, keep the native chart instance from \`(create)\`
+and update series data directly. This avoids recreating the full chart surface
+on every frame.
+
+\`\`\`ts
+updateCandles(ohlcData: any[], volumeData: any[]) {
+  if (!this.chart) {
+    return;
+  }
+
+  this.chart.series[0].setData(ohlcData, false, false);
+  this.chart.series[1].setData(volumeData, false, false);
+  this.chart.redraw();
+}
 \`\`\`
 
 ## API Surface

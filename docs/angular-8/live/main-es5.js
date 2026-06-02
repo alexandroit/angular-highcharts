@@ -1,0 +1,3339 @@
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
+  /***/"./$$_lazy_route_resource lazy recursive": (
+  /*!******************************************************!*\
+    !*** ./$$_lazy_route_resource lazy namespace object ***!
+    \******************************************************/
+  /*! no static exports found */
+  /***/
+  function _$$_lazy_route_resource_lazy_recursive(module, exports) {
+    function webpackEmptyAsyncContext(req) {
+      // Here Promise.resolve().then() is used instead of new Promise() to prevent
+      // uncaught exception popping up in devtools
+      return Promise.resolve().then(function () {
+        var e = new Error("Cannot find module '" + req + "'");
+        e.code = 'MODULE_NOT_FOUND';
+        throw e;
+      });
+    }
+    webpackEmptyAsyncContext.keys = function () {
+      return [];
+    };
+    webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+    module.exports = webpackEmptyAsyncContext;
+    webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
+
+    /***/
+  }),
+  /***/"./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html": (
+  /*!**************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
+    \**************************************************************************/
+  /*! exports provided: default */
+  /***/
+  function _node_modules_rawLoader_dist_cjsJs_src_app_appComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+    __webpack_exports__["default"] = "<main>\n  <header>\n    <div class=\"header-copy\">\n      <span>Angular CLI 8.3.29 / Angular 8.2.14 runtime</span>\n      <h1>@stackline/angular-highcharts 8.0.0</h1>\n      <p>Project generated with the Angular 8 CLI blueprint and running the local Verdaccio Angular 8 package line.</p>\n    </div>\n    <nav class=\"route-tabs\">\n      <a href=\"./\" [class.active]=\"viewMode === 'dynamic'\">Live dynamic examples</a>\n      <a href=\"static\" [class.active]=\"viewMode === 'static'\">Static examples</a>\n    </nav>\n  </header>\n\n  <div *ngIf=\"viewMode === 'dynamic'\">\n    <section\n      class=\"chart-card live-market-card\"\n      [class.market-light]=\"binanceTheme === 'light'\"\n      [class.market-dark]=\"binanceTheme === 'dark'\"\n    >\n      <div class=\"chart-head market-head\">\n        <div>\n          <h2>Live crypto candles</h2>\n          <p>REST candle history from Binance through the Mask API with realtime WebSocket candle updates.</p>\n        </div>\n        <span>StockChart</span>\n      </div>\n\n      <div class=\"market-toolbar\">\n        <div>\n          <strong>Theme</strong>\n          <button type=\"button\" [class.active]=\"binanceTheme === 'dark'\" (click)=\"selectBinanceTheme('dark')\">Dark</button>\n          <button type=\"button\" [class.active]=\"binanceTheme === 'light'\" (click)=\"selectBinanceTheme('light')\">Light</button>\n        </div>\n        <div>\n          <strong>Symbol</strong>\n          <button type=\"button\" *ngFor=\"let symbol of binanceSymbols\" [class.active]=\"symbol === binanceSymbol\" (click)=\"selectBinanceSymbol(symbol)\">{{ symbol }}</button>\n        </div>\n        <div>\n          <strong>Interval</strong>\n          <button type=\"button\" *ngFor=\"let interval of binanceIntervals\" [class.active]=\"interval === binanceInterval\" (click)=\"selectBinanceInterval(interval)\">{{ interval }}</button>\n        </div>\n        <button type=\"button\" class=\"reload-button\" (click)=\"reloadBinanceChart()\">Reload</button>\n      </div>\n\n      <div class=\"market-ticker\" *ngIf=\"binanceLastCandle\">\n        <span>Open <strong>{{ formatPrice(binanceLastCandle.open) }}</strong></span>\n        <span>High <strong>{{ formatPrice(binanceLastCandle.high) }}</strong></span>\n        <span>Low <strong>{{ formatPrice(binanceLastCandle.low) }}</strong></span>\n        <span>Close <strong>{{ formatPrice(binanceLastCandle.close) }}</strong></span>\n        <span [class.positive]=\"binanceLastCandle.changePercent >= 0\" [class.negative]=\"binanceLastCandle.changePercent < 0\">Change <strong>{{ formatPercent(binanceLastCandle.changePercent) }}</strong></span>\n      </div>\n\n      <div class=\"market-status\">\n        <span>{{ binanceStatus }}</span>\n        <span>{{ binanceSocketStatus }}</span>\n        <span>{{ binanceCandleCount }} candles</span>\n      </div>\n\n      <div class=\"chart-frame market-frame\">\n        <chart [type]=\"'StockChart'\" [options]=\"binanceOptions\" (create)=\"onBinanceChartCreate($event)\"></chart>\n      </div>\n\n      <div class=\"endpoint-grid\">\n        <div>\n          <strong>REST history</strong>\n          <code>{{ binanceRestUrl || 'Waiting for REST endpoint...' }}</code>\n        </div>\n        <div>\n          <strong>Realtime WebSocket</strong>\n          <code>{{ binanceWsUrl || 'Waiting for WebSocket endpoint...' }}</code>\n        </div>\n      </div>\n\n      <details class=\"tutorial-collapse\">\n        <summary>\n          <span>Open tutorial</span>\n          <small>HTML / TS / SCSS</small>\n        </summary>\n        <div class=\"code-layer-grid\">\n          <div>\n            <h4>HTML</h4>\n            <pre>{{ binanceTutorialHtml }}</pre>\n          </div>\n          <div>\n            <h4>TS</h4>\n            <pre>{{ binanceTutorialTs }}</pre>\n          </div>\n          <div>\n            <h4>SCSS</h4>\n            <pre>{{ binanceTutorialScss }}</pre>\n          </div>\n        </div>\n      </details>\n    </section>\n\n    <section class=\"examples-grid\">\n      <article class=\"chart-card\" *ngFor=\"let example of dynamicExamples\">\n        <div class=\"chart-head\">\n          <div>\n            <h3>{{ example.title }}</h3>\n            <p>{{ example.description }}</p>\n          </div>\n          <span>Live</span>\n        </div>\n\n        <div class=\"chart-frame\">\n          <chart [options]=\"example.options\" (create)=\"onDynamicChartCreate(example, $event)\"></chart>\n        </div>\n\n        <details class=\"tutorial-collapse\">\n          <summary>\n            <span>Open tutorial</span>\n            <small>HTML / TS / SCSS</small>\n          </summary>\n          <div class=\"code-layer-grid\">\n            <div>\n              <h4>HTML</h4>\n              <pre>{{ example.tutorialHtml }}</pre>\n            </div>\n            <div>\n              <h4>TS</h4>\n              <pre>{{ example.tutorialTs }}</pre>\n            </div>\n            <div>\n              <h4>SCSS</h4>\n              <pre>{{ example.tutorialScss }}</pre>\n            </div>\n          </div>\n        </details>\n      </article>\n    </section>\n  </div>\n\n  <div *ngIf=\"viewMode === 'static'\">\n    <section class=\"panel intro-panel\">\n      <div>\n        <h2>Static examples</h2>\n        <p>Original one-row examples with fixed demo option objects.</p>\n      </div>\n      <div class=\"status-pill\">Secondary URL</div>\n    </section>\n\n    <section class=\"examples-grid\">\n      <article class=\"chart-card\" *ngFor=\"let example of examples\">\n        <div class=\"chart-head\">\n          <div>\n            <h3>{{ example.title }}</h3>\n            <p>{{ example.description }}</p>\n          </div>\n          <span>{{ example.constructorType || 'Chart' }}</span>\n        </div>\n\n        <div class=\"chart-frame\">\n          <chart [type]=\"example.constructorType || 'Chart'\" [options]=\"example.options\" (create)=\"onCreate(example.title, $event)\"></chart>\n        </div>\n\n        <details class=\"tutorial-collapse\">\n          <summary>\n            <span>Open tutorial</span>\n            <small>HTML / TS / SCSS</small>\n          </summary>\n          <div class=\"code-layer-grid\">\n            <div>\n              <h4>HTML</h4>\n              <pre>{{ example.tutorialHtml }}</pre>\n            </div>\n            <div>\n              <h4>TS</h4>\n              <pre>{{ example.tutorialTs }}</pre>\n            </div>\n            <div>\n              <h4>SCSS</h4>\n              <pre>{{ example.tutorialScss }}</pre>\n            </div>\n          </div>\n        </details>\n      </article>\n    </section>\n\n    <section class=\"panel feature-panel\">\n      <div class=\"chart-head\">\n        <div>\n          <h2>Dynamic update</h2>\n          <p>Replaces the options object to validate the Angular 8 input binding.</p>\n        </div>\n        <button type=\"button\" (click)=\"randomizeDynamicChart()\">Update data</button>\n      </div>\n\n      <div class=\"chart-frame large\">\n        <chart [options]=\"dynamicOptions\" (create)=\"onCreate('Dynamic update', $event)\"></chart>\n      </div>\n\n      <details class=\"tutorial-collapse\">\n        <summary>\n          <span>Open tutorial</span>\n          <small>HTML / TS / SCSS</small>\n        </summary>\n        <div class=\"code-layer-grid\">\n          <div>\n            <h4>HTML</h4>\n            <pre>{{ dynamicTutorialHtml }}</pre>\n          </div>\n          <div>\n            <h4>TS</h4>\n            <pre>{{ dynamicTutorialTs }}</pre>\n          </div>\n          <div>\n            <h4>SCSS</h4>\n            <pre>{{ dynamicTutorialScss }}</pre>\n          </div>\n        </div>\n      </details>\n    </section>\n\n    <section class=\"panel feature-panel\">\n      <div class=\"chart-head\">\n        <div>\n          <h2>Directive and event outputs</h2>\n          <p>Projected wrapper directives wire chart, series, point and axis events.</p>\n        </div>\n      </div>\n\n      <div class=\"chart-frame large\">\n        <chart [options]=\"directiveOptions\" (create)=\"onCreate('Directive chart', $event)\" (load)=\"record('chart load')\" (redraw)=\"record('chart redraw')\">\n          <series (click)=\"record('series click')\" (legendItemClick)=\"record('legend click')\">\n            <point (click)=\"record('point click')\" (mouseOver)=\"record('point hover')\"></point>\n          </series>\n          <xAxis (setExtremes)=\"record('xAxis extremes')\"></xAxis>\n          <yAxis (setExtremes)=\"record('yAxis extremes')\"></yAxis>\n        </chart>\n      </div>\n\n      <details class=\"tutorial-collapse\">\n        <summary>\n          <span>Open tutorial</span>\n          <small>HTML / TS / SCSS</small>\n        </summary>\n        <div class=\"code-layer-grid\">\n          <div>\n            <h4>HTML</h4>\n            <pre>{{ directiveTutorialHtml }}</pre>\n          </div>\n          <div>\n            <h4>TS</h4>\n            <pre>{{ directiveTutorialTs }}</pre>\n          </div>\n          <div>\n            <h4>SCSS</h4>\n            <pre>{{ directiveTutorialScss }}</pre>\n          </div>\n        </div>\n      </details>\n\n      <div class=\"event-log\">\n        <strong>Event log</strong>\n        <p *ngIf=\"!events.length\">Interact with the chart to collect events.</p>\n        <ul>\n          <li *ngFor=\"let event of events\">{{ event }}</li>\n        </ul>\n      </div>\n    </section>\n  </div>\n\n  <footer class=\"panel capabilities-footer\">\n    <h2>Wrapper capabilities</h2>\n    <div class=\"capability-grid\">\n      <div>\n        <strong>Options API</strong>\n        <span><code>&lt;chart [options]=\"options\"&gt;</code></span>\n      </div>\n      <div>\n        <strong>Constructor switch</strong>\n        <span><code>[type]=\"'StockChart'\"</code></span>\n      </div>\n      <div>\n        <strong>Directive events</strong>\n        <span><code>&lt;series&gt;</code>, <code>&lt;point&gt;</code>, <code>&lt;xAxis&gt;</code>, <code>&lt;yAxis&gt;</code></span>\n      </div>\n      <div>\n        <strong>Highcharts modules</strong>\n        <span>more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown</span>\n      </div>\n    </div>\n  </footer>\n</main>\n";
+
+    /***/
+  }),
+  /***/"./node_modules/tslib/tslib.es6.js": (
+  /*!*****************************************!*\
+    !*** ./node_modules/tslib/tslib.es6.js ***!
+    \*****************************************/
+  /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+  /***/
+  function _node_modules_tslib_tslibEs6Js(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__extends", function () {
+      return __extends;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__assign", function () {
+      return _assign;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__rest", function () {
+      return __rest;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__decorate", function () {
+      return __decorate;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__param", function () {
+      return __param;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__metadata", function () {
+      return __metadata;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__awaiter", function () {
+      return __awaiter;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__generator", function () {
+      return __generator;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__createBinding", function () {
+      return __createBinding;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__exportStar", function () {
+      return __exportStar;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__values", function () {
+      return __values;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__read", function () {
+      return __read;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__spread", function () {
+      return __spread;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__spreadArrays", function () {
+      return __spreadArrays;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__await", function () {
+      return __await;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function () {
+      return __asyncGenerator;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function () {
+      return __asyncDelegator;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__asyncValues", function () {
+      return __asyncValues;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function () {
+      return __makeTemplateObject;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__importStar", function () {
+      return __importStar;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__importDefault", function () {
+      return __importDefault;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function () {
+      return __classPrivateFieldGet;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function () {
+      return __classPrivateFieldSet;
+    });
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+    
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+    
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var _extendStatics = function extendStatics(d, b) {
+      _extendStatics = Object.setPrototypeOf || {
+        __proto__: []
+      } instanceof Array && function (d, b) {
+        d.__proto__ = b;
+      } || function (d, b) {
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+      };
+      return _extendStatics(d, b);
+    };
+    function __extends(d, b) {
+      _extendStatics(d, b);
+      function __() {
+        this.constructor = d;
+      }
+      d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+    var _assign = function __assign() {
+      _assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+      };
+      return _assign.apply(this, arguments);
+    };
+    function __rest(s, e) {
+      var t = {};
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+      if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+      }
+      return t;
+    }
+    function __decorate(decorators, target, key, desc) {
+      var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+      if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+    function __param(paramIndex, decorator) {
+      return function (target, key) {
+        decorator(target, key, paramIndex);
+      };
+    }
+    function __metadata(metadataKey, metadataValue) {
+      if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+    function __awaiter(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function (resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    }
+    function __generator(thisArg, body) {
+      var _ = {
+          label: 0,
+          sent: function sent() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+          },
+          trys: [],
+          ops: []
+        },
+        f,
+        y,
+        t,
+        g;
+      return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+      }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+        return this;
+      }), g;
+      function verb(n) {
+        return function (v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return {
+                value: op[1],
+                done: false
+              };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+          value: op[0] ? op[1] : void 0,
+          done: true
+        };
+      }
+    }
+    function __createBinding(o, m, k, k2) {
+      if (k2 === undefined) k2 = k;
+      o[k2] = m[k];
+    }
+    function __exportStar(m, exports) {
+      for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+    }
+    function __values(o) {
+      var s = typeof Symbol === "function" && Symbol.iterator,
+        m = s && o[s],
+        i = 0;
+      if (m) return m.call(o);
+      if (o && typeof o.length === "number") return {
+        next: function next() {
+          if (o && i >= o.length) o = void 0;
+          return {
+            value: o && o[i++],
+            done: !o
+          };
+        }
+      };
+      throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    }
+    function __read(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m) return o;
+      var i = m.call(o),
+        r,
+        ar = [],
+        e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+      } catch (error) {
+        e = {
+          error: error
+        };
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+          if (e) throw e.error;
+        }
+      }
+      return ar;
+    }
+    function __spread() {
+      for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+      return ar;
+    }
+    function __spreadArrays() {
+      for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+      for (var r = Array(s), k = 0, i = 0; i < il; i++) for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) r[k] = a[j];
+      return r;
+    }
+    ;
+    function __await(v) {
+      return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+    function __asyncGenerator(thisArg, _arguments, generator) {
+      if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+      var g = generator.apply(thisArg, _arguments || []),
+        i,
+        q = [];
+      return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i;
+      function verb(n) {
+        if (g[n]) i[n] = function (v) {
+          return new Promise(function (a, b) {
+            q.push([n, v, a, b]) > 1 || resume(n, v);
+          });
+        };
+      }
+      function resume(n, v) {
+        try {
+          step(g[n](v));
+        } catch (e) {
+          settle(q[0][3], e);
+        }
+      }
+      function step(r) {
+        r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+      }
+      function fulfill(value) {
+        resume("next", value);
+      }
+      function reject(value) {
+        resume("throw", value);
+      }
+      function settle(f, v) {
+        if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]);
+      }
+    }
+    function __asyncDelegator(o) {
+      var i, p;
+      return i = {}, verb("next"), verb("throw", function (e) {
+        throw e;
+      }), verb("return"), i[Symbol.iterator] = function () {
+        return this;
+      }, i;
+      function verb(n, f) {
+        i[n] = o[n] ? function (v) {
+          return (p = !p) ? {
+            value: __await(o[n](v)),
+            done: n === "return"
+          } : f ? f(v) : v;
+        } : f;
+      }
+    }
+    function __asyncValues(o) {
+      if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+      var m = o[Symbol.asyncIterator],
+        i;
+      return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i);
+      function verb(n) {
+        i[n] = o[n] && function (v) {
+          return new Promise(function (resolve, reject) {
+            v = o[n](v), settle(resolve, reject, v.done, v.value);
+          });
+        };
+      }
+      function settle(resolve, reject, d, v) {
+        Promise.resolve(v).then(function (v) {
+          resolve({
+            value: v,
+            done: d
+          });
+        }, reject);
+      }
+    }
+    function __makeTemplateObject(cooked, raw) {
+      if (Object.defineProperty) {
+        Object.defineProperty(cooked, "raw", {
+          value: raw
+        });
+      } else {
+        cooked.raw = raw;
+      }
+      return cooked;
+    }
+    ;
+    function __importStar(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+      result["default"] = mod;
+      return result;
+    }
+    function __importDefault(mod) {
+      return mod && mod.__esModule ? mod : {
+        "default": mod
+      };
+    }
+    function __classPrivateFieldGet(receiver, privateMap) {
+      if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+      }
+      return privateMap.get(receiver);
+    }
+    function __classPrivateFieldSet(receiver, privateMap, value) {
+      if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+      }
+      privateMap.set(receiver, value);
+      return value;
+    }
+
+    /***/
+  }),
+  /***/"./src/app/app.component.css": (
+  /*!***********************************!*\
+    !*** ./src/app/app.component.css ***!
+    \***********************************/
+  /*! exports provided: default */
+  /***/
+  function _src_app_appComponentCss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+    __webpack_exports__["default"] = ":host {\n  display: block;\n}\n\nmain {\n  width: calc(100% - 32px);\n  max-width: 1360px;\n  margin: 0 auto;\n  padding: 32px 0 48px;\n}\n\nheader,\n.panel,\n.chart-card {\n  background: #fff;\n  border: 1px solid #d9e5ee;\n  border-radius: 8px;\n  box-shadow: 0 10px 28px rgba(23, 52, 77, .08);\n}\n\nheader {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 20px;\n  padding: 24px;\n  margin-bottom: 18px;\n}\n\n.header-copy {\n  min-width: 0;\n}\n\n.route-tabs {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n  justify-content: flex-end;\n  flex: 0 0 auto;\n}\n\n.route-tabs a {\n  display: inline-flex;\n  align-items: center;\n  min-height: 36px;\n  padding: 0 14px;\n  border: 1px solid #d0dbe6;\n  border-radius: 6px;\n  color: #254966;\n  font-size: 13px;\n  font-weight: 700;\n  text-decoration: none;\n}\n\n.route-tabs a.active {\n  border-color: #146c94;\n  background: #146c94;\n  color: #fff;\n}\n\nheader span {\n  display: block;\n  margin-bottom: 8px;\n  color: #466179;\n  font-size: 12px;\n  font-weight: 700;\n  letter-spacing: .05em;\n  text-transform: uppercase;\n}\n\nh1,\nh2,\nh3,\np {\n  margin-top: 0;\n}\n\nh1 {\n  margin-bottom: 8px;\n  font-size: 30px;\n  line-height: 1.2;\n}\n\np {\n  color: #50677d;\n}\n\nheader p {\n  margin-bottom: 0;\n}\n\n.panel {\n  padding: 24px;\n  margin-bottom: 18px;\n}\n\n.intro-panel {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n}\n\n.status-pill {\n  flex: 0 0 auto;\n  padding: 8px 12px;\n  border-radius: 999px;\n  background: #e7f2ff;\n  color: #205b8f;\n  font-size: 13px;\n  font-weight: 700;\n}\n\n.capability-grid,\n.examples-grid,\n.event-grid {\n  display: grid;\n  gap: 16px;\n}\n\n.capability-grid {\n  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n}\n\n.capability-grid div {\n  padding: 14px;\n  border: 1px solid #dbe6ef;\n  border-radius: 6px;\n  background: #f8fbfd;\n}\n\n.capability-grid strong,\n.capability-grid span {\n  display: block;\n}\n\n.capability-grid span {\n  margin-top: 6px;\n  color: #536b80;\n  font-size: 13px;\n  line-height: 1.45;\n}\n\n.examples-grid {\n  grid-template-columns: 1fr;\n  align-items: start;\n}\n\n.chart-card {\n  width: 100%;\n  box-sizing: border-box;\n  padding: 18px;\n}\n\n.chart-head {\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  gap: 12px;\n  margin-bottom: 14px;\n}\n\n.chart-head h2,\n.chart-head h3 {\n  margin-bottom: 6px;\n}\n\n.chart-head h3 {\n  font-size: 18px;\n}\n\n.chart-head span {\n  flex: 0 0 auto;\n  padding: 6px 9px;\n  border-radius: 999px;\n  background: #eef3f8;\n  color: #41576b;\n  font-size: 12px;\n  font-weight: 700;\n}\n\n.feature-panel {\n  margin-top: 18px;\n}\n\n.market-source-panel {\n  margin-bottom: 18px;\n}\n\n.live-market-card {\n  margin-bottom: 18px;\n  padding: 18px;\n  background: #0b0d10;\n  border-color: #242933;\n  color: #f5f7fb;\n}\n\n.live-market-card.market-light {\n  background: #fff;\n  border-color: #d9e5ee;\n  color: #101828;\n}\n\n.live-market-card p {\n  color: #a7afbc;\n}\n\n.live-market-card.market-light p {\n  color: #667085;\n}\n\n.live-market-card .chart-head span {\n  background: #1d2430;\n  color: #dfe6ef;\n}\n\n.live-market-card.market-light .chart-head span {\n  background: #eef4ff;\n  color: #344054;\n}\n\n.market-head h2 {\n  margin-bottom: 6px;\n}\n\n.market-toolbar {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 12px 18px;\n  margin-bottom: 12px;\n  padding: 12px;\n  border: 1px solid #232a35;\n  border-radius: 6px;\n  background: #11161d;\n}\n\n@media (max-width: 760px) {\n  header {\n    align-items: flex-start;\n    flex-direction: column;\n  }\n\n  .route-tabs {\n    justify-content: flex-start;\n    width: 100%;\n  }\n}\n\n.market-light .market-toolbar {\n  border-color: #d0d5dd;\n  background: #f8fafc;\n}\n\n.market-toolbar div {\n  display: inline-flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n}\n\n.market-toolbar strong {\n  color: #c3cad6;\n  font-size: 12px;\n  text-transform: uppercase;\n}\n\n.market-light .market-toolbar strong {\n  color: #475467;\n}\n\n.market-toolbar button {\n  min-height: 32px;\n  padding: 0 11px;\n  border: 1px solid #343b48;\n  background: #171d26;\n  color: #dfe6ef;\n}\n\n.market-light .market-toolbar button {\n  border-color: #d0d5dd;\n  background: #fff;\n  color: #344054;\n}\n\n.market-toolbar button.active {\n  border-color: #f0b90b;\n  background: #f0b90b;\n  color: #111;\n}\n\n.market-light .market-toolbar button.active {\n  border-color: #146c94;\n  background: #146c94;\n  color: #fff;\n}\n\n.market-toolbar .reload-button {\n  margin-left: auto;\n  background: #146c94;\n  border-color: #146c94;\n  color: #fff;\n}\n\n.market-ticker,\n.market-status {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 10px 18px;\n  margin-bottom: 10px;\n  color: #9ca5b1;\n  font-size: 13px;\n}\n\n.market-light .market-ticker,\n.market-light .market-status {\n  color: #667085;\n}\n\n.market-ticker strong {\n  margin-left: 4px;\n  color: #f5f7fb;\n}\n\n.market-light .market-ticker strong {\n  color: #101828;\n}\n\n.market-ticker .positive strong,\n.market-ticker .positive {\n  color: #02c076;\n}\n\n.market-ticker .negative strong,\n.market-ticker .negative {\n  color: #f6465d;\n}\n\n.market-status {\n  color: #c6ccd5;\n}\n\n.market-frame {\n  min-height: 560px;\n  border: 1px solid #242933;\n  border-radius: 6px;\n  overflow: hidden;\n  background: #050505;\n}\n\n.market-light .market-frame {\n  border-color: #d0d5dd;\n  background: #fff;\n}\n\n.market-frame chart {\n  min-height: 560px;\n}\n\n.endpoint-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));\n  gap: 12px;\n  margin-top: 12px;\n  margin-bottom: 14px;\n}\n\n.endpoint-grid div {\n  padding: 12px;\n  border: 1px solid #232a35;\n  border-radius: 6px;\n  background: #11161d;\n}\n\n.market-light .endpoint-grid div {\n  border-color: #d0d5dd;\n  background: #f8fafc;\n}\n\n.endpoint-grid strong,\n.endpoint-grid code {\n  display: block;\n}\n\n.endpoint-grid strong {\n  margin-bottom: 8px;\n  color: #c3cad6;\n}\n\n.market-light .endpoint-grid strong {\n  color: #475467;\n}\n\n.endpoint-grid code {\n  overflow-wrap: anywhere;\n  color: #8bd3ff;\n  font-size: 12px;\n  line-height: 1.5;\n}\n\n.market-light .endpoint-grid code {\n  color: #0b5cad;\n}\n\n.chart-frame {\n  width: 100%;\n  min-height: 340px;\n}\n\n.chart-frame.large {\n  min-height: 380px;\n}\n\n.chart-frame chart {\n  display: block;\n  width: 100%;\n  min-height: 320px;\n}\n\n.tutorial-collapse {\n  margin-top: 14px;\n  border: 1px solid #d9e5ee;\n  border-radius: 8px;\n  background: #f8fbfd;\n  overflow: hidden;\n}\n\n.live-market-card .tutorial-collapse {\n  border-color: #242933;\n  background: #11161d;\n}\n\n.live-market-card.market-light .tutorial-collapse {\n  border-color: #d9e5ee;\n  background: #f8fbfd;\n}\n\n.tutorial-collapse summary {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-height: 44px;\n  padding: 0 14px;\n  cursor: pointer;\n  color: #1e3145;\n  font-weight: 700;\n}\n\n.live-market-card .tutorial-collapse summary {\n  color: #f5f7fb;\n}\n\n.live-market-card.market-light .tutorial-collapse summary {\n  color: #1e3145;\n}\n\n.tutorial-collapse summary::-webkit-details-marker {\n  display: none;\n}\n\n.tutorial-collapse summary:before {\n  content: '+';\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  margin-right: 8px;\n  border-radius: 50%;\n  background: #e7f2ff;\n  color: #205b8f;\n  font-weight: 800;\n}\n\n.tutorial-collapse[open] summary:before {\n  content: '-';\n}\n\n.tutorial-collapse summary span {\n  display: inline-flex;\n  align-items: center;\n  margin-right: auto;\n}\n\n.tutorial-collapse summary small {\n  color: #667085;\n  font-size: 12px;\n  font-weight: 700;\n  text-transform: uppercase;\n}\n\n.live-market-card .tutorial-collapse summary small {\n  color: #a7afbc;\n}\n\n.live-market-card.market-light .tutorial-collapse summary small {\n  color: #667085;\n}\n\n.code-layer-grid {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: 12px;\n  padding: 14px;\n  border-top: 1px solid #d9e5ee;\n}\n\n.live-market-card .code-layer-grid {\n  border-top-color: #242933;\n}\n\n.live-market-card.market-light .code-layer-grid {\n  border-top-color: #d9e5ee;\n}\n\n.code-layer-grid h4 {\n  margin: 0 0 8px;\n  color: #344054;\n  font-size: 12px;\n  text-transform: uppercase;\n}\n\n.live-market-card .code-layer-grid h4 {\n  color: #dfe6ef;\n}\n\n.live-market-card.market-light .code-layer-grid h4 {\n  color: #344054;\n}\n\n.code-layer-grid pre {\n  max-height: 420px;\n  margin: 0;\n}\n\npre {\n  overflow: auto;\n  padding: 16px;\n  border-radius: 6px;\n  background: #112236;\n  color: #f3f8ff;\n  font-size: 12px;\n  line-height: 1.5;\n}\n\nbutton {\n  flex: 0 0 auto;\n  min-height: 38px;\n  padding: 0 16px;\n  border: 0;\n  border-radius: 6px;\n  background: #146c94;\n  color: #fff;\n  font-weight: 700;\n  cursor: pointer;\n}\n\n.event-grid {\n  grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);\n}\n\n.event-log {\n  padding: 16px;\n  border: 1px solid #d9e5ee;\n  border-radius: 6px;\n  background: #f8fbfd;\n}\n\n.event-log ul {\n  margin: 12px 0 0;\n  padding-left: 18px;\n}\n\n.event-log li {\n  margin-bottom: 6px;\n  color: #40586d;\n}\n\n@media (max-width: 760px) {\n  .intro-panel,\n  .chart-head {\n    display: block;\n  }\n\n  .status-pill,\n  .chart-head span,\n  button {\n    display: inline-flex;\n    align-items: center;\n    margin-top: 12px;\n  }\n\n  .examples-grid,\n  .event-grid,\n  .endpoint-grid,\n  .code-layer-grid {\n    grid-template-columns: 1fr;\n  }\n\n  .market-toolbar .reload-button {\n    margin-left: 0;\n  }\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0Usd0JBQXdCO0VBQ3hCLGlCQUFpQjtFQUNqQixjQUFjO0VBQ2Qsb0JBQW9CO0FBQ3RCOztBQUVBOzs7RUFHRSxnQkFBZ0I7RUFDaEIseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQiw2Q0FBNkM7QUFDL0M7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLDhCQUE4QjtFQUM5QixTQUFTO0VBQ1QsYUFBYTtFQUNiLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGFBQWE7RUFDYixlQUFlO0VBQ2YsUUFBUTtFQUNSLHlCQUF5QjtFQUN6QixjQUFjO0FBQ2hCOztBQUVBO0VBQ0Usb0JBQW9CO0VBQ3BCLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsY0FBYztFQUNkLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIscUJBQXFCO0FBQ3ZCOztBQUVBO0VBQ0UscUJBQXFCO0VBQ3JCLG1CQUFtQjtFQUNuQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxjQUFjO0VBQ2Qsa0JBQWtCO0VBQ2xCLGNBQWM7RUFDZCxlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLHFCQUFxQjtFQUNyQix5QkFBeUI7QUFDM0I7O0FBRUE7Ozs7RUFJRSxhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsZUFBZTtFQUNmLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsU0FBUztBQUNYOztBQUVBO0VBQ0UsY0FBYztFQUNkLGlCQUFpQjtFQUNqQixvQkFBb0I7RUFDcEIsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxlQUFlO0VBQ2YsZ0JBQWdCO0FBQ2xCOztBQUVBOzs7RUFHRSxhQUFhO0VBQ2IsU0FBUztBQUNYOztBQUVBO0VBQ0UsMkRBQTJEO0FBQzdEOztBQUVBO0VBQ0UsYUFBYTtFQUNiLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsbUJBQW1CO0FBQ3JCOztBQUVBOztFQUVFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsY0FBYztFQUNkLGVBQWU7RUFDZixpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSwwQkFBMEI7RUFDMUIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsV0FBVztFQUNYLHNCQUFzQjtFQUN0QixhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLDhCQUE4QjtFQUM5QixTQUFTO0VBQ1QsbUJBQW1CO0FBQ3JCOztBQUVBOztFQUVFLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsZ0JBQWdCO0VBQ2hCLG9CQUFvQjtFQUNwQixtQkFBbUI7RUFDbkIsY0FBYztFQUNkLGVBQWU7RUFDZixnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixxQkFBcUI7RUFDckIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixxQkFBcUI7RUFDckIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxtQkFBbUI7RUFDbkIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGFBQWE7RUFDYixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0U7SUFDRSx1QkFBdUI7SUFDdkIsc0JBQXNCO0VBQ3hCOztFQUVBO0lBQ0UsMkJBQTJCO0lBQzNCLFdBQVc7RUFDYjtBQUNGOztBQUVBO0VBQ0UscUJBQXFCO0VBQ3JCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLG9CQUFvQjtFQUNwQixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLFFBQVE7QUFDVjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxlQUFlO0VBQ2YseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YseUJBQXlCO0VBQ3pCLG1CQUFtQjtFQUNuQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UscUJBQXFCO0VBQ3JCLGdCQUFnQjtFQUNoQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UscUJBQXFCO0VBQ3JCLG1CQUFtQjtFQUNuQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsbUJBQW1CO0VBQ25CLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixtQkFBbUI7RUFDbkIscUJBQXFCO0VBQ3JCLFdBQVc7QUFDYjs7QUFFQTs7RUFFRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLG1CQUFtQjtFQUNuQixjQUFjO0VBQ2QsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxlQUFlO0FBQ2pCOztBQUVBOztFQUVFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTs7RUFFRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQix5QkFBeUI7RUFDekIsa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQixtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsYUFBYTtFQUNiLDJEQUEyRDtFQUMzRCxTQUFTO0VBQ1QsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGFBQWE7RUFDYix5QkFBeUI7RUFDekIsa0JBQWtCO0VBQ2xCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixtQkFBbUI7QUFDckI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHVCQUF1QjtFQUN2QixjQUFjO0VBQ2QsZUFBZTtFQUNmLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsY0FBYztFQUNkLFdBQVc7RUFDWCxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxnQkFBZ0I7RUFDaEIseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQixtQkFBbUI7RUFDbkIsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UscUJBQXFCO0VBQ3JCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLDhCQUE4QjtFQUM5QixTQUFTO0VBQ1QsZ0JBQWdCO0VBQ2hCLGVBQWU7RUFDZixlQUFlO0VBQ2YsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsWUFBWTtFQUNaLG9CQUFvQjtFQUNwQixtQkFBbUI7RUFDbkIsdUJBQXVCO0VBQ3ZCLFdBQVc7RUFDWCxZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixtQkFBbUI7RUFDbkIsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTtFQUNFLG9CQUFvQjtFQUNwQixtQkFBbUI7RUFDbkIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztFQUNkLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsZ0RBQWdEO0VBQ2hELFNBQVM7RUFDVCxhQUFhO0VBQ2IsNkJBQTZCO0FBQy9COztBQUVBO0VBQ0UseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGNBQWM7RUFDZCxlQUFlO0VBQ2YseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsU0FBUztBQUNYOztBQUVBO0VBQ0UsY0FBYztFQUNkLGFBQWE7RUFDYixrQkFBa0I7RUFDbEIsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxlQUFlO0VBQ2YsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YsU0FBUztFQUNULGtCQUFrQjtFQUNsQixtQkFBbUI7RUFDbkIsV0FBVztFQUNYLGdCQUFnQjtFQUNoQixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsMkRBQTJEO0FBQzdEOztBQUVBO0VBQ0UsYUFBYTtFQUNiLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0U7O0lBRUUsY0FBYztFQUNoQjs7RUFFQTs7O0lBR0Usb0JBQW9CO0lBQ3BCLG1CQUFtQjtJQUNuQixnQkFBZ0I7RUFDbEI7O0VBRUE7Ozs7SUFJRSwwQkFBMEI7RUFDNUI7O0VBRUE7SUFDRSxjQUFjO0VBQ2hCO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbm1haW4ge1xuICB3aWR0aDogY2FsYygxMDAlIC0gMzJweCk7XG4gIG1heC13aWR0aDogMTM2MHB4O1xuICBtYXJnaW46IDAgYXV0bztcbiAgcGFkZGluZzogMzJweCAwIDQ4cHg7XG59XG5cbmhlYWRlcixcbi5wYW5lbCxcbi5jaGFydC1jYXJkIHtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgYm9yZGVyOiAxcHggc29saWQgI2Q5ZTVlZTtcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xuICBib3gtc2hhZG93OiAwIDEwcHggMjhweCByZ2JhKDIzLCA1MiwgNzcsIC4wOCk7XG59XG5cbmhlYWRlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgZ2FwOiAyMHB4O1xuICBwYWRkaW5nOiAyNHB4O1xuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xufVxuXG4uaGVhZGVyLWNvcHkge1xuICBtaW4td2lkdGg6IDA7XG59XG5cbi5yb3V0ZS10YWJzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBnYXA6IDhweDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgZmxleDogMCAwIGF1dG87XG59XG5cbi5yb3V0ZS10YWJzIGEge1xuICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgbWluLWhlaWdodDogMzZweDtcbiAgcGFkZGluZzogMCAxNHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjZDBkYmU2O1xuICBib3JkZXItcmFkaXVzOiA2cHg7XG4gIGNvbG9yOiAjMjU0OTY2O1xuICBmb250LXNpemU6IDEzcHg7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbn1cblxuLnJvdXRlLXRhYnMgYS5hY3RpdmUge1xuICBib3JkZXItY29sb3I6ICMxNDZjOTQ7XG4gIGJhY2tncm91bmQ6ICMxNDZjOTQ7XG4gIGNvbG9yOiAjZmZmO1xufVxuXG5oZWFkZXIgc3BhbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG4gIGNvbG9yOiAjNDY2MTc5O1xuICBmb250LXNpemU6IDEycHg7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG4gIGxldHRlci1zcGFjaW5nOiAuMDVlbTtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbn1cblxuaDEsXG5oMixcbmgzLFxucCB7XG4gIG1hcmdpbi10b3A6IDA7XG59XG5cbmgxIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xuICBmb250LXNpemU6IDMwcHg7XG4gIGxpbmUtaGVpZ2h0OiAxLjI7XG59XG5cbnAge1xuICBjb2xvcjogIzUwNjc3ZDtcbn1cblxuaGVhZGVyIHAge1xuICBtYXJnaW4tYm90dG9tOiAwO1xufVxuXG4ucGFuZWwge1xuICBwYWRkaW5nOiAyNHB4O1xuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xufVxuXG4uaW50cm8tcGFuZWwge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGdhcDogMTZweDtcbn1cblxuLnN0YXR1cy1waWxsIHtcbiAgZmxleDogMCAwIGF1dG87XG4gIHBhZGRpbmc6IDhweCAxMnB4O1xuICBib3JkZXItcmFkaXVzOiA5OTlweDtcbiAgYmFja2dyb3VuZDogI2U3ZjJmZjtcbiAgY29sb3I6ICMyMDViOGY7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgZm9udC13ZWlnaHQ6IDcwMDtcbn1cblxuLmNhcGFiaWxpdHktZ3JpZCxcbi5leGFtcGxlcy1ncmlkLFxuLmV2ZW50LWdyaWQge1xuICBkaXNwbGF5OiBncmlkO1xuICBnYXA6IDE2cHg7XG59XG5cbi5jYXBhYmlsaXR5LWdyaWQge1xuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdChhdXRvLWZpdCwgbWlubWF4KDIyMHB4LCAxZnIpKTtcbn1cblxuLmNhcGFiaWxpdHktZ3JpZCBkaXYge1xuICBwYWRkaW5nOiAxNHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjZGJlNmVmO1xuICBib3JkZXItcmFkaXVzOiA2cHg7XG4gIGJhY2tncm91bmQ6ICNmOGZiZmQ7XG59XG5cbi5jYXBhYmlsaXR5LWdyaWQgc3Ryb25nLFxuLmNhcGFiaWxpdHktZ3JpZCBzcGFuIHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbi5jYXBhYmlsaXR5LWdyaWQgc3BhbiB7XG4gIG1hcmdpbi10b3A6IDZweDtcbiAgY29sb3I6ICM1MzZiODA7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgbGluZS1oZWlnaHQ6IDEuNDU7XG59XG5cbi5leGFtcGxlcy1ncmlkIHtcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnI7XG4gIGFsaWduLWl0ZW1zOiBzdGFydDtcbn1cblxuLmNoYXJ0LWNhcmQge1xuICB3aWR0aDogMTAwJTtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgcGFkZGluZzogMThweDtcbn1cblxuLmNoYXJ0LWhlYWQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogZmxleC1zdGFydDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBnYXA6IDEycHg7XG4gIG1hcmdpbi1ib3R0b206IDE0cHg7XG59XG5cbi5jaGFydC1oZWFkIGgyLFxuLmNoYXJ0LWhlYWQgaDMge1xuICBtYXJnaW4tYm90dG9tOiA2cHg7XG59XG5cbi5jaGFydC1oZWFkIGgzIHtcbiAgZm9udC1zaXplOiAxOHB4O1xufVxuXG4uY2hhcnQtaGVhZCBzcGFuIHtcbiAgZmxleDogMCAwIGF1dG87XG4gIHBhZGRpbmc6IDZweCA5cHg7XG4gIGJvcmRlci1yYWRpdXM6IDk5OXB4O1xuICBiYWNrZ3JvdW5kOiAjZWVmM2Y4O1xuICBjb2xvcjogIzQxNTc2YjtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBmb250LXdlaWdodDogNzAwO1xufVxuXG4uZmVhdHVyZS1wYW5lbCB7XG4gIG1hcmdpbi10b3A6IDE4cHg7XG59XG5cbi5tYXJrZXQtc291cmNlLXBhbmVsIHtcbiAgbWFyZ2luLWJvdHRvbTogMThweDtcbn1cblxuLmxpdmUtbWFya2V0LWNhcmQge1xuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xuICBwYWRkaW5nOiAxOHB4O1xuICBiYWNrZ3JvdW5kOiAjMGIwZDEwO1xuICBib3JkZXItY29sb3I6ICMyNDI5MzM7XG4gIGNvbG9yOiAjZjVmN2ZiO1xufVxuXG4ubGl2ZS1tYXJrZXQtY2FyZC5tYXJrZXQtbGlnaHQge1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xuICBib3JkZXItY29sb3I6ICNkOWU1ZWU7XG4gIGNvbG9yOiAjMTAxODI4O1xufVxuXG4ubGl2ZS1tYXJrZXQtY2FyZCBwIHtcbiAgY29sb3I6ICNhN2FmYmM7XG59XG5cbi5saXZlLW1hcmtldC1jYXJkLm1hcmtldC1saWdodCBwIHtcbiAgY29sb3I6ICM2NjcwODU7XG59XG5cbi5saXZlLW1hcmtldC1jYXJkIC5jaGFydC1oZWFkIHNwYW4ge1xuICBiYWNrZ3JvdW5kOiAjMWQyNDMwO1xuICBjb2xvcjogI2RmZTZlZjtcbn1cblxuLmxpdmUtbWFya2V0LWNhcmQubWFya2V0LWxpZ2h0IC5jaGFydC1oZWFkIHNwYW4ge1xuICBiYWNrZ3JvdW5kOiAjZWVmNGZmO1xuICBjb2xvcjogIzM0NDA1NDtcbn1cblxuLm1hcmtldC1oZWFkIGgyIHtcbiAgbWFyZ2luLWJvdHRvbTogNnB4O1xufVxuXG4ubWFya2V0LXRvb2xiYXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LXdyYXA6IHdyYXA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMTJweCAxOHB4O1xuICBtYXJnaW4tYm90dG9tOiAxMnB4O1xuICBwYWRkaW5nOiAxMnB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjMjMyYTM1O1xuICBib3JkZXItcmFkaXVzOiA2cHg7XG4gIGJhY2tncm91bmQ6ICMxMTE2MWQ7XG59XG5cbkBtZWRpYSAobWF4LXdpZHRoOiA3NjBweCkge1xuICBoZWFkZXIge1xuICAgIGFsaWduLWl0ZW1zOiBmbGV4LXN0YXJ0O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIH1cblxuICAucm91dGUtdGFicyB7XG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xuICAgIHdpZHRoOiAxMDAlO1xuICB9XG59XG5cbi5tYXJrZXQtbGlnaHQgLm1hcmtldC10b29sYmFyIHtcbiAgYm9yZGVyLWNvbG9yOiAjZDBkNWRkO1xuICBiYWNrZ3JvdW5kOiAjZjhmYWZjO1xufVxuXG4ubWFya2V0LXRvb2xiYXIgZGl2IHtcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZ2FwOiA4cHg7XG59XG5cbi5tYXJrZXQtdG9vbGJhciBzdHJvbmcge1xuICBjb2xvcjogI2MzY2FkNjtcbiAgZm9udC1zaXplOiAxMnB4O1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xufVxuXG4ubWFya2V0LWxpZ2h0IC5tYXJrZXQtdG9vbGJhciBzdHJvbmcge1xuICBjb2xvcjogIzQ3NTQ2Nztcbn1cblxuLm1hcmtldC10b29sYmFyIGJ1dHRvbiB7XG4gIG1pbi1oZWlnaHQ6IDMycHg7XG4gIHBhZGRpbmc6IDAgMTFweDtcbiAgYm9yZGVyOiAxcHggc29saWQgIzM0M2I0ODtcbiAgYmFja2dyb3VuZDogIzE3MWQyNjtcbiAgY29sb3I6ICNkZmU2ZWY7XG59XG5cbi5tYXJrZXQtbGlnaHQgLm1hcmtldC10b29sYmFyIGJ1dHRvbiB7XG4gIGJvcmRlci1jb2xvcjogI2QwZDVkZDtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgY29sb3I6ICMzNDQwNTQ7XG59XG5cbi5tYXJrZXQtdG9vbGJhciBidXR0b24uYWN0aXZlIHtcbiAgYm9yZGVyLWNvbG9yOiAjZjBiOTBiO1xuICBiYWNrZ3JvdW5kOiAjZjBiOTBiO1xuICBjb2xvcjogIzExMTtcbn1cblxuLm1hcmtldC1saWdodCAubWFya2V0LXRvb2xiYXIgYnV0dG9uLmFjdGl2ZSB7XG4gIGJvcmRlci1jb2xvcjogIzE0NmM5NDtcbiAgYmFja2dyb3VuZDogIzE0NmM5NDtcbiAgY29sb3I6ICNmZmY7XG59XG5cbi5tYXJrZXQtdG9vbGJhciAucmVsb2FkLWJ1dHRvbiB7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBiYWNrZ3JvdW5kOiAjMTQ2Yzk0O1xuICBib3JkZXItY29sb3I6ICMxNDZjOTQ7XG4gIGNvbG9yOiAjZmZmO1xufVxuXG4ubWFya2V0LXRpY2tlcixcbi5tYXJrZXQtc3RhdHVzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBnYXA6IDEwcHggMThweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgY29sb3I6ICM5Y2E1YjE7XG4gIGZvbnQtc2l6ZTogMTNweDtcbn1cblxuLm1hcmtldC1saWdodCAubWFya2V0LXRpY2tlcixcbi5tYXJrZXQtbGlnaHQgLm1hcmtldC1zdGF0dXMge1xuICBjb2xvcjogIzY2NzA4NTtcbn1cblxuLm1hcmtldC10aWNrZXIgc3Ryb25nIHtcbiAgbWFyZ2luLWxlZnQ6IDRweDtcbiAgY29sb3I6ICNmNWY3ZmI7XG59XG5cbi5tYXJrZXQtbGlnaHQgLm1hcmtldC10aWNrZXIgc3Ryb25nIHtcbiAgY29sb3I6ICMxMDE4Mjg7XG59XG5cbi5tYXJrZXQtdGlja2VyIC5wb3NpdGl2ZSBzdHJvbmcsXG4ubWFya2V0LXRpY2tlciAucG9zaXRpdmUge1xuICBjb2xvcjogIzAyYzA3Njtcbn1cblxuLm1hcmtldC10aWNrZXIgLm5lZ2F0aXZlIHN0cm9uZyxcbi5tYXJrZXQtdGlja2VyIC5uZWdhdGl2ZSB7XG4gIGNvbG9yOiAjZjY0NjVkO1xufVxuXG4ubWFya2V0LXN0YXR1cyB7XG4gIGNvbG9yOiAjYzZjY2Q1O1xufVxuXG4ubWFya2V0LWZyYW1lIHtcbiAgbWluLWhlaWdodDogNTYwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICMyNDI5MzM7XG4gIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgYmFja2dyb3VuZDogIzA1MDUwNTtcbn1cblxuLm1hcmtldC1saWdodCAubWFya2V0LWZyYW1lIHtcbiAgYm9yZGVyLWNvbG9yOiAjZDBkNWRkO1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxuXG4ubWFya2V0LWZyYW1lIGNoYXJ0IHtcbiAgbWluLWhlaWdodDogNTYwcHg7XG59XG5cbi5lbmRwb2ludC1ncmlkIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiByZXBlYXQoYXV0by1maXQsIG1pbm1heCgyNjBweCwgMWZyKSk7XG4gIGdhcDogMTJweDtcbiAgbWFyZ2luLXRvcDogMTJweDtcbiAgbWFyZ2luLWJvdHRvbTogMTRweDtcbn1cblxuLmVuZHBvaW50LWdyaWQgZGl2IHtcbiAgcGFkZGluZzogMTJweDtcbiAgYm9yZGVyOiAxcHggc29saWQgIzIzMmEzNTtcbiAgYm9yZGVyLXJhZGl1czogNnB4O1xuICBiYWNrZ3JvdW5kOiAjMTExNjFkO1xufVxuXG4ubWFya2V0LWxpZ2h0IC5lbmRwb2ludC1ncmlkIGRpdiB7XG4gIGJvcmRlci1jb2xvcjogI2QwZDVkZDtcbiAgYmFja2dyb3VuZDogI2Y4ZmFmYztcbn1cblxuLmVuZHBvaW50LWdyaWQgc3Ryb25nLFxuLmVuZHBvaW50LWdyaWQgY29kZSB7XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuXG4uZW5kcG9pbnQtZ3JpZCBzdHJvbmcge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG4gIGNvbG9yOiAjYzNjYWQ2O1xufVxuXG4ubWFya2V0LWxpZ2h0IC5lbmRwb2ludC1ncmlkIHN0cm9uZyB7XG4gIGNvbG9yOiAjNDc1NDY3O1xufVxuXG4uZW5kcG9pbnQtZ3JpZCBjb2RlIHtcbiAgb3ZlcmZsb3ctd3JhcDogYW55d2hlcmU7XG4gIGNvbG9yOiAjOGJkM2ZmO1xuICBmb250LXNpemU6IDEycHg7XG4gIGxpbmUtaGVpZ2h0OiAxLjU7XG59XG5cbi5tYXJrZXQtbGlnaHQgLmVuZHBvaW50LWdyaWQgY29kZSB7XG4gIGNvbG9yOiAjMGI1Y2FkO1xufVxuXG4uY2hhcnQtZnJhbWUge1xuICB3aWR0aDogMTAwJTtcbiAgbWluLWhlaWdodDogMzQwcHg7XG59XG5cbi5jaGFydC1mcmFtZS5sYXJnZSB7XG4gIG1pbi1oZWlnaHQ6IDM4MHB4O1xufVxuXG4uY2hhcnQtZnJhbWUgY2hhcnQge1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDEwMCU7XG4gIG1pbi1oZWlnaHQ6IDMyMHB4O1xufVxuXG4udHV0b3JpYWwtY29sbGFwc2Uge1xuICBtYXJnaW4tdG9wOiAxNHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjZDllNWVlO1xuICBib3JkZXItcmFkaXVzOiA4cHg7XG4gIGJhY2tncm91bmQ6ICNmOGZiZmQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5saXZlLW1hcmtldC1jYXJkIC50dXRvcmlhbC1jb2xsYXBzZSB7XG4gIGJvcmRlci1jb2xvcjogIzI0MjkzMztcbiAgYmFja2dyb3VuZDogIzExMTYxZDtcbn1cblxuLmxpdmUtbWFya2V0LWNhcmQubWFya2V0LWxpZ2h0IC50dXRvcmlhbC1jb2xsYXBzZSB7XG4gIGJvcmRlci1jb2xvcjogI2Q5ZTVlZTtcbiAgYmFja2dyb3VuZDogI2Y4ZmJmZDtcbn1cblxuLnR1dG9yaWFsLWNvbGxhcHNlIHN1bW1hcnkge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGdhcDogMTJweDtcbiAgbWluLWhlaWdodDogNDRweDtcbiAgcGFkZGluZzogMCAxNHB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGNvbG9yOiAjMWUzMTQ1O1xuICBmb250LXdlaWdodDogNzAwO1xufVxuXG4ubGl2ZS1tYXJrZXQtY2FyZCAudHV0b3JpYWwtY29sbGFwc2Ugc3VtbWFyeSB7XG4gIGNvbG9yOiAjZjVmN2ZiO1xufVxuXG4ubGl2ZS1tYXJrZXQtY2FyZC5tYXJrZXQtbGlnaHQgLnR1dG9yaWFsLWNvbGxhcHNlIHN1bW1hcnkge1xuICBjb2xvcjogIzFlMzE0NTtcbn1cblxuLnR1dG9yaWFsLWNvbGxhcHNlIHN1bW1hcnk6Oi13ZWJraXQtZGV0YWlscy1tYXJrZXIge1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4udHV0b3JpYWwtY29sbGFwc2Ugc3VtbWFyeTpiZWZvcmUge1xuICBjb250ZW50OiAnKyc7XG4gIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgd2lkdGg6IDIycHg7XG4gIGhlaWdodDogMjJweDtcbiAgbWFyZ2luLXJpZ2h0OiA4cHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgYmFja2dyb3VuZDogI2U3ZjJmZjtcbiAgY29sb3I6ICMyMDViOGY7XG4gIGZvbnQtd2VpZ2h0OiA4MDA7XG59XG5cbi50dXRvcmlhbC1jb2xsYXBzZVtvcGVuXSBzdW1tYXJ5OmJlZm9yZSB7XG4gIGNvbnRlbnQ6ICctJztcbn1cblxuLnR1dG9yaWFsLWNvbGxhcHNlIHN1bW1hcnkgc3BhbiB7XG4gIGRpc3BsYXk6IGlubGluZS1mbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG5cbi50dXRvcmlhbC1jb2xsYXBzZSBzdW1tYXJ5IHNtYWxsIHtcbiAgY29sb3I6ICM2NjcwODU7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbn1cblxuLmxpdmUtbWFya2V0LWNhcmQgLnR1dG9yaWFsLWNvbGxhcHNlIHN1bW1hcnkgc21hbGwge1xuICBjb2xvcjogI2E3YWZiYztcbn1cblxuLmxpdmUtbWFya2V0LWNhcmQubWFya2V0LWxpZ2h0IC50dXRvcmlhbC1jb2xsYXBzZSBzdW1tYXJ5IHNtYWxsIHtcbiAgY29sb3I6ICM2NjcwODU7XG59XG5cbi5jb2RlLWxheWVyLWdyaWQge1xuICBkaXNwbGF5OiBncmlkO1xuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCBtaW5tYXgoMCwgMWZyKSk7XG4gIGdhcDogMTJweDtcbiAgcGFkZGluZzogMTRweDtcbiAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNkOWU1ZWU7XG59XG5cbi5saXZlLW1hcmtldC1jYXJkIC5jb2RlLWxheWVyLWdyaWQge1xuICBib3JkZXItdG9wLWNvbG9yOiAjMjQyOTMzO1xufVxuXG4ubGl2ZS1tYXJrZXQtY2FyZC5tYXJrZXQtbGlnaHQgLmNvZGUtbGF5ZXItZ3JpZCB7XG4gIGJvcmRlci10b3AtY29sb3I6ICNkOWU1ZWU7XG59XG5cbi5jb2RlLWxheWVyLWdyaWQgaDQge1xuICBtYXJnaW46IDAgMCA4cHg7XG4gIGNvbG9yOiAjMzQ0MDU0O1xuICBmb250LXNpemU6IDEycHg7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG59XG5cbi5saXZlLW1hcmtldC1jYXJkIC5jb2RlLWxheWVyLWdyaWQgaDQge1xuICBjb2xvcjogI2RmZTZlZjtcbn1cblxuLmxpdmUtbWFya2V0LWNhcmQubWFya2V0LWxpZ2h0IC5jb2RlLWxheWVyLWdyaWQgaDQge1xuICBjb2xvcjogIzM0NDA1NDtcbn1cblxuLmNvZGUtbGF5ZXItZ3JpZCBwcmUge1xuICBtYXgtaGVpZ2h0OiA0MjBweDtcbiAgbWFyZ2luOiAwO1xufVxuXG5wcmUge1xuICBvdmVyZmxvdzogYXV0bztcbiAgcGFkZGluZzogMTZweDtcbiAgYm9yZGVyLXJhZGl1czogNnB4O1xuICBiYWNrZ3JvdW5kOiAjMTEyMjM2O1xuICBjb2xvcjogI2YzZjhmZjtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBsaW5lLWhlaWdodDogMS41O1xufVxuXG5idXR0b24ge1xuICBmbGV4OiAwIDAgYXV0bztcbiAgbWluLWhlaWdodDogMzhweDtcbiAgcGFkZGluZzogMCAxNnB4O1xuICBib3JkZXI6IDA7XG4gIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgYmFja2dyb3VuZDogIzE0NmM5NDtcbiAgY29sb3I6ICNmZmY7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmV2ZW50LWdyaWQge1xuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IG1pbm1heCgwLCAxLjJmcikgbWlubWF4KDI2MHB4LCAuOGZyKTtcbn1cblxuLmV2ZW50LWxvZyB7XG4gIHBhZGRpbmc6IDE2cHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNkOWU1ZWU7XG4gIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgYmFja2dyb3VuZDogI2Y4ZmJmZDtcbn1cblxuLmV2ZW50LWxvZyB1bCB7XG4gIG1hcmdpbjogMTJweCAwIDA7XG4gIHBhZGRpbmctbGVmdDogMThweDtcbn1cblxuLmV2ZW50LWxvZyBsaSB7XG4gIG1hcmdpbi1ib3R0b206IDZweDtcbiAgY29sb3I6ICM0MDU4NmQ7XG59XG5cbkBtZWRpYSAobWF4LXdpZHRoOiA3NjBweCkge1xuICAuaW50cm8tcGFuZWwsXG4gIC5jaGFydC1oZWFkIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgfVxuXG4gIC5zdGF0dXMtcGlsbCxcbiAgLmNoYXJ0LWhlYWQgc3BhbixcbiAgYnV0dG9uIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIG1hcmdpbi10b3A6IDEycHg7XG4gIH1cblxuICAuZXhhbXBsZXMtZ3JpZCxcbiAgLmV2ZW50LWdyaWQsXG4gIC5lbmRwb2ludC1ncmlkLFxuICAuY29kZS1sYXllci1ncmlkIHtcbiAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDFmcjtcbiAgfVxuXG4gIC5tYXJrZXQtdG9vbGJhciAucmVsb2FkLWJ1dHRvbiB7XG4gICAgbWFyZ2luLWxlZnQ6IDA7XG4gIH1cbn1cbiJdfQ== */";
+
+    /***/
+  }),
+  /***/"./src/app/app.component.ts": (
+  /*!**********************************!*\
+    !*** ./src/app/app.component.ts ***!
+    \**********************************/
+  /*! exports provided: AppComponent */
+  /***/
+  function _src_app_appComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "AppComponent", function () {
+      return AppComponent;
+    });
+    /* harmony import */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */"./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */"./node_modules/@angular/core/fesm2015/core.js");
+    var AppComponent = /*#__PURE__*/function () {
+      function AppComponent() {
+        var _this = this;
+        _classCallCheck(this, AppComponent);
+        this.viewMode = 'dynamic';
+        this.events = [];
+        this.dynamicData = [29, 42, 55, 61, 73, 88];
+        this.binanceSymbol = 'BNBUSDT';
+        this.binanceInterval = '1s';
+        this.binanceTheme = 'light';
+        this.binanceSymbols = ['BNBUSDT', 'BTCUSDT'];
+        this.binanceIntervals = ['1s', '1m', '15m', '1h', '4h', '1d', '1w'];
+        // Mask API: keep Binance as the data source, but route browser traffic through
+        // api-b.alexandro.net because some networks block requests by Binance domain.
+        this.maskApiRestBaseUrl = 'https://api-b.alexandro.net';
+        this.maskApiWsBaseUrl = 'wss://api-b.alexandro.net';
+        this.binanceRestHosts = [this.maskApiRestBaseUrl + '/api/v3/klines', this.maskApiRestBaseUrl + '/data-api/api/v3/klines'];
+        this.binanceWsBaseUrl = this.maskApiWsBaseUrl + '/ws/';
+        this.binanceWsUrl = '';
+        this.binanceRestUrl = '';
+        this.binanceStatus = 'Loading REST candles...';
+        this.binanceSocketStatus = 'WebSocket disconnected';
+        this.binanceCandleCount = 0;
+        this.binanceLastCandle = null;
+        this.binanceOptions = this.createBinanceOptions();
+        this.binanceChart = null;
+        this.binanceSocket = null;
+        this.binanceOhlcData = [];
+        this.binanceVolumeData = [];
+        this.marketSymbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'XRPUSDT', 'ADAUSDT', 'DOGEUSDT', 'TRXUSDT'];
+        this.marketRestUrl = '';
+        this.marketWsUrl = '';
+        this.marketStatus = 'Waiting for market stream';
+        this.marketTickers = {};
+        this.marketHistory = {};
+        this.cryptoTreemapUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=24h';
+        this.cryptoTreemapStatus = 'Loading CoinGecko top 50 market cap snapshot...';
+        this.cryptoTreemapRows = [];
+        this.dynamicExamples = [];
+        this.marketSocket = null;
+        this.marketSnapshotTimer = null;
+        this.marketSnapshotLoading = false;
+        this.cryptoTreemapTimer = null;
+        this.cryptoTreemapLoading = false;
+        this.dynamicRefreshTimer = null;
+        this.dynamicRefreshQueued = false;
+        this.dynamicCharts = {};
+        this.examples = [this.makeBasic('Line chart', 'Default Highcharts.Chart with a line series.', 'line'), this.makeBasic('Spline chart', 'Smooth line series with regular categories.', 'spline'), this.makeBasic('Area chart', 'Filled area series for trend volume.', 'area'), this.makeBasic('Areaspline chart', 'Smooth filled area series.', 'areaspline'), this.makeBasic('Column chart', 'Vertical columns for category comparison.', 'column'), this.makeBasic('Bar chart', 'Horizontal bars for compact comparisons.', 'bar'), this.makeStackedColumn(), this.makePie(), this.makeDonut(), this.makeScatter(), this.makeBubble(), this.makeCombination(), this.makePolar(), this.makeGauge(), this.makeSolidGauge(), this.makeHeatmap(), this.makeTreemap(), this.makeFunnel(), this.make3dColumn(), this.makeStockChart(), this.makeMapLikeChart(), this.makeNoDataChart()].map(function (example) {
+          return _this.withTutorial(example);
+        });
+        this.dynamicOptions = this.createDynamicOptions();
+        this.dynamicHtml = "<button (click)=\"randomizeDynamicChart()\">Update data</button>\n<chart [options]=\"dynamicOptions\" (create)=\"onCreate('Dynamic update', $event)\"></chart>";
+        this.dynamicTutorialHtml = this.wrapTutorialHtml(this.dynamicHtml);
+        this.dynamicTutorialTs = "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'dynamic-chart-example',\n  templateUrl: './dynamic-chart-example.component.html',\n  styleUrls: ['./dynamic-chart-example.component.css']\n})\nexport class DynamicChartExampleComponent {\n  dynamicData = [29, 42, 55, 61, 73, 88];\n  dynamicOptions: any = this.createDynamicOptions();\n\n  randomizeDynamicChart() {\n    this.dynamicData = this.dynamicData.map(function () {\n      return Math.round(20 + Math.random() * 90);\n    });\n    this.dynamicOptions = this.createDynamicOptions();\n  }\n\n  onCreate(chart: any) {\n    console.log('Dynamic chart created', chart.series.length);\n  }\n\n  private createDynamicOptions() {\n    return {\n      chart: { type: 'line', height: 340 },\n      title: { text: 'Dynamic update' },\n      subtitle: { text: 'Changing the options object re-initializes the wrapper' },\n      xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'] },\n      yAxis: { title: { text: 'Requests' } },\n      series: [{ name: 'Updated data', data: this.dynamicData }]\n    };\n  }\n}";
+        this.dynamicTutorialScss = this.defaultTutorialScss(340);
+        this.directiveOptions = {
+          chart: {
+            type: 'column',
+            height: 340
+          },
+          title: {
+            text: 'Directive/event wiring'
+          },
+          subtitle: {
+            text: '<series>, <point>, <xAxis> and <yAxis> outputs'
+          },
+          xAxis: {
+            categories: ['North', 'South', 'East', 'West']
+          },
+          yAxis: {
+            title: {
+              text: 'Tickets'
+            }
+          },
+          plotOptions: {
+            series: {
+              cursor: 'pointer',
+              point: {
+                events: {}
+              }
+            }
+          },
+          series: [{
+            name: 'Open',
+            data: [12, 18, 9, 15]
+          }, {
+            name: 'Closed',
+            data: [9, 13, 7, 11]
+          }]
+        };
+        this.directiveHtml = "<chart\n  [options]=\"directiveOptions\"\n  (create)=\"onCreate('Directive chart', $event)\"\n  (load)=\"record('chart load')\"\n  (redraw)=\"record('chart redraw')\"\n>\n  <series\n    (click)=\"record('series click')\"\n    (legendItemClick)=\"record('legend click')\"\n  >\n    <point\n      (click)=\"record('point click')\"\n      (mouseOver)=\"record('point hover')\"\n    ></point>\n  </series>\n  <xAxis (setExtremes)=\"record('xAxis extremes')\"></xAxis>\n  <yAxis (setExtremes)=\"record('yAxis extremes')\"></yAxis>\n</chart>";
+        this.directiveTutorialHtml = this.wrapTutorialHtml(this.directiveHtml);
+        this.directiveTutorialTs = "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'directive-events-example',\n  templateUrl: './directive-events-example.component.html',\n  styleUrls: ['./directive-events-example.component.css']\n})\nexport class DirectiveEventsExampleComponent {\n  events: string[] = [];\n\n  directiveOptions: any = {\n    chart: { type: 'column', height: 340 },\n    title: { text: 'Directive/event wiring' },\n    subtitle: { text: '<series>, <point>, <xAxis> and <yAxis> outputs' },\n    xAxis: { categories: ['North', 'South', 'East', 'West'] },\n    yAxis: { title: { text: 'Tickets' } },\n    plotOptions: {\n      series: {\n        cursor: 'pointer',\n        point: { events: {} }\n      }\n    },\n    series: [\n      { name: 'Open', data: [12, 18, 9, 15] },\n      { name: 'Closed', data: [9, 13, 7, 11] }\n    ]\n  };\n\n  onCreate(chart: any) {\n    this.record('chart created with ' + chart.series.length + ' series');\n  }\n\n  record(message: string) {\n    this.events.unshift(new Date().toLocaleTimeString() + ' - ' + message);\n    this.events = this.events.slice(0, 8);\n  }\n}";
+        this.directiveTutorialScss = this.defaultTutorialScss(340);
+        this.binanceTutorialHtml = "<section\n  class=\"live-market-card\"\n  [class.market-light]=\"binanceTheme === 'light'\"\n  [class.market-dark]=\"binanceTheme === 'dark'\"\n>\n  <div class=\"market-toolbar\">\n    <button type=\"button\" (click)=\"selectBinanceTheme('dark')\">Dark</button>\n    <button type=\"button\" (click)=\"selectBinanceTheme('light')\">Light</button>\n    <button type=\"button\" (click)=\"selectBinanceSymbol('BNBUSDT')\">BNBUSDT</button>\n    <button type=\"button\" (click)=\"selectBinanceSymbol('BTCUSDT')\">BTCUSDT</button>\n    <button type=\"button\" (click)=\"selectBinanceInterval('1s')\">1s</button>\n    <button type=\"button\" (click)=\"selectBinanceInterval('1m')\">1m</button>\n    <button type=\"button\" (click)=\"selectBinanceInterval('1d')\">1d</button>\n  </div>\n\n  <chart\n    [type]=\"'StockChart'\"\n    [options]=\"binanceOptions\"\n    (create)=\"onBinanceChartCreate($event)\"\n  ></chart>\n</section>";
+        this.binanceTutorialTs = "import { Component, OnDestroy, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'binance-candles-example',\n  templateUrl: './binance-candles-example.component.html',\n  styleUrls: ['./binance-candles-example.component.css']\n})\nexport class BinanceCandlesExampleComponent implements OnInit, OnDestroy {\n  binanceSymbol = 'BNBUSDT';\n  binanceInterval = '1s';\n  binanceTheme = 'light';\n  binanceRestHosts = [\n    'https://api-b.alexandro.net/api/v3/klines',\n    'https://api-b.alexandro.net/data-api/api/v3/klines'\n  ];\n  // Mask API: the example still uses Binance public market data, but browser\n  // requests go through api-b.alexandro.net to avoid firewall/domain blocks.\n  binanceWsBaseUrl = 'wss://api-b.alexandro.net/ws/';\n  binanceOptions: any = this.createBinanceOptions();\n\n  private binanceChart: any = null;\n  private binanceSocket: any = null;\n  private binanceOhlcData: any[] = [];\n  private binanceVolumeData: any[] = [];\n\n  ngOnInit() {\n    this.loadBinanceHistory();\n  }\n\n  ngOnDestroy() {\n    this.disconnectBinanceSocket();\n  }\n\n  onBinanceChartCreate(chart: any) {\n    this.binanceChart = chart;\n    this.applyBinanceSeries();\n  }\n\n  selectBinanceTheme(theme: string) {\n    this.binanceTheme = theme;\n    this.binanceOptions = this.createBinanceOptions();\n    if (this.binanceChart && this.binanceChart.update) {\n      this.binanceChart.update(this.binanceOptions, false);\n      this.applyBinanceSeries();\n    }\n  }\n\n  selectBinanceSymbol(symbol: string) {\n    this.binanceSymbol = symbol;\n    this.loadBinanceHistory();\n  }\n\n  selectBinanceInterval(interval: string) {\n    this.binanceInterval = interval;\n    this.loadBinanceHistory();\n  }\n\n  private loadBinanceHistory() {\n    this.disconnectBinanceSocket();\n    var url = this.binanceRestHosts[0] +\n      '?symbol=' + this.binanceSymbol +\n      '&interval=' + this.binanceInterval +\n      '&limit=300';\n    var xhr = new XMLHttpRequest();\n\n    xhr.onreadystatechange = () => {\n      if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {\n        this.receiveBinanceHistory(JSON.parse(xhr.responseText));\n      }\n    };\n\n    xhr.open('GET', url, true);\n    xhr.send();\n  }\n\n  private receiveBinanceHistory(candles: any[]) {\n    this.binanceOhlcData = [];\n    this.binanceVolumeData = [];\n\n    for (var i = 0; i < candles.length; i++) {\n      var candle = candles[i];\n      var point = [\n        parseInt(candle[0], 10),\n        parseFloat(candle[1]),\n        parseFloat(candle[2]),\n        parseFloat(candle[3]),\n        parseFloat(candle[4])\n      ];\n      this.binanceOhlcData.push(point);\n      this.binanceVolumeData.push({\n        x: point[0],\n        y: parseFloat(candle[5]),\n        color: point[4] >= point[1] ? '#02c076' : '#f6465d'\n      });\n    }\n\n    this.applyBinanceSeries();\n    this.connectBinanceSocket();\n  }\n\n  private connectBinanceSocket() {\n    var url = this.binanceWsBaseUrl +\n      this.binanceSymbol.toLowerCase() +\n      '@kline_' +\n      this.binanceInterval;\n    this.binanceSocket = new WebSocket(url);\n\n    this.binanceSocket.onmessage = (message: any) => {\n      var payload = JSON.parse(message.data);\n      if (payload && payload.k) {\n        this.receiveLiveCandle(payload.k);\n      }\n    };\n  }\n\n  private receiveLiveCandle(kline: any) {\n    var point = [\n      kline.t,\n      parseFloat(kline.o),\n      parseFloat(kline.h),\n      parseFloat(kline.l),\n      parseFloat(kline.c)\n    ];\n    this.binanceOhlcData[this.binanceOhlcData.length - 1] = point;\n    this.applyBinanceSeries();\n  }\n\n  private applyBinanceSeries() {\n    if (!this.binanceChart || !this.binanceChart.series) {\n      return;\n    }\n    this.binanceChart.series[0].setData(this.binanceOhlcData.slice(0), false);\n    this.binanceChart.series[1].setData(this.calculateMovingAverage(7), false);\n    this.binanceChart.series[2].setData(this.calculateMovingAverage(25), false);\n    this.binanceChart.series[3].setData(this.calculateMovingAverage(99), false);\n    this.binanceChart.series[4].setData(this.binanceVolumeData.slice(0), false);\n    this.binanceChart.redraw();\n  }\n\n  private calculateMovingAverage(period: number) {\n    var result: any[] = [];\n    var sum = 0;\n    for (var i = 0; i < this.binanceOhlcData.length; i++) {\n      sum += this.binanceOhlcData[i][4];\n      if (i >= period) {\n        sum -= this.binanceOhlcData[i - period][4];\n      }\n      if (i >= period - 1) {\n        result.push([this.binanceOhlcData[i][0], sum / period]);\n      }\n    }\n    return result;\n  }\n\n  private disconnectBinanceSocket() {\n    if (this.binanceSocket) {\n      this.binanceSocket.close();\n      this.binanceSocket = null;\n    }\n  }\n\n  private createBinanceOptions() {\n    return {\n      chart: { height: 560, backgroundColor: '#ffffff', plotBackgroundColor: '#ffffff' },\n      title: { text: this.binanceSymbol + ' live candles' },\n      rangeSelector: { enabled: false },\n      navigator: { enabled: false },\n      scrollbar: { enabled: false },\n      yAxis: [{ height: '68%' }, { top: '73%', height: '22%', offset: 0 }],\n      plotOptions: {\n        candlestick: {\n          color: '#f6465d',\n          upColor: '#02c076',\n          lineColor: '#f6465d',\n          upLineColor: '#02c076'\n        },\n        series: { animation: false, turboThreshold: 0 }\n      },\n      series: [\n        { type: 'candlestick', name: 'Price', data: [] },\n        { type: 'line', name: 'MA(7)', data: [], color: '#f5d300' },\n        { type: 'line', name: 'MA(25)', data: [], color: '#ff4ec9' },\n        { type: 'line', name: 'MA(99)', data: [], color: '#8e44ad' },\n        { type: 'column', name: 'Volume', data: [], yAxis: 1 }\n      ]\n    };\n  }\n}";
+        this.binanceTutorialScss = ".live-market-card {\n  padding: 18px;\n  border: 1px solid #d9e5ee;\n  border-radius: 8px;\n  background: #fff;\n}\n\n.market-toolbar {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-bottom: 12px;\n}\n\nbutton {\n  min-height: 32px;\n  padding: 0 12px;\n  border: 1px solid #d0d5dd;\n  border-radius: 6px;\n  background: #fff;\n  color: #344054;\n  cursor: pointer;\n}\n\nchart {\n  display: block;\n  width: 100%;\n  min-height: 560px;\n}";
+      }
+      return _createClass(AppComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this2 = this;
+          this.readRoute();
+          this.readInitialBinanceTheme();
+          this.binanceOptions = this.createBinanceOptions();
+          this.dynamicExamples = this.createDynamicMarketExamples();
+          if (this.viewMode === 'dynamic') {
+            this.loadBinanceHistory();
+            this.loadMarketTickerSnapshot();
+            this.marketSnapshotTimer = setInterval(function () {
+              return _this2.loadMarketTickerSnapshot(false);
+            }, 20000);
+            this.loadCryptoTreemapSnapshot();
+            this.cryptoTreemapTimer = setInterval(function () {
+              return _this2.loadCryptoTreemapSnapshot(false);
+            }, 60000);
+            this.connectMarketTickerStream();
+          }
+        }
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this.disconnectBinanceSocket();
+          this.disconnectMarketTickerStream();
+          if (this.dynamicRefreshTimer) {
+            clearTimeout(this.dynamicRefreshTimer);
+            this.dynamicRefreshTimer = null;
+          }
+          if (this.marketSnapshotTimer) {
+            clearInterval(this.marketSnapshotTimer);
+            this.marketSnapshotTimer = null;
+          }
+          if (this.cryptoTreemapTimer) {
+            clearInterval(this.cryptoTreemapTimer);
+            this.cryptoTreemapTimer = null;
+          }
+          this.dynamicCharts = {};
+        }
+      }, {
+        key: "readRoute",
+        value: function readRoute() {
+          var path = window.location && window.location.pathname ? window.location.pathname : '/';
+          this.viewMode = path.indexOf('/static') >= 0 ? 'static' : 'dynamic';
+        }
+      }, {
+        key: "onBinanceChartCreate",
+        value: function onBinanceChartCreate(chart) {
+          this.binanceChart = chart;
+          this.applyBinanceSeries();
+        }
+      }, {
+        key: "selectBinanceSymbol",
+        value: function selectBinanceSymbol(symbol) {
+          if (this.binanceSymbol === symbol) {
+            return;
+          }
+          this.binanceSymbol = symbol;
+          this.loadBinanceHistory();
+        }
+      }, {
+        key: "selectBinanceInterval",
+        value: function selectBinanceInterval(interval) {
+          if (this.binanceInterval === interval) {
+            return;
+          }
+          this.binanceInterval = interval;
+          this.loadBinanceHistory();
+        }
+      }, {
+        key: "selectBinanceTheme",
+        value: function selectBinanceTheme(theme) {
+          if (this.binanceTheme === theme) {
+            return;
+          }
+          this.binanceTheme = theme;
+          this.binanceOptions = this.createBinanceOptions();
+          if (this.binanceChart && this.binanceChart.update) {
+            this.binanceChart.update(this.binanceOptions, false);
+            this.applyBinanceSeries();
+          }
+        }
+      }, {
+        key: "reloadBinanceChart",
+        value: function reloadBinanceChart() {
+          this.loadBinanceHistory();
+        }
+      }, {
+        key: "loadBinanceHistory",
+        value: function loadBinanceHistory() {
+          this.disconnectBinanceSocket();
+          this.binanceOhlcData = [];
+          this.binanceVolumeData = [];
+          this.binanceCandleCount = 0;
+          this.binanceLastCandle = null;
+          this.binanceStatus = 'Loading REST candles for ' + this.binanceSymbol + ' ' + this.binanceInterval + '...';
+          this.binanceSocketStatus = 'Waiting for REST history';
+          this.applyBinanceSeries();
+          this.loadBinanceHistoryFromHost(0);
+        }
+      }, {
+        key: "readInitialBinanceTheme",
+        value: function readInitialBinanceTheme() {
+          var search = window.location && window.location.search ? window.location.search : '';
+          if (search.indexOf('theme=dark') !== -1) {
+            this.binanceTheme = 'dark';
+          }
+        }
+      }, {
+        key: "loadMarketTickerSnapshot",
+        value: function loadMarketTickerSnapshot(showLoading) {
+          var _this3 = this;
+          if (this.marketSnapshotLoading) {
+            return;
+          }
+          var symbolsParam = encodeURIComponent(JSON.stringify(this.marketSymbols));
+          var url = this.maskApiRestBaseUrl + '/api/v3/ticker/24hr?symbols=' + symbolsParam;
+          var xhr = new XMLHttpRequest();
+          this.marketSnapshotLoading = true;
+          this.marketRestUrl = url;
+          if (showLoading !== false) {
+            this.marketStatus = 'Loading tracked 24hr ticker snapshot...';
+          }
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) {
+              return;
+            }
+            _this3.marketSnapshotLoading = false;
+            if (xhr.status >= 200 && xhr.status < 300) {
+              try {
+                var tickers = JSON.parse(xhr.responseText);
+                for (var i = 0; i < tickers.length; i++) {
+                  _this3.receiveMarketTicker(_this3.normalizeRestTicker(tickers[i]));
+                }
+                _this3.marketStatus = 'REST ticker snapshot loaded';
+                _this3.refreshDynamicExamples();
+              } catch (error) {
+                _this3.marketStatus = 'REST ticker parse failed';
+              }
+            } else {
+              _this3.marketStatus = 'REST ticker snapshot failed';
+            }
+          };
+          xhr.onerror = function () {
+            _this3.marketSnapshotLoading = false;
+            _this3.marketStatus = 'REST ticker snapshot failed';
+          };
+          xhr.open('GET', url, true);
+          xhr.send();
+        }
+      }, {
+        key: "loadCryptoTreemapSnapshot",
+        value: function loadCryptoTreemapSnapshot(showLoading) {
+          var _this4 = this;
+          if (this.cryptoTreemapLoading) {
+            return;
+          }
+          var xhr = new XMLHttpRequest();
+          this.cryptoTreemapLoading = true;
+          if (showLoading !== false) {
+            this.cryptoTreemapStatus = 'Loading CoinGecko top 50 market cap snapshot...';
+          }
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) {
+              return;
+            }
+            _this4.cryptoTreemapLoading = false;
+            if (xhr.status >= 200 && xhr.status < 300) {
+              try {
+                var coins = JSON.parse(xhr.responseText);
+                var rows = [];
+                for (var i = 0; i < coins.length; i++) {
+                  rows.push(_this4.normalizeCoinGeckoCoin(coins[i]));
+                }
+                _this4.cryptoTreemapRows = rows;
+                _this4.cryptoTreemapStatus = 'CoinGecko market cap snapshot updated: top ' + rows.length;
+                _this4.refreshDynamicExamples();
+              } catch (error) {
+                _this4.cryptoTreemapStatus = 'CoinGecko market cap parse failed';
+              }
+            } else {
+              _this4.cryptoTreemapStatus = 'CoinGecko market cap snapshot failed';
+            }
+          };
+          xhr.onerror = function () {
+            _this4.cryptoTreemapLoading = false;
+            _this4.cryptoTreemapStatus = 'CoinGecko market cap snapshot failed';
+          };
+          xhr.open('GET', this.cryptoTreemapUrl, true);
+          xhr.send();
+        }
+      }, {
+        key: "connectMarketTickerStream",
+        value: function connectMarketTickerStream() {
+          var _this5 = this;
+          this.disconnectMarketTickerStream();
+          var streams = [];
+          for (var i = 0; i < this.marketSymbols.length; i++) {
+            streams.push(this.marketSymbols[i].toLowerCase() + '@miniTicker');
+          }
+          this.marketWsUrl = this.maskApiWsBaseUrl + '/stream?streams=' + streams.join('/');
+          this.marketStatus = 'Connecting tracked market miniTicker stream...';
+          try {
+            this.marketSocket = new WebSocket(this.marketWsUrl);
+          } catch (error) {
+            this.marketStatus = 'Market WebSocket failed to start';
+            return;
+          }
+          this.marketSocket.onopen = function () {
+            _this5.marketStatus = 'Live tracked market miniTicker connected';
+          };
+          this.marketSocket.onclose = function () {
+            _this5.marketStatus = 'Market WebSocket disconnected';
+          };
+          this.marketSocket.onerror = function () {
+            _this5.marketStatus = 'Market WebSocket error';
+          };
+          this.marketSocket.onmessage = function (message) {
+            try {
+              var payload = JSON.parse(message.data);
+              var data = payload && payload.data ? payload.data : payload;
+              if (data && data.length !== undefined) {
+                for (var i = 0; i < data.length; i++) {
+                  _this5.receiveMiniTickerPayload(data[i]);
+                }
+              } else {
+                _this5.receiveMiniTickerPayload(data);
+              }
+              _this5.marketStatus = 'Live market miniTicker update: ' + new Date().toLocaleTimeString();
+              _this5.scheduleDynamicRefresh();
+            } catch (error) {
+              _this5.marketStatus = 'Market WebSocket parse error';
+            }
+          };
+        }
+      }, {
+        key: "disconnectMarketTickerStream",
+        value: function disconnectMarketTickerStream() {
+          if (!this.marketSocket) {
+            return;
+          }
+          this.marketSocket.onopen = null;
+          this.marketSocket.onclose = null;
+          this.marketSocket.onerror = null;
+          this.marketSocket.onmessage = null;
+          this.marketSocket.close();
+          this.marketSocket = null;
+        }
+      }, {
+        key: "normalizeRestTicker",
+        value: function normalizeRestTicker(ticker) {
+          return {
+            symbol: ticker.symbol,
+            price: parseFloat(ticker.lastPrice),
+            open: parseFloat(ticker.openPrice),
+            high: parseFloat(ticker.highPrice),
+            low: parseFloat(ticker.lowPrice),
+            volume: parseFloat(ticker.volume),
+            quoteVolume: parseFloat(ticker.quoteVolume),
+            changePercent: parseFloat(ticker.priceChangePercent)
+          };
+        }
+      }, {
+        key: "normalizeCoinGeckoCoin",
+        value: function normalizeCoinGeckoCoin(coin) {
+          return {
+            name: this.safeTreemapText(coin.name || ''),
+            symbol: this.safeTreemapText((coin.symbol || '').toUpperCase()),
+            price: parseFloat(coin.current_price),
+            marketCap: parseFloat(coin.market_cap),
+            changePercent: parseFloat(coin.price_change_percentage_24h)
+          };
+        }
+      }, {
+        key: "safeTreemapText",
+        value: function safeTreemapText(value) {
+          return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+      }, {
+        key: "normalizeMiniTicker",
+        value: function normalizeMiniTicker(ticker) {
+          var open = parseFloat(ticker.o);
+          var close = parseFloat(ticker.c);
+          return {
+            symbol: ticker.s,
+            price: close,
+            open: open,
+            high: parseFloat(ticker.h),
+            low: parseFloat(ticker.l),
+            volume: parseFloat(ticker.v),
+            quoteVolume: parseFloat(ticker.q),
+            changePercent: open ? (close - open) / open * 100 : 0
+          };
+        }
+      }, {
+        key: "receiveMiniTickerPayload",
+        value: function receiveMiniTickerPayload(data) {
+          var ticker = this.normalizeMiniTicker(data);
+          if (this.isTrackedMarketSymbol(ticker.symbol)) {
+            this.receiveMarketTicker(ticker);
+          }
+        }
+      }, {
+        key: "receiveMarketTicker",
+        value: function receiveMarketTicker(ticker) {
+          if (!ticker || !ticker.symbol) {
+            return;
+          }
+          this.marketTickers[ticker.symbol] = ticker;
+          if (!this.marketHistory[ticker.symbol]) {
+            this.marketHistory[ticker.symbol] = [];
+          }
+          this.marketHistory[ticker.symbol].push([Date.now(), ticker.price]);
+          while (this.marketHistory[ticker.symbol].length > 60) {
+            this.marketHistory[ticker.symbol].shift();
+          }
+        }
+      }, {
+        key: "isTrackedMarketSymbol",
+        value: function isTrackedMarketSymbol(symbol) {
+          for (var i = 0; i < this.marketSymbols.length; i++) {
+            if (this.marketSymbols[i] === symbol) {
+              return true;
+            }
+          }
+          return false;
+        }
+      }, {
+        key: "scheduleDynamicRefresh",
+        value: function scheduleDynamicRefresh() {
+          var _this6 = this;
+          if (this.dynamicRefreshQueued) {
+            return;
+          }
+          this.dynamicRefreshQueued = true;
+          this.dynamicRefreshTimer = setTimeout(function () {
+            _this6.dynamicRefreshQueued = false;
+            _this6.dynamicRefreshTimer = null;
+            _this6.refreshDynamicExamples();
+          }, 900);
+        }
+      }, {
+        key: "refreshDynamicExamples",
+        value: function refreshDynamicExamples() {
+          this.updateAllDynamicCharts();
+        }
+      }, {
+        key: "loadBinanceHistoryFromHost",
+        value: function loadBinanceHistoryFromHost(index) {
+          var _this7 = this;
+          if (index >= this.binanceRestHosts.length) {
+            this.binanceStatus = 'REST history failed on both Binance endpoints.';
+            this.binanceSocketStatus = 'WebSocket not started';
+            return;
+          }
+          var url = this.binanceRestHosts[index] + '?symbol=' + encodeURIComponent(this.binanceSymbol) + '&interval=' + encodeURIComponent(this.binanceInterval) + '&limit=300';
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) {
+              return;
+            }
+            if (xhr.status >= 200 && xhr.status < 300) {
+              try {
+                var candles = JSON.parse(xhr.responseText);
+                _this7.receiveBinanceHistory(candles, url);
+              } catch (error) {
+                _this7.loadBinanceHistoryFromHost(index + 1);
+              }
+              return;
+            }
+            _this7.loadBinanceHistoryFromHost(index + 1);
+          };
+          xhr.onerror = function () {
+            return _this7.loadBinanceHistoryFromHost(index + 1);
+          };
+          xhr.open('GET', url, true);
+          xhr.send();
+        }
+      }, {
+        key: "receiveBinanceHistory",
+        value: function receiveBinanceHistory(candles, url) {
+          var ohlc = [];
+          var volume = [];
+          for (var i = 0; i < candles.length; i++) {
+            var candle = candles[i];
+            var point = this.toOhlcPoint(candle);
+            ohlc.push(point);
+            volume.push({
+              x: point[0],
+              y: parseFloat(candle[5]),
+              color: point[4] >= point[1] ? '#02c076' : '#f6465d'
+            });
+          }
+          this.binanceOhlcData = ohlc;
+          this.binanceVolumeData = volume;
+          this.binanceRestUrl = url;
+          this.binanceCandleCount = ohlc.length;
+          this.binanceLastCandle = this.createCandleMeta(ohlc[ohlc.length - 1]);
+          this.binanceStatus = 'REST candles loaded from ' + this.shortUrl(url);
+          this.applyBinanceSeries();
+          this.connectBinanceSocket();
+        }
+      }, {
+        key: "connectBinanceSocket",
+        value: function connectBinanceSocket() {
+          var _this8 = this;
+          this.disconnectBinanceSocket();
+          this.binanceWsUrl = this.binanceWsBaseUrl + this.binanceSymbol.toLowerCase() + '@kline_' + this.binanceInterval;
+          this.binanceSocketStatus = 'Connecting to ' + this.binanceWsUrl;
+          try {
+            this.binanceSocket = new WebSocket(this.binanceWsUrl);
+          } catch (error) {
+            this.binanceSocketStatus = 'WebSocket failed to start';
+            return;
+          }
+          this.binanceSocket.onopen = function () {
+            _this8.binanceSocketStatus = 'Live WebSocket connected';
+          };
+          this.binanceSocket.onclose = function () {
+            _this8.binanceSocketStatus = 'WebSocket disconnected';
+          };
+          this.binanceSocket.onerror = function () {
+            _this8.binanceSocketStatus = 'WebSocket error';
+          };
+          this.binanceSocket.onmessage = function (message) {
+            try {
+              var payload = JSON.parse(message.data);
+              if (payload && payload.k) {
+                _this8.receiveBinanceLiveCandle(payload.k);
+              }
+            } catch (error) {
+              _this8.binanceSocketStatus = 'WebSocket parse error';
+            }
+          };
+        }
+      }, {
+        key: "disconnectBinanceSocket",
+        value: function disconnectBinanceSocket() {
+          if (!this.binanceSocket) {
+            return;
+          }
+          this.binanceSocket.onopen = null;
+          this.binanceSocket.onclose = null;
+          this.binanceSocket.onerror = null;
+          this.binanceSocket.onmessage = null;
+          this.binanceSocket.close();
+          this.binanceSocket = null;
+        }
+      }, {
+        key: "receiveBinanceLiveCandle",
+        value: function receiveBinanceLiveCandle(kline) {
+          var point = [kline.t, parseFloat(kline.o), parseFloat(kline.h), parseFloat(kline.l), parseFloat(kline.c)];
+          var volumePoint = {
+            x: point[0],
+            y: parseFloat(kline.v),
+            color: point[4] >= point[1] ? '#02c076' : '#f6465d'
+          };
+          this.upsertTimePoint(this.binanceOhlcData, point);
+          this.upsertTimePoint(this.binanceVolumeData, volumePoint);
+          this.trimBinanceData();
+          this.binanceCandleCount = this.binanceOhlcData.length;
+          this.binanceLastCandle = this.createCandleMeta(point);
+          this.binanceSocketStatus = 'Live WebSocket update: ' + new Date().toLocaleTimeString();
+          this.applyBinanceSeries();
+        }
+      }, {
+        key: "upsertTimePoint",
+        value: function upsertTimePoint(target, point) {
+          var pointTime = point.x || point[0];
+          var last = target.length ? target[target.length - 1] : null;
+          var lastTime = last ? last.x || last[0] : null;
+          if (last && lastTime === pointTime) {
+            target[target.length - 1] = point;
+            return;
+          }
+          target.push(point);
+        }
+      }, {
+        key: "trimBinanceData",
+        value: function trimBinanceData() {
+          while (this.binanceOhlcData.length > 300) {
+            this.binanceOhlcData.shift();
+          }
+          while (this.binanceVolumeData.length > 300) {
+            this.binanceVolumeData.shift();
+          }
+        }
+      }, {
+        key: "applyBinanceSeries",
+        value: function applyBinanceSeries() {
+          if (!this.binanceChart || !this.binanceChart.series || this.binanceChart.series.length < 5) {
+            return;
+          }
+          this.binanceChart.setTitle({
+            text: this.binanceSymbol + ' live candles'
+          }, {
+            text: 'REST history + Binance WebSocket updates (' + this.binanceInterval + ')'
+          }, false);
+          this.binanceChart.series[0].setData(this.binanceOhlcData.slice(0), false);
+          this.binanceChart.series[1].setData(this.calculateMovingAverage(7), false);
+          this.binanceChart.series[2].setData(this.calculateMovingAverage(25), false);
+          this.binanceChart.series[3].setData(this.calculateMovingAverage(99), false);
+          this.binanceChart.series[4].setData(this.binanceVolumeData.slice(0), false);
+          this.binanceChart.redraw();
+        }
+      }, {
+        key: "toOhlcPoint",
+        value: function toOhlcPoint(candle) {
+          return [parseInt(candle[0], 10), parseFloat(candle[1]), parseFloat(candle[2]), parseFloat(candle[3]), parseFloat(candle[4])];
+        }
+      }, {
+        key: "createCandleMeta",
+        value: function createCandleMeta(point) {
+          if (!point) {
+            return null;
+          }
+          var open = point[1];
+          var close = point[4];
+          var change = close - open;
+          var changePercent = open ? change / open * 100 : 0;
+          return {
+            time: point[0],
+            open: open,
+            high: point[2],
+            low: point[3],
+            close: close,
+            change: change,
+            changePercent: changePercent
+          };
+        }
+      }, {
+        key: "calculateMovingAverage",
+        value: function calculateMovingAverage(period) {
+          var result = [];
+          var sum = 0;
+          for (var i = 0; i < this.binanceOhlcData.length; i++) {
+            sum += this.binanceOhlcData[i][4];
+            if (i >= period) {
+              sum -= this.binanceOhlcData[i - period][4];
+            }
+            if (i >= period - 1) {
+              result.push([this.binanceOhlcData[i][0], parseFloat((sum / period).toFixed(4))]);
+            }
+          }
+          return result;
+        }
+      }, {
+        key: "shortUrl",
+        value: function shortUrl(url) {
+          return url.replace('https://', '').replace('wss://', '');
+        }
+      }, {
+        key: "formatPrice",
+        value: function formatPrice(value) {
+          if (value === null || typeof value === 'undefined') {
+            return '--';
+          }
+          return value.toFixed(value >= 1000 ? 2 : 4);
+        }
+      }, {
+        key: "formatPercent",
+        value: function formatPercent(value) {
+          if (value === null || typeof value === 'undefined') {
+            return '--';
+          }
+          return (value >= 0 ? '+' : '') + value.toFixed(2) + '%';
+        }
+      }, {
+        key: "withTutorial",
+        value: function withTutorial(example) {
+          var optionsName = this.extractOptionsName(example.html);
+          var className = this.toComponentClassName(example.title);
+          var wrappedHtml = this.wrapTutorialHtml(example.html);
+          example.tutorialHtml = wrappedHtml;
+          example.tutorialTs = "import { Component } from '@angular/core';\n\n@Component({\n  selector: '".concat(this.toSelectorName(example.title), "',\n  templateUrl: './").concat(this.toFileName(example.title), ".component.html',\n  styleUrls: ['./").concat(this.toFileName(example.title), ".component.css']\n})\nexport class ").concat(className, " {\n  ").concat(optionsName, ": any = ").concat(this.stringifyOptions(example.options), ";\n\n  onCreate(chart: any) {\n    console.log('").concat(example.title, " created', chart.series.length);\n  }\n}");
+          example.tutorialScss = this.defaultTutorialScss(example.options && example.options.chart && example.options.chart.height ? example.options.chart.height : 320);
+          return example;
+        }
+      }, {
+        key: "wrapTutorialHtml",
+        value: function wrapTutorialHtml(html) {
+          return "<div class=\"chart-shell\">\n  ".concat(html, "\n</div>");
+        }
+      }, {
+        key: "extractOptionsName",
+        value: function extractOptionsName(html) {
+          var match = html.match(/\[options\]="([^"]+)"/);
+          return match && match[1] ? match[1] : 'chartOptions';
+        }
+      }, {
+        key: "stringifyOptions",
+        value: function stringifyOptions(options) {
+          return JSON.stringify(options, null, 2).replace(/"([^"]+)":/g, '$1:').replace(/"/g, '\'');
+        }
+      }, {
+        key: "toComponentClassName",
+        value: function toComponentClassName(title) {
+          var name = this.toWords(title).join('');
+          if (/^[0-9]/.test(name)) {
+            name = 'Chart' + name;
+          }
+          return name + 'ExampleComponent';
+        }
+      }, {
+        key: "toSelectorName",
+        value: function toSelectorName(title) {
+          return 'chart-' + this.toFileName(title);
+        }
+      }, {
+        key: "toFileName",
+        value: function toFileName(title) {
+          return this.toWords(title).join('-').toLowerCase();
+        }
+      }, {
+        key: "toWords",
+        value: function toWords(value) {
+          var words = value.replace(/[^a-zA-Z0-9]+/g, ' ').split(' ');
+          var clean = [];
+          for (var i = 0; i < words.length; i++) {
+            if (words[i]) {
+              clean.push(words[i].charAt(0).toUpperCase() + words[i].slice(1));
+            }
+          }
+          return clean.length ? clean : ['Chart'];
+        }
+      }, {
+        key: "defaultTutorialScss",
+        value: function defaultTutorialScss(height) {
+          return ".chart-shell {\n  width: 100%;\n  padding: 16px;\n  border: 1px solid #d9e5ee;\n  border-radius: 8px;\n  background: #fff;\n  box-sizing: border-box;\n}\n\nchart {\n  display: block;\n  width: 100%;\n  min-height: ".concat(height, "px;\n}");
+        }
+      }, {
+        key: "createDynamicMarketExamples",
+        value: function createDynamicMarketExamples() {
+          var examples = [this.makeDynamicExample('Live crypto treemap', 'Top 50 coins sized by market cap and colored by 24h change.', 'liveTreemapOptions', this.createLiveTreemapOptions()), this.makeDynamicExample('Live price move line', 'Normalized live price movement from Binance miniTicker WebSocket.', 'liveLineOptions', this.createLiveLineOptions()), this.makeDynamicExample('Live price heartbeat spline', 'Heartbeat-style normalized pulse from live price and change data.', 'liveSplineOptions', this.createLiveSplineOptions()), this.makeDynamicExample('Live quote volume area', 'Area comparison using live quote volume.', 'liveAreaOptions', this.createLiveAreaOptions()), this.makeDynamicExample('Live quote volume areaspline', 'Smooth area chart from live quote volume.', 'liveAreasplineOptions', this.createLiveAreasplineOptions()), this.makeDynamicExample('Live change column', '24h percentage change updated by WebSocket.', 'liveColumnOptions', this.createLiveColumnOptions()), this.makeDynamicExample('Live volume bar', 'Horizontal bar chart from live quote volume.', 'liveBarOptions', this.createLiveBarOptions()), this.makeDynamicExample('Live stacked volume', 'Stacked columns splitting volume into base and quote-derived views.', 'liveStackedOptions', this.createLiveStackedOptions()), this.makeDynamicExample('Live volume pie', 'Volume share across tracked symbols.', 'livePieOptions', this.createLivePieOptions()), this.makeDynamicExample('Live volume donut', 'Donut variation of the same live volume share.', 'liveDonutOptions', this.createLiveDonutOptions()), this.makeDynamicExample('Live price scatter', 'Price versus quote volume for the tracked symbols.', 'liveScatterOptions', this.createLiveScatterOptions()), this.makeDynamicExample('Live change bubble', 'Change percent, price and volume in a bubble chart.', 'liveBubbleOptions', this.createLiveBubbleOptions()), this.makeDynamicExample('Live combo chart', 'Column volume plus spline change percent.', 'liveComboOptions', this.createLiveComboOptions()), this.makeDynamicExample('Live polar strength', 'Market strength rendered in polar/radar form.', 'livePolarOptions', this.createLivePolarOptions()), this.makeDynamicExample('Live BNB change gauge', 'Gauge driven by BNBUSDT 24h change.', 'liveGaugeOptions', this.createLiveGaugeOptions()), this.makeDynamicExample('Live market score solid gauge', 'Solid gauge score from the tracked symbols.', 'liveSolidGaugeOptions', this.createLiveSolidGaugeOptions()), this.makeDynamicExample('Live market heatmap', 'Heatmap built from change and volatility metrics.', 'liveHeatmapOptions', this.createLiveHeatmapOptions()), this.makeDynamicExample('Live liquidity funnel', 'Funnel sorted from highest to lowest quote volume.', 'liveFunnelOptions', this.createLiveFunnelOptions()), this.makeDynamicExample('Live 3D volume columns', '3D columns from live quote volume.', 'live3dColumnOptions', this.createLive3dColumnOptions())];
+          for (var i = 0; i < examples.length; i++) {
+            examples[i] = this.withTutorial(examples[i]);
+          }
+          return examples;
+        }
+      }, {
+        key: "makeDynamicExample",
+        value: function makeDynamicExample(title, description, optionsName, options) {
+          return {
+            key: optionsName,
+            title: title,
+            description: description,
+            options: options,
+            html: '<chart [options]="' + optionsName + '"></chart>'
+          };
+        }
+      }, {
+        key: "marketRows",
+        value: function marketRows() {
+          var rows = [];
+          for (var i = 0; i < this.marketSymbols.length; i++) {
+            var symbol = this.marketSymbols[i];
+            rows.push(this.marketTickers[symbol] || this.fallbackTicker(symbol, i));
+          }
+          return rows;
+        }
+      }, {
+        key: "fallbackTicker",
+        value: function fallbackTicker(symbol, index) {
+          var base = [67000, 3600, 660, 155, 2.2, 0.65, 0.16, 0.11][index] || 10 + index;
+          var change = [1.2, -0.8, 0.4, 2.1, -1.1, 0.7, 1.8, -0.3][index] || 0;
+          return {
+            symbol: symbol,
+            price: base,
+            open: base * (1 - change / 100),
+            high: base * 1.02,
+            low: base * 0.98,
+            volume: 1000000 + index * 120000,
+            quoteVolume: 900000000 - index * 70000000,
+            changePercent: change
+          };
+        }
+      }, {
+        key: "cryptoTreemapRowsForChart",
+        value: function cryptoTreemapRowsForChart() {
+          if (this.cryptoTreemapRows.length) {
+            return this.cryptoTreemapRows;
+          }
+          return [{
+            name: 'Bitcoin',
+            symbol: 'BTC',
+            price: 67516,
+            marketCap: 1352661264706,
+            changePercent: -5.67
+          }, {
+            name: 'Ethereum',
+            symbol: 'ETH',
+            price: 1922.75,
+            marketCap: 232156210067,
+            changePercent: -3.27
+          }, {
+            name: 'Tether',
+            symbol: 'USDT',
+            price: 0.998454,
+            marketCap: 187951404193,
+            changePercent: -0.01
+          }, {
+            name: 'BNB',
+            symbol: 'BNB',
+            price: 665.54,
+            marketCap: 89722947955,
+            changePercent: -3.06
+          }, {
+            name: 'XRP',
+            symbol: 'XRP',
+            price: 1.23,
+            marketCap: 76555364639,
+            changePercent: -4.94
+          }, {
+            name: 'USD Coin',
+            symbol: 'USDC',
+            price: 0.999595,
+            marketCap: 75837344337,
+            changePercent: -0.01
+          }, {
+            name: 'Solana',
+            symbol: 'SOL',
+            price: 76.77,
+            marketCap: 44417058835,
+            changePercent: -5.08
+          }, {
+            name: 'TRON',
+            symbol: 'TRX',
+            price: 0.337746,
+            marketCap: 32024356142,
+            changePercent: -2.23
+          }];
+        }
+      }, {
+        key: "marketLabels",
+        value: function marketLabels(rows) {
+          var labels = [];
+          for (var i = 0; i < rows.length; i++) {
+            labels.push(rows[i].symbol.replace('USDT', ''));
+          }
+          return labels;
+        }
+      }, {
+        key: "marketValues",
+        value: function marketValues(rows, field, divisor) {
+          var values = [];
+          for (var i = 0; i < rows.length; i++) {
+            values.push(parseFloat(((rows[i][field] || 0) / divisor).toFixed(4)));
+          }
+          return values;
+        }
+      }, {
+        key: "marketPieData",
+        value: function marketPieData(rows) {
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            data.push([rows[i].symbol.replace('USDT', ''), parseFloat((rows[i].quoteVolume / 1000000).toFixed(2))]);
+          }
+          return data;
+        }
+      }, {
+        key: "marketHistorySeries",
+        value: function marketHistorySeries() {
+          var series = [];
+          for (var i = 0; i < this.marketSymbols.length; i++) {
+            var symbol = this.marketSymbols[i];
+            var history = this.marketHistory[symbol] && this.marketHistory[symbol].length ? this.marketHistory[symbol] : [[Date.now(), this.fallbackTicker(symbol, i).price]];
+            series.push({
+              name: symbol.replace('USDT', ''),
+              data: history.slice(0),
+              marker: {
+                enabled: false
+              }
+            });
+          }
+          return series;
+        }
+      }, {
+        key: "marketMoveSeries",
+        value: function marketMoveSeries() {
+          var rows = this.marketRows().slice(0, 6);
+          var now = Date.now();
+          var pointCount = 48;
+          var series = [];
+          for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var symbol = row.symbol.replace('USDT', '');
+            var open = row.open || row.price || 1;
+            var liveMove = open ? ((row.price || open) - open) / open * 100 : 0;
+            var change = row.changePercent || liveMove;
+            var data = [];
+            for (var pointIndex = 0; pointIndex < pointCount; pointIndex++) {
+              var age = pointCount - pointIndex;
+              var progress = pointIndex / (pointCount - 1);
+              var x = now - age * 1000;
+              var drift = change * progress;
+              var wave = Math.sin((pointIndex + i * 4) / 5) * (0.35 + i * 0.04);
+              var microMove = Math.cos((pointIndex + i) / 2.7) * 0.16;
+              var value = drift + wave + microMove;
+              data.push([x, parseFloat(value.toFixed(3))]);
+            }
+            series.push({
+              name: symbol + ' move',
+              data: data,
+              marker: {
+                enabled: false
+              },
+              lineWidth: i === 0 ? 3 : 2
+            });
+          }
+          return series;
+        }
+      }, {
+        key: "marketHeartbeatSeries",
+        value: function marketHeartbeatSeries() {
+          var rows = this.marketRows().slice(0, 4);
+          var now = Date.now();
+          var pointCount = 48;
+          var series = [];
+          for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var symbol = row.symbol.replace('USDT', '');
+            var baseChange = row.changePercent || 0;
+            var open = row.open || row.price || 1;
+            var priceDrift = open ? ((row.price || open) - open) / open * 100 : 0;
+            var data = [];
+            for (var pointIndex = 0; pointIndex < pointCount; pointIndex++) {
+              var age = pointCount - pointIndex;
+              var x = now - age * 1000;
+              var rhythm = Math.sin((pointIndex + i * 3) / 2.3) * (1.4 + i * 0.22);
+              var breath = Math.sin((pointIndex + i) / 7) * 0.75;
+              var beatPosition = (pointIndex + i * 2) % 12;
+              var pulse = beatPosition === 0 ? 8.5 : beatPosition === 1 ? 4.8 : beatPosition === 2 ? -2.4 : 0;
+              var marketLean = baseChange * 0.9 + priceDrift * 0.65;
+              var value = 100 + marketLean + rhythm + breath + pulse;
+              data.push([x, parseFloat(value.toFixed(2))]);
+            }
+            series.push({
+              name: symbol + ' pulse',
+              data: data,
+              marker: {
+                enabled: false
+              },
+              lineWidth: i === 0 ? 3 : 2
+            });
+          }
+          return series;
+        }
+      }, {
+        key: "marketScore",
+        value: function marketScore(rows) {
+          var sum = 0;
+          for (var i = 0; i < rows.length; i++) {
+            sum += rows[i].changePercent;
+          }
+          var avg = rows.length ? sum / rows.length : 0;
+          var score = 50 + avg * 5;
+          return Math.max(0, Math.min(100, parseFloat(score.toFixed(2))));
+        }
+      }, {
+        key: "createLiveLineOptions",
+        value: function createLiveLineOptions() {
+          return {
+            chart: {
+              type: 'line',
+              height: 320
+            },
+            title: {
+              text: 'Live price move line'
+            },
+            subtitle: {
+              text: this.marketStatus
+            },
+            xAxis: {
+              type: 'datetime'
+            },
+            yAxis: {
+              title: {
+                text: 'Move from open, %'
+              },
+              plotLines: [{
+                value: 0,
+                color: '#94a3b8',
+                width: 1,
+                dashStyle: 'ShortDash',
+                zIndex: 1
+              }]
+            },
+            tooltip: {
+              shared: true,
+              valueSuffix: '%',
+              valueDecimals: 3
+            },
+            plotOptions: {
+              line: {
+                animation: false,
+                marker: {
+                  enabled: false
+                }
+              }
+            },
+            series: this.marketMoveSeries()
+          };
+        }
+      }, {
+        key: "createLiveSplineOptions",
+        value: function createLiveSplineOptions() {
+          return {
+            chart: {
+              type: 'spline',
+              height: 320
+            },
+            title: {
+              text: 'Live price heartbeat spline'
+            },
+            subtitle: {
+              text: this.marketStatus
+            },
+            xAxis: {
+              type: 'datetime',
+              tickPixelInterval: 90
+            },
+            yAxis: {
+              title: {
+                text: 'Normalized pulse'
+              },
+              plotLines: [{
+                value: 100,
+                color: '#94a3b8',
+                width: 1,
+                dashStyle: 'ShortDash',
+                zIndex: 1
+              }]
+            },
+            tooltip: {
+              shared: true,
+              valueSuffix: ' pulse',
+              valueDecimals: 2
+            },
+            plotOptions: {
+              spline: {
+                animation: false,
+                marker: {
+                  enabled: false
+                }
+              }
+            },
+            series: this.marketHeartbeatSeries()
+          };
+        }
+      }, {
+        key: "createLiveAreaOptions",
+        value: function createLiveAreaOptions() {
+          var rows = this.marketRows();
+          return {
+            chart: {
+              type: 'area',
+              height: 320
+            },
+            title: {
+              text: 'Live quote volume area'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows)
+            },
+            yAxis: {
+              title: {
+                text: 'Quote volume, millions'
+              }
+            },
+            series: [{
+              name: 'Quote volume',
+              data: this.marketValues(rows, 'quoteVolume', 1000000)
+            }]
+          };
+        }
+      }, {
+        key: "createLiveAreasplineOptions",
+        value: function createLiveAreasplineOptions() {
+          var options = this.createLiveAreaOptions();
+          options.chart.type = 'areaspline';
+          options.title.text = 'Live quote volume areaspline';
+          return options;
+        }
+      }, {
+        key: "createLiveColumnOptions",
+        value: function createLiveColumnOptions() {
+          var rows = this.marketRows();
+          return {
+            chart: {
+              type: 'column',
+              height: 320
+            },
+            title: {
+              text: 'Live 24h change column'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows)
+            },
+            yAxis: {
+              title: {
+                text: 'Change %'
+              }
+            },
+            series: [{
+              name: '24h change %',
+              data: this.marketValues(rows, 'changePercent', 1)
+            }]
+          };
+        }
+      }, {
+        key: "createLiveBarOptions",
+        value: function createLiveBarOptions() {
+          var rows = this.marketRows();
+          return {
+            chart: {
+              type: 'bar',
+              height: 320
+            },
+            title: {
+              text: 'Live volume bar'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows)
+            },
+            yAxis: {
+              title: {
+                text: 'Quote volume, millions'
+              }
+            },
+            series: [{
+              name: 'Quote volume',
+              data: this.marketValues(rows, 'quoteVolume', 1000000)
+            }]
+          };
+        }
+      }, {
+        key: "createLiveStackedOptions",
+        value: function createLiveStackedOptions() {
+          var rows = this.marketRows();
+          return {
+            chart: {
+              type: 'column',
+              height: 320
+            },
+            title: {
+              text: 'Live stacked volume'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows)
+            },
+            yAxis: {
+              min: 0,
+              title: {
+                text: 'Volume score'
+              },
+              stackLabels: {
+                enabled: true
+              }
+            },
+            plotOptions: {
+              column: {
+                stacking: 'normal'
+              }
+            },
+            series: [{
+              name: 'Base volume',
+              data: this.marketValues(rows, 'volume', 1000000)
+            }, {
+              name: 'Quote volume',
+              data: this.marketValues(rows, 'quoteVolume', 100000000)
+            }]
+          };
+        }
+      }, {
+        key: "createLivePieOptions",
+        value: function createLivePieOptions() {
+          return {
+            chart: {
+              type: 'pie',
+              height: 320
+            },
+            title: {
+              text: 'Live volume pie'
+            },
+            series: [{
+              name: 'Quote volume',
+              data: this.marketPieData(this.marketRows())
+            }]
+          };
+        }
+      }, {
+        key: "createLiveDonutOptions",
+        value: function createLiveDonutOptions() {
+          var options = this.createLivePieOptions();
+          options.title.text = 'Live volume donut';
+          options.plotOptions = {
+            pie: {
+              innerSize: '55%'
+            }
+          };
+          return options;
+        }
+      }, {
+        key: "createLiveScatterOptions",
+        value: function createLiveScatterOptions() {
+          var rows = this.marketRows();
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            data.push({
+              name: rows[i].symbol.replace('USDT', ''),
+              x: parseFloat(rows[i].changePercent.toFixed(4)),
+              y: parseFloat((rows[i].quoteVolume / 1000000).toFixed(4))
+            });
+          }
+          return {
+            chart: {
+              type: 'scatter',
+              zoomType: 'xy',
+              height: 320
+            },
+            title: {
+              text: 'Live price scatter'
+            },
+            xAxis: {
+              title: {
+                text: '24h change %'
+              }
+            },
+            yAxis: {
+              title: {
+                text: 'Quote volume, millions'
+              }
+            },
+            series: [{
+              name: 'Symbols',
+              data: data
+            }]
+          };
+        }
+      }, {
+        key: "createLiveBubbleOptions",
+        value: function createLiveBubbleOptions() {
+          var rows = this.marketRows();
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            data.push({
+              name: rows[i].symbol.replace('USDT', ''),
+              x: parseFloat(rows[i].changePercent.toFixed(4)),
+              y: parseFloat(rows[i].price.toFixed(4)),
+              z: Math.max(10, parseFloat((rows[i].quoteVolume / 100000000).toFixed(4)))
+            });
+          }
+          return {
+            chart: {
+              type: 'bubble',
+              plotBorderWidth: 1,
+              zoomType: 'xy',
+              height: 320
+            },
+            title: {
+              text: 'Live change bubble'
+            },
+            xAxis: {
+              title: {
+                text: '24h change %'
+              }
+            },
+            yAxis: {
+              title: {
+                text: 'Price USDT'
+              }
+            },
+            series: [{
+              name: 'Symbols',
+              data: data
+            }]
+          };
+        }
+      }, {
+        key: "createLiveComboOptions",
+        value: function createLiveComboOptions() {
+          var rows = this.marketRows();
+          return {
+            chart: {
+              height: 320
+            },
+            title: {
+              text: 'Live combo chart'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows)
+            },
+            yAxis: [{
+              title: {
+                text: 'Quote volume, millions'
+              }
+            }, {
+              title: {
+                text: 'Change %'
+              },
+              opposite: true
+            }],
+            series: [{
+              type: 'column',
+              name: 'Quote volume',
+              data: this.marketValues(rows, 'quoteVolume', 1000000)
+            }, {
+              type: 'spline',
+              name: '24h change %',
+              data: this.marketValues(rows, 'changePercent', 1),
+              yAxis: 1
+            }]
+          };
+        }
+      }, {
+        key: "createLivePolarOptions",
+        value: function createLivePolarOptions() {
+          var rows = this.marketRows();
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            data.push(parseFloat((50 + rows[i].changePercent * 5).toFixed(2)));
+          }
+          return {
+            chart: {
+              polar: true,
+              type: 'line',
+              height: 320
+            },
+            title: {
+              text: 'Live polar strength'
+            },
+            pane: {
+              size: '80%'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows),
+              tickmarkPlacement: 'on',
+              lineWidth: 0
+            },
+            yAxis: {
+              gridLineInterpolation: 'polygon',
+              lineWidth: 0,
+              min: 0,
+              max: 100
+            },
+            series: [{
+              name: 'Strength',
+              data: data,
+              pointPlacement: 'on'
+            }]
+          };
+        }
+      }, {
+        key: "createLiveGaugeOptions",
+        value: function createLiveGaugeOptions() {
+          var ticker = this.marketTickers['BNBUSDT'] || this.fallbackTicker('BNBUSDT', 2);
+          return {
+            chart: {
+              type: 'gauge',
+              height: 320
+            },
+            title: {
+              text: 'Live BNB change gauge'
+            },
+            pane: {
+              startAngle: -150,
+              endAngle: 150
+            },
+            yAxis: {
+              min: -10,
+              max: 10,
+              title: {
+                text: '24h %'
+              }
+            },
+            series: [{
+              name: 'BNB change',
+              data: [parseFloat(ticker.changePercent.toFixed(2))]
+            }]
+          };
+        }
+      }, {
+        key: "createLiveSolidGaugeOptions",
+        value: function createLiveSolidGaugeOptions() {
+          var score = this.marketScore(this.marketRows());
+          return {
+            chart: {
+              type: 'solidgauge',
+              height: 320
+            },
+            title: {
+              text: 'Live market score solid gauge'
+            },
+            pane: {
+              center: ['50%', '60%'],
+              size: '90%',
+              startAngle: -90,
+              endAngle: 90,
+              background: {
+                backgroundColor: '#eef3f8',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+              }
+            },
+            yAxis: {
+              min: 0,
+              max: 100,
+              stops: [[0.3, '#f6465d'], [0.55, '#f0b90b'], [0.75, '#02c076']],
+              lineWidth: 0,
+              tickWidth: 0,
+              minorTickInterval: null,
+              tickAmount: 2,
+              title: {
+                text: null
+              }
+            },
+            series: [{
+              name: 'Market score',
+              data: [score]
+            }]
+          };
+        }
+      }, {
+        key: "createLiveHeatmapOptions",
+        value: function createLiveHeatmapOptions() {
+          var rows = this.marketRows();
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            data.push([i, 0, parseFloat(rows[i].changePercent.toFixed(2))]);
+            data.push([i, 1, parseFloat(((rows[i].high - rows[i].low) / rows[i].price * 100).toFixed(2))]);
+          }
+          return {
+            chart: {
+              type: 'heatmap',
+              height: 320
+            },
+            title: {
+              text: 'Live market heatmap'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows)
+            },
+            yAxis: {
+              categories: ['Change %', 'Range %'],
+              title: null
+            },
+            colorAxis: {
+              min: -5,
+              max: 5,
+              minColor: '#f6465d',
+              maxColor: '#02c076'
+            },
+            series: [{
+              name: 'Metric',
+              borderWidth: 1,
+              data: data,
+              dataLabels: {
+                enabled: true,
+                color: '#111'
+              }
+            }]
+          };
+        }
+      }, {
+        key: "createLiveTreemapOptions",
+        value: function createLiveTreemapOptions() {
+          var rows = this.cryptoTreemapRowsForChart();
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            var change = parseFloat(rows[i].changePercent.toFixed(2));
+            data.push({
+              name: rows[i].symbol,
+              value: rows[i].marketCap,
+              colorValue: change,
+              custom: {
+                name: rows[i].name,
+                symbol: rows[i].symbol,
+                change: change,
+                price: rows[i].price,
+                marketCap: rows[i].marketCap
+              }
+            });
+          }
+          return {
+            chart: {
+              type: 'treemap',
+              className: 'crypto-treemap-chart',
+              height: 620,
+              backgroundColor: '#ffffff',
+              plotBackgroundColor: '#ffffff',
+              spacing: [12, 0, 8, 0],
+              events: {
+                load: function load() {
+                  var chart = this;
+                  var hideTooltip = function hideTooltip() {
+                    if (chart.tooltip && chart.tooltip.hide) {
+                      chart.tooltip.hide(0);
+                    }
+                  };
+                  var hideWhenOutside = function hideWhenOutside(event) {
+                    var target = event && event.target ? event.target : null;
+                    if (chart.container && target && chart.container.contains && chart.container.contains(target)) {
+                      return;
+                    }
+                    hideTooltip();
+                  };
+                  if (chart.container && chart.container.addEventListener) {
+                    chart.container.addEventListener('mouseleave', hideTooltip);
+                    chart.container.addEventListener('blur', hideTooltip, true);
+                  }
+                  if (document && document.addEventListener) {
+                    document.addEventListener('mousedown', hideWhenOutside, true);
+                    document.addEventListener('touchstart', hideWhenOutside, true);
+                    document.addEventListener('scroll', hideTooltip, true);
+                  }
+                  if (window && window.addEventListener) {
+                    window.addEventListener('blur', hideTooltip);
+                  }
+                }
+              }
+            },
+            title: {
+              text: 'Top 50 coins by market cap',
+              style: {
+                color: '#111827',
+                fontSize: '22px',
+                fontWeight: '700'
+              }
+            },
+            subtitle: {
+              text: this.cryptoTreemapStatus + ' | colored by 24h change',
+              style: {
+                color: '#475569',
+                fontSize: '14px'
+              }
+            },
+            colorAxis: {
+              min: -10,
+              max: 10,
+              stops: [[0, '#f33b36'], [0.45, '#fb7b72'], [0.5, '#e5e7eb'], [0.55, '#82e77c'], [1, '#29b916']]
+            },
+            tooltip: {
+              backgroundColor: '#ffffff',
+              borderColor: '#cbd5e1',
+              hideDelay: 0,
+              shadow: true,
+              zIndex: 100000,
+              style: {
+                color: '#111827'
+              },
+              headerFormat: '',
+              pointFormat: '<b>{point.custom.name} ({point.custom.symbol})</b><br/>Market cap: ${point.custom.marketCap:,.0f}<br/>Price: ${point.custom.price}<br/>24h change: {point.custom.change:.2f}%'
+            },
+            plotOptions: {
+              treemap: {
+                animation: false,
+                borderColor: '#ffffff',
+                borderWidth: 2,
+                stickyTracking: false,
+                point: {
+                  events: {
+                    mouseOver: function mouseOver() {
+                      var point = this;
+                      var chart = point.series && point.series.chart ? point.series.chart : null;
+                      if (chart && chart.tooltip && chart.tooltip.label && chart.tooltip.label.toFront) {
+                        setTimeout(function () {
+                          chart.tooltip.label.toFront();
+                        }, 0);
+                      }
+                    },
+                    mouseOut: function mouseOut() {
+                      var point = this;
+                      if (point.series && point.series.chart && point.series.chart.tooltip) {
+                        point.series.chart.tooltip.hide(0);
+                      }
+                    }
+                  }
+                },
+                dataLabels: {
+                  enabled: true,
+                  crop: true,
+                  overflow: 'none',
+                  align: 'center',
+                  verticalAlign: 'middle',
+                  style: {
+                    color: '#030712',
+                    fontSize: '13px',
+                    fontWeight: '700',
+                    textOutline: 'none'
+                  },
+                  formatter: function formatter() {
+                    var point = this.point || {};
+                    var custom = point.custom || {};
+                    var shape = point.shapeArgs || {};
+                    var width = shape.width || 0;
+                    var height = shape.height || 0;
+                    var change = custom.change || 0;
+                    var sign = change > 0 ? '+' : '';
+                    if (width < 42 || height < 28) {
+                      return point.name;
+                    }
+                    if (width > 220 && height > 150) {
+                      return custom.name + ' (' + point.name + ')<br/>$' + custom.price + '<br/>' + sign + change.toFixed(2) + '%';
+                    }
+                    if (width > 110 && height > 72) {
+                      return point.name + '<br/>$' + custom.price + '<br/>' + sign + change.toFixed(2) + '%';
+                    }
+                    return point.name + '<br/>' + sign + change.toFixed(1) + '%';
+                  }
+                }
+              }
+            },
+            series: [{
+              type: 'treemap',
+              layoutAlgorithm: 'squarified',
+              alternateStartingDirection: true,
+              turboThreshold: 0,
+              data: data
+            }]
+          };
+        }
+      }, {
+        key: "createLiveFunnelOptions",
+        value: function createLiveFunnelOptions() {
+          var rows = this.marketRows().slice(0);
+          rows.sort(function (a, b) {
+            return b.quoteVolume - a.quoteVolume;
+          });
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            data.push([rows[i].symbol.replace('USDT', ''), parseFloat((rows[i].quoteVolume / 1000000).toFixed(2))]);
+          }
+          return {
+            chart: {
+              type: 'funnel',
+              height: 320
+            },
+            title: {
+              text: 'Live liquidity funnel'
+            },
+            series: [{
+              name: 'Quote volume',
+              data: data
+            }]
+          };
+        }
+      }, {
+        key: "createLive3dColumnOptions",
+        value: function createLive3dColumnOptions() {
+          var rows = this.marketRows();
+          return {
+            chart: {
+              type: 'column',
+              height: 320,
+              options3d: {
+                enabled: true,
+                alpha: 12,
+                beta: 12,
+                depth: 45
+              }
+            },
+            title: {
+              text: 'Live 3D volume columns'
+            },
+            xAxis: {
+              categories: this.marketLabels(rows)
+            },
+            yAxis: {
+              title: {
+                text: 'Quote volume, millions'
+              }
+            },
+            series: [{
+              name: 'Quote volume',
+              data: this.marketValues(rows, 'quoteVolume', 1000000)
+            }]
+          };
+        }
+      }, {
+        key: "onDynamicChartCreate",
+        value: function onDynamicChartCreate(example, chart) {
+          if (!example || !example.key) {
+            return;
+          }
+          this.dynamicCharts[example.key] = chart;
+          this.updateDynamicChart(example.key);
+        }
+      }, {
+        key: "updateAllDynamicCharts",
+        value: function updateAllDynamicCharts() {
+          for (var i = 0; i < this.dynamicExamples.length; i++) {
+            var example = this.dynamicExamples[i];
+            if (example && example.key) {
+              this.updateDynamicChart(example.key);
+            }
+          }
+        }
+      }, {
+        key: "updateDynamicChart",
+        value: function updateDynamicChart(key) {
+          var chart = this.dynamicCharts[key];
+          var options = this.createDynamicOptionsByKey(key);
+          if (!chart || !chart.series || !options) {
+            return;
+          }
+          if (chart.setTitle) {
+            chart.setTitle(options.title || null, options.subtitle || null, false);
+          }
+          this.syncDynamicCategories(chart, options);
+          this.syncDynamicSeries(chart, options.series || []);
+          if (chart.redraw) {
+            chart.redraw();
+          }
+        }
+      }, {
+        key: "syncDynamicCategories",
+        value: function syncDynamicCategories(chart, options) {
+          var xAxisOptions = options.xAxis;
+          var yAxisOptions = options.yAxis;
+          if (xAxisOptions && xAxisOptions.categories && chart.xAxis && chart.xAxis[0] && chart.xAxis[0].setCategories) {
+            chart.xAxis[0].setCategories(xAxisOptions.categories, false);
+          }
+          if (yAxisOptions && yAxisOptions.categories && chart.yAxis && chart.yAxis[0] && chart.yAxis[0].setCategories) {
+            chart.yAxis[0].setCategories(yAxisOptions.categories, false);
+          }
+        }
+      }, {
+        key: "syncDynamicSeries",
+        value: function syncDynamicSeries(chart, seriesOptions) {
+          var i;
+          for (i = chart.series.length - 1; i >= seriesOptions.length; i--) {
+            chart.series[i].remove(false);
+          }
+          for (i = 0; i < seriesOptions.length; i++) {
+            var nextSeries = seriesOptions[i] || {};
+            var currentSeries = chart.series[i];
+            if (!currentSeries) {
+              chart.addSeries(nextSeries, false, false);
+              continue;
+            }
+            if (nextSeries.name && currentSeries.name !== nextSeries.name && currentSeries.update) {
+              currentSeries.update({
+                name: nextSeries.name
+              }, false);
+            }
+            if (currentSeries.setData) {
+              currentSeries.setData(nextSeries.data || [], false, false);
+            }
+          }
+        }
+      }, {
+        key: "createDynamicOptionsByKey",
+        value: function createDynamicOptionsByKey(key) {
+          switch (key) {
+            case 'liveLineOptions':
+              return this.createLiveLineOptions();
+            case 'liveSplineOptions':
+              return this.createLiveSplineOptions();
+            case 'liveAreaOptions':
+              return this.createLiveAreaOptions();
+            case 'liveAreasplineOptions':
+              return this.createLiveAreasplineOptions();
+            case 'liveColumnOptions':
+              return this.createLiveColumnOptions();
+            case 'liveBarOptions':
+              return this.createLiveBarOptions();
+            case 'liveStackedOptions':
+              return this.createLiveStackedOptions();
+            case 'livePieOptions':
+              return this.createLivePieOptions();
+            case 'liveDonutOptions':
+              return this.createLiveDonutOptions();
+            case 'liveScatterOptions':
+              return this.createLiveScatterOptions();
+            case 'liveBubbleOptions':
+              return this.createLiveBubbleOptions();
+            case 'liveComboOptions':
+              return this.createLiveComboOptions();
+            case 'livePolarOptions':
+              return this.createLivePolarOptions();
+            case 'liveGaugeOptions':
+              return this.createLiveGaugeOptions();
+            case 'liveSolidGaugeOptions':
+              return this.createLiveSolidGaugeOptions();
+            case 'liveHeatmapOptions':
+              return this.createLiveHeatmapOptions();
+            case 'liveTreemapOptions':
+              return this.createLiveTreemapOptions();
+            case 'liveFunnelOptions':
+              return this.createLiveFunnelOptions();
+            case 'live3dColumnOptions':
+              return this.createLive3dColumnOptions();
+            default:
+              return null;
+          }
+        }
+      }, {
+        key: "onCreate",
+        value: function onCreate(name, chart) {
+          this.record(name + ' created with ' + chart.series.length + ' series');
+        }
+      }, {
+        key: "record",
+        value: function record(message) {
+          this.events.unshift(new Date().toLocaleTimeString() + ' - ' + message);
+          this.events = this.events.slice(0, 8);
+        }
+      }, {
+        key: "randomizeDynamicChart",
+        value: function randomizeDynamicChart() {
+          this.dynamicData = this.dynamicData.map(function () {
+            return Math.round(20 + Math.random() * 90);
+          });
+          this.dynamicOptions = this.createDynamicOptions();
+        }
+      }, {
+        key: "makeBasic",
+        value: function makeBasic(title, description, type) {
+          return {
+            title: title,
+            description: description,
+            options: {
+              chart: {
+                type: type,
+                height: 320
+              },
+              title: {
+                text: title
+              },
+              subtitle: {
+                text: '@stackline/angular-highcharts Angular 8 live test'
+              },
+              xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+              },
+              yAxis: {
+                title: {
+                  text: 'Requests'
+                }
+              },
+              series: [{
+                name: 'API',
+                data: [29, 42, 55, 61, 73, 88]
+              }, {
+                name: 'Dashboard',
+                data: [18, 31, 37, 46, 58, 63]
+              }]
+            },
+            html: '<chart [options]="' + type + 'Options"></chart>'
+          };
+        }
+      }, {
+        key: "createBinanceOptions",
+        value: function createBinanceOptions() {
+          var theme = this.getBinanceChartTheme();
+          return {
+            chart: {
+              height: 560,
+              backgroundColor: theme.background,
+              plotBackgroundColor: theme.plotBackground,
+              spacing: [16, 20, 18, 12],
+              style: {
+                fontFamily: 'Arial, Helvetica, sans-serif'
+              }
+            },
+            credits: {
+              enabled: false
+            },
+            rangeSelector: {
+              enabled: false
+            },
+            navigator: {
+              enabled: false
+            },
+            scrollbar: {
+              enabled: false
+            },
+            title: {
+              text: this.binanceSymbol + ' live candles',
+              align: 'left',
+              style: {
+                color: theme.title,
+                fontSize: '16px',
+                fontWeight: '600'
+              }
+            },
+            subtitle: {
+              text: 'REST history + Binance WebSocket updates (' + this.binanceInterval + ')',
+              align: 'left',
+              style: {
+                color: theme.subtitle
+              }
+            },
+            legend: {
+              enabled: true,
+              align: 'left',
+              verticalAlign: 'top',
+              itemStyle: {
+                color: theme.legend
+              },
+              itemHoverStyle: {
+                color: theme.legendHover
+              }
+            },
+            xAxis: {
+              lineColor: theme.axisLine,
+              tickColor: theme.axisLine,
+              gridLineColor: theme.grid,
+              labels: {
+                style: {
+                  color: theme.axisText
+                }
+              },
+              crosshair: {
+                color: theme.crosshair,
+                dashStyle: 'Dash'
+              }
+            },
+            yAxis: [{
+              height: '68%',
+              lineColor: theme.axisLine,
+              gridLineColor: theme.grid,
+              opposite: true,
+              title: {
+                text: null
+              },
+              labels: {
+                style: {
+                  color: theme.axisText
+                }
+              }
+            }, {
+              top: '73%',
+              height: '22%',
+              offset: 0,
+              lineColor: theme.axisLine,
+              gridLineColor: theme.grid,
+              opposite: true,
+              title: {
+                text: 'Volume',
+                style: {
+                  color: theme.axisText
+                }
+              },
+              labels: {
+                style: {
+                  color: theme.axisText
+                }
+              }
+            }],
+            tooltip: {
+              shared: true,
+              backgroundColor: theme.tooltipBackground,
+              borderColor: theme.tooltipBorder,
+              style: {
+                color: theme.tooltipText
+              },
+              valueDecimals: 4
+            },
+            plotOptions: {
+              candlestick: {
+                color: '#f6465d',
+                upColor: '#02c076',
+                lineColor: '#f6465d',
+                upLineColor: '#02c076'
+              },
+              column: {
+                borderWidth: 0,
+                groupPadding: 0.08,
+                pointPadding: 0.02
+              },
+              series: {
+                animation: false,
+                turboThreshold: 0
+              }
+            },
+            series: [{
+              type: 'candlestick',
+              name: 'Price',
+              data: [],
+              tooltip: {
+                valueDecimals: 4
+              }
+            }, {
+              type: 'line',
+              name: 'MA(7)',
+              data: [],
+              color: '#f5d300',
+              lineWidth: 1,
+              marker: {
+                enabled: false
+              }
+            }, {
+              type: 'line',
+              name: 'MA(25)',
+              data: [],
+              color: '#ff4ec9',
+              lineWidth: 1,
+              marker: {
+                enabled: false
+              }
+            }, {
+              type: 'line',
+              name: 'MA(99)',
+              data: [],
+              color: '#8e44ad',
+              lineWidth: 1,
+              marker: {
+                enabled: false
+              }
+            }, {
+              type: 'column',
+              name: 'Volume',
+              data: [],
+              yAxis: 1
+            }]
+          };
+        }
+      }, {
+        key: "getBinanceChartTheme",
+        value: function getBinanceChartTheme() {
+          if (this.binanceTheme === 'light') {
+            return {
+              background: '#ffffff',
+              plotBackground: '#ffffff',
+              title: '#101828',
+              subtitle: '#667085',
+              legend: '#475467',
+              legendHover: '#101828',
+              axisText: '#667085',
+              axisLine: '#d0d5dd',
+              grid: '#edf2f7',
+              crosshair: '#98a2b3',
+              tooltipBackground: 'rgba(255, 255, 255, .96)',
+              tooltipBorder: '#d0d5dd',
+              tooltipText: '#101828'
+            };
+          }
+          return {
+            background: '#050505',
+            plotBackground: '#050505',
+            title: '#f5f5f5',
+            subtitle: '#8a8f98',
+            legend: '#b7bcc7',
+            legendHover: '#ffffff',
+            axisText: '#aeb4bd',
+            axisLine: '#333842',
+            grid: '#1d2026',
+            crosshair: '#565b66',
+            tooltipBackground: 'rgba(12, 15, 20, .94)',
+            tooltipBorder: '#313640',
+            tooltipText: '#f5f5f5'
+          };
+        }
+      }, {
+        key: "makeStackedColumn",
+        value: function makeStackedColumn() {
+          return {
+            title: 'Stacked column',
+            description: 'Column stacking with normal Highcharts options.',
+            options: {
+              chart: {
+                type: 'column',
+                height: 320
+              },
+              title: {
+                text: 'Stacked column'
+              },
+              xAxis: {
+                categories: ['Ops', 'Sales', 'Support', 'Finance']
+              },
+              yAxis: {
+                min: 0,
+                title: {
+                  text: 'Total work'
+                },
+                stackLabels: {
+                  enabled: true
+                }
+              },
+              plotOptions: {
+                column: {
+                  stacking: 'normal'
+                }
+              },
+              series: [{
+                name: 'Planned',
+                data: [5, 3, 4, 7]
+              }, {
+                name: 'Active',
+                data: [2, 2, 3, 2]
+              }, {
+                name: 'Closed',
+                data: [3, 4, 4, 2]
+              }]
+            },
+            html: '<chart [options]="stackedColumnOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makePie",
+        value: function makePie() {
+          return {
+            title: 'Pie chart',
+            description: 'Classic proportional distribution.',
+            options: {
+              chart: {
+                type: 'pie',
+                height: 320
+              },
+              title: {
+                text: 'Traffic sources'
+              },
+              series: [{
+                name: 'Share',
+                data: [['Direct', 42], ['Search', 33], ['Referral', 15], ['Campaign', 10]]
+              }]
+            },
+            html: '<chart [options]="pieOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeDonut",
+        value: function makeDonut() {
+          return {
+            title: 'Donut chart',
+            description: 'Pie chart with innerSize.',
+            options: {
+              chart: {
+                type: 'pie',
+                height: 320
+              },
+              title: {
+                text: 'Device mix'
+              },
+              plotOptions: {
+                pie: {
+                  innerSize: '55%'
+                }
+              },
+              series: [{
+                name: 'Devices',
+                data: [['Desktop', 48], ['Mobile', 44], ['Tablet', 8]]
+              }]
+            },
+            html: '<chart [options]="donutOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeScatter",
+        value: function makeScatter() {
+          return {
+            title: 'Scatter chart',
+            description: 'XY tuple data.',
+            options: {
+              chart: {
+                type: 'scatter',
+                zoomType: 'xy',
+                height: 320
+              },
+              title: {
+                text: 'Quality vs speed'
+              },
+              xAxis: {
+                title: {
+                  text: 'Speed'
+                }
+              },
+              yAxis: {
+                title: {
+                  text: 'Quality'
+                }
+              },
+              series: [{
+                name: 'Builds',
+                data: [[12, 80], [18, 78], [24, 86], [32, 84], [40, 91], [46, 88]]
+              }]
+            },
+            html: '<chart [options]="scatterOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeBubble",
+        value: function makeBubble() {
+          return {
+            title: 'Bubble chart',
+            description: 'Uses highcharts-more module.',
+            options: {
+              chart: {
+                type: 'bubble',
+                plotBorderWidth: 1,
+                zoomType: 'xy',
+                height: 320
+              },
+              title: {
+                text: 'Impact matrix'
+              },
+              xAxis: {
+                title: {
+                  text: 'Effort'
+                }
+              },
+              yAxis: {
+                title: {
+                  text: 'Value'
+                }
+              },
+              series: [{
+                name: 'Initiatives',
+                data: [[9, 81, 63], [98, 5, 89], [51, 50, 73], [41, 22, 14], [58, 24, 20]]
+              }]
+            },
+            html: '<chart [options]="bubbleOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeCombination",
+        value: function makeCombination() {
+          return {
+            title: 'Combination chart',
+            description: 'Column, spline and pie in one options object.',
+            options: {
+              title: {
+                text: 'Mixed metrics'
+              },
+              chart: {
+                height: 320
+              },
+              xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+              },
+              labels: {
+                items: [{
+                  html: 'Total',
+                  style: {
+                    left: '50px',
+                    top: '18px',
+                    color: '#333'
+                  }
+                }]
+              },
+              series: [{
+                type: 'column',
+                name: 'Revenue',
+                data: [3, 2, 1, 3, 4]
+              }, {
+                type: 'spline',
+                name: 'Trend',
+                data: [2.4, 2.7, 3.1, 3.8, 4.3]
+              }, {
+                type: 'pie',
+                name: 'Share',
+                data: [{
+                  name: 'A',
+                  y: 13
+                }, {
+                  name: 'B',
+                  y: 23
+                }, {
+                  name: 'C',
+                  y: 19
+                }],
+                center: [80, 55],
+                size: 90,
+                showInLegend: false,
+                dataLabels: {
+                  enabled: false
+                }
+              }]
+            },
+            html: '<chart [options]="combinationOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makePolar",
+        value: function makePolar() {
+          return {
+            title: 'Polar/radar chart',
+            description: 'Uses highcharts-more with polar chart options.',
+            options: {
+              chart: {
+                polar: true,
+                type: 'line',
+                height: 320
+              },
+              title: {
+                text: 'Team coverage'
+              },
+              pane: {
+                size: '80%'
+              },
+              xAxis: {
+                categories: ['UX', 'API', 'Ops', 'QA', 'Docs'],
+                tickmarkPlacement: 'on',
+                lineWidth: 0
+              },
+              yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                min: 0
+              },
+              series: [{
+                name: 'Score',
+                data: [5, 4, 3, 5, 4],
+                pointPlacement: 'on'
+              }]
+            },
+            html: '<chart [options]="polarOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeGauge",
+        value: function makeGauge() {
+          return {
+            title: 'Gauge chart',
+            description: 'Gauge series from highcharts-more.',
+            options: {
+              chart: {
+                type: 'gauge',
+                height: 320
+              },
+              title: {
+                text: 'Availability'
+              },
+              pane: {
+                startAngle: -150,
+                endAngle: 150
+              },
+              yAxis: {
+                min: 0,
+                max: 100,
+                title: {
+                  text: 'Uptime'
+                }
+              },
+              series: [{
+                name: 'Uptime',
+                data: [92]
+              }]
+            },
+            html: '<chart [options]="gaugeOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeSolidGauge",
+        value: function makeSolidGauge() {
+          return {
+            title: 'Solid gauge',
+            description: 'Uses highcharts-more and solid-gauge modules.',
+            options: {
+              chart: {
+                type: 'solidgauge',
+                height: 320
+              },
+              title: {
+                text: 'Completion'
+              },
+              pane: {
+                center: ['50%', '60%'],
+                size: '90%',
+                startAngle: -90,
+                endAngle: 90,
+                background: {
+                  backgroundColor: '#eef3f8',
+                  innerRadius: '60%',
+                  outerRadius: '100%',
+                  shape: 'arc'
+                }
+              },
+              yAxis: {
+                min: 0,
+                max: 100,
+                stops: [[0.3, '#d9534f'], [0.7, '#f0ad4e'], [0.9, '#2f8f68']],
+                lineWidth: 0,
+                tickWidth: 0,
+                minorTickInterval: null,
+                tickAmount: 2,
+                title: {
+                  text: null
+                }
+              },
+              series: [{
+                name: 'Done',
+                data: [76]
+              }]
+            },
+            html: '<chart [options]="solidGaugeOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeHeatmap",
+        value: function makeHeatmap() {
+          return {
+            title: 'Heatmap',
+            description: 'Uses the heatmap module.',
+            options: {
+              chart: {
+                type: 'heatmap',
+                height: 320
+              },
+              title: {
+                text: 'Weekly activity'
+              },
+              xAxis: {
+                categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+              },
+              yAxis: {
+                categories: ['AM', 'PM'],
+                title: null
+              },
+              colorAxis: {
+                min: 0,
+                minColor: '#ffffff',
+                maxColor: '#1f78b4'
+              },
+              series: [{
+                name: 'Activity',
+                borderWidth: 1,
+                data: [[0, 0, 4], [1, 0, 7], [2, 0, 9], [3, 0, 5], [4, 0, 6], [0, 1, 6], [1, 1, 3], [2, 1, 8], [3, 1, 4], [4, 1, 10]],
+                dataLabels: {
+                  enabled: true,
+                  color: '#333'
+                }
+              }]
+            },
+            html: '<chart [options]="heatmapOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeTreemap",
+        value: function makeTreemap() {
+          return {
+            title: 'Treemap',
+            description: 'Uses the treemap module.',
+            options: {
+              chart: {
+                type: 'treemap',
+                height: 320
+              },
+              title: {
+                text: 'Cost centers'
+              },
+              series: [{
+                type: 'treemap',
+                layoutAlgorithm: 'squarified',
+                data: [{
+                  name: 'Engineering',
+                  value: 6,
+                  color: '#2f7ed8'
+                }, {
+                  name: 'Support',
+                  value: 4,
+                  color: '#0d9488'
+                }, {
+                  name: 'Sales',
+                  value: 5,
+                  color: '#f59e0b'
+                }, {
+                  name: 'Ops',
+                  value: 3,
+                  color: '#64748b'
+                }]
+              }]
+            },
+            html: '<chart [options]="treemapOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeFunnel",
+        value: function makeFunnel() {
+          return {
+            title: 'Funnel chart',
+            description: 'Uses the funnel module.',
+            options: {
+              chart: {
+                type: 'funnel',
+                height: 320
+              },
+              title: {
+                text: 'Pipeline'
+              },
+              series: [{
+                name: 'Leads',
+                data: [['New', 156], ['Qualified', 92], ['Proposal', 48], ['Closed', 21]]
+              }]
+            },
+            html: '<chart [options]="funnelOptions"></chart>'
+          };
+        }
+      }, {
+        key: "make3dColumn",
+        value: function make3dColumn() {
+          return {
+            title: '3D column',
+            description: 'Uses the highcharts-3d module.',
+            options: {
+              chart: {
+                type: 'column',
+                height: 320,
+                options3d: {
+                  enabled: true,
+                  alpha: 12,
+                  beta: 12,
+                  depth: 45
+                }
+              },
+              title: {
+                text: '3D volume'
+              },
+              xAxis: {
+                categories: ['A', 'B', 'C', 'D']
+              },
+              yAxis: {
+                title: {
+                  text: 'Volume'
+                }
+              },
+              series: [{
+                name: 'Volume',
+                data: [7, 5, 9, 6]
+              }]
+            },
+            html: '<chart [options]="column3dOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeStockChart",
+        value: function makeStockChart() {
+          return {
+            title: 'StockChart constructor',
+            description: 'Uses [type]="StockChart" after loading the stock module.',
+            constructorType: 'StockChart',
+            options: {
+              chart: {
+                height: 320
+              },
+              title: {
+                text: 'Stock-style timeline'
+              },
+              rangeSelector: {
+                selected: 1
+              },
+              series: [{
+                name: 'Price',
+                data: [[Date.UTC(2026, 0, 1), 12], [Date.UTC(2026, 1, 1), 15], [Date.UTC(2026, 2, 1), 14], [Date.UTC(2026, 3, 1), 18], [Date.UTC(2026, 4, 1), 21], [Date.UTC(2026, 5, 1), 20]]
+              }]
+            },
+            html: '<chart [type]="StockChart" [options]="stockOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeMapLikeChart",
+        value: function makeMapLikeChart() {
+          return {
+            title: 'Map module',
+            description: 'Uses the map module with simple inline mapData.',
+            options: {
+              chart: {
+                type: 'map',
+                height: 320
+              },
+              title: {
+                text: 'Simple territory map'
+              },
+              colorAxis: {
+                min: 0
+              },
+              series: [{
+                type: 'map',
+                name: 'Score',
+                mapData: [{
+                  path: 'M 0 0 L 120 0 L 120 80 L 0 80 Z',
+                  name: 'North',
+                  value: 10
+                }, {
+                  path: 'M 130 0 L 250 0 L 250 80 L 130 80 Z',
+                  name: 'South',
+                  value: 7
+                }, {
+                  path: 'M 65 90 L 185 90 L 185 170 L 65 170 Z',
+                  name: 'Central',
+                  value: 13
+                }],
+                dataLabels: {
+                  enabled: true,
+                  format: '{point.name}'
+                }
+              }]
+            },
+            html: '<chart [options]="mapOptions"></chart>'
+          };
+        }
+      }, {
+        key: "makeNoDataChart",
+        value: function makeNoDataChart() {
+          return {
+            title: 'No data state',
+            description: 'Uses no-data-to-display module.',
+            options: {
+              chart: {
+                type: 'line',
+                height: 320
+              },
+              title: {
+                text: 'Empty state'
+              },
+              lang: {
+                noData: 'No chart data yet'
+              },
+              noData: {
+                style: {
+                  fontWeight: '600',
+                  fontSize: '15px',
+                  color: '#50677d'
+                }
+              },
+              series: []
+            },
+            html: '<chart [options]="noDataOptions"></chart>'
+          };
+        }
+      }, {
+        key: "createDynamicOptions",
+        value: function createDynamicOptions() {
+          return {
+            chart: {
+              type: 'line',
+              height: 340
+            },
+            title: {
+              text: 'Dynamic update'
+            },
+            subtitle: {
+              text: 'Changing the options object re-initializes the wrapper'
+            },
+            xAxis: {
+              categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+            },
+            yAxis: {
+              title: {
+                text: 'Requests'
+              }
+            },
+            series: [{
+              name: 'Updated data',
+              data: this.dynamicData
+            }]
+          };
+        }
+      }]);
+    }();
+    AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-root',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./app.component.html */"./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./app.component.css */"./src/app/app.component.css"))["default"]]
+    })], AppComponent);
+
+    /***/
+  }),
+  /***/"./src/app/app.module.ts": (
+  /*!*******************************!*\
+    !*** ./src/app/app.module.ts ***!
+    \*******************************/
+  /*! exports provided: highchartsFactory, AppModule */
+  /***/
+  function _src_app_appModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "highchartsFactory", function () {
+      return highchartsFactory;
+    });
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "AppModule", function () {
+      return AppModule;
+    });
+    /* harmony import */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */"./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */"./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+    /* harmony import */
+    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */"./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */"./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+    var _stackline_angular_highcharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @stackline/angular-highcharts */"./node_modules/@stackline/angular-highcharts/index.js");
+    /* harmony import */
+    var _stackline_angular_highcharts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_stackline_angular_highcharts__WEBPACK_IMPORTED_MODULE_4__);
+    /* harmony import */
+    var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */"./src/app/app.component.ts");
+    var Highcharts = __webpack_require__(/*! highcharts */"./node_modules/highcharts/highcharts.js");
+    var HighchartsMore = __webpack_require__(/*! highcharts/highcharts-more */"./node_modules/highcharts/highcharts-more.js");
+    var Highcharts3d = __webpack_require__(/*! highcharts/highcharts-3d */"./node_modules/highcharts/highcharts-3d.js");
+    var Heatmap = __webpack_require__(/*! highcharts/modules/heatmap */"./node_modules/highcharts/modules/heatmap.js");
+    var Treemap = __webpack_require__(/*! highcharts/modules/treemap */"./node_modules/highcharts/modules/treemap.js");
+    var Funnel = __webpack_require__(/*! highcharts/modules/funnel */"./node_modules/highcharts/modules/funnel.js");
+    var SolidGauge = __webpack_require__(/*! highcharts/modules/solid-gauge */"./node_modules/highcharts/modules/solid-gauge.js");
+    var Stock = __webpack_require__(/*! highcharts/modules/stock */"./node_modules/highcharts/modules/stock.js");
+    var MapModule = __webpack_require__(/*! highcharts/modules/map */"./node_modules/highcharts/modules/map.js");
+    var Drilldown = __webpack_require__(/*! highcharts/modules/drilldown */"./node_modules/highcharts/modules/drilldown.js");
+    var NoData = __webpack_require__(/*! highcharts/modules/no-data-to-display */"./node_modules/highcharts/modules/no-data-to-display.js");
+    function highchartsFactory() {
+      HighchartsMore(Highcharts);
+      Highcharts3d(Highcharts);
+      Heatmap(Highcharts);
+      Treemap(Highcharts);
+      Funnel(Highcharts);
+      SolidGauge(Highcharts);
+      Stock(Highcharts);
+      MapModule(Highcharts);
+      Drilldown(Highcharts);
+      NoData(Highcharts);
+      return Highcharts;
+    }
+    var AppModule = /*#__PURE__*/_createClass(function AppModule() {
+      _classCallCheck(this, AppModule);
+    });
+    AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _stackline_angular_highcharts__WEBPACK_IMPORTED_MODULE_4__["ChartModule"]],
+      providers: [{
+        provide: _stackline_angular_highcharts__WEBPACK_IMPORTED_MODULE_4__["HighchartsStatic"],
+        useFactory: highchartsFactory
+      }],
+      bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+    })], AppModule);
+
+    /***/
+  }),
+  /***/"./src/environments/environment.ts": (
+  /*!*****************************************!*\
+    !*** ./src/environments/environment.ts ***!
+    \*****************************************/
+  /*! exports provided: environment */
+  /***/
+  function _src_environments_environmentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "environment", function () {
+      return environment;
+    });
+    /* harmony import */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */"./node_modules/tslib/tslib.es6.js");
+    // This file can be replaced during build by using the `fileReplacements` array.
+    // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+    // The list of file replacements can be found in `angular.json`.
+
+    var environment = {
+      production: false
+    };
+    /*
+     * For easier debugging in development mode, you can import the following file
+     * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+     *
+     * This import should be commented out in production mode because it will have a negative impact
+     * on performance if an error is thrown.
+     */
+    // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+    /***/
+  }),
+  /***/"./src/main.ts": (
+  /*!*********************!*\
+    !*** ./src/main.ts ***!
+    \*********************/
+  /*! no exports provided */
+  /***/
+  function _src_mainTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony import */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */"./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */"./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+    var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser-dynamic */"./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
+    /* harmony import */
+    var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.module */"./src/app/app.module.ts");
+    /* harmony import */
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment */"./src/environments/environment.ts");
+    if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
+      Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
+    }
+    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])["catch"](function (err) {
+      return console.error(err);
+    });
+
+    /***/
+  }),
+  /***/0: (
+  /*!***************************!*\
+    !*** multi ./src/main.ts ***!
+    \***************************/
+  /*! no static exports found */
+  /***/
+  function _(module, exports, __webpack_require__) {
+    module.exports = __webpack_require__(/*! /storage/data/github/tests/angular-highcharts/angular-8/src/main.ts */"./src/main.ts");
+
+    /***/
+  })
+}, [[0, "runtime", "vendor"]]]);
+//# sourceMappingURL=main-es5.js.map

@@ -1,21 +1,21 @@
 # @stackline/angular-highcharts
 
-> A maintained Angular 5 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
+> A maintained Angular 8 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
 
 [![npm version](https://img.shields.io/npm/v/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![npm monthly](https://img.shields.io/npm/dm/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts/blob/master/LICENSE)
-[![Angular 5](https://img.shields.io/badge/Angular-5.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-5/)
+[![Angular 8](https://img.shields.io/badge/Angular-8.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-8/)
 [![Highcharts](https://img.shields.io/badge/Highcharts-5%2B-2f7ed8?style=flat-square)](https://www.highcharts.com/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 5 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-5/)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
+**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 8 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-8/)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
 
 <p align="center">
   <img src="https://assets.alexandro.net/2026/06/angular2-highcharts.gif" alt="Stackline Angular Highcharts live examples" width="920">
 </p>
 
-**Angular 5 release:** `5.0.0`
+**Angular 8 release:** `8.0.0`
 
 ---
 
@@ -29,13 +29,13 @@
 
 The goal is not to hide Highcharts. The package stays thin: your application still owns the real Highcharts options object, the Highcharts constructor choice, module registration, event handling, and native chart instance. The wrapper gives Angular templates a stable `<chart>` component, Angular event outputs, axis/series/point directives, and release families aligned to Angular majors.
 
-The Angular 5 package family is `5.0.0` and is intended for Angular `5.x` applications. The live validation app for this line uses a real Angular 5 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
+The Angular 8 package family is `8.0.0` and is intended for Angular `8.x` applications. The live validation app for this line uses a real Angular 8 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
 
 ## Features
 
 | Feature | Supported |
 | :--- | :---: |
-| Angular 5 tested release line | ✅ |
+| Angular 8 tested release line | ✅ |
 | Standard `Highcharts.Chart` rendering | ✅ |
 | `StockChart` constructor support | ✅ |
 | Highmaps constructor support when Highmaps is registered | ✅ |
@@ -64,8 +64,8 @@ The Angular 5 package family is `5.0.0` and is intended for Angular `5.x` applic
 6. [Highcharts Modules](#highcharts-modules)
 7. [Events and Directives](#events-and-directives)
 8. [Native Chart Instance](#native-chart-instance)
-9. [Dynamic and Realtime Data](#dynamic-and-realtime-data)
-10. [Common Chart Types](#common-chart-types)
+9. [Common Chart Types](#common-chart-types)
+10. [Dynamic Updates](#dynamic-updates)
 11. [API Surface](#api-surface)
 12. [Wrapper Capabilities](#wrapper-capabilities)
 13. [License](#license)
@@ -76,12 +76,12 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
-| `5.x` | Angular `5.x` | `>=5.0.0 <6.0.0` | `npm install @stackline/angular-highcharts@5.0.0 highcharts --save-exact` |
+| `8.x` | Angular `8.x` | `>=8.0.0 <9.0.0` | `npm install @stackline/angular-highcharts@8.0.0 highcharts --save-exact` |
 
 ## Installation
 
 ```bash
-npm install @stackline/angular-highcharts@5.0.0 highcharts --save-exact
+npm install @stackline/angular-highcharts@8.0.0 highcharts --save-exact
 ```
 
 The package declares `highcharts` as a peer dependency so your application can choose the Highcharts version and modules it needs.
@@ -261,38 +261,6 @@ replaceSeries(data: number[]) {
 }
 ```
 
-## Dynamic and Realtime Data
-
-The Angular 5 live test includes a realtime market screen:
-
-- REST candle history.
-- WebSocket candle updates.
-- Light and dark chart modes.
-- `StockChart` candlestick rendering.
-- Dynamic ticker charts that update existing Highcharts series.
-- A Mask API route through `api-b.alexandro.net` for networks that block direct Binance domains.
-
-The example still uses public Binance market data, but browser traffic can be routed through a mask API so corporate firewalls do not block the demo domain.
-
-```ts
-restUrl = 'https://api-b.alexandro.net/api/v3/klines?symbol=BNBUSDT&interval=1s&limit=300';
-wsUrl = 'wss://api-b.alexandro.net/ws/bnbusdt@kline_1s';
-```
-
-When data changes often, prefer updating the existing chart instance:
-
-```ts
-updateCandles(ohlcData: any[], volumeData: any[]) {
-  if (!this.chart) {
-    return;
-  }
-
-  this.chart.series[0].setData(ohlcData, false, false);
-  this.chart.series[1].setData(volumeData, false, false);
-  this.chart.redraw();
-}
-```
-
 ## Common Chart Types
 
 Use normal Highcharts options. The wrapper does not invent a second chart configuration language.
@@ -324,6 +292,24 @@ pieOptions = {
     }
   ]
 };
+```
+
+## Dynamic Updates
+
+For dashboards and live screens, keep the native chart instance from `(create)`
+and update series data directly. This avoids recreating the full chart surface
+on every frame.
+
+```ts
+updateCandles(ohlcData: any[], volumeData: any[]) {
+  if (!this.chart) {
+    return;
+  }
+
+  this.chart.series[0].setData(ohlcData, false, false);
+  this.chart.series[1].setData(volumeData, false, false);
+  this.chart.redraw();
+}
 ```
 
 ## API Surface
