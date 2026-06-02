@@ -7,7 +7,7 @@ import { ChartXAxisComponent } from './ChartXAxisComponent';
 import { ChartYAxisComponent } from './ChartYAxisComponent';
 import { ChartZAxisComponent } from './ChartZAxisComponent';
 import { ChartColorAxisComponent } from './ChartColorAxisComponent';
-import { HighchartsStatic } from './HighchartsService'
+import { HighchartsStatic, HighchartsService } from './HighchartsService'
 
 const CHART_DIRECTIVES: any[] = [
     ChartComponent,
@@ -50,4 +50,6 @@ export {
     ChartYAxisComponent,
     ChartZAxisComponent,
     ChartColorAxisComponent,
+    HighchartsStatic,
+    HighchartsService,
 };

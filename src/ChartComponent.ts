@@ -38,10 +38,7 @@ export class ChartComponent {
     private userOpts: any;
     private baseOpts: any;
     @Input() type: string = 'Chart';
-    @Input() set options(opts : any) {
-        this.userOpts = opts;
-        this.init();
-    };
+    @Input() options: any;
 
     private init() {
         if (this.userOpts && this.baseOpts) {
@@ -61,6 +58,12 @@ export class ChartComponent {
             this.colorAxis,
             this.element.nativeElement
         );
+        this.userOpts = this.options;
+        this.init();
+    }
+
+    ngOnChanges() {
+        this.userOpts = this.options;
         this.init();
     }
 
