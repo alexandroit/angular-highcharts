@@ -329,6 +329,10 @@ function createLineComponentHtml(source, major, config) {
     .replace(/Angular 9/g, `Angular ${major}`)
     .replace(/Project generated with the Angular 9 CLI blueprint/g, `Project generated with the Angular ${major} CLI blueprint`);
 
+  if (major >= 17) {
+    html = html.replace(/@stackline\/angular-highcharts/g, '&#64;stackline/angular-highcharts');
+  }
+
   return html;
 }
 

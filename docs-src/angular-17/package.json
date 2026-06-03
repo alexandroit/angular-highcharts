@@ -1,11 +1,11 @@
 {
-  "name": "@stackline/angular-highcharts-docs-angular17",
+  "name": "stackline-angular-highcharts-angular-17",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --output-path ../../docs/angular-17 --base-href ./ --build-optimizer=false --vendor-chunk=true --named-chunks=true --aot=false"
+    "start": "ng serve --aot=true --host 0.0.0.0 --port 4427",
+    "build": "ng build --base-href ./ --build-optimizer=false --vendor-chunk=true --named-chunks=true --aot=true"
   },
   "dependencies": {
     "@angular/common": "^17.3.12",
@@ -14,9 +14,8 @@
     "@angular/forms": "^17.3.12",
     "@angular/platform-browser": "^17.3.12",
     "@angular/platform-browser-dynamic": "^17.3.12",
-    "@stackline/angular-highcharts": "file:../..",
-    "core-js": "^2.6.12",
-    "highcharts": "^12.5.0",
+    "@stackline/angular-highcharts": "17.0.0",
+    "highcharts": "12.6.0",
     "rxjs": "^7.8.2",
     "zone.js": "~0.14.10",
     "tslib": "^2.3.0"
