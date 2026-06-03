@@ -1,21 +1,21 @@
 # @stackline/angular-highcharts
 
-> A maintained Angular 9 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
+> A maintained Angular 10 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
 
 [![npm version](https://img.shields.io/npm/v/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![npm monthly](https://img.shields.io/npm/dm/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts/blob/master/LICENSE)
-[![Angular 9](https://img.shields.io/badge/Angular-9.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-9/)
+[![Angular 10](https://img.shields.io/badge/Angular-10.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-10/)
 [![Highcharts](https://img.shields.io/badge/Highcharts-5%2B-2f7ed8?style=flat-square)](https://www.highcharts.com/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 9 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-9/)** | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-9?file=src%2Fapp%2Fapp.component.ts&startScript=start)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
+**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 10 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-10/)** | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-10?file=src%2Fapp%2Fapp.component.ts&startScript=start)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
 
 <p align="center">
   <img src="https://assets.alexandro.net/2026/06/angular2-highcharts.gif" alt="Stackline Angular Highcharts live examples" width="920">
 </p>
 
-**Angular 9 release:** `9.0.0`
+**Angular 10 release:** `10.0.0`
 
 ---
 
@@ -29,13 +29,13 @@
 
 The goal is not to hide Highcharts. The package stays thin: your application still owns the real Highcharts options object, the Highcharts constructor choice, module registration, event handling, and native chart instance. The wrapper gives Angular templates a stable `<chart>` component, Angular event outputs, axis/series/point directives, and release families aligned to Angular majors.
 
-The Angular 9 package family is `9.0.0` and is intended for Angular `9.x` applications. The live validation app for this line uses a real Angular 9 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
+The Angular 10 package family is `10.0.0` and is intended for Angular `10.x` applications. The live validation app for this line uses a real Angular 10 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
 
 ## Features
 
 | Feature | Supported |
 | :--- | :---: |
-| Angular 9 tested release line | ✅ |
+| Angular 10 tested release line | ✅ |
 | Standard `Highcharts.Chart` rendering | ✅ |
 | `StockChart` constructor support | ✅ |
 | Highmaps constructor support when Highmaps is registered | ✅ |
@@ -76,21 +76,21 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
-| `9.x` | Angular `9.x` | `>=9.0.0 <10.0.0` | `npm install @stackline/angular-highcharts@9.0.0 highcharts@10.3.3 --save-exact` |
+| `10.x` | Angular `10.x` | `>=10.0.0 <11.0.0` | `npm install @stackline/angular-highcharts@10.0.0 highcharts@10.3.3 --save-exact` |
 
 ## Installation
 
 ```bash
-npm install @stackline/angular-highcharts@9.0.0 highcharts@10.3.3 --save-exact
+npm install @stackline/angular-highcharts@10.0.0 highcharts@10.3.3 --save-exact
 ```
 
 The package declares `highcharts` as a peer dependency so your application can choose the Highcharts version and modules it needs.
 
 ## Highcharts Compatibility
 
-The Angular 9 validation app uses `highcharts@10.3.3`, which is the highest Highcharts version tested without Angular 9 CLI/Webpack syntax-loader changes.
+The Angular 10 validation app uses `highcharts@10.3.3`, which is the highest Highcharts version tested without Angular 10 CLI/Webpack syntax-loader changes.
 
-Highcharts 11.x and 12.x were tested for this line and rejected because their distributed modules use newer JavaScript syntax than the Angular 9 default build pipeline accepts. If your application customizes Webpack/Babel to transpile package modules, you can run your own compatibility test, but the maintained Stackline Angular 9 line is published against `10.3.3`.
+Highcharts 11.x and 12.x were tested for this line and rejected because their distributed modules use newer JavaScript syntax than the Angular 10 default build pipeline accepts. If your application customizes Webpack/Babel to transpile package modules, you can run your own compatibility test, but the maintained Stackline Angular 10 line is published against `10.3.3`.
 
 
 ## Setup

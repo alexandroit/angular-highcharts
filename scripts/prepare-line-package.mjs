@@ -107,8 +107,12 @@ function getPeerRange(major) {
 }
 
 function getTestedHighchartsVersion(major) {
-  if (major === 9) {
+  if (major >= 9 && major <= 11) {
     return '10.3.3';
+  }
+
+  if (major >= 12) {
+    return '12.6.0';
   }
 
   return null;
@@ -120,8 +124,12 @@ function getHighchartsInstallName(major) {
 }
 
 function getHighchartsPeerRange(major) {
-  if (major === 9) {
+  if (major >= 9 && major <= 11) {
     return '>=5.0.0 <=10.3.3';
+  }
+
+  if (major >= 12) {
+    return '>=5.0.0 <=12.6.0';
   }
 
   return '>=5.0.0';
@@ -134,6 +142,16 @@ function getHighchartsCompatibilitySection(major) {
     return '';
   }
 
+  if (major >= 12) {
+    return `
+## Highcharts Compatibility
+
+The Angular ${major} validation app uses \`highcharts@${testedVersion}\`, which is the highest Highcharts version tested for this line.
+
+The maintained Stackline Angular ${major} line is published with a Highcharts peer range of \`${getHighchartsPeerRange(major)}\` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
+`;
+  }
+
   return `
 ## Highcharts Compatibility
 
@@ -144,6 +162,10 @@ Highcharts 11.x and 12.x were tested for this line and rejected because their di
 }
 
 function getHighchartsModuleList(major) {
+  if (major >= 12) {
+    return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization, flowmap, geoheatmap, pictorial, tiledwebmap, contour, pointandfigure, renko';
+  }
+
   if (major >= 9) {
     return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization';
   }
@@ -564,6 +586,9 @@ function createPackageJson(major, version) {
     } : {}),
     typings: major >= 9 ? 'dist/index.d.ts' : 'index.d.ts',
     types: major >= 9 ? 'dist/index.d.ts' : 'index.d.ts',
+    files: major >= 9
+      ? ['dist', 'index.js', 'index.d.ts', 'README.md', 'LICENSE']
+      : ['*.js', '*.d.ts', 'README.md', 'LICENSE'],
     sideEffects: false,
     repository: {
       type: 'git',
