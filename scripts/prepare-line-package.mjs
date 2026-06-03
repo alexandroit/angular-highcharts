@@ -163,7 +163,7 @@ Highcharts 11.x and 12.x were tested for this line and rejected because their di
 
 function getHighchartsModuleList(major) {
   if (major >= 12) {
-    return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization, flowmap, geoheatmap, pictorial, tiledwebmap, contour, pointandfigure, renko';
+    return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization, flowmap, geoheatmap, pictorial, contour, pointandfigure, renko';
   }
 
   if (major >= 9) {

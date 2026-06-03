@@ -12,7 +12,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../../docs/angular-13",
+            "outputPath": "../../docs/angular-13/live",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +27,8 @@
             "scripts": [],
             "allowedCommonJsDependencies": [
               "highcharts"
-            ]
+            ],
+            "aot": true
           },
           "configurations": {
             "production": {

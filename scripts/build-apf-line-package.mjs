@@ -20,6 +20,16 @@ const lineConfig = {
     target: 'es2015',
     module: 'es2020',
     lib: ['dom', 'es2018']
+  },
+  13: {
+    angular: '13.4.0',
+    compilerCli: '13.4.0',
+    ngPackagr: '13.3.1',
+    typescript: '4.6.4',
+    tslib: '^2.3.0',
+    target: 'es2015',
+    module: 'es2020',
+    lib: ['dom', 'es2020']
   }
 };
 
@@ -98,12 +108,10 @@ function ensureLineMetadata(major) {
   const lineDir = path.join(lineRoot, `angular-${major}`);
   const packageFile = path.join(lineDir, 'package.json');
 
-  if (!fs.existsSync(packageFile)) {
-    execFileSync('node', ['scripts/prepare-line-package.mjs', '--line', String(major)], {
-      cwd: rootDir,
-      stdio: 'inherit'
-    });
-  }
+  execFileSync('node', ['scripts/prepare-line-package.mjs', '--line', String(major)], {
+    cwd: rootDir,
+    stdio: 'inherit'
+  });
 
   return {
     lineDir,
@@ -156,6 +164,14 @@ function createTsConfig(config) {
   };
 }
 
+function packageFieldExists(outDir, packageField) {
+  return !!packageField && fs.existsSync(path.join(outDir, packageField));
+}
+
+function pickExistingPackageField(outDir, fields) {
+  return fields.find((field) => packageFieldExists(outDir, field));
+}
+
 function buildApfLine(major) {
   const config = lineConfig[major];
   const metadata = ensureLineMetadata(major);
@@ -185,12 +201,28 @@ function buildApfLine(major) {
   });
 
   const generatedPackageJson = readJson(path.join(outDir, 'package.json'));
+  const mainField = pickExistingPackageField(outDir, [
+    generatedPackageJson.main,
+    generatedPackageJson.fesm2020,
+    generatedPackageJson.fesm2015,
+    generatedPackageJson.module
+  ]);
+  const moduleField = pickExistingPackageField(outDir, [
+    generatedPackageJson.module,
+    generatedPackageJson.fesm2020,
+    generatedPackageJson.fesm2015
+  ]);
+  const es2015Field = pickExistingPackageField(outDir, [
+    generatedPackageJson.es2015,
+    generatedPackageJson.fesm2015,
+    generatedPackageJson.module
+  ]);
   const finalPackageJson = {
     ...generatedPackageJson,
     ...metadata.packageJson,
-    main: generatedPackageJson.main,
-    module: generatedPackageJson.module,
-    es2015: generatedPackageJson.es2015,
+    main: mainField,
+    module: moduleField,
+    es2015: es2015Field,
     esm2015: generatedPackageJson.esm2015,
     fesm2015: generatedPackageJson.fesm2015,
     typings: generatedPackageJson.typings,
@@ -198,7 +230,11 @@ function buildApfLine(major) {
     files: [
       'bundles',
       'esm2015',
+      'esm2020',
+      'esm2022',
       'fesm2015',
+      'fesm2020',
+      'fesm2022',
       '*.d.ts',
       '*.metadata.json',
       'README.md',

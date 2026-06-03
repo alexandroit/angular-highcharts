@@ -118,7 +118,6 @@ function createLineAppModule(source, includeModernModules) {
     "const Flowmap = require('highcharts/modules/flowmap');",
     "const GeoHeatmap = require('highcharts/modules/geoheatmap');",
     "const Pictorial = require('highcharts/modules/pictorial');",
-    "const TiledWebMap = require('highcharts/modules/tiledwebmap');",
     "const Contour = require('highcharts/modules/contour');",
     "const PointAndFigure = require('highcharts/modules/pointandfigure');",
     "const Renko = require('highcharts/modules/renko');"
@@ -128,7 +127,6 @@ function createLineAppModule(source, includeModernModules) {
     '  Flowmap(Highcharts);',
     '  GeoHeatmap(Highcharts);',
     '  Pictorial(Highcharts);',
-    '  TiledWebMap(Highcharts);',
     '  Contour(Highcharts);',
     '  PointAndFigure(Highcharts);',
     '  Renko(Highcharts);'
@@ -223,7 +221,7 @@ function createLineComponent(source, major, config) {
     var nextType = String(nextSeries.type || currentSeries.type || '').toLowerCase();
 
     if (this.shouldRebuildDynamicSeries(nextType)) {
-      this.replaceDynamicSeries(chart, currentSeries, nextSeries);
+      this.removeAndAddDynamicSeries(chart, currentSeries, nextSeries);
       return;
     }
 
@@ -243,7 +241,17 @@ function createLineComponent(source, major, config) {
   }
 
   private shouldRebuildDynamicSeries(seriesType: string) {
-    return seriesType === 'renko' || seriesType === 'pointandfigure';
+    return seriesType === 'renko' || seriesType === 'pointandfigure' || seriesType === 'treegraph';
+  }
+
+  private removeAndAddDynamicSeries(chart: any, currentSeries: any, nextSeries: any) {
+    if (currentSeries.remove && chart.addSeries) {
+      currentSeries.remove(false);
+      chart.addSeries(nextSeries, false, false);
+      return;
+    }
+
+    this.replaceDynamicSeries(chart, currentSeries, nextSeries);
   }
 
   private replaceDynamicSeries(chart: any, currentSeries: any, nextSeries: any) {
@@ -289,8 +297,7 @@ function createLineComponent(source, major, config) {
       "      this.makeDynamicExample('Live market pictorial', 'Pictorial bars using live quote volume.', 'livePictorialOptions', this.createLivePictorialOptions()),",
       "      this.makeDynamicExample('Live market contour', 'Contour surface from change, liquidity and volatility.', 'liveContourOptions', this.createLiveContourOptions()),",
       "      this.makeDynamicExample('Live Renko price bricks', 'Renko StockChart generated from the selected candle stream.', 'liveRenkoOptions', this.createLiveRenkoOptions(), 'StockChart'),",
-      "      this.makeDynamicExample('Live point and figure', 'Point and figure StockChart generated from live candle closes.', 'livePointAndFigureOptions', this.createLivePointAndFigureOptions(), 'StockChart'),",
-      "      this.makeDynamicExample('Live market treegraph', 'Treegraph grouping tracked Binance symbols by positive and negative movement.', 'liveTreegraphOptions', this.createLiveTreegraphOptions())"
+      "      this.makeDynamicExample('Live point and figure', 'Point and figure StockChart generated from live candle closes.', 'livePointAndFigureOptions', this.createLivePointAndFigureOptions(), 'StockChart')"
     ].join('\n')
   );
 
@@ -308,9 +315,7 @@ function createLineComponent(source, major, config) {
       "      case 'liveRenkoOptions':",
       '        return this.createLiveRenkoOptions();',
       "      case 'livePointAndFigureOptions':",
-      '        return this.createLivePointAndFigureOptions();',
-      "      case 'liveTreegraphOptions':",
-      '        return this.createLiveTreegraphOptions();'
+      '        return this.createLivePointAndFigureOptions();'
     ].join('\n')
   );
 
@@ -704,6 +709,11 @@ function updatePackageJson(dir, major, config, packageDependency) {
   };
   packageJson.dependencies['@stackline/angular-highcharts'] = packageDependency;
   packageJson.dependencies.highcharts = config.highcharts;
+
+  if (config.modernHighcharts) {
+    delete packageJson.dependencies['core-js'];
+  }
+
   writeJson(packageFile, packageJson);
 }
 
@@ -737,6 +747,10 @@ function writeAppFiles(dir, major, config) {
   fs.writeFileSync(path.join(appDir, 'app.component.css'), componentCss);
   fs.writeFileSync(path.join(appDir, 'app.module.ts'), createLineAppModule(moduleTs, !!config.modernHighcharts));
 
+  if (config.modernHighcharts) {
+    fs.writeFileSync(path.join(dir, 'src', 'polyfills.ts'), "import 'zone.js';\n");
+  }
+
   const mainFile = path.join(dir, 'src', 'main.ts');
   if (fs.existsSync(mainFile)) {
     const mainTs = fs.readFileSync(mainFile, 'utf8').replace("import '@angular/compiler';\n", '');
@@ -750,9 +764,20 @@ function updateIndexHtml(dir, major) {
     return;
   }
 
-  let html = fs.readFileSync(indexFile, 'utf8');
-  html = html.replace(/<title>.*?<\/title>/, `<title>Stackline Angular Highcharts ${major}</title>`);
-  fs.writeFileSync(indexFile, html);
+  fs.writeFileSync(indexFile, `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stackline Angular Highcharts ${major}</title>
+  <base href="./">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%23102033%27/%3E%3Cpath d=%27M32 14l14 18H18z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
+</head>
+<body>
+  <app-root>Loading demo...</app-root>
+</body>
+</html>
+`);
 }
 
 function syncLine(major) {
