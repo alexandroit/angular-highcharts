@@ -40,6 +40,16 @@ const lineConfig = {
     target: 'es2015',
     module: 'es2020',
     lib: ['dom', 'es2020']
+  },
+  15: {
+    angular: '15.2.10',
+    compilerCli: '15.2.10',
+    ngPackagr: '15.2.2',
+    typescript: '4.9.5',
+    tslib: '^2.3.0',
+    target: 'es2015',
+    module: 'es2020',
+    lib: ['dom', 'es2020']
   }
 };
 
