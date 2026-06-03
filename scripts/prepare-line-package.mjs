@@ -106,6 +106,59 @@ function getPeerRange(major) {
   return `>=${major}.0.0 <${major + 1}.0.0`;
 }
 
+function getTestedHighchartsVersion(major) {
+  if (major === 9) {
+    return '10.3.3';
+  }
+
+  return null;
+}
+
+function getHighchartsInstallName(major) {
+  const testedVersion = getTestedHighchartsVersion(major);
+  return testedVersion ? `highcharts@${testedVersion}` : 'highcharts';
+}
+
+function getHighchartsPeerRange(major) {
+  if (major === 9) {
+    return '>=5.0.0 <=10.3.3';
+  }
+
+  return '>=5.0.0';
+}
+
+function getHighchartsCompatibilitySection(major) {
+  const testedVersion = getTestedHighchartsVersion(major);
+
+  if (!testedVersion) {
+    return '';
+  }
+
+  return `
+## Highcharts Compatibility
+
+The Angular ${major} validation app uses \`highcharts@${testedVersion}\`, which is the highest Highcharts version tested without Angular ${major} CLI/Webpack syntax-loader changes.
+
+Highcharts 11.x and 12.x were tested for this line and rejected because their distributed modules use newer JavaScript syntax than the Angular ${major} default build pipeline accepts. If your application customizes Webpack/Babel to transpile package modules, you can run your own compatibility test, but the maintained Stackline Angular ${major} line is published against \`${testedVersion}\`.
+`;
+}
+
+function getHighchartsModuleList(major) {
+  if (major >= 9) {
+    return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization';
+  }
+
+  return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown';
+}
+
+function getStackBlitzLink(major) {
+  if (major < 9) {
+    return '';
+  }
+
+  return ` | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-${major}?file=src%2Fapp%2Fapp.component.ts&startScript=start)**`;
+}
+
 function transformSource(fileName, source, major) {
   let code = source;
 
@@ -153,7 +206,7 @@ function createReadme(major, version) {
 [![Highcharts](https://img.shields.io/badge/Highcharts-5%2B-2f7ed8?style=flat-square)](https://www.highcharts.com/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular ${major} Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-${major}/)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
+**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular ${major} Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-${major}/)**${getStackBlitzLink(major)} | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
 
 <p align="center">
   <img src="https://assets.alexandro.net/2026/06/angular2-highcharts.gif" alt="Stackline Angular Highcharts live examples" width="920">
@@ -220,15 +273,16 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
-| \`${major}.x\` | Angular \`${major}.x\` | \`${getPeerRange(major)}\` | \`npm install @stackline/angular-highcharts@${version} highcharts --save-exact\` |
+| \`${major}.x\` | Angular \`${major}.x\` | \`${getPeerRange(major)}\` | \`npm install @stackline/angular-highcharts@${version} ${getHighchartsInstallName(major)} --save-exact\` |
 
 ## Installation
 
 \`\`\`bash
-npm install @stackline/angular-highcharts@${version} highcharts --save-exact
+npm install @stackline/angular-highcharts@${version} ${getHighchartsInstallName(major)} --save-exact
 \`\`\`
 
 The package declares \`highcharts\` as a peer dependency so your application can choose the Highcharts version and modules it needs.
+${getHighchartsCompatibilitySection(major)}
 
 ## Setup
 
@@ -490,7 +544,7 @@ updateCandles(ohlcData: any[], volumeData: any[]) {
 | Options API | \`<chart [options]="options">\` |
 | Constructor switch | \`<chart [type]="'StockChart'" [options]="options">\` |
 | Directive events | \`<series>\`, \`<point>\`, \`<xAxis>\`, \`<yAxis>\`, \`<zAxis>\`, \`<colorAxis>\` |
-| Highcharts modules | more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown |
+| Highcharts modules | ${getHighchartsModuleList(major)} |
 
 ## License
 
@@ -503,9 +557,13 @@ function createPackageJson(major, version) {
     name: packageName,
     version,
     description: `Angular ${major} wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations`,
-    main: 'index.js',
-    typings: 'index.d.ts',
-    types: 'index.d.ts',
+    main: major >= 9 ? 'dist/index.js' : 'index.js',
+    ...(major >= 9 ? {
+      module: 'dist/index.js',
+      es2015: 'dist/index.js'
+    } : {}),
+    typings: major >= 9 ? 'dist/index.d.ts' : 'index.d.ts',
+    types: major >= 9 ? 'dist/index.d.ts' : 'index.d.ts',
     sideEffects: false,
     repository: {
       type: 'git',
@@ -542,19 +600,19 @@ function createPackageJson(major, version) {
     homepage: 'https://alexandro.net/docs/angular/angular-highcharts/',
     peerDependencies: {
       '@angular/core': getPeerRange(major),
-      highcharts: '>=5.0.0'
+      highcharts: getHighchartsPeerRange(major)
     }
   };
 }
 
-function createTsConfig(tempSrcDir, packageDir) {
+function createTsConfig(tempSrcDir, packageDir, major) {
   const tsConfig = {
     compilerOptions: {
       emitDecoratorMetadata: true,
       experimentalDecorators: true,
-      target: 'es5',
+      target: major >= 9 ? 'es2015' : 'es5',
       lib: ['dom', 'es2015'],
-      module: 'commonjs',
+      module: major >= 9 ? 'es2015' : 'commonjs',
       moduleResolution: 'node',
       skipLibCheck: true,
       removeComments: true,
@@ -774,7 +832,7 @@ function writeLegacyMetadataFiles(packageDir) {
     }
   });
 
-  writeMetadata(packageDir, 'public_api', {
+  writeMetadata(packageDir, 'ChartModule', {
     ChartModule: {
       __symbolic: 'class',
       decorators: [
@@ -783,7 +841,11 @@ function writeLegacyMetadataFiles(packageDir) {
           exports: chartDirectives
         }])
       ]
-    },
+    }
+  });
+
+  writeMetadata(packageDir, 'public_api', {
+    ChartModule: localRef('ChartModule', 'ChartModule'),
     ChartComponent: localRef('ChartComponent', 'ChartComponent'),
     ChartSeriesComponent: localRef('ChartSeriesComponent', 'ChartSeriesComponent'),
     ChartPointComponent: localRef('ChartPointComponent', 'ChartPointComponent'),
@@ -826,7 +888,7 @@ function prepareLinePackage(major) {
   ensureCleanDir(packageDir);
   copySourcesForLine(tempSrcDir, major);
 
-  const tsConfigPath = createTsConfig(tempSrcDir, packageDir);
+  const tsConfigPath = createTsConfig(tempSrcDir, packageDir, major);
   execFileSync('npx', ['tsc', '-p', tsConfigPath, '--pretty', 'false'], {
     cwd: rootDir,
     stdio: 'inherit'
@@ -834,7 +896,7 @@ function prepareLinePackage(major) {
 
   patchLegacyDeclarations(packageDir, major);
 
-  if (major <= 8) {
+  if (major <= 9) {
     writeLegacyMetadataFiles(packageDir);
   }
 
