@@ -21,7 +21,7 @@ const lineConfig = {
   17: { version: '17.0.0', highcharts: '12.6.0', cli: '17.3.17', angular: '17.3.12', port: 4427, modernHighcharts: true },
   18: { version: '18.0.0', highcharts: '12.6.0', cli: '18.2.21', angular: '18.2.14', port: 4428, modernHighcharts: true },
   19: { version: '19.0.0', highcharts: '12.6.0', cli: '19.2.27', angular: '19.2.25', port: 4429, modernHighcharts: true },
-  20: { version: '20.0.0', highcharts: '12.6.0', cli: '20.3.22', angular: '20.3.18', port: 4430, modernHighcharts: true },
+  20: { version: '20.0.0', highcharts: '12.6.0', cli: '20.3.27', angular: '20.3.24', port: 4430, modernHighcharts: true },
   21: { version: '21.0.2', highcharts: '12.6.0', cli: '21.2.6', angular: '21.2.7', port: 4431, modernHighcharts: true }
 };
 
