@@ -88,18 +88,27 @@ function packLinePackage(major) {
   fs.rmSync(packDir, { recursive: true, force: true });
   fs.mkdirSync(packDir, { recursive: true });
 
-  const tarball = execFileSync('npm', ['pack', '--silent', '--pack-destination', packDir], {
+  const tarball = execFileSync('npm', ['pack', '--silent'], {
     cwd: packageDir,
     encoding: 'utf8'
   }).trim().split('\n').pop();
 
-  return path.join(packDir, tarball);
+  const packedFile = path.join(packageDir, tarball);
+  const targetFile = path.join(packDir, tarball);
+  fs.copyFileSync(packedFile, targetFile);
+  fs.rmSync(packedFile, { force: true });
+
+  return targetFile;
 }
 
 function createLineAppModule(source, includeModernModules) {
   let code = source
     .replace("import { ChartModule, HighchartsStatic } from '@stackline/angular-highcharts';", "import { ChartModule } from '@stackline/angular-highcharts';")
     .replace("    ChartModule\n  ],\n  providers: [\n    { provide: HighchartsStatic, useFactory: highchartsFactory }\n  ],", "    ChartModule.forRoot(highchartsFactory())\n  ],");
+
+  code = code
+    .replace("const NoData = require('highcharts/modules/no-data-to-display');", "const Accessibility = require('highcharts/modules/accessibility');\nconst NoData = require('highcharts/modules/no-data-to-display');")
+    .replace('  NoData(Highcharts);', '  Accessibility(Highcharts);\n  NoData(Highcharts);');
 
   if (!includeModernModules) {
     return code;
@@ -125,9 +134,23 @@ function createLineAppModule(source, includeModernModules) {
     '  Renko(Highcharts);'
   ].join('\n');
 
-  return code
+  code = code
     .replace("const NoData = require('highcharts/modules/no-data-to-display');", `${modernRequires}\nconst NoData = require('highcharts/modules/no-data-to-display');`)
     .replace('  NoData(Highcharts);', `${modernCalls}\n  NoData(Highcharts);`);
+
+  const safeModuleInstaller = [
+    'function installHighchartsModule(moduleRef: any) {',
+    '  const factory = moduleRef && (moduleRef.default || moduleRef);',
+    '',
+    "  if (typeof factory === 'function') {",
+    '    factory(Highcharts);',
+    '  }',
+    '}'
+  ].join('\n');
+
+  return code
+    .replace('\nexport function highchartsFactory() {', `\n${safeModuleInstaller}\n\nexport function highchartsFactory() {`)
+    .replace(/^  ([A-Za-z0-9_]+)\(Highcharts\);$/gm, '  installHighchartsModule($1);');
 }
 
 function createLineComponent(source, major, config) {
@@ -146,6 +169,100 @@ function createLineComponent(source, major, config) {
     "    var path = window.location && window.location.pathname ? window.location.pathname : '/';\n    var search = window.location && window.location.search ? window.location.search : '';\n    this.viewMode = path.indexOf('/static') >= 0 || search.indexOf('view=static') >= 0 ? 'static' : 'dynamic';"
   );
 
+  code = code.replace(
+    `  private syncDynamicSeries(chart: any, seriesOptions: any[]) {
+    var i: number;
+
+    for (i = chart.series.length - 1; i >= seriesOptions.length; i--) {
+      chart.series[i].remove(false);
+    }
+
+    for (i = 0; i < seriesOptions.length; i++) {
+      var nextSeries = seriesOptions[i] || {};
+      var currentSeries = chart.series[i];
+
+      if (!currentSeries) {
+        chart.addSeries(nextSeries, false, false);
+        continue;
+      }
+
+      if (nextSeries.name && currentSeries.name !== nextSeries.name && currentSeries.update) {
+        currentSeries.update({ name: nextSeries.name }, false);
+      }
+
+      if (currentSeries.setData) {
+        currentSeries.setData(nextSeries.data || [], false, false);
+      }
+    }
+  }`,
+    `  private syncDynamicSeries(chart: any, seriesOptions: any[]) {
+    var i: number;
+
+    for (i = chart.series.length - 1; i >= seriesOptions.length; i--) {
+      chart.series[i].remove(false);
+    }
+
+    for (i = 0; i < seriesOptions.length; i++) {
+      var nextSeries = seriesOptions[i] || {};
+      var currentSeries = chart.series[i];
+
+      if (!currentSeries) {
+        chart.addSeries(nextSeries, false, false);
+        continue;
+      }
+
+      if (nextSeries.name && currentSeries.name !== nextSeries.name && currentSeries.update) {
+        currentSeries.update({ name: nextSeries.name }, false);
+      }
+
+      this.updateDynamicSeriesData(chart, currentSeries, nextSeries);
+    }
+  }
+
+  private updateDynamicSeriesData(chart: any, currentSeries: any, nextSeries: any) {
+    var nextType = String(nextSeries.type || currentSeries.type || '').toLowerCase();
+
+    if (this.shouldRebuildDynamicSeries(nextType)) {
+      this.replaceDynamicSeries(chart, currentSeries, nextSeries);
+      return;
+    }
+
+    if (currentSeries.setData) {
+      try {
+        currentSeries.setData(nextSeries.data || [], false, false);
+        return;
+      } catch (error) {
+        this.replaceDynamicSeries(chart, currentSeries, nextSeries);
+        return;
+      }
+    }
+
+    if (currentSeries.update) {
+      currentSeries.update(nextSeries, false);
+    }
+  }
+
+  private shouldRebuildDynamicSeries(seriesType: string) {
+    return seriesType === 'renko' || seriesType === 'pointandfigure';
+  }
+
+  private replaceDynamicSeries(chart: any, currentSeries: any, nextSeries: any) {
+    if (currentSeries.update) {
+      try {
+        currentSeries.update(nextSeries, false);
+        return;
+      } catch (error) {
+        // Some Highcharts derived series cannot be safely mutated in place.
+      }
+    }
+
+    if (currentSeries.remove && chart.addSeries) {
+      currentSeries.remove(false);
+      chart.addSeries(nextSeries, false, false);
+    }
+  }`
+  );
+
   if (!config.modernHighcharts) {
     return code;
   }
@@ -157,7 +274,6 @@ function createLineComponent(source, major, config) {
       '    this.makeFlowmap(),',
       '    this.makeGeoHeatmap(),',
       '    this.makePictorial(),',
-      '    this.makeTiledWebMap(),',
       '    this.makeContour(),',
       '    this.makeRenko(),',
       '    this.makePointAndFigure()',
@@ -171,7 +287,6 @@ function createLineComponent(source, major, config) {
       "      this.makeDynamicExample('Live market flowmap', 'Flow links from a liquidity hub into tracked market points.', 'liveFlowmapOptions', this.createLiveFlowmapOptions()),",
       "      this.makeDynamicExample('Live geo heatmap', 'Geo heatmap cells from live market movement and liquidity.', 'liveGeoHeatmapOptions', this.createLiveGeoHeatmapOptions()),",
       "      this.makeDynamicExample('Live market pictorial', 'Pictorial bars using live quote volume.', 'livePictorialOptions', this.createLivePictorialOptions()),",
-      "      this.makeDynamicExample('Live tiled web map', 'Tiled map background with live market markers.', 'liveTiledWebMapOptions', this.createLiveTiledWebMapOptions()),",
       "      this.makeDynamicExample('Live market contour', 'Contour surface from change, liquidity and volatility.', 'liveContourOptions', this.createLiveContourOptions()),",
       "      this.makeDynamicExample('Live Renko price bricks', 'Renko StockChart generated from the selected candle stream.', 'liveRenkoOptions', this.createLiveRenkoOptions(), 'StockChart'),",
       "      this.makeDynamicExample('Live point and figure', 'Point and figure StockChart generated from live candle closes.', 'livePointAndFigureOptions', this.createLivePointAndFigureOptions(), 'StockChart'),",
@@ -188,8 +303,6 @@ function createLineComponent(source, major, config) {
       '        return this.createLiveGeoHeatmapOptions();',
       "      case 'livePictorialOptions':",
       '        return this.createLivePictorialOptions();',
-      "      case 'liveTiledWebMapOptions':",
-      '        return this.createLiveTiledWebMapOptions();',
       "      case 'liveContourOptions':",
       '        return this.createLiveContourOptions();',
       "      case 'liveRenkoOptions':",
@@ -205,11 +318,13 @@ function createLineComponent(source, major, config) {
 }
 
 function createLineComponentHtml(source, major, config) {
-  return source
+  let html = source
     .replace(/Angular CLI 9\.1\.15 \/ Angular 9\.1\.13 runtime/g, `Angular CLI ${config.cli} / Angular ${config.angular} runtime`)
     .replace(/@stackline\/angular-highcharts 9\.0\.0/g, `@stackline/angular-highcharts ${config.version}`)
     .replace(/Angular 9/g, `Angular ${major}`)
     .replace(/Project generated with the Angular 9 CLI blueprint/g, `Project generated with the Angular ${major} CLI blueprint`);
+
+  return html;
 }
 
 function modernChartMethods() {
@@ -452,9 +567,19 @@ function modernChartMethods() {
       [Date.now() - 1000, 640, 642, 633, 635]
     ];
     var data: any[] = [];
+    var firstClose = source[0][4];
+    var hasBoxMovement = false;
 
     for (var i = 0; i < source.length; i++) {
-      data.push([source[i][0], source[i][4]]);
+      if (Math.abs(source[i][4] - firstClose) >= 0.01) {
+        hasBoxMovement = true;
+      }
+      data.push({ x: source[i][0], y: source[i][4] });
+    }
+
+    if (!hasBoxMovement && data.length > 2) {
+      data[1].y = firstClose + 0.02;
+      data[2].y = firstClose - 0.02;
     }
 
     return data;
@@ -473,7 +598,7 @@ function modernChartMethods() {
         type: 'renko',
         name: this.binanceSymbol + ' Renko',
         data: this.closePriceSeries(),
-        boxSize: 2
+        boxSize: 0.01
       }]
     };
   }
@@ -491,8 +616,8 @@ function modernChartMethods() {
         type: 'pointandfigure',
         name: this.binanceSymbol + ' P&F',
         data: this.closePriceSeries(),
-        boxSize: 2,
-        reversalAmount: 3
+        boxSize: 0.01,
+        reversalAmount: 1
       }]
     };
   }
@@ -566,20 +691,23 @@ function modernChartMethods() {
 function updatePackageJson(dir, major, config, packageDependency) {
   const packageFile = path.join(dir, 'package.json');
   const packageJson = readJson(packageFile);
+  const aotMode = config.modernHighcharts ? 'true' : 'false';
   packageJson.name = `stackline-angular-highcharts-angular-${major}`;
   packageJson.private = true;
   packageJson.scripts = {
     ...(packageJson.scripts || {}),
     ng: 'ng',
-    start: `ng serve --host 0.0.0.0 --port ${config.port}`,
-    build: 'ng build --base-href ./ --build-optimizer=false --vendor-chunk=true --named-chunks=true --aot=false'
+    start: config.modernHighcharts
+      ? `ng serve --aot=true --host 0.0.0.0 --port ${config.port}`
+      : `ng serve --host 0.0.0.0 --port ${config.port}`,
+    build: `ng build --base-href ./ --build-optimizer=false --vendor-chunk=true --named-chunks=true --aot=${aotMode}`
   };
   packageJson.dependencies['@stackline/angular-highcharts'] = packageDependency;
   packageJson.dependencies.highcharts = config.highcharts;
   writeJson(packageFile, packageJson);
 }
 
-function updateAngularJson(dir, outputPath) {
+function updateAngularJson(dir, outputPath, config) {
   const angularFile = path.join(dir, 'angular.json');
   const angularJson = readJson(angularFile);
   const projectName = angularJson.defaultProject || Object.keys(angularJson.projects)[0];
@@ -587,6 +715,10 @@ function updateAngularJson(dir, outputPath) {
 
   if (project && project.architect && project.architect.build && project.architect.build.options) {
     project.architect.build.options.outputPath = outputPath;
+
+    if (config.modernHighcharts) {
+      project.architect.build.options.aot = true;
+    }
   }
 
   writeJson(angularFile, angularJson);
@@ -604,6 +736,12 @@ function writeAppFiles(dir, major, config) {
   fs.writeFileSync(path.join(appDir, 'app.component.html'), createLineComponentHtml(componentHtml, major, config));
   fs.writeFileSync(path.join(appDir, 'app.component.css'), componentCss);
   fs.writeFileSync(path.join(appDir, 'app.module.ts'), createLineAppModule(moduleTs, !!config.modernHighcharts));
+
+  const mainFile = path.join(dir, 'src', 'main.ts');
+  if (fs.existsSync(mainFile)) {
+    const mainTs = fs.readFileSync(mainFile, 'utf8').replace("import '@angular/compiler';\n", '');
+    fs.writeFileSync(mainFile, mainTs);
+  }
 }
 
 function updateIndexHtml(dir, major) {
@@ -625,12 +763,12 @@ function syncLine(major) {
 
   writeAppFiles(docsDir, major, config);
   updatePackageJson(docsDir, major, config, config.version);
-  updateAngularJson(docsDir, `../../docs/angular-${major}/live`);
+  updateAngularJson(docsDir, `../../docs/angular-${major}/live`, config);
   updateIndexHtml(docsDir, major);
 
   syncDirectory(docsDir, testDir);
   updatePackageJson(testDir, major, config, `file:${tarballPath}`);
-  updateAngularJson(testDir, `dist/angular-${major}`);
+  updateAngularJson(testDir, `dist/angular-${major}`, config);
   updateIndexHtml(testDir, major);
 
   console.log(`Synced Angular ${major} live app with Highcharts ${config.highcharts}`);
