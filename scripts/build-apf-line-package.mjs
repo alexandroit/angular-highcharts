@@ -70,6 +70,16 @@ const lineConfig = {
     target: 'es2022',
     module: 'es2022',
     lib: ['dom', 'es2022']
+  },
+  18: {
+    angular: '18.2.14',
+    compilerCli: '18.2.14',
+    ngPackagr: '18.2.1',
+    typescript: '5.5.4',
+    tslib: '^2.3.0',
+    target: 'es2022',
+    module: 'es2022',
+    lib: ['dom', 'es2022']
   }
 };
 
