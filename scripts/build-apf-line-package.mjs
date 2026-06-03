@@ -50,6 +50,16 @@ const lineConfig = {
     target: 'es2015',
     module: 'es2020',
     lib: ['dom', 'es2020']
+  },
+  16: {
+    angular: '16.2.12',
+    compilerCli: '16.2.12',
+    ngPackagr: '16.2.3',
+    typescript: '5.1.6',
+    tslib: '^2.3.0',
+    target: 'es2022',
+    module: 'es2022',
+    lib: ['dom', 'es2022']
   }
 };
 
@@ -223,12 +233,14 @@ function buildApfLine(major) {
   const generatedPackageJson = readJson(path.join(outDir, 'package.json'));
   const mainField = pickExistingPackageField(outDir, [
     generatedPackageJson.main,
+    generatedPackageJson.fesm2022,
     generatedPackageJson.fesm2020,
     generatedPackageJson.fesm2015,
     generatedPackageJson.module
   ]);
   const moduleField = pickExistingPackageField(outDir, [
     generatedPackageJson.module,
+    generatedPackageJson.fesm2022,
     generatedPackageJson.fesm2020,
     generatedPackageJson.fesm2015
   ]);
@@ -244,7 +256,11 @@ function buildApfLine(major) {
     module: moduleField,
     es2015: es2015Field,
     esm2015: generatedPackageJson.esm2015,
+    esm2020: generatedPackageJson.esm2020,
+    esm2022: generatedPackageJson.esm2022,
     fesm2015: generatedPackageJson.fesm2015,
+    fesm2020: generatedPackageJson.fesm2020,
+    fesm2022: generatedPackageJson.fesm2022,
     typings: generatedPackageJson.typings,
     types: generatedPackageJson.typings || generatedPackageJson.types,
     files: [
