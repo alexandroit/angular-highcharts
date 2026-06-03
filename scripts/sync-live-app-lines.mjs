@@ -22,7 +22,7 @@ const lineConfig = {
   18: { version: '18.0.0', highcharts: '12.6.0', cli: '18.2.21', angular: '18.2.14', port: 4428, modernHighcharts: true },
   19: { version: '19.0.0', highcharts: '12.6.0', cli: '19.2.27', angular: '19.2.25', port: 4429, modernHighcharts: true },
   20: { version: '20.0.0', highcharts: '12.6.0', cli: '20.3.27', angular: '20.3.24', port: 4430, modernHighcharts: true },
-  21: { version: '21.0.2', highcharts: '12.6.0', cli: '21.2.6', angular: '21.2.7', port: 4431, modernHighcharts: true }
+  21: { version: '21.0.0', highcharts: '12.6.0', cli: '21.2.14', angular: '21.2.16', port: 4431, modernHighcharts: true }
 };
 
 function parseArgs(argv) {
@@ -335,6 +335,11 @@ function createLineComponentHtml(source, major, config) {
     .replace(/@stackline\/angular-highcharts 9\.0\.0/g, `@stackline/angular-highcharts ${config.version}`)
     .replace(/Angular 9/g, `Angular ${major}`)
     .replace(/Project generated with the Angular 9 CLI blueprint/g, `Project generated with the Angular ${major} CLI blueprint`);
+
+  html = html.replace(
+    /running the local Verdaccio Angular [0-9]+ package line/g,
+    `running the published npm Angular ${major} package line`
+  );
 
   if (major >= 17) {
     html = html.replace(/@stackline\/angular-highcharts/g, '&#64;stackline/angular-highcharts');
@@ -718,8 +723,21 @@ function updatePackageJson(dir, major, config, packageDependency) {
       : `ng serve --host 0.0.0.0 --port ${config.port}`,
     build: `ng build --base-href ./ --build-optimizer=false --vendor-chunk=true --named-chunks=true --aot=${aotMode}`
   };
+  [
+    '@angular/common',
+    '@angular/compiler',
+    '@angular/core',
+    '@angular/forms',
+    '@angular/platform-browser',
+    '@angular/platform-browser-dynamic'
+  ].forEach((dependencyName) => {
+    packageJson.dependencies[dependencyName] = config.angular;
+  });
   packageJson.dependencies['@stackline/angular-highcharts'] = packageDependency;
   packageJson.dependencies.highcharts = config.highcharts;
+  packageJson.devDependencies['@angular-devkit/build-angular'] = config.cli;
+  packageJson.devDependencies['@angular/cli'] = config.cli;
+  packageJson.devDependencies['@angular/compiler-cli'] = config.angular;
 
   if (config.modernHighcharts) {
     delete packageJson.dependencies['core-js'];

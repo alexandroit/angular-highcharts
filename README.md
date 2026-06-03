@@ -1,21 +1,21 @@
 # @stackline/angular-highcharts
 
-> A maintained Angular 20 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
+> A maintained Angular 21 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
 
 [![npm version](https://img.shields.io/npm/v/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![npm monthly](https://img.shields.io/npm/dm/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts/blob/master/LICENSE)
-[![Angular 20](https://img.shields.io/badge/Angular-20.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-20/)
+[![Angular 21](https://img.shields.io/badge/Angular-21.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-21/)
 [![Highcharts](https://img.shields.io/badge/Highcharts-5%2B-2f7ed8?style=flat-square)](https://www.highcharts.com/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 20 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-20/)** | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-20?file=src%2Fapp%2Fapp.component.ts&startScript=start)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
+**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 21 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-21/)** | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-21?file=src%2Fapp%2Fapp.component.ts&startScript=start)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
 
 <p align="center">
   <img src="https://assets.alexandro.net/2026/06/angular2-highcharts.gif" alt="Stackline Angular Highcharts live examples" width="920">
 </p>
 
-**Angular 20 release:** `20.0.0`
+**Angular 21 release:** `21.0.0`
 
 ---
 
@@ -29,13 +29,13 @@
 
 The goal is not to hide Highcharts. The package stays thin: your application still owns the real Highcharts options object, the Highcharts constructor choice, module registration, event handling, and native chart instance. The wrapper gives Angular templates a stable `<chart>` component, Angular event outputs, axis/series/point directives, and release families aligned to Angular majors.
 
-The Angular 20 package family is `20.0.0` and is intended for Angular `20.x` applications. The live validation app for this line uses a real Angular 20 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
+The Angular 21 package family is `21.0.0` and is intended for Angular `21.x` applications. The live validation app for this line uses a real Angular 21 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
 
 ## Features
 
 | Feature | Supported |
 | :--- | :---: |
-| Angular 20 tested release line | ✅ |
+| Angular 21 tested release line | ✅ |
 | Standard `Highcharts.Chart` rendering | ✅ |
 | `StockChart` constructor support | ✅ |
 | Highmaps constructor support when Highmaps is registered | ✅ |
@@ -76,21 +76,41 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
+| `21.x` | Angular `21.x` | `>=21.0.0 <22.0.0` | `npm install @stackline/angular-highcharts@21.0.0 highcharts@12.6.0 --save-exact` |
 | `20.x` | Angular `20.x` | `>=20.0.0 <21.0.0` | `npm install @stackline/angular-highcharts@20.0.0 highcharts@12.6.0 --save-exact` |
+| `19.x` | Angular `19.x` | `>=19.0.0 <20.0.0` | `npm install @stackline/angular-highcharts@19.0.0 highcharts@12.6.0 --save-exact` |
+| `18.x` | Angular `18.x` | `>=18.0.0 <19.0.0` | `npm install @stackline/angular-highcharts@18.0.0 highcharts@12.6.0 --save-exact` |
+| `17.x` | Angular `17.x` | `>=17.0.0 <18.0.0` | `npm install @stackline/angular-highcharts@17.0.0 highcharts@12.6.0 --save-exact` |
+| `16.x` | Angular `16.x` | `>=16.0.0 <17.0.0` | `npm install @stackline/angular-highcharts@16.0.0 highcharts@12.6.0 --save-exact` |
+| `15.x` | Angular `15.x` | `>=15.0.0 <16.0.0` | `npm install @stackline/angular-highcharts@15.0.0 highcharts@12.6.0 --save-exact` |
+| `14.x` | Angular `14.x` | `>=14.0.0 <15.0.0` | `npm install @stackline/angular-highcharts@14.0.0 highcharts@12.6.0 --save-exact` |
+| `13.x` | Angular `13.x` | `>=13.0.0 <14.0.0` | `npm install @stackline/angular-highcharts@13.0.0 highcharts@12.6.0 --save-exact` |
+| `12.x` | Angular `12.x` | `>=12.0.0 <13.0.0` | `npm install @stackline/angular-highcharts@12.0.0 highcharts@12.6.0 --save-exact` |
+| `11.x` | Angular `11.x` | `>=11.0.0 <12.0.0` | `npm install @stackline/angular-highcharts@11.0.0 highcharts@10.3.3 --save-exact` |
+| `10.x` | Angular `10.x` | `>=10.0.0 <11.0.0` | `npm install @stackline/angular-highcharts@10.0.0 highcharts@10.3.3 --save-exact` |
+| `9.x` | Angular `9.x` | `>=9.0.0 <10.0.0` | `npm install @stackline/angular-highcharts@9.0.0 highcharts@10.3.3 --save-exact` |
+| `8.x` | Angular `8.x` | `>=8.0.0 <9.0.0` | `npm install @stackline/angular-highcharts@8.0.0 highcharts --save-exact` |
+| `7.x` | Angular `7.x` | `>=7.0.0 <8.0.0` | `npm install @stackline/angular-highcharts@7.0.0 highcharts --save-exact` |
+| `6.x` | Angular `6.x` | `>=6.0.0 <7.0.0` | `npm install @stackline/angular-highcharts@6.0.0 highcharts --save-exact` |
+| `5.x` | Angular `5.x` | `>=5.0.0 <6.0.0` | `npm install @stackline/angular-highcharts@5.0.0 highcharts --save-exact` |
+| `4.x` | Angular `4.x` | `>=4.0.0 <5.0.0` | `npm install @stackline/angular-highcharts@4.0.0 highcharts --save-exact` |
+| `2.x` | Angular `2.x` | `>=2.0.0 <3.0.0` | `npm install @stackline/angular-highcharts@2.0.0 highcharts --save-exact` |
+
+Angular 3 does not have a package family because Angular skipped version 3.
 
 ## Installation
 
 ```bash
-npm install @stackline/angular-highcharts@20.0.0 highcharts@12.6.0 --save-exact
+npm install @stackline/angular-highcharts@21.0.0 highcharts@12.6.0 --save-exact
 ```
 
 The package declares `highcharts` as a peer dependency so your application can choose the Highcharts version and modules it needs.
 
 ## Highcharts Compatibility
 
-The Angular 20 validation app uses `highcharts@12.6.0`, which is the highest Highcharts version tested for this line.
+The Angular 21 validation app uses `highcharts@12.6.0`, which is the highest Highcharts version tested for this line.
 
-The maintained Stackline Angular 20 line is published with a Highcharts peer range of `>=5.0.0 <=12.6.0` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
+The maintained Stackline Angular 21 line is published with a Highcharts peer range of `>=5.0.0 <=12.6.0` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
 
 
 ## Setup

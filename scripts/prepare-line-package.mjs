@@ -95,10 +95,6 @@ function writeJson(filePath, value) {
 }
 
 function getPackageVersion(major) {
-  if (major === 21) {
-    return '21.0.2';
-  }
-
   return `${major}.0.0`;
 }
 
@@ -179,6 +175,14 @@ function getStackBlitzLink(major) {
   }
 
   return ` | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-${major}?file=src%2Fapp%2Fapp.component.ts&startScript=start)**`;
+}
+
+function getAngularCompatibilityRows() {
+  return [...lineMajors].reverse().map((line) => {
+    const version = getPackageVersion(line);
+
+    return `| \`${line}.x\` | Angular \`${line}.x\` | \`${getPeerRange(line)}\` | \`npm install ${packageName}@${version} ${getHighchartsInstallName(line)} --save-exact\` |`;
+  }).join('\n');
 }
 
 function transformSource(fileName, source, major) {
@@ -295,7 +299,9 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
-| \`${major}.x\` | Angular \`${major}.x\` | \`${getPeerRange(major)}\` | \`npm install @stackline/angular-highcharts@${version} ${getHighchartsInstallName(major)} --save-exact\` |
+${getAngularCompatibilityRows()}
+
+Angular 3 does not have a package family because Angular skipped version 3.
 
 ## Installation
 

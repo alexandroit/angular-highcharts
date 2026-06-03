@@ -100,6 +100,16 @@ const lineConfig = {
     target: 'es2022',
     module: 'es2022',
     lib: ['dom', 'es2022']
+  },
+  21: {
+    angular: '21.2.16',
+    compilerCli: '21.2.16',
+    ngPackagr: '21.2.5',
+    typescript: '5.9.3',
+    tslib: '^2.3.0',
+    target: 'es2022',
+    module: 'es2022',
+    lib: ['dom', 'es2022']
   }
 };
 
@@ -311,6 +321,7 @@ function buildApfLine(major) {
       'fesm2015',
       'fesm2020',
       'fesm2022',
+      'types',
       '*.d.ts',
       '*.metadata.json',
       'README.md',
