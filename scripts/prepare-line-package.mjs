@@ -99,6 +99,10 @@ function getPackageVersion(major) {
 }
 
 function getPeerRange(major) {
+  if (major === 22) {
+    return '>=22.0.0 <24.0.0';
+  }
+
   return `>=${major}.0.0 <${major + 1}.0.0`;
 }
 
