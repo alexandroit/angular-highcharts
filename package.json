@@ -1,6 +1,6 @@
 {
   "name": "@stackline/angular-highcharts",
-  "version": "21.0.1",
+  "version": "22.0.0",
   "description": "Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "main": "dist/fesm2022/stackline-angular-highcharts.mjs",
   "module": "dist/fesm2022/stackline-angular-highcharts.mjs",
@@ -50,7 +50,9 @@
     "build:docs:angular-20": "cd docs-src/angular-20 && npm run build",
     "docs:install:angular-21": "cd docs-src/angular-21 && npm install --ignore-scripts",
     "build:docs:angular-21": "cd docs-src/angular-21 && npm run build",
-    "build:docs": "npm run build:docs:angular-21",
+    "docs:install:angular-22": "cd docs-src/angular-22 && npm install --ignore-scripts",
+    "build:docs:angular-22": "cd docs-src/angular-22 && npm run build",
+    "build:docs": "npm run build:docs:angular-22",
     "serve:docs": "http-server docs -p 8080 -c-1"
   },
   "repository": {
@@ -80,6 +82,8 @@
     "angular19",
     "angular20",
     "angular21",
+    "angular22",
+    "angular-22",
     "angular-library",
     "typescript",
     "charts",
@@ -155,32 +159,32 @@
   },
   "homepage": "https://alexandro.net/docs/angular/angular-highcharts/",
   "peerDependencies": {
-    "@angular/core": ">=21.0.0 <22.0.0",
-    "highcharts": ">=5.0.0"
+    "@angular/core": ">=22.0.0 <23.0.0",
+    "highcharts": ">=5.0.0 <=12.6.0"
   },
   "devDependencies": {
-    "@angular/common": "^21.2.7",
-    "@angular/compiler": "^21.2.7",
-    "@angular/compiler-cli": "^21.2.7",
-    "@angular/core": "^21.2.7",
-    "@angular/platform-browser": "^21.2.7",
-    "@angular/platform-browser-dynamic": "^21.2.7",
-    "@angular/platform-server": "^21.2.7",
+    "@angular/common": "22.0.0",
+    "@angular/compiler": "22.0.0",
+    "@angular/compiler-cli": "22.0.0",
+    "@angular/core": "22.0.0",
+    "@angular/platform-browser": "22.0.0",
+    "@angular/platform-browser-dynamic": "22.0.0",
+    "@angular/platform-server": "22.0.0",
     "core-js": "^2.4.1",
     "jasmine-core": "~2.5.2",
     "karma": "^1.4.1",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.1.0",
     "http-server": "^14.1.1",
-    "ng-packagr": "^21.2.2",
+    "ng-packagr": "22.0.0",
     "reflect-metadata": "^0.1.9",
     "rxjs": "^7.8.2",
     "sass": "1.22.9",
-    "typescript": "~5.9.3",
-    "zone.js": "~0.16.1",
+    "typescript": "6.0.3",
+    "zone.js": "0.16.1",
     "@types/jasmine": "2.5.42",
     "@types/node": "12.12.54",
-    "highcharts": "^12.5.0"
+    "highcharts": "12.6.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

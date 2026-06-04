@@ -110,6 +110,16 @@ const lineConfig = {
     target: 'es2022',
     module: 'es2022',
     lib: ['dom', 'es2022']
+  },
+  22: {
+    angular: '22.0.0',
+    compilerCli: '22.0.0',
+    ngPackagr: '22.0.0',
+    typescript: '6.0.3',
+    tslib: '^2.3.0',
+    target: 'es2022',
+    module: 'es2022',
+    lib: ['dom', 'es2022']
   }
 };
 
@@ -229,10 +239,14 @@ function createTsConfig(config) {
       target: config.target,
       module: config.module,
       moduleResolution: 'node',
+      ignoreDeprecations: '6.0',
       declaration: true,
       inlineSources: true,
       importHelpers: true,
       experimentalDecorators: true,
+      strict: false,
+      noImplicitAny: false,
+      strictPropertyInitialization: false,
       skipLibCheck: true,
       lib: config.lib,
       types: []
@@ -275,7 +289,7 @@ function buildApfLine(major) {
     cwd: workDir,
     stdio: 'inherit'
   });
-  execFileSync('npx', ['ng-packagr', '-p', 'ng-package.json'], {
+  execFileSync('npx', ['ng-packagr', '-p', 'ng-package.json', '-c', 'tsconfig.json'], {
     cwd: workDir,
     stdio: 'inherit'
   });

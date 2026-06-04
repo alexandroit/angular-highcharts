@@ -10,7 +10,7 @@ const rootDir = path.resolve(__dirname, '..');
 const srcDir = path.join(rootDir, 'src');
 const outRoot = path.join(rootDir, '.stackline-build', 'angular-highcharts-lines');
 const packageName = '@stackline/angular-highcharts';
-const lineMajors = [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+const lineMajors = [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
 function parseArgs(argv) {
   const options = {
@@ -144,7 +144,7 @@ function getHighchartsCompatibilitySection(major) {
 
 The Angular ${major} validation app uses \`highcharts@${testedVersion}\`, which is the highest Highcharts version tested for this line.
 
-The maintained Stackline Angular ${major} line is published with a Highcharts peer range of \`${getHighchartsPeerRange(major)}\` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
+The maintained Stackline Angular ${major} line declares a Highcharts peer range of \`${getHighchartsPeerRange(major)}\` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
 `;
   }
 
@@ -172,6 +172,10 @@ function getHighchartsModuleList(major) {
 function getStackBlitzLink(major) {
   if (major < 9) {
     return '';
+  }
+
+  if (major >= 22) {
+    return ` | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-${major}?file=src%2Fapp%2Fapp.ts&startScript=start)**`;
   }
 
   return ` | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-${major}?file=src%2Fapp%2Fapp.component.ts&startScript=start)**`;
@@ -258,7 +262,7 @@ The Angular ${major} package family is \`${version}\` and is intended for Angula
 
 | Feature | Supported |
 | :--- | :---: |
-| Angular ${major} tested release line | ✅ |
+| Angular ${major} tested package line | ✅ |
 | Standard \`Highcharts.Chart\` rendering | ✅ |
 | \`StockChart\` constructor support | ✅ |
 | Highmaps constructor support when Highmaps is registered | ✅ |

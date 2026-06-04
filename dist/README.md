@@ -1,21 +1,21 @@
 # @stackline/angular-highcharts
 
-> A maintained Angular 4 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
+> A maintained Angular 22 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
 
 [![npm version](https://img.shields.io/npm/v/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![npm monthly](https://img.shields.io/npm/dm/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts/blob/master/LICENSE)
-[![Angular 4](https://img.shields.io/badge/Angular-4.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-4/)
+[![Angular 22](https://img.shields.io/badge/Angular-22.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-22/)
 [![Highcharts](https://img.shields.io/badge/Highcharts-5%2B-2f7ed8?style=flat-square)](https://www.highcharts.com/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 4 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-4/)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
+**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 22 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-22/)** | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-22?file=src%2Fapp%2Fapp.ts&startScript=start)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
 
 <p align="center">
   <img src="https://assets.alexandro.net/2026/06/angular2-highcharts.gif" alt="Stackline Angular Highcharts live examples" width="920">
 </p>
 
-**Angular 4 release:** `4.0.0`
+**Angular 22 package line:** `22.0.0`
 
 ---
 
@@ -29,13 +29,13 @@
 
 The goal is not to hide Highcharts. The package stays thin: your application still owns the real Highcharts options object, the Highcharts constructor choice, module registration, event handling, and native chart instance. The wrapper gives Angular templates a stable `<chart>` component, Angular event outputs, axis/series/point directives, and release families aligned to Angular majors.
 
-The Angular 4 package family is `4.0.0` and is intended for Angular `4.x` applications. The live validation app for this line uses a real Angular 4 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
+The Angular 22 package family is `22.0.0` and is intended for Angular `22.x` applications. The live validation app for this line uses a real Angular 22 project, renders static chart examples, renders realtime market examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
 
 ## Features
 
 | Feature | Supported |
 | :--- | :---: |
-| Angular 4 tested release line | ✅ |
+| Angular 22 tested package line | ✅ |
 | Standard `Highcharts.Chart` rendering | ✅ |
 | `StockChart` constructor support | ✅ |
 | Highmaps constructor support when Highmaps is registered | ✅ |
@@ -64,8 +64,8 @@ The Angular 4 package family is `4.0.0` and is intended for Angular `4.x` applic
 6. [Highcharts Modules](#highcharts-modules)
 7. [Events and Directives](#events-and-directives)
 8. [Native Chart Instance](#native-chart-instance)
-9. [Dynamic and Realtime Data](#dynamic-and-realtime-data)
-10. [Common Chart Types](#common-chart-types)
+9. [Common Chart Types](#common-chart-types)
+10. [Dynamic Updates](#dynamic-updates)
 11. [API Surface](#api-surface)
 12. [Wrapper Capabilities](#wrapper-capabilities)
 13. [License](#license)
@@ -76,15 +76,43 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
+| `22.x` | Angular `22.x` | `>=22.0.0 <23.0.0` | `npm install @stackline/angular-highcharts@22.0.0 highcharts@12.6.0 --save-exact` |
+| `21.x` | Angular `21.x` | `>=21.0.0 <22.0.0` | `npm install @stackline/angular-highcharts@21.0.0 highcharts@12.6.0 --save-exact` |
+| `20.x` | Angular `20.x` | `>=20.0.0 <21.0.0` | `npm install @stackline/angular-highcharts@20.0.0 highcharts@12.6.0 --save-exact` |
+| `19.x` | Angular `19.x` | `>=19.0.0 <20.0.0` | `npm install @stackline/angular-highcharts@19.0.0 highcharts@12.6.0 --save-exact` |
+| `18.x` | Angular `18.x` | `>=18.0.0 <19.0.0` | `npm install @stackline/angular-highcharts@18.0.0 highcharts@12.6.0 --save-exact` |
+| `17.x` | Angular `17.x` | `>=17.0.0 <18.0.0` | `npm install @stackline/angular-highcharts@17.0.0 highcharts@12.6.0 --save-exact` |
+| `16.x` | Angular `16.x` | `>=16.0.0 <17.0.0` | `npm install @stackline/angular-highcharts@16.0.0 highcharts@12.6.0 --save-exact` |
+| `15.x` | Angular `15.x` | `>=15.0.0 <16.0.0` | `npm install @stackline/angular-highcharts@15.0.0 highcharts@12.6.0 --save-exact` |
+| `14.x` | Angular `14.x` | `>=14.0.0 <15.0.0` | `npm install @stackline/angular-highcharts@14.0.0 highcharts@12.6.0 --save-exact` |
+| `13.x` | Angular `13.x` | `>=13.0.0 <14.0.0` | `npm install @stackline/angular-highcharts@13.0.0 highcharts@12.6.0 --save-exact` |
+| `12.x` | Angular `12.x` | `>=12.0.0 <13.0.0` | `npm install @stackline/angular-highcharts@12.0.0 highcharts@12.6.0 --save-exact` |
+| `11.x` | Angular `11.x` | `>=11.0.0 <12.0.0` | `npm install @stackline/angular-highcharts@11.0.0 highcharts@10.3.3 --save-exact` |
+| `10.x` | Angular `10.x` | `>=10.0.0 <11.0.0` | `npm install @stackline/angular-highcharts@10.0.0 highcharts@10.3.3 --save-exact` |
+| `9.x` | Angular `9.x` | `>=9.0.0 <10.0.0` | `npm install @stackline/angular-highcharts@9.0.0 highcharts@10.3.3 --save-exact` |
+| `8.x` | Angular `8.x` | `>=8.0.0 <9.0.0` | `npm install @stackline/angular-highcharts@8.0.0 highcharts --save-exact` |
+| `7.x` | Angular `7.x` | `>=7.0.0 <8.0.0` | `npm install @stackline/angular-highcharts@7.0.0 highcharts --save-exact` |
+| `6.x` | Angular `6.x` | `>=6.0.0 <7.0.0` | `npm install @stackline/angular-highcharts@6.0.0 highcharts --save-exact` |
+| `5.x` | Angular `5.x` | `>=5.0.0 <6.0.0` | `npm install @stackline/angular-highcharts@5.0.0 highcharts --save-exact` |
 | `4.x` | Angular `4.x` | `>=4.0.0 <5.0.0` | `npm install @stackline/angular-highcharts@4.0.0 highcharts --save-exact` |
+| `2.x` | Angular `2.x` | `>=2.0.0 <3.0.0` | `npm install @stackline/angular-highcharts@2.0.0 highcharts --save-exact` |
+
+Angular 3 does not have a package family because Angular skipped version 3.
 
 ## Installation
 
 ```bash
-npm install @stackline/angular-highcharts@4.0.0 highcharts --save-exact
+npm install @stackline/angular-highcharts@22.0.0 highcharts@12.6.0 --save-exact
 ```
 
 The package declares `highcharts` as a peer dependency so your application can choose the Highcharts version and modules it needs.
+
+## Highcharts Compatibility
+
+The Angular 22 validation app uses `highcharts@12.6.0`, which is the highest Highcharts version tested for this line.
+
+The maintained Stackline Angular 22 line declares a Highcharts peer range of `>=5.0.0 <=12.6.0` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
+
 
 ## Setup
 
@@ -261,38 +289,6 @@ replaceSeries(data: number[]) {
 }
 ```
 
-## Dynamic and Realtime Data
-
-The Angular 4 live test includes a realtime market screen:
-
-- REST candle history.
-- WebSocket candle updates.
-- Light and dark chart modes.
-- `StockChart` candlestick rendering.
-- Dynamic ticker charts that update existing Highcharts series.
-- A Mask API route through `api-b.alexandro.net` for networks that block direct Binance domains.
-
-The example still uses public Binance market data, but browser traffic can be routed through a mask API so corporate firewalls do not block the demo domain.
-
-```ts
-restUrl = 'https://api-b.alexandro.net/api/v3/klines?symbol=BNBUSDT&interval=1s&limit=300';
-wsUrl = 'wss://api-b.alexandro.net/ws/bnbusdt@kline_1s';
-```
-
-When data changes often, prefer updating the existing chart instance:
-
-```ts
-updateCandles(ohlcData: any[], volumeData: any[]) {
-  if (!this.chart) {
-    return;
-  }
-
-  this.chart.series[0].setData(ohlcData, false, false);
-  this.chart.series[1].setData(volumeData, false, false);
-  this.chart.redraw();
-}
-```
-
 ## Common Chart Types
 
 Use normal Highcharts options. The wrapper does not invent a second chart configuration language.
@@ -324,6 +320,24 @@ pieOptions = {
     }
   ]
 };
+```
+
+## Dynamic Updates
+
+For dashboards and live screens, keep the native chart instance from `(create)`
+and update series data directly. This avoids recreating the full chart surface
+on every frame.
+
+```ts
+updateCandles(ohlcData: any[], volumeData: any[]) {
+  if (!this.chart) {
+    return;
+  }
+
+  this.chart.series[0].setData(ohlcData, false, false);
+  this.chart.series[1].setData(volumeData, false, false);
+  this.chart.redraw();
+}
 ```
 
 ## API Surface
@@ -360,7 +374,7 @@ pieOptions = {
 | Options API | `<chart [options]="options">` |
 | Constructor switch | `<chart [type]="'StockChart'" [options]="options">` |
 | Directive events | `<series>`, `<point>`, `<xAxis>`, `<yAxis>`, `<zAxis>`, `<colorAxis>` |
-| Highcharts modules | more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown |
+| Highcharts modules | more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization, flowmap, geoheatmap, pictorial, contour, pointandfigure, renko |
 
 ## License
 
