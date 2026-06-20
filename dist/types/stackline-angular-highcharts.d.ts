@@ -1,6 +1,18 @@
 import * as i0 from '@angular/core';
 import { EventEmitter, AfterViewInit, OnChanges, OnDestroy, ElementRef, ModuleWithProviders } from '@angular/core';
 
+declare class HighchartsStatic {
+    static ɵfac: i0.ɵɵFactoryDeclaration<HighchartsStatic, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<HighchartsStatic>;
+}
+declare class HighchartsService {
+    private highchartsStatic;
+    constructor(highchartsStatic: HighchartsStatic);
+    getHighchartsStatic(): HighchartsStatic;
+    static ɵfac: i0.ɵɵFactoryDeclaration<HighchartsService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<HighchartsService>;
+}
+
 declare class ChartEvent {
     originalEvent: Event;
     context: any;
@@ -73,18 +85,6 @@ declare class ChartColorAxisComponent {
     static ɵdir: i0.ɵɵDirectiveDeclaration<ChartColorAxisComponent, "colorAxis", never, {}, { "afterBreaks": "afterBreaks"; "afterSetExtremes": "afterSetExtremes"; "pointBreak": "pointBreak"; "pointInBreak": "pointInBreak"; "setExtremes": "setExtremes"; }, never, never, false, never>;
 }
 
-declare class HighchartsStatic {
-    static ɵfac: i0.ɵɵFactoryDeclaration<HighchartsStatic, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<HighchartsStatic>;
-}
-declare class HighchartsService {
-    private highchartsStatic;
-    constructor(highchartsStatic: HighchartsStatic);
-    getHighchartsStatic(): HighchartsStatic;
-    static ɵfac: i0.ɵɵFactoryDeclaration<HighchartsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<HighchartsService>;
-}
-
 declare class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
     series: ChartSeriesComponent;
     xAxis: ChartXAxisComponent;
@@ -120,7 +120,7 @@ declare class ChartComponent implements AfterViewInit, OnChanges, OnDestroy {
 }
 
 declare class ChartModule {
-    static forRoot(highchartsStatic: HighchartsStatic, ...highchartsModules: Array<Function>): ModuleWithProviders<ChartModule>;
+    static forRoot(highchartsStatic: HighchartsStatic, ...highchartsModules: Array<any>): ModuleWithProviders<ChartModule>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ChartModule, never>;
     static ɵmod: i0.ɵɵNgModuleDeclaration<ChartModule, [typeof ChartComponent, typeof ChartSeriesComponent, typeof ChartPointComponent, typeof ChartXAxisComponent, typeof ChartYAxisComponent, typeof ChartZAxisComponent, typeof ChartColorAxisComponent], never, [typeof ChartComponent, typeof ChartSeriesComponent, typeof ChartPointComponent, typeof ChartXAxisComponent, typeof ChartYAxisComponent, typeof ChartZAxisComponent, typeof ChartColorAxisComponent]>;
     static ɵinj: i0.ɵɵInjectorDeclaration<ChartModule>;

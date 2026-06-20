@@ -1,6 +1,6 @@
 {
   "name": "@stackline/angular-highcharts",
-  "version": "22.0.0",
+  "version": "22.0.1",
   "description": "Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "main": "dist/fesm2022/stackline-angular-highcharts.mjs",
   "module": "dist/fesm2022/stackline-angular-highcharts.mjs",
@@ -163,13 +163,13 @@
     "highcharts": ">=5.0.0 <=12.6.0"
   },
   "devDependencies": {
-    "@angular/common": "22.0.0",
-    "@angular/compiler": "22.0.0",
-    "@angular/compiler-cli": "22.0.0",
-    "@angular/core": "22.0.0",
-    "@angular/platform-browser": "22.0.0",
-    "@angular/platform-browser-dynamic": "22.0.0",
-    "@angular/platform-server": "22.0.0",
+    "@angular/common": "22.0.2",
+    "@angular/compiler": "22.0.2",
+    "@angular/compiler-cli": "22.0.2",
+    "@angular/core": "22.0.2",
+    "@angular/platform-browser": "22.0.2",
+    "@angular/platform-browser-dynamic": "22.0.2",
+    "@angular/platform-server": "22.0.2",
     "core-js": "^2.4.1",
     "jasmine-core": "~2.5.2",
     "karma": "^1.4.1",

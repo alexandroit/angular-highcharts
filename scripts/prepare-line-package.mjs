@@ -95,6 +95,10 @@ function writeJson(filePath, value) {
 }
 
 function getPackageVersion(major) {
+  if (major === 22) {
+    return '22.0.1';
+  }
+
   return `${major}.0.0`;
 }
 
@@ -653,6 +657,11 @@ function createTsConfig(tempSrcDir, packageDir, major) {
       lib: ['dom', 'es2015'],
       module: major >= 9 ? 'es2015' : 'commonjs',
       moduleResolution: 'node',
+      ...(major >= 22 ? { ignoreDeprecations: '6.0' } : {}),
+      strict: false,
+      noImplicitAny: false,
+      noImplicitThis: false,
+      strictPropertyInitialization: false,
       skipLibCheck: true,
       removeComments: true,
       sourceMap: false,

@@ -23,7 +23,7 @@ const lineConfig = {
   19: { version: '19.0.0', highcharts: '12.6.0', cli: '19.2.27', angular: '19.2.25', port: 4429, modernHighcharts: true },
   20: { version: '20.0.0', highcharts: '12.6.0', cli: '20.3.27', angular: '20.3.24', port: 4430, modernHighcharts: true },
   21: { version: '21.0.0', highcharts: '12.6.0', cli: '21.2.14', angular: '21.2.16', port: 4431, modernHighcharts: true },
-  22: { version: '22.0.0', highcharts: '12.6.0', cli: '22.0.0', angular: '22.0.0', port: 4432, modernHighcharts: true }
+  22: { version: '22.0.1', highcharts: '12.6.0', cli: '22.0.3', angular: '22.0.2', port: 4432, modernHighcharts: true }
 };
 
 function parseArgs(argv) {
