@@ -41,19 +41,28 @@ const axisEvents = [
     'setExtremes'
 ];
 
-function bindEvents(target, eventNames, component) {
+function bindEvents(target: any, eventNames: string[], component: any) {
     if (!component) {
         return;
     }
 
-    eventNames.forEach(function (eventName) {
-        target[eventName] = target[eventName] || function (event: any) {
+    eventNames.forEach(function (eventName: string) {
+        target[eventName] = target[eventName] || function (this: any, event: Event) {
             component[eventName].emit(new ChartEvent(event, this));
         };
     });
 }
 
-export function createBaseOpts(chartCmp, seriesCmp, pointCmp, xAxisCmp, yAxisCmp, zAxisCmp, colorAxisCmp, element) {
+export function createBaseOpts(
+    chartCmp: any,
+    seriesCmp: any,
+    pointCmp: any,
+    xAxisCmp: any,
+    yAxisCmp: any,
+    zAxisCmp: any,
+    colorAxisCmp: any,
+    element: any
+) {
     const opts = {
         chart: {
             renderTo: element,

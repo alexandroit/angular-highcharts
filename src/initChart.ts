@@ -1,8 +1,8 @@
 import { HighchartsService } from './HighchartsService';
 import { deepAssign } from './deepAssign';
 
-export function initChart(highchartsService: HighchartsService, userOpts, baseOpts, type: string) {
-    const Highcharts = highchartsService.getHighchartsStatic();
+export function initChart(highchartsService: HighchartsService, userOpts: any, baseOpts: any, type: string) {
+    const Highcharts: any = highchartsService.getHighchartsStatic();
 
     if (!Highcharts) {
         throw new Error('Base Highcharts module should be set via ChartModule.forRoot');
@@ -23,7 +23,7 @@ export function initChart(highchartsService: HighchartsService, userOpts, baseOp
     return new Highcharts[type](opts);
 }
 
-function alignAxisShape(baseOpts, userOpts, axisName: string) {
+function alignAxisShape(baseOpts: any, userOpts: any, axisName: string): void {
     if (Array.isArray(userOpts[axisName])) {
         baseOpts[axisName] = [baseOpts[axisName]];
     }

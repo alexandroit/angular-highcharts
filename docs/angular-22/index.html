@@ -654,8 +654,8 @@
         </div>
       </div>
       <div class="version-pills">
-        <span class="pill">Angular 22.0.2</span>
-        <span class="pill primary">v22.0.1</span>
+        <span class="pill">Angular 22.1.3</span>
+        <span class="pill primary">v22.1.1</span>
         <a class="pill" href="../">All versions</a>
       </div>
     </header>
@@ -702,20 +702,20 @@
             <div>
               <span class="eyebrow">Install</span>
               <h2>Angular 22 package line</h2>
-              <p>Use the 22.x package family for Angular 22 applications. The npm peer range is <code>&gt;=22.0.0 &lt;24.0.0</code>, matching the forward-compatible Angular 22 line. The live project runs Angular 22.0.2, @angular/cli 22.0.3, @stackline/angular-highcharts 22.0.1 and Highcharts 12.6.0 from the validated Angular 22 package line.</p>
+              <p>Use the 22.x package family for Angular 22 applications. The npm peer range is <code>&gt;=22.0.0 &lt;24.0.0</code>. The live project runs Angular 22.1.3, @angular/cli 22.1.5, @stackline/angular-highcharts 22.1.1 and Highcharts 13.0.1.</p>
             </div>
             <span class="tag">Angular 22</span>
           </div>
           <div class="install-box">
-            <pre><code>npm install @stackline/angular-highcharts@22.0.1 highcharts@12.6.0 --save-exact</code></pre>
-            <div class="note">Highcharts 12.6.0 is the highest Highcharts version validated for this Angular 22 line, including modern modules such as flowmap, geoheatmap, pictorial, contour, renko, and point-and-figure. Keep the framework-era packages that the Angular CLI 22 setup installs, such as <code>zone.js</code> and <code>rxjs</code>. Do not add <code>core-js</code> unless your application explicitly needs those legacy browser polyfills.</div>
+            <pre><code>npm install @stackline/angular-highcharts highcharts</code></pre>
+            <div class="note">Highcharts 13.0.1 is the highest version validated for this Angular 22 line. Highcharts 13 moves <code>dataSorting</code> into <code>highcharts/modules/data-sorting</code> and changes some gauge, data-label, radius, and <code>useHTML</code> defaults. The wrapper API is unchanged, but applications upgrading Highcharts should review those chart options and custom CSS.</div>
             <div class="code-grid">
               <div class="code-block">
                 <h4>app.module.ts</h4>
                 <pre><code>import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ChartModule } from '@stackline/angular-highcharts';
-import * as Highcharts from 'highcharts';
+import Highcharts from 'highcharts/esm/highcharts.js';
 
 export function highchartsFactory() {
   return Highcharts;
@@ -1040,91 +1040,20 @@ record(message: string) {
           <div class="code-grid">
             <div class="code-block">
               <h4>Module imports</h4>
-              <pre><code>import * as Highcharts from 'highcharts';
-import * as HighchartsMore from 'highcharts/highcharts-more';
-import * as Highcharts3d from 'highcharts/highcharts-3d';
-import * as Heatmap from 'highcharts/modules/heatmap';
-import * as Treemap from 'highcharts/modules/treemap';
-import * as Funnel from 'highcharts/modules/funnel';
-import * as SolidGauge from 'highcharts/modules/solid-gauge';
-import * as Stock from 'highcharts/modules/stock';
-import * as MapModule from 'highcharts/modules/map';
-import * as Drilldown from 'highcharts/modules/drilldown';
-import * as Sankey from 'highcharts/modules/sankey';
-import * as DependencyWheel from 'highcharts/modules/dependency-wheel';
-import * as NetworkGraph from 'highcharts/modules/networkgraph';
-import * as Sunburst from 'highcharts/modules/sunburst';
-import * as Wordcloud from 'highcharts/modules/wordcloud';
-import * as XRange from 'highcharts/modules/xrange';
-import * as Timeline from 'highcharts/modules/timeline';
-import * as Variwide from 'highcharts/modules/variwide';
-import * as VariablePie from 'highcharts/modules/variable-pie';
-import * as ItemSeries from 'highcharts/modules/item-series';
-import * as Streamgraph from 'highcharts/modules/streamgraph';
-import * as Bullet from 'highcharts/modules/bullet';
-import * as Cylinder from 'highcharts/modules/cylinder';
-import * as Dumbbell from 'highcharts/modules/dumbbell';
-import * as Dotplot from 'highcharts/modules/dotplot';
-import * as Funnel3d from 'highcharts/modules/funnel3d';
-import * as HeikinAshi from 'highcharts/modules/heikinashi';
-import * as HollowCandlestick from 'highcharts/modules/hollowcandlestick';
-import * as Lollipop from 'highcharts/modules/lollipop';
-import * as ParallelCoordinates from 'highcharts/modules/parallel-coordinates';
-import * as Pareto from 'highcharts/modules/pareto';
-import * as HistogramBellcurve from 'highcharts/modules/histogram-bellcurve';
-import * as Pyramid3d from 'highcharts/modules/pyramid3d';
-import * as Tilemap from 'highcharts/modules/tilemap';
-import * as Treegraph from 'highcharts/modules/treegraph';
-import * as Vector from 'highcharts/modules/vector';
-import * as Venn from 'highcharts/modules/venn';
-import * as Windbarb from 'highcharts/modules/windbarb';
-import * as ArcDiagram from 'highcharts/modules/arc-diagram';
-import * as Organization from 'highcharts/modules/organization';
-import * as NoData from 'highcharts/modules/no-data-to-display';</code></pre>
+              <pre><code>import Highcharts from 'highcharts/esm/highcharts.js';
+import 'highcharts/esm/highcharts-more.js';
+import 'highcharts/esm/highcharts-3d.js';
+import 'highcharts/esm/modules/heatmap.js';
+import 'highcharts/esm/modules/data-sorting.js';
+import 'highcharts/esm/modules/treemap.js';
+import 'highcharts/esm/modules/solid-gauge.js';
+import 'highcharts/esm/modules/stock.js';
+import 'highcharts/esm/modules/map.js';
+import 'highcharts/esm/modules/accessibility.js';</code></pre>
             </div>
             <div class="code-block">
               <h4>Factory</h4>
               <pre><code>export function highchartsFactory() {
-  HighchartsMore(Highcharts);
-  Highcharts3d(Highcharts);
-  Heatmap(Highcharts);
-  Treemap(Highcharts);
-  Funnel(Highcharts);
-  SolidGauge(Highcharts);
-  Stock(Highcharts);
-  MapModule(Highcharts);
-  Drilldown(Highcharts);
-  Sankey(Highcharts);
-  DependencyWheel(Highcharts);
-  NetworkGraph(Highcharts);
-  Sunburst(Highcharts);
-  Wordcloud(Highcharts);
-  XRange(Highcharts);
-  Timeline(Highcharts);
-  Variwide(Highcharts);
-  VariablePie(Highcharts);
-  ItemSeries(Highcharts);
-  Streamgraph(Highcharts);
-  Bullet(Highcharts);
-  Cylinder(Highcharts);
-  Dumbbell(Highcharts);
-  Dotplot(Highcharts);
-  Funnel3d(Highcharts);
-  HeikinAshi(Highcharts);
-  HollowCandlestick(Highcharts);
-  Lollipop(Highcharts);
-  ParallelCoordinates(Highcharts);
-  Pareto(Highcharts);
-  HistogramBellcurve(Highcharts);
-  Pyramid3d(Highcharts);
-  Tilemap(Highcharts);
-  Treegraph(Highcharts);
-  Vector(Highcharts);
-  Venn(Highcharts);
-  Windbarb(Highcharts);
-  ArcDiagram(Highcharts);
-  Organization(Highcharts);
-  NoData(Highcharts);
   return Highcharts;
 }</code></pre>
             </div>

@@ -96,7 +96,7 @@ function writeJson(filePath, value) {
 
 function getPackageVersion(major) {
   if (major === 22) {
-    return '22.0.1';
+    return '22.1.1';
   }
 
   return `${major}.0.0`;
@@ -111,6 +111,10 @@ function getPeerRange(major) {
 }
 
 function getTestedHighchartsVersion(major) {
+  if (major === 22) {
+    return '13.0.1';
+  }
+
   if (major >= 9 && major <= 11) {
     return '10.3.3';
   }
@@ -128,6 +132,10 @@ function getHighchartsInstallName(major) {
 }
 
 function getHighchartsPeerRange(major) {
+  if (major === 22) {
+    return '>=5.0.0 <=13.0.1';
+  }
+
   if (major >= 9 && major <= 11) {
     return '>=5.0.0 <=10.3.3';
   }
@@ -144,6 +152,18 @@ function getHighchartsCompatibilitySection(major) {
 
   if (!testedVersion) {
     return '';
+  }
+
+  if (major === 22) {
+    return `
+## Highcharts Compatibility
+
+The Angular 22 validation app uses \`highcharts@${testedVersion}\`, which is the highest Highcharts version tested for this line.
+
+The maintained Stackline Angular 22 line declares a Highcharts peer range of \`${getHighchartsPeerRange(major)}\` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
+
+Highcharts 13 keeps the wrapper API unchanged, but it includes application-visible upstream changes. Applications using \`dataSorting\` must load \`highcharts/modules/data-sorting\`; gauges and some data-label defaults changed; numeric solid-gauge radii are pixels, while percentage radii must be strings such as \`'50%'\`; and \`useHTML\` content now uses a \`div\` wrapper. Review custom chart options and CSS when upgrading Highcharts independently.
+`;
   }
 
   if (major >= 12) {
@@ -166,6 +186,10 @@ Highcharts 11.x and 12.x were tested for this line and rejected because their di
 }
 
 function getHighchartsModuleList(major) {
+  if (major === 22) {
+    return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, data-sorting, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization, flowmap, geoheatmap, pictorial, contour, pointandfigure, renko';
+  }
+
   if (major >= 12) {
     return 'more, 3d, heatmap, treemap, funnel, solid-gauge, stock, map, drilldown, sankey, dependency-wheel, networkgraph, sunburst, wordcloud, xrange, timeline, variwide, variable-pie, item, streamgraph, bullet, dumbbell, lollipop, pareto, histogram-bellcurve, tilemap, venn, arc-diagram, organization, flowmap, geoheatmap, pictorial, contour, pointandfigure, renko';
   }
@@ -232,6 +256,78 @@ function copySourcesForLine(tempSrcDir, major) {
   }
 }
 
+function getSetupExample(major) {
+  if (major === 22) {
+    return `import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChartModule } from '@stackline/angular-highcharts';
+import Highcharts from 'highcharts/esm/highcharts.js';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    ChartModule.forRoot(Highcharts)
+  ]
+})
+export class AppModule {}`;
+  }
+
+  return `import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChartModule } from '@stackline/angular-highcharts';
+
+declare var require: any;
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    ChartModule.forRoot(require('highcharts'))
+  ]
+})
+export class AppModule {}`;
+}
+
+function getModuleExample(major) {
+  if (major === 22) {
+    return `import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChartModule } from '@stackline/angular-highcharts';
+import Highcharts from 'highcharts/esm/highcharts.js';
+import 'highcharts/esm/highcharts-more.js';
+import 'highcharts/esm/modules/solid-gauge.js';
+import 'highcharts/esm/modules/heatmap.js';
+import 'highcharts/esm/modules/data-sorting.js';
+import 'highcharts/esm/modules/treemap.js';
+import 'highcharts/esm/modules/funnel.js';
+
+@NgModule({
+  imports: [BrowserModule, ChartModule.forRoot(Highcharts)]
+})
+export class AppModule {}`;
+  }
+
+  return `import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChartModule } from '@stackline/angular-highcharts';
+
+declare var require: any;
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    ChartModule.forRoot(
+      require('highcharts'),
+      require('highcharts/highcharts-more'),
+      require('highcharts/modules/solid-gauge'),
+      require('highcharts/modules/heatmap'),
+      require('highcharts/modules/treemap'),
+      require('highcharts/modules/funnel')
+    )
+  ]
+})
+export class AppModule {}`;
+}
+
 function createReadme(major, version) {
   return `# @stackline/angular-highcharts
 
@@ -241,7 +337,7 @@ function createReadme(major, version) {
 [![npm monthly](https://img.shields.io/npm/dm/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts/blob/master/LICENSE)
 [![Angular ${major}](https://img.shields.io/badge/Angular-${major}.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-${major}/)
-[![Highcharts](https://img.shields.io/badge/Highcharts-5%2B-2f7ed8?style=flat-square)](https://www.highcharts.com/)
+[![Highcharts](https://img.shields.io/badge/Highcharts-${major === 22 ? '5--13' : '5%2B'}-2f7ed8?style=flat-square)](https://www.highcharts.com/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
 **[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular ${major} Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-${major}/)**${getStackBlitzLink(major)} | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
@@ -318,7 +414,7 @@ Angular 3 does not have a package family because Angular skipped version 3.
 ## Installation
 
 \`\`\`bash
-npm install @stackline/angular-highcharts@${version} ${getHighchartsInstallName(major)} --save-exact
+npm install @stackline/angular-highcharts highcharts
 \`\`\`
 
 The package declares \`highcharts\` as a peer dependency so your application can choose the Highcharts version and modules it needs.
@@ -329,19 +425,7 @@ ${getHighchartsCompatibilitySection(major)}
 ### 1. Import the module
 
 \`\`\`ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ChartModule } from '@stackline/angular-highcharts';
-
-declare var require: any;
-
-@NgModule({
-  imports: [
-    BrowserModule,
-    ChartModule.forRoot(require('highcharts'))
-  ]
-})
-export class AppModule {}
+${getSetupExample(major)}
 \`\`\`
 
 ## Basic Usage
@@ -398,29 +482,10 @@ Common constructor values:
 
 ## Highcharts Modules
 
-Register Highcharts modules through \`ChartModule.forRoot(...)\`. The wrapper calls each module with the Highcharts static object before charts are created.
+${major === 22 ? 'With Highcharts 13, import modules from the ESM build before registering the shared Highcharts instance. Older Highcharts factory modules can still be passed as additional `ChartModule.forRoot(...)` arguments.' : 'Register Highcharts modules through `ChartModule.forRoot(...)`. The wrapper calls each module with the Highcharts static object before charts are created.'}
 
 \`\`\`ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ChartModule } from '@stackline/angular-highcharts';
-
-declare var require: any;
-
-@NgModule({
-  imports: [
-    BrowserModule,
-    ChartModule.forRoot(
-      require('highcharts'),
-      require('highcharts/highcharts-more'),
-      require('highcharts/modules/solid-gauge'),
-      require('highcharts/modules/heatmap'),
-      require('highcharts/modules/treemap'),
-      require('highcharts/modules/funnel')
-    )
-  ]
-})
-export class AppModule {}
+${getModuleExample(major)}
 \`\`\`
 
 The live test matrix covers examples for line, spline, area, areaspline, column, bar, stacked column, pie, donut, scatter, bubble, combination, polar, gauge, solid gauge, heatmap, treemap, funnel, 3D column, StockChart, map-like charts, and no-data states.
@@ -588,7 +653,7 @@ updateCandles(ohlcData: any[], volumeData: any[]) {
 
 ## License
 
-MIT
+The Stackline Angular wrapper is licensed under MIT. Highcharts is a separate peer dependency owned by Highsoft and is subject to the [Highcharts license terms](https://www.highcharts.com/license); consumers are responsible for an appropriate Highcharts license.
 `;
 }
 

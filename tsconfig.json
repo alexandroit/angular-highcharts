@@ -10,9 +10,7 @@
     "module": "es2022",
     "moduleResolution": "node",
     "useDefineForClassFields": false,
-    "types": [
-      "jasmine"
-    ],
+    "types": [],
     "skipLibCheck": true,
     "removeComments": true,
     "sourceMap": true,
@@ -28,7 +26,10 @@
     "examples",
     "index.d.ts",
     "node_modules",
-    "dist"
+    "dist",
+    "src/*.spec.ts",
+    "src/Mocks.ts",
+    "src/stub.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "dist/",

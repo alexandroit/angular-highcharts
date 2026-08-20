@@ -23,7 +23,7 @@ const lineConfig = {
   19: { version: '19.0.0', highcharts: '12.6.0', cli: '19.2.27', angular: '19.2.25', port: 4429, modernHighcharts: true },
   20: { version: '20.0.0', highcharts: '12.6.0', cli: '20.3.27', angular: '20.3.24', port: 4430, modernHighcharts: true },
   21: { version: '21.0.0', highcharts: '12.6.0', cli: '21.2.14', angular: '21.2.16', port: 4431, modernHighcharts: true },
-  22: { version: '22.0.1', highcharts: '12.6.0', cli: '22.0.3', angular: '22.0.2', port: 4432, modernHighcharts: true }
+  22: { version: '22.1.1', highcharts: '13.0.1', cli: '22.1.5', angular: '22.1.3', port: 4432, modernHighcharts: true }
 };
 
 function parseArgs(argv) {
@@ -765,6 +765,11 @@ function updateAngularJson(dir, outputPath, config) {
 }
 
 function writeAppFiles(dir, major, config) {
+  if (major === 22) {
+    // Angular 22 uses its native application layout and Highcharts 13 ESM imports.
+    return;
+  }
+
   const appDir = path.join(dir, 'src', 'app');
   const componentTs = fs.readFileSync(path.join(templateAppDir, 'app.component.ts'), 'utf8');
   const componentHtml = fs.readFileSync(path.join(templateAppDir, 'app.component.html'), 'utf8');
