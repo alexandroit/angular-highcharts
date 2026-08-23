@@ -10,3 +10,6 @@ paths:
   - index.js
   - karma-test-shim.js
   - karma.conf.js
+
+paths-ignore:
+  - examples/webpack/bundle.js

@@ -21,3 +21,5 @@ The bundles and source maps under `docs/angular-*` and superseded projects under
 source and are not included in the npm package. CodeQL scans maintained source,
 scripts, tests, examples, and the current Angular 22 documentation source; this
 keeps findings actionable without reanalyzing immutable EOL framework bundles.
+Checked-in example source remains scanned, while generated example bundles are
+excluded to avoid reporting third-party runtime copies as maintained source.
