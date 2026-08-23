@@ -1,0 +1,12 @@
+name: Maintained source configuration
+
+paths:
+  - src
+  - scripts
+  - tools
+  - tests
+  - examples
+  - docs-src/angular-22/src
+  - index.js
+  - karma-test-shim.js
+  - karma.conf.js
