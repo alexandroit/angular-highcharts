@@ -2,6 +2,12 @@
 
 All notable changes to `@stackline/angular-highcharts` are documented here.
 
+## Unreleased
+
+- Moved exact-version dependency records to `package.fixture.json`, repaired
+  their validators, and added an offline catalog contract to keep historical
+  metadata out of active dependency alerts.
+
 ## 22.1.1 - 2026-08-19
 
 - Validate the current package line with Angular 22.1.3, Angular CLI 22.1.5, ng-packagr 22.1.1, and Highcharts 13.0.1.

@@ -4,6 +4,7 @@
   "description": "Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "sideEffects": false,
   "scripts": {
+    "test:fixtures": "node tools/stackline-run-release-smoke.mjs --catalog",
     "watch": "tsc -w",
     "build": "ng-packagr -p ng-package.json && node scripts/finalize-package.mjs",
     "test": "npm run test:unit",
