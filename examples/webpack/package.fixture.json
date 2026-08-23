@@ -1,6 +1,7 @@
 {
   "name": "angular2-higcharts_examples",
   "version": "1.0.0",
+  "private": true,
   "devDependencies": {
     "typescript": "^2.0.1",
     "webpack": "^2.2.1",

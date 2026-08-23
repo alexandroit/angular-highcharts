@@ -9,6 +9,7 @@ const rootDir = path.resolve(path.dirname(__filename), '..');
 const testsRoot = '/storage/data/github/tests/angular-highcharts';
 const templateAppDir = path.join(testsRoot, 'angular-9', 'src', 'app');
 const packageRoot = path.join(rootDir, '.stackline-build', 'angular-highcharts-lines');
+const currentMajor = Number.parseInt(readJson(path.join(rootDir, 'package.json')).version, 10);
 
 const lineConfig = {
   10: { version: '10.0.0', highcharts: '10.3.3', cli: '10.2.4', angular: '10.2.5', port: 4420 },
@@ -710,9 +711,16 @@ function modernChartMethods() {
   }`;
 }
 
-function updatePackageJson(dir, major, config, packageDependency) {
-  const packageFile = path.join(dir, 'package.json');
-  const packageJson = readJson(packageFile);
+function updatePackageJson(dir, major, config, packageDependency, fixture = false) {
+  const activePackageFile = path.join(dir, 'package.json');
+  const fixturePackageFile = path.join(dir, 'package.fixture.json');
+  const packageFile = fixture ? fixturePackageFile : activePackageFile;
+  const sourcePackageFile = fs.existsSync(packageFile)
+    ? packageFile
+    : fixture
+      ? activePackageFile
+      : fixturePackageFile;
+  const packageJson = readJson(sourcePackageFile);
   const aotMode = config.modernHighcharts ? 'true' : 'false';
   packageJson.name = `stackline-angular-highcharts-angular-${major}`;
   packageJson.private = true;
@@ -745,6 +753,18 @@ function updatePackageJson(dir, major, config, packageDependency) {
   }
 
   writeJson(packageFile, packageJson);
+
+  if (sourcePackageFile !== packageFile && fs.existsSync(sourcePackageFile)) {
+    fs.unlinkSync(sourcePackageFile);
+  }
+
+  if (!fixture) {
+    const fixtureLock = path.join(dir, 'package-lock.fixture.json');
+    const activeLock = path.join(dir, 'package-lock.json');
+    if (fs.existsSync(fixtureLock) && !fs.existsSync(activeLock)) {
+      fs.renameSync(fixtureLock, activeLock);
+    }
+  }
 }
 
 function updateAngularJson(dir, outputPath, config) {
@@ -822,7 +842,7 @@ function syncLine(major) {
   const tarballPath = packLinePackage(major);
 
   writeAppFiles(docsDir, major, config);
-  updatePackageJson(docsDir, major, config, config.version);
+  updatePackageJson(docsDir, major, config, config.version, major !== currentMajor);
   updateAngularJson(docsDir, `../../docs/angular-${major}/live`, config);
   updateIndexHtml(docsDir, major);
 

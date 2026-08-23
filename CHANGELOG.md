@@ -4,6 +4,10 @@ All notable changes to `@stackline/angular-highcharts` are documented here.
 
 ## Unreleased
 
+- Classified non-current documentation families as compatibility fixtures while
+  keeping the maintained framework line buildable and audited.
+- Classified the superseded Angular CLI and webpack examples as archived source
+  fixtures; the Angular 22 browser contract remains the maintained example.
 - Moved exact-version dependency records to `package.fixture.json`, repaired
   their validators, and added an offline catalog contract to keep historical
   metadata out of active dependency alerts.
