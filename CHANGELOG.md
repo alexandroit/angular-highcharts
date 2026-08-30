@@ -12,6 +12,14 @@ All notable changes to `@stackline/angular-highcharts` are documented here.
   their validators, and added an offline catalog contract to keep historical
   metadata out of active dependency alerts.
 
+## 22.1.2 - 2026-08-30
+
+- Validate the Angular 22 package and live application with Highcharts 13.0.2.
+- Extend the Highcharts peer ceiling to 13.0.2 without changing the Angular,
+  wrapper, module, or TypeScript API.
+- Require a clean production peer closure with no install warnings and zero
+  known npm audit findings.
+
 ## 22.1.1 - 2026-08-19
 
 - Validate the current package line with Angular 22.1.3, Angular CLI 22.1.5, ng-packagr 22.1.1, and Highcharts 13.0.1.

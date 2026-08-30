@@ -1,6 +1,6 @@
 {
   "name": "@stackline/angular-highcharts",
-  "version": "22.1.1",
+  "version": "22.1.2",
   "description": "Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "sideEffects": false,
   "scripts": {
@@ -159,7 +159,7 @@
   "homepage": "https://alexandro.net/docs/angular/angular-highcharts/",
   "peerDependencies": {
     "@angular/core": ">=22.0.0 <24.0.0",
-    "highcharts": ">=5.0.0 <=13.0.1"
+    "highcharts": ">=5.0.0 <=13.0.2"
   },
   "devDependencies": {
     "@angular/common": "22.1.3",
@@ -167,7 +167,7 @@
     "@angular/compiler-cli": "22.1.3",
     "@angular/core": "22.1.3",
     "@types/node": "22.20.1",
-    "highcharts": "13.0.1",
+    "highcharts": "13.0.2",
     "http-server": "^14.1.1",
     "ng-packagr": "22.1.1",
     "puppeteer-core": "25.8.0",

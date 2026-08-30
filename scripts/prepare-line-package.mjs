@@ -96,7 +96,7 @@ function writeJson(filePath, value) {
 
 function getPackageVersion(major) {
   if (major === 22) {
-    return '22.1.1';
+    return '22.1.2';
   }
 
   return `${major}.0.0`;
@@ -112,7 +112,7 @@ function getPeerRange(major) {
 
 function getTestedHighchartsVersion(major) {
   if (major === 22) {
-    return '13.0.1';
+    return '13.0.2';
   }
 
   if (major >= 9 && major <= 11) {
@@ -133,7 +133,7 @@ function getHighchartsInstallName(major) {
 
 function getHighchartsPeerRange(major) {
   if (major === 22) {
-    return '>=5.0.0 <=13.0.1';
+    return '>=5.0.0 <=13.0.2';
   }
 
   if (major >= 9 && major <= 11) {

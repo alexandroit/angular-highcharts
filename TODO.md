@@ -1,5 +1,10 @@
 # TODO
 
+## Release 22.1.2
+
+- [x] Validate Highcharts 13.0.2 through unit, package, and live-browser gates.
+- [x] Verify the direct production peer closure and npm audit result.
+
 ## Release 22.1.1
 
 - [x] Audit the current Angular and Highcharts releases.
