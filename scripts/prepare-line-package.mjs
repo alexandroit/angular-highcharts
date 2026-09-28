@@ -96,7 +96,7 @@ function writeJson(filePath, value) {
 
 function getPackageVersion(major) {
   if (major === 22) {
-    return '22.1.2';
+    return '22.1.3';
   }
 
   return `${major}.0.0`;
