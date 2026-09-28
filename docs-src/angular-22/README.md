@@ -1,6 +1,8 @@
 # StacklineAngularHighchartsAngular22
 
-This project is validated with [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5.
+This project uses the published `@stackline/angular-highcharts@22.1.3` package, Angular 22.1.3, Angular CLI 22.1.5 and Highcharts 13.0.2. The package lock records the npm tarball URL and SHA-512 integrity.
+
+From the repository root, run `npm --prefix docs-src/angular-22 ci --ignore-scripts`, then `npm run build:docs`. The build verifies the installed package identity and writes the current live site to `docs/angular-22/live`. It does not copy a local library build into the demo.
 
 ## Development server
 

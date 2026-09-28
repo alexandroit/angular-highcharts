@@ -1,15 +1,20 @@
+import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const sourceDir = path.join(rootDir, 'dist');
-const targetDir = path.join(rootDir, 'docs-src', 'angular-22', 'packages', 'angular-highcharts');
-
-if (!fs.existsSync(path.join(sourceDir, 'package.json'))) {
-  throw new Error('Build the Angular package before syncing the docs package.');
-}
-
-fs.rmSync(targetDir, { recursive: true, force: true });
-fs.cpSync(sourceDir, targetDir, { recursive: true });
-console.log('Synced the Angular 22 package build into the documentation app.');
+const docsDir = path.join(rootDir, 'docs-src', 'angular-22');
+const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
+const name = '@stackline/angular-highcharts';
+const docsPackage = readJson(path.join(docsDir, 'package.json'));
+const version = docsPackage.dependencies[name];
+assert.match(version, /^\d+\.\d+\.\d+$/, 'The docs package must use an exact published version.');
+const locked = readJson(path.join(docsDir, 'package-lock.json')).packages[`node_modules/${name}`];
+assert.equal(locked.version, version);
+assert.equal(locked.resolved, `https://registry.npmjs.org/${name}/-/angular-highcharts-${version}.tgz`);
+assert.match(locked.integrity, /^sha512-/);
+const installed = readJson(path.join(docsDir, 'node_modules', name, 'package.json'));
+assert.equal(installed.name, name);
+assert.equal(installed.version, version);
+console.log(`Verified the published ${name}@${version} for the Angular 22 documentation app.`);
