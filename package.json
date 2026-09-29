@@ -1,6 +1,6 @@
 {
   "name": "@stackline/angular-highcharts",
-  "version": "22.1.5",
+  "version": "22.1.6",
   "description": "Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "sideEffects": false,
   "scripts": {

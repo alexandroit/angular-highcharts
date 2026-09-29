@@ -4,13 +4,13 @@
 
 [![npm version](https://img.shields.io/npm/v/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
 [![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts)
-[![GitHub repository](https://img.shields.io/badge/GitHub-alexandroit%2Fangular-highcharts-181717?style=flat-square&logo=github)](https://github.com/alexandroit/angular-highcharts)
+[![GitHub repository](https://img.shields.io/badge/GitHub-repository-181717?style=flat-square&logo=github)](https://github.com/alexandroit/angular-highcharts)
 [![Docs](https://img.shields.io/badge/docs-alexandro.net-0f766e?style=flat-square)](https://alexandro.net/docs/angular/angular-highcharts/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
 **[Documentation](https://alexandro.net/docs/angular/angular-highcharts/)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)**
 
-**Current package version:** `22.1.5`
+**Current package version:** `22.1.6`
 
 ---
 
@@ -26,7 +26,7 @@ The Angular 22 package family is `22.1.4` and is intended for Angular `22.x` app
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/angular-highcharts@22.1.5` |
+| Package | `@stackline/angular-highcharts@22.1.6` |
 | Peer: `@angular/core` | `>=22.0.0 <24.0.0` |
 | Peer: `highcharts` | `>=5.0.0 <=13.0.2` |
 | Runtime dependencies | `tslib` → `npm:@stackline/tslib@1.0.0` (upstream 2.8.1 API) |
@@ -40,7 +40,7 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
-| `22.x` | Angular `22.x` | `>=22.0.0 <24.0.0` | `npm install @stackline/angular-highcharts@22.1.5 highcharts@13.0.2 --save-exact` |
+| `22.x` | Angular `22.x` | `>=22.0.0 <24.0.0` | `npm install @stackline/angular-highcharts@22.1.6 highcharts@13.0.2 --save-exact` |
 | `21.x` | Angular `21.x` | `>=21.0.0 <22.0.0` | `npm install @stackline/angular-highcharts@21.0.0 highcharts@12.6.0 --save-exact` |
 | `20.x` | Angular `20.x` | `>=20.0.0 <21.0.0` | `npm install @stackline/angular-highcharts@20.0.0 highcharts@12.6.0 --save-exact` |
 | `19.x` | Angular `19.x` | `>=19.0.0 <20.0.0` | `npm install @stackline/angular-highcharts@19.0.0 highcharts@12.6.0 --save-exact` |
