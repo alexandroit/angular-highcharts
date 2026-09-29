@@ -96,7 +96,7 @@ function writeJson(filePath, value) {
 
 function getPackageVersion(major) {
   if (major === 22) {
-    return '22.1.3';
+    return '22.1.4';
   }
 
   return `${major}.0.0`;
@@ -672,6 +672,7 @@ function createPackageJson(major, version) {
     files: major >= 9
       ? ['dist', 'index.js', 'index.d.ts', 'README.md', 'LICENSE']
       : ['*.js', '*.d.ts', 'README.md', 'LICENSE'],
+    ...(major === 22 ? { dependencies: { tslib: 'npm:@stackline/tslib@1.0.0' } } : {}),
     sideEffects: false,
     repository: {
       type: 'git',

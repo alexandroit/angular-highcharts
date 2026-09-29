@@ -116,7 +116,7 @@ const lineConfig = {
     compilerCli: '22.1.3',
     ngPackagr: '22.1.1',
     typescript: '6.0.3',
-    tslib: '^2.3.0',
+    tslib: 'npm:@stackline/tslib@1.0.0',
     target: 'es2022',
     module: 'es2022',
     lib: ['dom', 'es2022']
@@ -220,6 +220,7 @@ function createWorkPackageJson(linePackageJson, config) {
     dependencies: {
       tslib: config.tslib
     },
+    ...(config.tslib.startsWith('npm:') ? { overrides: { 'ng-packagr': { tslib: '$tslib' } } } : {}),
     devDependencies: {
       '@angular/common': config.angular,
       '@angular/compiler': config.angular,
@@ -295,6 +296,7 @@ function buildApfLine(major) {
   });
 
   const generatedPackageJson = readJson(path.join(outDir, 'package.json'));
+  delete generatedPackageJson.overrides; // Build-only peer resolution is not consumer metadata.
   const mainField = pickExistingPackageField(outDir, [
     generatedPackageJson.main,
     generatedPackageJson.fesm2022,

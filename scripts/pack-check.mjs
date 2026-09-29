@@ -12,7 +12,9 @@ assert.ok(fs.existsSync(packageFile), 'The distribution package.json is missing.
 
 const packageJson = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
 assert.equal(packageJson.name, '@stackline/angular-highcharts');
-assert.equal(packageJson.version, '22.1.3');
+assert.equal(packageJson.version, '22.1.4');
+assert.deepEqual(packageJson.dependencies, { tslib: 'npm:@stackline/tslib@1.0.0' });
+assert.ok(!packageJson.overrides, 'Build-workspace overrides must not ship.');
 assert.equal(packageJson.peerDependencies['@angular/core'], '>=22.0.0 <24.0.0');
 assert.equal(packageJson.peerDependencies.highcharts, '>=5.0.0 <=13.0.2');
 

@@ -4,6 +4,12 @@ All notable changes to `@stackline/angular-highcharts` are documented here.
 
 ## Unreleased
 
+## 22.1.4 - 2026-09-28
+
+- Adopt maintained Stackline aliases for tslib and the development documentation server, retaining import names and public Angular/Highcharts peer contracts.
+- Validate the compiled tarball in the Angular 22 browser application before publication, then pin published documentation to the exact registry artifact.
+- Publish the tested CI artifact with provenance and an immutable GitHub release.
+
 ## 22.1.3 - 2026-09-28
 
 - Organize package documentation, preserve examples and compatibility guidance, and add verified Stackline community links.

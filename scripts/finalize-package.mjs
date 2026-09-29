@@ -18,5 +18,8 @@ Object.assign(packageJson, {
   types: typesFile
 });
 
+// npm overrides belong to this build workspace, not to downstream applications.
+delete packageJson.overrides;
+
 fs.writeFileSync(packageFile, `${JSON.stringify(packageJson, null, 2)}\n`);
 console.log('Finalized APF compatibility fields in dist/package.json.');

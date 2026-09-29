@@ -24,7 +24,7 @@ const lineConfig = {
   19: { version: '19.0.0', highcharts: '12.6.0', cli: '19.2.27', angular: '19.2.25', port: 4429, modernHighcharts: true },
   20: { version: '20.0.0', highcharts: '12.6.0', cli: '20.3.27', angular: '20.3.24', port: 4430, modernHighcharts: true },
   21: { version: '21.0.0', highcharts: '12.6.0', cli: '21.2.14', angular: '21.2.16', port: 4431, modernHighcharts: true },
-  22: { version: '22.1.3', highcharts: '13.0.2', cli: '22.1.5', angular: '22.1.3', port: 4432, modernHighcharts: true }
+  22: { version: '22.1.4', highcharts: '13.0.2', cli: '22.1.5', angular: '22.1.3', port: 4432, modernHighcharts: true }
 };
 
 function parseArgs(argv) {
@@ -744,6 +744,10 @@ function updatePackageJson(dir, major, config, packageDependency, fixture = fals
   });
   packageJson.dependencies['@stackline/angular-highcharts'] = packageDependency;
   packageJson.dependencies.highcharts = config.highcharts;
+  if (major === 22) {
+    packageJson.dependencies.tslib = 'npm:@stackline/tslib@1.0.0';
+    packageJson.overrides = { ...(packageJson.overrides || {}), tslib: '$tslib' };
+  }
   packageJson.devDependencies['@angular-devkit/build-angular'] = config.cli;
   packageJson.devDependencies['@angular/cli'] = config.cli;
   packageJson.devDependencies['@angular/compiler-cli'] = config.angular;

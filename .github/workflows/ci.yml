@@ -43,11 +43,12 @@ jobs:
       - run: npm install --global npm@11.19.0
       - run: npm ci
       - run: npm run build
-      - run: npm run sync:docs:angular-22
       - run: npm ci --prefix docs-src/angular-22
+      - run: npm run test:docs:candidate
       - run: npm run build:docs:angular-22
+        env:
+          STACKLINE_HIGHCHARTS_CANDIDATE: '1'
       - run: npm run test:browser
-      - run: npm audit --prefix docs-src/angular-22 --audit-level=low
 
   artifact:
     name: Build release artifact
@@ -61,12 +62,13 @@ jobs:
       - run: npm install --global npm@11.19.0
       - run: npm ci
       - run: npm run check
+      - run: node --test scripts/registry-requests.test.mjs
       - run: mkdir artifact
       - run: npm pack --pack-destination "$GITHUB_WORKSPACE/artifact"
         working-directory: dist
       - run: sha512sum artifact/*.tgz > artifact/SHA512SUMS
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: stackline-angular-highcharts-${{ github.sha }}
+          name: npm-package
           path: artifact/
           if-no-files-found: error
