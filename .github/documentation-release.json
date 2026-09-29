@@ -4,7 +4,7 @@
     {
       "name": "@stackline/angular-highcharts",
       "path": "README.md",
-      "version": "22.1.5",
+      "version": "22.1.6",
       "baselineVersion": "22.1.4",
       "keywords": [
         "stackline",
@@ -31,8 +31,8 @@
       "homepage": "https://alexandro.net/docs/angular/angular-highcharts/",
       "baselineTarball": "https://registry.npmjs.org/@stackline/angular-highcharts/-/angular-highcharts-22.1.4.tgz",
       "baselineIntegrity": "sha512-fuStYARugAyerOcFQpzNubYbzUS0cRTDvxt+N7jHfN5rzZdSypZv+KWfov8DhU8BlTVWFlvm8DPnxFffQfKXGQ==",
-      "expectedSha512": "722ccc730e54053b9c57d6080e8abf274440fde20df455e3d7c6818bafce99d09e6388e94900cf1f889c1efa0e612b3c641a80a3b2dc97d7ca5dcd5b87bb1036",
-      "tag": "docs-stackline-angular-highcharts-v22.1.5"
+      "expectedSha512": "5c1215d3c4dc10703c334a45590d88bed030de0fb5cc047311bd5fb14fcc569c569e32788790ea821f5be3e2795e1b1bd4ba7a145ecdfc26d546fb110c70bfd6",
+      "tag": "docs-stackline-angular-highcharts-v22.1.6"
     }
   ]
 }
