@@ -1,0 +1,38 @@
+{
+  "repository": "alexandroit/angular-highcharts",
+  "packages": [
+    {
+      "name": "@stackline/angular-highcharts",
+      "path": "README.md",
+      "version": "22.1.5",
+      "baselineVersion": "22.1.4",
+      "keywords": [
+        "stackline",
+        "npm-package",
+        "angular-highcharts",
+        "angular",
+        "typescript",
+        "angular22",
+        "angular-22",
+        "angular-library",
+        "charts",
+        "highcharts",
+        "highcharts-angular",
+        "chart-wrapper",
+        "ui-component",
+        "wrapper",
+        "library",
+        "highstock",
+        "highmaps",
+        "coloraxis",
+        "zaxis",
+        "maintained"
+      ],
+      "homepage": "https://alexandro.net/docs/angular/angular-highcharts/",
+      "baselineTarball": "https://registry.npmjs.org/@stackline/angular-highcharts/-/angular-highcharts-22.1.4.tgz",
+      "baselineIntegrity": "sha512-fuStYARugAyerOcFQpzNubYbzUS0cRTDvxt+N7jHfN5rzZdSypZv+KWfov8DhU8BlTVWFlvm8DPnxFffQfKXGQ==",
+      "expectedSha512": "722ccc730e54053b9c57d6080e8abf274440fde20df455e3d7c6818bafce99d09e6388e94900cf1f889c1efa0e612b3c641a80a3b2dc97d7ca5dcd5b87bb1036",
+      "tag": "docs-stackline-angular-highcharts-v22.1.5"
+    }
+  ]
+}
