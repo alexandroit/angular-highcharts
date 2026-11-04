@@ -1,6 +1,6 @@
 {
   "name": "@stackline/angular-highcharts",
-  "version": "22.1.6",
+  "version": "22.1.7",
   "description": "Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "sideEffects": false,
   "repository": {
@@ -34,17 +34,17 @@
   ],
   "author": "Alexandro Paixao Marques",
   "license": "MIT",
-  "packageManager": "npm@11.19.0",
+  "packageManager": "npm@11.19.1",
   "bugs": {
     "url": "https://github.com/alexandroit/angular-highcharts/issues"
   },
   "homepage": "https://alexandro.net/docs/angular/angular-highcharts/",
   "peerDependencies": {
     "@angular/core": ">=22.0.0 <24.0.0",
-    "highcharts": ">=5.0.0 <=13.0.2"
+    "highcharts": "^11.4.9 || ^12.6.2 || ^13.1.1"
   },
   "dependencies": {
-    "tslib": "npm:@stackline/tslib@1.0.0"
+    "tslib": "npm:@stackline/tslib@1.0.2"
   },
   "module": "fesm2022/stackline-angular-highcharts.mjs",
   "typings": "types/stackline-angular-highcharts.d.ts",

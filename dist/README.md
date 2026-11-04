@@ -1,44 +1,18 @@
 # @stackline/angular-highcharts
 
-> A maintained Angular 22 wrapper for Highcharts, Highstock, and Highmaps applications, with standard chart rendering, constructor switching, module registration, directive event outputs, native chart instance access, realtime data demos, and Angular-versioned release lines.
+> Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations.
 
 [![npm version](https://img.shields.io/npm/v/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
-[![npm monthly](https://img.shields.io/npm/dm/@stackline/angular-highcharts.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/angular-highcharts)
-[![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts/blob/master/LICENSE)
-[![Angular 22](https://img.shields.io/badge/Angular-22.x-red?style=flat-square&logo=angular)](https://alexandro.net/docs/angular/angular-highcharts/angular-22/)
-[![Highcharts](https://img.shields.io/badge/Highcharts-5--13-2f7ed8?style=flat-square)](https://www.highcharts.com/)
+[![license](https://img.shields.io/npm/l/@stackline/angular-highcharts.svg?style=flat-square)](https://github.com/alexandroit/angular-highcharts)
+[![GitHub repository](https://img.shields.io/badge/GitHub-repository-181717?style=flat-square&logo=github)](https://github.com/alexandroit/angular-highcharts)
+[![Docs](https://img.shields.io/badge/docs-alexandro.net-0f766e?style=flat-square)](https://alexandro.net/docs/angular/angular-highcharts/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation & Live Demos](https://alexandro.net/docs/angular/angular-highcharts/)** | **[Angular 22 Demo](https://alexandro.net/docs/angular/angular-highcharts/angular-22/)** | **[StackBlitz](https://stackblitz.com/github/alexandroit/stackline-angular-highcharts-stackblitz/tree/master/angular-22?file=src%2Fapp%2Fapp.ts&startScript=start)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)** | **[Community Discussions](https://www.reddit.com/r/Stackline/)**
+**[Documentation](https://alexandro.net/docs/angular/angular-highcharts/)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)**
 
-<p align="center">
-  <img src="https://assets.alexandro.net/2026/06/angular2-highcharts.gif" alt="Stackline Angular Highcharts live examples" width="920">
-</p>
-
-**Package version:** `22.1.4`
+**Current package version:** `22.1.7`
 
 ---
-
-> **Credits:** Original Angular Highcharts wrapper lineage by [Eugene Gluhotorenko](https://github.com/gevgeny/angular2-highcharts). Current Stackline maintenance, Angular release-line packaging, docs, live tests, publishing, and repository stewardship by [Alexandro Paixao Marques](https://github.com/alexandroit/angular-highcharts).
-
----
-
-## Contents
-
-- [Why this package?](#why-this-package)
-- [Compatibility](#compatibility)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Security](#security)
-- [API Surface](#api-surface)
-- [Local Development](#local-development)
-- [Consumer Smoke Test](#consumer-smoke-test)
-- [Release Checklist](#release-checklist)
-- [Community and Support](#community-and-support)
-- [License](#license)
-
-<a id="why-this-library"></a>
 
 ## Why this package?
 
@@ -46,27 +20,29 @@
 
 The goal is not to hide Highcharts. The package stays thin: your application still owns the real Highcharts options object, the Highcharts constructor choice, module registration, event handling, and native chart instance. The wrapper gives Angular templates a stable `<chart>` component, Angular event outputs, axis/series/point directives, and release families aligned to Angular majors.
 
-The Angular 22 package family is `22.1.4` and is intended for Angular `22.x` applications. The live validation app uses Angular 22.1.3 and Highcharts 13.0.2, renders static and realtime examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
+The Angular 22 package family is `22.1.7` and is intended for Angular `22.x` applications. The live validation app uses Angular 22.2.4 and Highcharts 13.1.1, renders static and realtime examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
 
 ## Compatibility
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/angular-highcharts@22.1.4` |
+| Package | `@stackline/angular-highcharts@22.1.7` |
 | Peer: `@angular/core` | `>=22.0.0 <24.0.0` |
-| Peer: `highcharts` | `>=5.0.0 <=13.0.2` |
-| Runtime dependencies | `tslib` → `npm:@stackline/tslib@1.0.0` (upstream 2.8.1 API) |
+| Peer: `highcharts` | `^11.4.9 \|\| ^12.6.2 \|\| ^13.1.1` |
+| Runtime dependencies | `tslib` → `npm:@stackline/tslib@1.0.2` (upstream 2.8.1 API) |
 | Package format | Angular Package Format with partial-Ivy compilation and TypeScript declarations |
 
 
 
 ### Angular Version Compatibility
 
+The Angular 22 line is the current security baseline. Older lines below are archived compatibility references; their listed Highcharts versions have known advisories and require separate security backports before production use.
+
 Each package family targets one Angular major. Keep the package major aligned with the Angular major used by your application.
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
-| `22.x` | Angular `22.x` | `>=22.0.0 <24.0.0` | `npm install @stackline/angular-highcharts@22.1.4 highcharts@13.0.2 --save-exact` |
+| `22.x` | Angular `22.x` | `>=22.0.0 <24.0.0` | `npm install @stackline/angular-highcharts@22.1.7 highcharts@13.1.1 --save-exact` |
 | `21.x` | Angular `21.x` | `>=21.0.0 <22.0.0` | `npm install @stackline/angular-highcharts@21.0.0 highcharts@12.6.0 --save-exact` |
 | `20.x` | Angular `20.x` | `>=20.0.0 <21.0.0` | `npm install @stackline/angular-highcharts@20.0.0 highcharts@12.6.0 --save-exact` |
 | `19.x` | Angular `19.x` | `>=19.0.0 <20.0.0` | `npm install @stackline/angular-highcharts@19.0.0 highcharts@12.6.0 --save-exact` |
@@ -94,9 +70,9 @@ Angular 3 does not have a package family because Angular skipped version 3.
 
 ### Highcharts Compatibility
 
-The Angular 22 validation app uses `highcharts@13.0.2`, which is the highest Highcharts version tested for this line.
+The Angular 22 validation app uses `highcharts@13.1.1`, which is the highest Highcharts version tested for this line.
 
-The maintained Stackline Angular 22 line declares a Highcharts peer range of `>=5.0.0 <=13.0.2` so applications get a clear, reproducible compatibility ceiling while still keeping Highcharts as an application-owned peer dependency.
+The maintained Stackline Angular 22 line declares a Highcharts peer range of `^11.4.9 || ^12.6.2 || ^13.1.1` to require patched Highcharts 11, 12, or 13 releases while still keeping Highcharts as an application-owned peer dependency.
 
 Highcharts 13 does not change the wrapper API, but it includes upstream behavior changes that can affect application-owned chart options:
 
@@ -434,15 +410,24 @@ npm run check
 - Publish through the [GitHub Actions workflow](https://github.com/alexandroit/angular-highcharts/actions/workflows/publish.yml) using the tested artifact's SHA-512 digest.
 - Verify the exact npm tarball, version, and GitHub provenance after publication; never replace a published version.
 
-## Community and Support
-
-Report reproducible package issues in the [issue tracker](https://github.com/alexandroit/angular-highcharts/issues). Use the [security policy](https://github.com/alexandroit/angular-highcharts/blob/master/SECURITY.md) for security reports.
-
-- [Stackline / Alexandro.Net](https://alexandro.net/)
-- [GitHub](https://github.com/alexandroit)
-- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
-- [Reddit community: r/Stackline](https://www.reddit.com/r/Stackline/)
-
 ## License
 
 The Stackline Angular wrapper is licensed under MIT. Highcharts is a separate peer dependency owned by Highsoft and is subject to the [Highcharts license terms](https://www.highcharts.com/license); consumers are responsible for an appropriate Highcharts license.
+
+## Credits and original authors
+
+- Alexandro Paixao Marques.
+- Copyright (c) 2016 Eugene Gluhotorenko.
+- Stackline maintenance: [Alexandro Paixao Marques](https://www.linkedin.com/in/aleinfo/) and [Stackline contributors](https://github.com/alexandroit).
+
+Original copyright, license notices and contributor acknowledgements remain part of this distribution. Stackline maintenance does not replace authorship of the original work.
+
+## Community and Links
+
+- [Stackline website](https://alexandro.net/)
+- [GitHub projects](https://github.com/alexandroit)
+- [npm packages](https://www.npmjs.com/~alex360qc)
+- [Reddit community — r/Stackline](https://www.reddit.com/r/Stackline/)
+- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
+
+Use this repository's issue tracker for reproducible bugs and feature requests. Join r/Stackline for examples, usage questions and release discussions.
