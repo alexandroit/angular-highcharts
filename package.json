@@ -1,6 +1,6 @@
 {
   "name": "@stackline/angular-highcharts",
-  "version": "22.1.8",
+  "version": "22.1.9",
   "description": "Angular wrapper components for Highcharts, Highstock, Highmaps, zAxis, and colorAxis integrations",
   "sideEffects": false,
   "scripts": {
@@ -110,7 +110,7 @@
     "typescript": "6.0.3"
   },
   "dependencies": {
-    "tslib": "npm:@stackline/tslib@1.0.2"
+    "tslib": "npm:@stackline/tslib@1.1.0"
   },
   "overrides": {
     "ng-packagr": {

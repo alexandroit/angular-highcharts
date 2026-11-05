@@ -62496,7 +62496,7 @@ chart {
       \u0275\u0275text(4, "Angular CLI 22.2.6 / Angular 22.2.4 runtime / Highcharts 13.1.1");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(5, "h1");
-      \u0275\u0275text(6, "@stackline/angular-highcharts 22.1.8");
+      \u0275\u0275text(6, "@stackline/angular-highcharts 22.1.9");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(7, "p");
       \u0275\u0275text(8, "Project generated with the Angular 22 CLI blueprint and running the validated Angular 22 package line.");
@@ -62567,7 +62567,7 @@ chart {
   <header>
     <div class="header-copy">
       <span>Angular CLI 22.2.6 / Angular 22.2.4 runtime / Highcharts 13.1.1</span>
-      <h1>&#64;stackline/angular-highcharts 22.1.8</h1>
+      <h1>&#64;stackline/angular-highcharts 22.1.9</h1>
       <p>Project generated with the Angular 22 CLI blueprint and running the validated Angular 22 package line.</p>
     </div>
     <nav class="route-tabs" aria-label="Example views">
@@ -62895,5 +62895,5 @@ var AppModule = class _AppModule {
 
 // src/main.ts
 platformBrowser().bootstrapModule(AppModule, {}).catch((err) => console.error(err));
-//# debugId=30387062-29fc-5af7-b2cd-e29ad4bb357e
+//# debugId=5df86950-9881-5a6a-b040-52f43b8e36ea
 //# sourceMappingURL=main.js.map

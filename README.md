@@ -10,7 +10,7 @@
 
 **[Documentation](https://alexandro.net/docs/angular/angular-highcharts/)** | **[npm](https://www.npmjs.com/package/@stackline/angular-highcharts)** | **[Issues](https://github.com/alexandroit/angular-highcharts/issues)** | **[Repository](https://github.com/alexandroit/angular-highcharts)**
 
-**Current package version:** `22.1.8`
+**Current package version:** `22.1.9`
 
 ---
 
@@ -20,16 +20,16 @@
 
 The goal is not to hide Highcharts. The package stays thin: your application still owns the real Highcharts options object, the Highcharts constructor choice, module registration, event handling, and native chart instance. The wrapper gives Angular templates a stable `<chart>` component, Angular event outputs, axis/series/point directives, and release families aligned to Angular majors.
 
-The Angular 22 package family is `22.1.8` and is intended for Angular `22.x` applications. The live validation app uses Angular 22.2.4 and Highcharts 13.1.1, renders static and realtime examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
+The Angular 22 package family is `22.1.9` and is intended for Angular `22.x` applications. The live validation app uses Angular 22.2.4 and Highcharts 13.1.1, renders static and realtime examples, and validates that dynamic charts update existing Highcharts instances instead of blinking through full object recreation.
 
 ## Compatibility
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/angular-highcharts@22.1.8` |
+| Package | `@stackline/angular-highcharts@22.1.9` |
 | Peer: `@angular/core` | `>=22.0.0 <24.0.0` |
 | Peer: `highcharts` | `^11.4.9 \|\| ^12.6.2 \|\| ^13.1.1` |
-| Runtime dependencies | `tslib` → `npm:@stackline/tslib@1.0.2` (upstream 2.8.1 API) |
+| Runtime dependencies | `tslib` → `npm:@stackline/tslib@1.1.0` (upstream 2.8.1 API) |
 | Package format | Angular Package Format with partial-Ivy compilation and TypeScript declarations |
 
 
@@ -42,7 +42,7 @@ Each package family targets one Angular major. Keep the package major aligned wi
 
 | Package family | Angular family | Peer range | Install |
 | :---: | :---: | :---: | :--- |
-| `22.x` | Angular `22.x` | `>=22.0.0 <24.0.0` | `npm install @stackline/angular-highcharts@22.1.8 highcharts@13.1.1 --save-exact` |
+| `22.x` | Angular `22.x` | `>=22.0.0 <24.0.0` | `npm install @stackline/angular-highcharts@22.1.9 highcharts@13.1.1 --save-exact` |
 | `21.x` | Angular `21.x` | `>=21.0.0 <22.0.0` | `npm install @stackline/angular-highcharts@21.0.0 highcharts@12.6.0 --save-exact` |
 | `20.x` | Angular `20.x` | `>=20.0.0 <21.0.0` | `npm install @stackline/angular-highcharts@20.0.0 highcharts@12.6.0 --save-exact` |
 | `19.x` | Angular `19.x` | `>=19.0.0 <20.0.0` | `npm install @stackline/angular-highcharts@19.0.0 highcharts@12.6.0 --save-exact` |
