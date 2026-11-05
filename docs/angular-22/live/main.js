@@ -62493,10 +62493,10 @@ chart {
   static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _App, selectors: [["app-root"]], standalone: false, decls: 52, vars: 6, consts: [[1, "header-copy"], ["aria-label", "Example views", 1, "route-tabs"], ["href", "./"], ["href", "?view=static"], [4, "ngIf"], [1, "panel", "capabilities-footer"], [1, "capability-grid"], [1, "chart-card", "live-market-card"], [1, "chart-head", "market-head"], [1, "market-toolbar"], ["type", "button", 3, "click"], ["type", "button", 3, "active", "click", 4, "ngFor", "ngForOf"], ["type", "button", 1, "reload-button", 3, "click"], ["class", "market-ticker", 4, "ngIf"], [1, "market-status"], [1, "chart-frame", "market-frame"], [3, "create", "type", "options"], [1, "endpoint-grid"], [1, "tutorial-collapse"], [1, "code-layer-grid"], [1, "examples-grid"], ["class", "chart-card", 4, "ngFor", "ngForOf"], [1, "market-ticker"], [1, "chart-card"], [1, "chart-head"], [1, "chart-frame"], [1, "panel", "intro-panel"], [1, "status-pill"], [1, "panel", "feature-panel"], [1, "chart-frame", "large"], [3, "create", "options"], [3, "create", "load", "redraw", "options"], [3, "click", "legendItemClick"], [3, "click", "mouseOver"], [3, "setExtremes"], [1, "event-log"], [4, "ngFor", "ngForOf"]], template: function App_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "main")(1, "header")(2, "div", 0)(3, "span");
-      \u0275\u0275text(4, "Angular CLI 22.2.5 / Angular 22.2.4 runtime / Highcharts 13.1.1");
+      \u0275\u0275text(4, "Angular CLI 22.2.6 / Angular 22.2.4 runtime / Highcharts 13.1.1");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(5, "h1");
-      \u0275\u0275text(6, "@stackline/angular-highcharts 22.1.7");
+      \u0275\u0275text(6, "@stackline/angular-highcharts 22.1.8");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(7, "p");
       \u0275\u0275text(8, "Project generated with the Angular 22 CLI blueprint and running the validated Angular 22 package line.");
@@ -62566,8 +62566,8 @@ chart {
     args: [{ selector: "app-root", standalone: false, template: `<main>
   <header>
     <div class="header-copy">
-      <span>Angular CLI 22.2.5 / Angular 22.2.4 runtime / Highcharts 13.1.1</span>
-      <h1>&#64;stackline/angular-highcharts 22.1.7</h1>
+      <span>Angular CLI 22.2.6 / Angular 22.2.4 runtime / Highcharts 13.1.1</span>
+      <h1>&#64;stackline/angular-highcharts 22.1.8</h1>
       <p>Project generated with the Angular 22 CLI blueprint and running the validated Angular 22 package line.</p>
     </div>
     <nav class="route-tabs" aria-label="Example views">
@@ -62895,5 +62895,5 @@ var AppModule = class _AppModule {
 
 // src/main.ts
 platformBrowser().bootstrapModule(AppModule, {}).catch((err) => console.error(err));
-//# debugId=f853eba8-45ea-532f-9b68-be7a0d5ddbdd
+//# debugId=30387062-29fc-5af7-b2cd-e29ad4bb357e
 //# sourceMappingURL=main.js.map
